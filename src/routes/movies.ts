@@ -5,8 +5,7 @@ const router = Router();
 
 /**
  * GET /movies
- * returns up to 10 media items (any type) to prove connectivity.
- * You can later split into /movies and /tvshows if you want.
+ * returns up to 10 media items (any type).
  */
 router.get('/', async (_req, res) => {
   try {
