@@ -11,11 +11,14 @@ The project sets up the database schema, seeds initial data, and establishes a c
   - Schema and seed scripts (`01_schema.sql`, `02_seed.sql`)
   - Roles & privileges script (`07_users_privs.sql`)
   - Views for movies and TV shows (`03_views.sql`)
+  - Audit logging via triggers (`05_triggers.sql`)
+  - Stored function for transactional movie creation (`add_movie_with_genres`)
 
 - **Database Tested & Verified**
   - 17 tables successfully created
   - Data seeded correctly
   - `app_user` role verified to connect and query
+  - Audit logs capture all INSERT, UPDATE, DELETE operations
 
 - **TypeScript + Express API**
   - Configured project with TypeScript, Nodemon, and Dotenv
