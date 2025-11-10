@@ -1,7 +1,7 @@
 import express from 'express';
 import healthRouter from './routes/health';
 import moviesRouter from './routes/movies';
-import moviesPostRouter from './routes/movies.post';
+import moviesPostRouter from './routes/movies.admin';
 import authRouter from './routes/auth/auth';
 import { requireAuth, requireRole } from './middleware/auth';
 

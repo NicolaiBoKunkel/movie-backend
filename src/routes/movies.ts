@@ -22,8 +22,11 @@ router.get('/', async (req, res) => {
         SELECT
           m."media_id",
           m."original_title",
-          m."vote_average",
-          v."genres",
+          m."vote_average"::float8 AS vote_average,
+          CASE
+            WHEN v."genres" = '' THEN ARRAY[]::text[]
+            ELSE string_to_array(v."genres", ', ')
+          END AS genres,
           ts_rank(
             to_tsvector('english', coalesce(m."original_title",'') || ' ' || coalesce(m."overview",'')),
             plainto_tsquery('english', $1)
@@ -41,16 +44,22 @@ router.get('/', async (req, res) => {
       return res.json(rows);
     }
 
-    // No search so we list from the view with pagination
+    // No search — list from the view with pagination
     const sql = `
-      SELECT "media_id", "original_title", "vote_average", "genres"
+      SELECT
+        "media_id",
+        "original_title",
+        "vote_average"::float8 AS vote_average,
+        CASE
+          WHEN "genres" = '' THEN ARRAY[]::text[]
+          ELSE string_to_array("genres", ', ')
+        END AS genres
       FROM vw_movies_with_genres
       ORDER BY "media_id"
       LIMIT $1 OFFSET $2;
     `;
     const { rows } = await pool.query(sql, [limit, offset]);
     return res.json(rows);
-
   } catch (err) {
     console.error('[GET /movies] error:', err);
     return res.status(500).json({ error: 'Internal server error' });
@@ -66,9 +75,25 @@ router.get('/:id', async (req, res) => {
 
   try {
     const sql = `
-      SELECT m.media_id, m.tmdb_id, m.original_title, m.original_language,
-             m.status, m.vote_average, v.genres
+      SELECT
+        m.media_id,
+        m.tmdb_id,
+        m.original_title,
+        m.original_language,
+        m.status,
+        m.vote_average::float8 AS vote_average,
+        mo.release_date,
+        mo.budget::float8 AS budget,
+        mo.revenue::float8 AS revenue,
+        mo.adult_flag,
+        mo.runtime_minutes,
+        mo.collection_id::bigint AS collection_id,
+        CASE
+          WHEN v.genres = '' THEN ARRAY[]::text[]
+          ELSE string_to_array(v.genres, ', ')
+        END AS genres
       FROM "MediaItem" m
+      JOIN "Movie" mo ON mo.media_id = m.media_id
       LEFT JOIN vw_movies_with_genres v ON v.media_id = m.media_id
       WHERE m.media_id = $1 AND m.media_type = 'movie'
       LIMIT 1;
