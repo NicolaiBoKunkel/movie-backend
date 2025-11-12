@@ -1,6 +1,6 @@
 -- Inserts realistic test data for the Movie/TV database
-
-INSERT INTO "Genre" ("name") VALUES
+-- (SQL seed active)
+/*INSERT INTO "Genre" ("name") VALUES
 ('Action'),('Drama'),('Comedy'),('Thriller'),
 ('Science Fiction'),('Fantasy'),('Documentary'),
 ('Romance'),('Horror'),('Animation')
@@ -102,3 +102,16 @@ INSERT INTO "EpisodeCrewAssignment" ("episode_id","person_id","department","job_
 (1,3,'Production','Series Director'),
 (2,8,'Production','Executive Producer')
 ON CONFLICT DO NOTHING;
+
+-- Optional: create an example app user if pgcrypto is available (dev only)
+DO $$ BEGIN
+	BEGIN
+		CREATE EXTENSION IF NOT EXISTS pgcrypto;
+	EXCEPTION WHEN others THEN
+		RAISE NOTICE 'pgcrypto not available, skipping extension creation';
+	END;
+END $$;
+
+INSERT INTO "UserAccount" (username, password_hash, role)
+SELECT 'devadmin', crypt('devpassword', gen_salt('bf')), 'admin'
+WHERE NOT EXISTS (SELECT 1 FROM "UserAccount" WHERE username = 'devadmin');

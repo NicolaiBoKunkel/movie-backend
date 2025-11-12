@@ -8,7 +8,7 @@ The project sets up the database schema, seeds initial data, and establishes a c
 ## Features started implementing so far
 
 - **PostgreSQL via Docker Compose**  
-  - Schema and seed scripts (`01_schema.sql`, `02_seed.sql`)
+  - Schema script (`01_schema.sql`) (SQL seeder `02_seed.sql` removed — use JSON seeder)
   - Roles & privileges script (`07_users_privs.sql`)
   - Views for movies and TV shows (`03_views.sql`)
   - Audit logging via triggers (`05_triggers.sql`)

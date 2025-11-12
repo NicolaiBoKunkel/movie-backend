@@ -1,0 +1,7004 @@
+{
+  "TitleCrewAssignment": [
+    {
+      "crew_assignment_id": null,
+      "media_id": 558,
+      "person_id": 25,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 317,
+      "person_id": 480,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 835,
+      "person_id": 774,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 456,
+      "person_id": 822,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 456,
+      "person_id": 398,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 798,
+      "person_id": 836,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 944,
+      "person_id": 658,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 944,
+      "person_id": 749,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 944,
+      "person_id": 813,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 944,
+      "person_id": 814,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 153,
+      "person_id": 98,
+      "department": "Sound",
+      "job_title": "Music"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 153,
+      "person_id": 99,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 153,
+      "person_id": 99,
+      "department": "Writing",
+      "job_title": "Writer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 153,
+      "person_id": 100,
+      "department": "Costume & Make-Up",
+      "job_title": "Costume Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 153,
+      "person_id": 101,
+      "department": "Art",
+      "job_title": "Production Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 606,
+      "person_id": 525,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 606,
+      "person_id": 375,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 606,
+      "person_id": 277,
+      "department": "Writing",
+      "job_title": "Screenplay"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 872,
+      "person_id": 917,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 872,
+      "person_id": 670,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 872,
+      "person_id": 621,
+      "department": "Sound",
+      "job_title": "Sound Designer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 872,
+      "person_id": 621,
+      "department": "Sound",
+      "job_title": "Supervising Sound Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 194,
+      "person_id": 564,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 856,
+      "person_id": 10,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 716,
+      "person_id": 319,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 716,
+      "person_id": 319,
+      "department": "Writing",
+      "job_title": "Screenplay"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 716,
+      "person_id": 804,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 202,
+      "person_id": 574,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 77,
+      "person_id": 315,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 77,
+      "person_id": 282,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 332,
+      "person_id": 94,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 332,
+      "person_id": 94,
+      "department": "Writing",
+      "job_title": "Writer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 332,
+      "person_id": 629,
+      "department": "Writing",
+      "job_title": "Writer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 658,
+      "person_id": 98,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 990,
+      "person_id": 357,
+      "department": "Art",
+      "job_title": "Production Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 990,
+      "person_id": 358,
+      "department": "Art",
+      "job_title": "Art Direction"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 990,
+      "person_id": 359,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 990,
+      "person_id": 360,
+      "department": "Writing",
+      "job_title": "Screenplay"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 990,
+      "person_id": 361,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 417,
+      "person_id": 576,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 924,
+      "person_id": 339,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 924,
+      "person_id": 340,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 924,
+      "person_id": 341,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 924,
+      "person_id": 23,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 924,
+      "person_id": 342,
+      "department": "Costume & Make-Up",
+      "job_title": "Costume Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 946,
+      "person_id": 217,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 342,
+      "person_id": 61,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 342,
+      "person_id": 652,
+      "department": "Art",
+      "job_title": "Production Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 342,
+      "person_id": 906,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 654,
+      "person_id": 217,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 654,
+      "person_id": 659,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 308,
+      "person_id": 133,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 308,
+      "person_id": 133,
+      "department": "Writing",
+      "job_title": "Story"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 308,
+      "person_id": 134,
+      "department": "Writing",
+      "job_title": "Story"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 308,
+      "person_id": 135,
+      "department": "Writing",
+      "job_title": "Writer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 308,
+      "person_id": 136,
+      "department": "Writing",
+      "job_title": "Writer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 996,
+      "person_id": 52,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 996,
+      "person_id": 53,
+      "department": "Sound",
+      "job_title": "Music Supervisor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 996,
+      "person_id": 54,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 996,
+      "person_id": 55,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 996,
+      "person_id": 56,
+      "department": "Costume & Make-Up",
+      "job_title": "Costume Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 897,
+      "person_id": 379,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 545,
+      "person_id": 688,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 545,
+      "person_id": 427,
+      "department": "Art",
+      "job_title": "Production Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 480,
+      "person_id": 994,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 480,
+      "person_id": 896,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 480,
+      "person_id": 897,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 480,
+      "person_id": 898,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 480,
+      "person_id": 899,
+      "department": "Art",
+      "job_title": "Production Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 488,
+      "person_id": 989,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 451,
+      "person_id": 370,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 451,
+      "person_id": 22,
+      "department": "Writing",
+      "job_title": "Characters"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 451,
+      "person_id": 22,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 451,
+      "person_id": 473,
+      "department": "Sound",
+      "job_title": "Music Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 451,
+      "person_id": 474,
+      "department": "Writing",
+      "job_title": "Characters"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 370,
+      "person_id": 620,
+      "department": "Art",
+      "job_title": "Set Decoration"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 98,
+      "person_id": 112,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 98,
+      "person_id": 265,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 547,
+      "person_id": 704,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 547,
+      "person_id": 705,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 547,
+      "person_id": 706,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 547,
+      "person_id": 488,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 547,
+      "person_id": 707,
+      "department": "Art",
+      "job_title": "Supervising Art Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 270,
+      "person_id": 199,
+      "department": "Writing",
+      "job_title": "Screenplay"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 270,
+      "person_id": 200,
+      "department": "Production",
+      "job_title": "Production Supervisor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 270,
+      "person_id": 201,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 270,
+      "person_id": 202,
+      "department": "Art",
+      "job_title": "Art Department Manager"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 754,
+      "person_id": 153,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 624,
+      "person_id": 587,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 624,
+      "person_id": 588,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 624,
+      "person_id": 248,
+      "department": "Art",
+      "job_title": "Production Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 624,
+      "person_id": 589,
+      "department": "Art",
+      "job_title": "Set Decoration"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 624,
+      "person_id": 590,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 350,
+      "person_id": 856,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 818,
+      "person_id": 700,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 818,
+      "person_id": 813,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 721,
+      "person_id": 804,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 721,
+      "person_id": 681,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 721,
+      "person_id": 805,
+      "department": "Writing",
+      "job_title": "Characters"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 721,
+      "person_id": 805,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 721,
+      "person_id": 806,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 260,
+      "person_id": 316,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 177,
+      "person_id": 23,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 773,
+      "person_id": 618,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 773,
+      "person_id": 272,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 773,
+      "person_id": 619,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 773,
+      "person_id": 620,
+      "department": "Art",
+      "job_title": "Set Decoration"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 773,
+      "person_id": 621,
+      "department": "Sound",
+      "job_title": "Sound Designer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 937,
+      "person_id": 515,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 937,
+      "person_id": 972,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 937,
+      "person_id": 972,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 623,
+      "person_id": 382,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 623,
+      "person_id": 98,
+      "department": "Sound",
+      "job_title": "Music"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 623,
+      "person_id": 143,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 623,
+      "person_id": 52,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 443,
+      "person_id": 804,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 486,
+      "person_id": 968,
+      "department": "Production",
+      "job_title": "Production Manager"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 486,
+      "person_id": 596,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 486,
+      "person_id": 969,
+      "department": "Costume & Make-Up",
+      "job_title": "Makeup Artist"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 486,
+      "person_id": 970,
+      "department": "Art",
+      "job_title": "Assistant Art Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 486,
+      "person_id": 971,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 902,
+      "person_id": 1,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 685,
+      "person_id": 23,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 397,
+      "person_id": 36,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 228,
+      "person_id": 72,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 228,
+      "person_id": 52,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 414,
+      "person_id": 895,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 133,
+      "person_id": 531,
+      "department": "Writing",
+      "job_title": "Screenplay"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 133,
+      "person_id": 532,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 133,
+      "person_id": 533,
+      "department": "Writing",
+      "job_title": "Screenplay"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 133,
+      "person_id": 534,
+      "department": "Writing",
+      "job_title": "Novel"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 602,
+      "person_id": 92,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 602,
+      "person_id": 662,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 602,
+      "person_id": 237,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 602,
+      "person_id": 947,
+      "department": "Costume & Make-Up",
+      "job_title": "Costume Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 952,
+      "person_id": 687,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 952,
+      "person_id": 499,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 952,
+      "person_id": 499,
+      "department": "Writing",
+      "job_title": "Author"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 689,
+      "person_id": 44,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 689,
+      "person_id": 738,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 38,
+      "person_id": 574,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 156,
+      "person_id": 5,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 156,
+      "person_id": 6,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 940,
+      "person_id": 814,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 362,
+      "person_id": 388,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 362,
+      "person_id": 389,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 338,
+      "person_id": 515,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 143,
+      "person_id": 382,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 143,
+      "person_id": 1,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 143,
+      "person_id": 107,
+      "department": "Art",
+      "job_title": "Set Decoration"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 143,
+      "person_id": 108,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 143,
+      "person_id": 108,
+      "department": "Writing",
+      "job_title": "Screenplay"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 69,
+      "person_id": 793,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 69,
+      "person_id": 794,
+      "department": "Writing",
+      "job_title": "Writer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 69,
+      "person_id": 795,
+      "department": "Writing",
+      "job_title": "Writer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 69,
+      "person_id": 796,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 341,
+      "person_id": 713,
+      "department": "Art",
+      "job_title": "Production Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 341,
+      "person_id": 714,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 341,
+      "person_id": 239,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 341,
+      "person_id": 715,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 341,
+      "person_id": 716,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 836,
+      "person_id": 271,
+      "department": "Sound",
+      "job_title": "Music"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 836,
+      "person_id": 818,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 436,
+      "person_id": 282,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 201,
+      "person_id": 366,
+      "department": "Sound",
+      "job_title": "Music"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 201,
+      "person_id": 222,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 201,
+      "person_id": 880,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 201,
+      "person_id": 564,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 201,
+      "person_id": 881,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 441,
+      "person_id": 858,
+      "department": "Costume & Make-Up",
+      "job_title": "Costume Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 786,
+      "person_id": 376,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 743,
+      "person_id": 929,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 743,
+      "person_id": 638,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 282,
+      "person_id": 903,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 282,
+      "person_id": 904,
+      "department": "Writing",
+      "job_title": "Writer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 282,
+      "person_id": 905,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 744,
+      "person_id": 888,
+      "department": "Sound",
+      "job_title": "Music"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 345,
+      "person_id": 277,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 733,
+      "person_id": 671,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 885,
+      "person_id": 763,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 885,
+      "person_id": 764,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 885,
+      "person_id": 145,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 251,
+      "person_id": 218,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 251,
+      "person_id": 596,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 129,
+      "person_id": 313,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 129,
+      "person_id": 217,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 129,
+      "person_id": 515,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 129,
+      "person_id": 515,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 129,
+      "person_id": 654,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 562,
+      "person_id": 515,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 562,
+      "person_id": 515,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 562,
+      "person_id": 654,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 562,
+      "person_id": 655,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 717,
+      "person_id": 263,
+      "department": "Writing",
+      "job_title": "Author"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 859,
+      "person_id": 772,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 859,
+      "person_id": 386,
+      "department": "Writing",
+      "job_title": "Characters"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 859,
+      "person_id": 841,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 859,
+      "person_id": 842,
+      "department": "Art",
+      "job_title": "Production Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 859,
+      "person_id": 843,
+      "department": "Crew",
+      "job_title": "Transportation Captain"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 477,
+      "person_id": 379,
+      "department": "Sound",
+      "job_title": "Music"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 188,
+      "person_id": 313,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 188,
+      "person_id": 315,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 188,
+      "person_id": 317,
+      "department": "Art",
+      "job_title": "Art Direction"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 188,
+      "person_id": 319,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 188,
+      "person_id": 319,
+      "department": "Writing",
+      "job_title": "Screenplay"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 933,
+      "person_id": 125,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 933,
+      "person_id": 125,
+      "department": "Writing",
+      "job_title": "Scenario Writer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 933,
+      "person_id": 126,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 933,
+      "person_id": 127,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 933,
+      "person_id": 128,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 955,
+      "person_id": 314,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 955,
+      "person_id": 562,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 955,
+      "person_id": 14,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 686,
+      "person_id": 989,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 686,
+      "person_id": 526,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 686,
+      "person_id": 23,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 220,
+      "person_id": 361,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 497,
+      "person_id": 704,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 497,
+      "person_id": 918,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 214,
+      "person_id": 683,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 214,
+      "person_id": 694,
+      "department": "Sound",
+      "job_title": "Music"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 125,
+      "person_id": 95,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 170,
+      "person_id": 316,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 170,
+      "person_id": 100,
+      "department": "Costume & Make-Up",
+      "job_title": "Costume Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 170,
+      "person_id": 786,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 435,
+      "person_id": 653,
+      "department": "Writing",
+      "job_title": "Screenplay"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 435,
+      "person_id": 653,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 435,
+      "person_id": 653,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 435,
+      "person_id": 313,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 388,
+      "person_id": 367,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 388,
+      "person_id": 618,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 388,
+      "person_id": 272,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 388,
+      "person_id": 623,
+      "department": "Sound",
+      "job_title": "Sound Designer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 388,
+      "person_id": 623,
+      "department": "Sound",
+      "job_title": "Supervising Sound Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 893,
+      "person_id": 428,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 893,
+      "person_id": 849,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 893,
+      "person_id": 433,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 893,
+      "person_id": 984,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 883,
+      "person_id": 71,
+      "department": "Visual Effects",
+      "job_title": "Visual Effects"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 883,
+      "person_id": 72,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 883,
+      "person_id": 73,
+      "department": "Costume & Make-Up",
+      "job_title": "Costume Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 883,
+      "person_id": 74,
+      "department": "Art",
+      "job_title": "Production Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 883,
+      "person_id": 75,
+      "department": "Costume & Make-Up",
+      "job_title": "Makeup Artist"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 219,
+      "person_id": 14,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 881,
+      "person_id": 399,
+      "department": "Sound",
+      "job_title": "Music Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 9,
+      "person_id": 380,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 659,
+      "person_id": 779,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 659,
+      "person_id": 780,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 659,
+      "person_id": 780,
+      "department": "Writing",
+      "job_title": "Writer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 659,
+      "person_id": 780,
+      "department": "Writing",
+      "job_title": "Story"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 659,
+      "person_id": 781,
+      "department": "Crew",
+      "job_title": "Stunt Coordinator"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 62,
+      "person_id": 507,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 62,
+      "person_id": 507,
+      "department": "Writing",
+      "job_title": "Writer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 610,
+      "person_id": 313,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 610,
+      "person_id": 515,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 610,
+      "person_id": 515,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 610,
+      "person_id": 654,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 336,
+      "person_id": 2,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 336,
+      "person_id": 462,
+      "department": "Writing",
+      "job_title": "Screenplay"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 567,
+      "person_id": 525,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 567,
+      "person_id": 219,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 567,
+      "person_id": 219,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 964,
+      "person_id": 772,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 964,
+      "person_id": 386,
+      "department": "Writing",
+      "job_title": "Novel"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 964,
+      "person_id": 841,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 12,
+      "person_id": 607,
+      "department": "Sound",
+      "job_title": "Music"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 265,
+      "person_id": 110,
+      "department": "Sound",
+      "job_title": "Music"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 265,
+      "person_id": 947,
+      "department": "Costume & Make-Up",
+      "job_title": "Costume Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 512,
+      "person_id": 361,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 792,
+      "person_id": 570,
+      "department": "Writing",
+      "job_title": "Writer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 792,
+      "person_id": 571,
+      "department": "Writing",
+      "job_title": "Writer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 792,
+      "person_id": 572,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 445,
+      "person_id": 291,
+      "department": "Sound",
+      "job_title": "Music"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 237,
+      "person_id": 209,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 237,
+      "person_id": 315,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 237,
+      "person_id": 98,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 237,
+      "person_id": 383,
+      "department": "Writing",
+      "job_title": "Screenplay"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 237,
+      "person_id": 943,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 664,
+      "person_id": 606,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 832,
+      "person_id": 151,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 832,
+      "person_id": 152,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 832,
+      "person_id": 152,
+      "department": "Writing",
+      "job_title": "Screenplay"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 832,
+      "person_id": 152,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 832,
+      "person_id": 153,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 258,
+      "person_id": 729,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 258,
+      "person_id": 729,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 258,
+      "person_id": 730,
+      "department": "Art",
+      "job_title": "Production Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 258,
+      "person_id": 731,
+      "department": "Art",
+      "job_title": "Set Decoration"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 258,
+      "person_id": 732,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 723,
+      "person_id": 76,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 723,
+      "person_id": 76,
+      "department": "Writing",
+      "job_title": "Writer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 723,
+      "person_id": 76,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 21,
+      "person_id": 64,
+      "department": "Costume & Make-Up",
+      "job_title": "Costume Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 289,
+      "person_id": 576,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 289,
+      "person_id": 298,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 764,
+      "person_id": 203,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 764,
+      "person_id": 203,
+      "department": "Writing",
+      "job_title": "Writer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 739,
+      "person_id": 10,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 739,
+      "person_id": 427,
+      "department": "Art",
+      "job_title": "Art Direction"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 739,
+      "person_id": 381,
+      "department": "Art",
+      "job_title": "Set Decoration"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 961,
+      "person_id": 753,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 961,
+      "person_id": 895,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 816,
+      "person_id": 271,
+      "department": "Sound",
+      "job_title": "Music"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 816,
+      "person_id": 278,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 816,
+      "person_id": 274,
+      "department": "Costume & Make-Up",
+      "job_title": "Makeup Department Head"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 817,
+      "person_id": 525,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 766,
+      "person_id": 270,
+      "department": "Art",
+      "job_title": "Set Decoration"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 318,
+      "person_id": 498,
+      "department": "Costume & Make-Up",
+      "job_title": "Costume Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 853,
+      "person_id": 818,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 853,
+      "person_id": 555,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 853,
+      "person_id": 819,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 853,
+      "person_id": 820,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 853,
+      "person_id": 821,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 406,
+      "person_id": 618,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 406,
+      "person_id": 272,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 406,
+      "person_id": 568,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 568,
+      "person_id": 725,
+      "department": "Costume & Make-Up",
+      "job_title": "Hairstylist"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 568,
+      "person_id": 976,
+      "department": "Costume & Make-Up",
+      "job_title": "Hairstylist"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 568,
+      "person_id": 709,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 568,
+      "person_id": 975,
+      "department": "Costume & Make-Up",
+      "job_title": "Hairstylist"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 889,
+      "person_id": 143,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 889,
+      "person_id": 144,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 889,
+      "person_id": 145,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 889,
+      "person_id": 146,
+      "department": "Writing",
+      "job_title": "Screenplay"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 889,
+      "person_id": 146,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 181,
+      "person_id": 348,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 181,
+      "person_id": 349,
+      "department": "Art",
+      "job_title": "Production Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 181,
+      "person_id": 350,
+      "department": "Art",
+      "job_title": "Art Direction"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 181,
+      "person_id": 110,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 181,
+      "person_id": 143,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 991,
+      "person_id": 11,
+      "department": "Costume & Make-Up",
+      "job_title": "Costume Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 991,
+      "person_id": 526,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 991,
+      "person_id": 44,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 991,
+      "person_id": 45,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 168,
+      "person_id": 505,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 168,
+      "person_id": 564,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 784,
+      "person_id": 916,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 311,
+      "person_id": 217,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 311,
+      "person_id": 607,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 561,
+      "person_id": 155,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 962,
+      "person_id": 563,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 962,
+      "person_id": 562,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 962,
+      "person_id": 562,
+      "department": "Writing",
+      "job_title": "Author"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 962,
+      "person_id": 562,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 499,
+      "person_id": 204,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 499,
+      "person_id": 205,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 277,
+      "person_id": 536,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 277,
+      "person_id": 537,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 277,
+      "person_id": 538,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 277,
+      "person_id": 539,
+      "department": "Writing",
+      "job_title": "Screenplay"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 277,
+      "person_id": 540,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 381,
+      "person_id": 842,
+      "department": "Art",
+      "job_title": "Production Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 381,
+      "person_id": 46,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 634,
+      "person_id": 190,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 634,
+      "person_id": 191,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 634,
+      "person_id": 191,
+      "department": "Writing",
+      "job_title": "Screenplay"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 634,
+      "person_id": 192,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 634,
+      "person_id": 193,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 415,
+      "person_id": 271,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 663,
+      "person_id": 525,
+      "department": "Sound",
+      "job_title": "Music"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 819,
+      "person_id": 511,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 819,
+      "person_id": 698,
+      "department": "Writing",
+      "job_title": "Writer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 819,
+      "person_id": 699,
+      "department": "Writing",
+      "job_title": "Writer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 819,
+      "person_id": 700,
+      "department": "Writing",
+      "job_title": "Writer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 819,
+      "person_id": 701,
+      "department": "Sound",
+      "job_title": "Music"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 871,
+      "person_id": 687,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 871,
+      "person_id": 687,
+      "department": "Writing",
+      "job_title": "Author"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 871,
+      "person_id": 688,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 871,
+      "person_id": 80,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 713,
+      "person_id": 525,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 312,
+      "person_id": 669,
+      "department": "Sound",
+      "job_title": "Songs"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 312,
+      "person_id": 670,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 312,
+      "person_id": 671,
+      "department": "Sound",
+      "job_title": "Music"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 312,
+      "person_id": 672,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 312,
+      "person_id": 672,
+      "department": "Writing",
+      "job_title": "Adaptation"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 297,
+      "person_id": 282,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 297,
+      "person_id": 473,
+      "department": "Sound",
+      "job_title": "Music Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 297,
+      "person_id": 475,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 297,
+      "person_id": 477,
+      "department": "Writing",
+      "job_title": "Writer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 430,
+      "person_id": 244,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 254,
+      "person_id": 43,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 254,
+      "person_id": 44,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 254,
+      "person_id": 45,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 254,
+      "person_id": 46,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 254,
+      "person_id": 47,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 847,
+      "person_id": 329,
+      "department": "Writing",
+      "job_title": "Novel"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 847,
+      "person_id": 330,
+      "department": "Writing",
+      "job_title": "Screenplay"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 847,
+      "person_id": 331,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 998,
+      "person_id": 366,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 998,
+      "person_id": 366,
+      "department": "Sound",
+      "job_title": "Songs"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 998,
+      "person_id": 367,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 998,
+      "person_id": 367,
+      "department": "Writing",
+      "job_title": "Screenplay"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 998,
+      "person_id": 367,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 915,
+      "person_id": 607,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 915,
+      "person_id": 608,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 915,
+      "person_id": 512,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 915,
+      "person_id": 609,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 915,
+      "person_id": 609,
+      "department": "Writing",
+      "job_title": "Author"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 603,
+      "person_id": 2,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 603,
+      "person_id": 353,
+      "department": "Writing",
+      "job_title": "Screenplay"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 402,
+      "person_id": 612,
+      "department": "Writing",
+      "job_title": "Screenplay"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 402,
+      "person_id": 612,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 402,
+      "person_id": 612,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 402,
+      "person_id": 316,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 357,
+      "person_id": 398,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 357,
+      "person_id": 945,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 357,
+      "person_id": 906,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 649,
+      "person_id": 562,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 16,
+      "person_id": 887,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 16,
+      "person_id": 888,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 16,
+      "person_id": 889,
+      "department": "Sound",
+      "job_title": "Sound Effects Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 16,
+      "person_id": 274,
+      "department": "Costume & Make-Up",
+      "job_title": "Makeup Department Head"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 16,
+      "person_id": 890,
+      "department": "Crew",
+      "job_title": "Post Production Supervisor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 688,
+      "person_id": 316,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 688,
+      "person_id": 34,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 165,
+      "person_id": 786,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 165,
+      "person_id": 789,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 165,
+      "person_id": 501,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 165,
+      "person_id": 501,
+      "department": "Writing",
+      "job_title": "Screenplay"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 640,
+      "person_id": 388,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 640,
+      "person_id": 389,
+      "department": "Production",
+      "job_title": "Casting Associate"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 640,
+      "person_id": 320,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 507,
+      "person_id": 153,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 314,
+      "person_id": 753,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 364,
+      "person_id": 562,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 364,
+      "person_id": 582,
+      "department": "Sound",
+      "job_title": "Music"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 948,
+      "person_id": 113,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 898,
+      "person_id": 225,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 898,
+      "person_id": 738,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 46,
+      "person_id": 298,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 516,
+      "person_id": 917,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 516,
+      "person_id": 44,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 516,
+      "person_id": 45,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 935,
+      "person_id": 974,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 935,
+      "person_id": 975,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 935,
+      "person_id": 976,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 935,
+      "person_id": 977,
+      "department": "Art",
+      "job_title": "Art Direction"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 935,
+      "person_id": 978,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 629,
+      "person_id": 691,
+      "department": "Writing",
+      "job_title": "Screenplay"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 629,
+      "person_id": 691,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 629,
+      "person_id": 690,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 629,
+      "person_id": 690,
+      "department": "Writing",
+      "job_title": "Screenplay"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 83,
+      "person_id": 790,
+      "department": "Art",
+      "job_title": "Production Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 496,
+      "person_id": 25,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 496,
+      "person_id": 422,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 496,
+      "person_id": 423,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 496,
+      "person_id": 424,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 496,
+      "person_id": 425,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 922,
+      "person_id": 366,
+      "department": "Sound",
+      "job_title": "Music"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 922,
+      "person_id": 658,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 922,
+      "person_id": 813,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 922,
+      "person_id": 814,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 154,
+      "person_id": 649,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 811,
+      "person_id": 497,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 91,
+      "person_id": 917,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 91,
+      "person_id": 14,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 132,
+      "person_id": 713,
+      "department": "Art",
+      "job_title": "Production Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 612,
+      "person_id": 699,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 803,
+      "person_id": 23,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 797,
+      "person_id": 120,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 797,
+      "person_id": 121,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 797,
+      "person_id": 122,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 797,
+      "person_id": 123,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 797,
+      "person_id": 123,
+      "department": "Writing",
+      "job_title": "Screenplay"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 681,
+      "person_id": 428,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 681,
+      "person_id": 849,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 681,
+      "person_id": 433,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 681,
+      "person_id": 850,
+      "department": "Art",
+      "job_title": "Art Direction"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 681,
+      "person_id": 851,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 340,
+      "person_id": 217,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 340,
+      "person_id": 596,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 340,
+      "person_id": 597,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 340,
+      "person_id": 598,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 340,
+      "person_id": 599,
+      "department": "Production",
+      "job_title": "Associate Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 354,
+      "person_id": 84,
+      "department": "Writing",
+      "job_title": "Screenplay"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 354,
+      "person_id": 84,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 354,
+      "person_id": 85,
+      "department": "Writing",
+      "job_title": "Screenplay"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 354,
+      "person_id": 86,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 354,
+      "person_id": 87,
+      "department": "Writing",
+      "job_title": "Writer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 760,
+      "person_id": 10,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 978,
+      "person_id": 525,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 978,
+      "person_id": 837,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 978,
+      "person_id": 144,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 978,
+      "person_id": 838,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 978,
+      "person_id": 839,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 14,
+      "person_id": 33,
+      "department": "Editing",
+      "job_title": "Assistant Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 14,
+      "person_id": 943,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 280,
+      "person_id": 2,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 280,
+      "person_id": 294,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 57,
+      "person_id": 272,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 57,
+      "person_id": 398,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 396,
+      "person_id": 797,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 396,
+      "person_id": 704,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 396,
+      "person_id": 145,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 980,
+      "person_id": 525,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 980,
+      "person_id": 33,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 980,
+      "person_id": 34,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 980,
+      "person_id": 38,
+      "department": "Art",
+      "job_title": "Production Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 866,
+      "person_id": 814,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 825,
+      "person_id": 699,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 758,
+      "person_id": 692,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 758,
+      "person_id": 693,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 758,
+      "person_id": 694,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 758,
+      "person_id": 588,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 758,
+      "person_id": 695,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 122,
+      "person_id": 918,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 122,
+      "person_id": 463,
+      "department": "Art",
+      "job_title": "Production Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 122,
+      "person_id": 563,
+      "department": "Costume & Make-Up",
+      "job_title": "Costume Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 939,
+      "person_id": 916,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 939,
+      "person_id": 917,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 939,
+      "person_id": 918,
+      "department": "Writing",
+      "job_title": "Storyboard"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 939,
+      "person_id": 919,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 939,
+      "person_id": 919,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 616,
+      "person_id": 107,
+      "department": "Art",
+      "job_title": "Set Decoration"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 616,
+      "person_id": 108,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 616,
+      "person_id": 108,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 616,
+      "person_id": 108,
+      "department": "Writing",
+      "job_title": "Screenplay"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 616,
+      "person_id": 108,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 674,
+      "person_id": 520,
+      "department": "Art",
+      "job_title": "Art Direction"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 408,
+      "person_id": 564,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 404,
+      "person_id": 100,
+      "department": "Costume & Make-Up",
+      "job_title": "Costume Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 1000,
+      "person_id": 184,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 1000,
+      "person_id": 184,
+      "department": "Writing",
+      "job_title": "Writer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 1000,
+      "person_id": 184,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 1000,
+      "person_id": 185,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 1000,
+      "person_id": 185,
+      "department": "Writing",
+      "job_title": "Writer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 929,
+      "person_id": 110,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 637,
+      "person_id": 804,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 637,
+      "person_id": 493,
+      "department": "Costume & Make-Up",
+      "job_title": "Costume Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 386,
+      "person_id": 367,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 386,
+      "person_id": 678,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 386,
+      "person_id": 679,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 386,
+      "person_id": 618,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 386,
+      "person_id": 680,
+      "department": "Visual Effects",
+      "job_title": "Special Effects Supervisor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 306,
+      "person_id": 382,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 306,
+      "person_id": 2,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 583,
+      "person_id": 99,
+      "department": "Writing",
+      "job_title": "Screenplay"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 583,
+      "person_id": 99,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 583,
+      "person_id": 917,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 583,
+      "person_id": 854,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 106,
+      "person_id": 688,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 106,
+      "person_id": 691,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 106,
+      "person_id": 153,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 106,
+      "person_id": 271,
+      "department": "Sound",
+      "job_title": "Music"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 106,
+      "person_id": 271,
+      "department": "Sound",
+      "job_title": "Orchestrator"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 233,
+      "person_id": 562,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 901,
+      "person_id": 476,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 724,
+      "person_id": 525,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 36,
+      "person_id": 35,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 104,
+      "person_id": 749,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 109,
+      "person_id": 618,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 109,
+      "person_id": 887,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 549,
+      "person_id": 541,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 549,
+      "person_id": 542,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 549,
+      "person_id": 436,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 549,
+      "person_id": 438,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 549,
+      "person_id": 543,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 457,
+      "person_id": 428,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 457,
+      "person_id": 397,
+      "department": "Art",
+      "job_title": "Set Decoration"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 457,
+      "person_id": 433,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 457,
+      "person_id": 984,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 457,
+      "person_id": 986,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 643,
+      "person_id": 819,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 942,
+      "person_id": 217,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 942,
+      "person_id": 218,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 942,
+      "person_id": 219,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 942,
+      "person_id": 219,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 942,
+      "person_id": 220,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 236,
+      "person_id": 917,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 236,
+      "person_id": 897,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 236,
+      "person_id": 898,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 383,
+      "person_id": 272,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 383,
+      "person_id": 682,
+      "department": "Costume & Make-Up",
+      "job_title": "Costume Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 956,
+      "person_id": 772,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 904,
+      "person_id": 811,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 25,
+      "person_id": 761,
+      "department": "Writing",
+      "job_title": "Screenplay"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 25,
+      "person_id": 762,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 25,
+      "person_id": 763,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 25,
+      "person_id": 764,
+      "department": "Writing",
+      "job_title": "Novel"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 777,
+      "person_id": 888,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 777,
+      "person_id": 814,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 190,
+      "person_id": 235,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 190,
+      "person_id": 236,
+      "department": "Art",
+      "job_title": "Production Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 190,
+      "person_id": 44,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 190,
+      "person_id": 237,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 190,
+      "person_id": 238,
+      "department": "Costume & Make-Up",
+      "job_title": "Costume Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 537,
+      "person_id": 618,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 644,
+      "person_id": 98,
+      "department": "Sound",
+      "job_title": "Music"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 644,
+      "person_id": 699,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 644,
+      "person_id": 943,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 923,
+      "person_id": 22,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 923,
+      "person_id": 339,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 487,
+      "person_id": 922,
+      "department": "Costume & Make-Up",
+      "job_title": "Costume Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 787,
+      "person_id": 313,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 787,
+      "person_id": 574,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 787,
+      "person_id": 722,
+      "department": "Art",
+      "job_title": "Set Decoration"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 787,
+      "person_id": 664,
+      "department": "Art",
+      "job_title": "Production Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 660,
+      "person_id": 98,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 660,
+      "person_id": 316,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 97,
+      "person_id": 305,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 97,
+      "person_id": 306,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 97,
+      "person_id": 306,
+      "department": "Writing",
+      "job_title": "Screenplay"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 97,
+      "person_id": 306,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 97,
+      "person_id": 307,
+      "department": "Writing",
+      "job_title": "Screenplay"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 60,
+      "person_id": 315,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 60,
+      "person_id": 1,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 60,
+      "person_id": 319,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 60,
+      "person_id": 319,
+      "department": "Writing",
+      "job_title": "Writer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 60,
+      "person_id": 24,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 167,
+      "person_id": 943,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 287,
+      "person_id": 372,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 794,
+      "person_id": 924,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 736,
+      "person_id": 917,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 736,
+      "person_id": 52,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 49,
+      "person_id": 971,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 49,
+      "person_id": 562,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 502,
+      "person_id": 435,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 502,
+      "person_id": 906,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 232,
+      "person_id": 282,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 232,
+      "person_id": 529,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 539,
+      "person_id": 153,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 539,
+      "person_id": 110,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 539,
+      "person_id": 110,
+      "department": "Sound",
+      "job_title": "Music"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 539,
+      "person_id": 54,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 900,
+      "person_id": 596,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 900,
+      "person_id": 100,
+      "department": "Costume & Make-Up",
+      "job_title": "Costume Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 900,
+      "person_id": 746,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 900,
+      "person_id": 747,
+      "department": "Art",
+      "job_title": "Production Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 900,
+      "person_id": 748,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 344,
+      "person_id": 505,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 344,
+      "person_id": 506,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 344,
+      "person_id": 507,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 344,
+      "person_id": 508,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 344,
+      "person_id": 509,
+      "department": "Art",
+      "job_title": "Art Direction"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 330,
+      "person_id": 692,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 330,
+      "person_id": 692,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 330,
+      "person_id": 692,
+      "department": "Writing",
+      "job_title": "Writer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 330,
+      "person_id": 427,
+      "department": "Art",
+      "job_title": "Production Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 928,
+      "person_id": 218,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 928,
+      "person_id": 219,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 928,
+      "person_id": 219,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 928,
+      "person_id": 221,
+      "department": "Costume & Make-Up",
+      "job_title": "Costume Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 928,
+      "person_id": 101,
+      "department": "Art",
+      "job_title": "Production Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 67,
+      "person_id": 688,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 67,
+      "person_id": 366,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 67,
+      "person_id": 218,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 778,
+      "person_id": 686,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 778,
+      "person_id": 686,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 778,
+      "person_id": 686,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 778,
+      "person_id": 686,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 778,
+      "person_id": 686,
+      "department": "Writing",
+      "job_title": "Author"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 799,
+      "person_id": 654,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 799,
+      "person_id": 655,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 799,
+      "person_id": 600,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 936,
+      "person_id": 22,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 936,
+      "person_id": 22,
+      "department": "Writing",
+      "job_title": "Writer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 936,
+      "person_id": 339,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 936,
+      "person_id": 474,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 936,
+      "person_id": 474,
+      "department": "Writing",
+      "job_title": "Writer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 30,
+      "person_id": 427,
+      "department": "Art",
+      "job_title": "Production Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 375,
+      "person_id": 265,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 917,
+      "person_id": 656,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 917,
+      "person_id": 657,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 422,
+      "person_id": 121,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 119,
+      "person_id": 180,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 119,
+      "person_id": 180,
+      "department": "Writing",
+      "job_title": "Writer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 119,
+      "person_id": 181,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 119,
+      "person_id": 182,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 119,
+      "person_id": 183,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 323,
+      "person_id": 466,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 323,
+      "person_id": 467,
+      "department": "Sound",
+      "job_title": "Music"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 323,
+      "person_id": 468,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 323,
+      "person_id": 468,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 323,
+      "person_id": 468,
+      "department": "Writing",
+      "job_title": "Writer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 371,
+      "person_id": 554,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 371,
+      "person_id": 734,
+      "department": "Writing",
+      "job_title": "Characters"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 371,
+      "person_id": 734,
+      "department": "Writing",
+      "job_title": "Author"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 371,
+      "person_id": 555,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 371,
+      "person_id": 556,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 223,
+      "person_id": 271,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 223,
+      "person_id": 804,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 75,
+      "person_id": 649,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 329,
+      "person_id": 61,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 329,
+      "person_id": 62,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 329,
+      "person_id": 63,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 329,
+      "person_id": 64,
+      "department": "Costume & Make-Up",
+      "job_title": "Costume Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 329,
+      "person_id": 65,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 608,
+      "person_id": 811,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 166,
+      "person_id": 577,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 166,
+      "person_id": 947,
+      "department": "Costume & Make-Up",
+      "job_title": "Costume Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 178,
+      "person_id": 218,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 178,
+      "person_id": 461,
+      "department": "Sound",
+      "job_title": "Music"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 178,
+      "person_id": 219,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 178,
+      "person_id": 219,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 178,
+      "person_id": 221,
+      "department": "Costume & Make-Up",
+      "job_title": "Costume Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 235,
+      "person_id": 269,
+      "department": "Writing",
+      "job_title": "Screenplay"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 235,
+      "person_id": 928,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 235,
+      "person_id": 810,
+      "department": "Writing",
+      "job_title": "Screenplay"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 235,
+      "person_id": 929,
+      "department": "Writing",
+      "job_title": "Screenplay"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 235,
+      "person_id": 930,
+      "department": "Production",
+      "job_title": "Location Manager"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 204,
+      "person_id": 686,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 204,
+      "person_id": 686,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 204,
+      "person_id": 686,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 204,
+      "person_id": 686,
+      "department": "Writing",
+      "job_title": "Writer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 204,
+      "person_id": 686,
+      "department": "Sound",
+      "job_title": "Music"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 452,
+      "person_id": 218,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 452,
+      "person_id": 596,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 171,
+      "person_id": 139,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 171,
+      "person_id": 139,
+      "department": "Writing",
+      "job_title": "Screenplay"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 171,
+      "person_id": 140,
+      "department": "Writing",
+      "job_title": "Screenplay"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 171,
+      "person_id": 141,
+      "department": "Writing",
+      "job_title": "Screenplay"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 171,
+      "person_id": 141,
+      "department": "Writing",
+      "job_title": "Novel"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 975,
+      "person_id": 23,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 975,
+      "person_id": 706,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 172,
+      "person_id": 918,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 584,
+      "person_id": 525,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 584,
+      "person_id": 526,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 584,
+      "person_id": 44,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 584,
+      "person_id": 45,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 584,
+      "person_id": 718,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 987,
+      "person_id": 427,
+      "department": "Art",
+      "job_title": "Supervising Art Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 987,
+      "person_id": 428,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 987,
+      "person_id": 350,
+      "department": "Art",
+      "job_title": "Production Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 987,
+      "person_id": 429,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 987,
+      "person_id": 430,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 665,
+      "person_id": 662,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 665,
+      "person_id": 663,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 665,
+      "person_id": 745,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 665,
+      "person_id": 745,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 665,
+      "person_id": 664,
+      "department": "Art",
+      "job_title": "Production Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 796,
+      "person_id": 159,
+      "department": "Writing",
+      "job_title": "Writer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 796,
+      "person_id": 160,
+      "department": "Writing",
+      "job_title": "Writer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 796,
+      "person_id": 161,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 150,
+      "person_id": 462,
+      "department": "Writing",
+      "job_title": "Writer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 150,
+      "person_id": 462,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 150,
+      "person_id": 52,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 631,
+      "person_id": 574,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 631,
+      "person_id": 44,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 631,
+      "person_id": 45,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 631,
+      "person_id": 671,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 995,
+      "person_id": 686,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 995,
+      "person_id": 686,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 995,
+      "person_id": 686,
+      "department": "Writing",
+      "job_title": "Writer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 995,
+      "person_id": 686,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 995,
+      "person_id": 686,
+      "department": "Sound",
+      "job_title": "Music"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 661,
+      "person_id": 762,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 661,
+      "person_id": 292,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 661,
+      "person_id": 52,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 609,
+      "person_id": 929,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 609,
+      "person_id": 929,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 609,
+      "person_id": 812,
+      "department": "Writing",
+      "job_title": "Screenplay"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 609,
+      "person_id": 812,
+      "department": "Production",
+      "job_title": "Associate Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 389,
+      "person_id": 282,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 389,
+      "person_id": 882,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 211,
+      "person_id": 358,
+      "department": "Writing",
+      "job_title": "Screenplay"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 211,
+      "person_id": 358,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 211,
+      "person_id": 358,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 34,
+      "person_id": 908,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 536,
+      "person_id": 10,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 536,
+      "person_id": 11,
+      "department": "Costume & Make-Up",
+      "job_title": "Costume Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 536,
+      "person_id": 12,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 536,
+      "person_id": 13,
+      "department": "Art",
+      "job_title": "Art Direction"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 536,
+      "person_id": 14,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 899,
+      "person_id": 562,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 899,
+      "person_id": 488,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 252,
+      "person_id": 674,
+      "department": "Writing",
+      "job_title": "Screenplay"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 638,
+      "person_id": 607,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 731,
+      "person_id": 94,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 960,
+      "person_id": 388,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 960,
+      "person_id": 389,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 960,
+      "person_id": 247,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 582,
+      "person_id": 102,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 582,
+      "person_id": 763,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 582,
+      "person_id": 237,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 737,
+      "person_id": 573,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 737,
+      "person_id": 574,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 737,
+      "person_id": 575,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 737,
+      "person_id": 46,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 737,
+      "person_id": 576,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 304,
+      "person_id": 658,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 304,
+      "person_id": 398,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 304,
+      "person_id": 398,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 304,
+      "person_id": 659,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 304,
+      "person_id": 660,
+      "department": "Writing",
+      "job_title": "Novel"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 262,
+      "person_id": 587,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 262,
+      "person_id": 588,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 245,
+      "person_id": 653,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 245,
+      "person_id": 653,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 245,
+      "person_id": 653,
+      "department": "Writing",
+      "job_title": "Screenplay"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 245,
+      "person_id": 313,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 102,
+      "person_id": 272,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 102,
+      "person_id": 505,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 102,
+      "person_id": 508,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 152,
+      "person_id": 600,
+      "department": "Crew",
+      "job_title": "Thanks"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 442,
+      "person_id": 478,
+      "department": "Art",
+      "job_title": "Set Decoration"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 442,
+      "person_id": 479,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 442,
+      "person_id": 480,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 442,
+      "person_id": 481,
+      "department": "Art",
+      "job_title": "Production Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 442,
+      "person_id": 482,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 56,
+      "person_id": 428,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 56,
+      "person_id": 433,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 444,
+      "person_id": 704,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 444,
+      "person_id": 157,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 444,
+      "person_id": 157,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 426,
+      "person_id": 693,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 775,
+      "person_id": 398,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 775,
+      "person_id": 890,
+      "department": "Production",
+      "job_title": "Associate Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 775,
+      "person_id": 890,
+      "department": "Crew",
+      "job_title": "Post Production Supervisor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 775,
+      "person_id": 403,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 438,
+      "person_id": 494,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 438,
+      "person_id": 548,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 622,
+      "person_id": 88,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 622,
+      "person_id": 89,
+      "department": "Writing",
+      "job_title": "Novel"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 622,
+      "person_id": 90,
+      "department": "Art",
+      "job_title": "Art Direction"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 622,
+      "person_id": 91,
+      "department": "Art",
+      "job_title": "Art Direction"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 622,
+      "person_id": 92,
+      "department": "Art",
+      "job_title": "Art Direction"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 315,
+      "person_id": 379,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 315,
+      "person_id": 738,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 315,
+      "person_id": 739,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 315,
+      "person_id": 740,
+      "department": "Costume & Make-Up",
+      "job_title": "Costume Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 315,
+      "person_id": 51,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 85,
+      "person_id": 398,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 85,
+      "person_id": 659,
+      "department": "Sound",
+      "job_title": "Music"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 85,
+      "person_id": 144,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 999,
+      "person_id": 553,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 84,
+      "person_id": 357,
+      "department": "Art",
+      "job_title": "Art Direction"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 84,
+      "person_id": 308,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 614,
+      "person_id": 98,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 614,
+      "person_id": 814,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 421,
+      "person_id": 366,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 421,
+      "person_id": 367,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 421,
+      "person_id": 367,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 421,
+      "person_id": 368,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 421,
+      "person_id": 368,
+      "department": "Crew",
+      "job_title": "Second Unit"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 914,
+      "person_id": 888,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 914,
+      "person_id": 670,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 320,
+      "person_id": 23,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 680,
+      "person_id": 438,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 259,
+      "person_id": 23,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 259,
+      "person_id": 463,
+      "department": "Art",
+      "job_title": "Art Direction"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 762,
+      "person_id": 217,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 740,
+      "person_id": 282,
+      "department": "Sound",
+      "job_title": "Music"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 140,
+      "person_id": 520,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 413,
+      "person_id": 12,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 343,
+      "person_id": 388,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 343,
+      "person_id": 389,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 343,
+      "person_id": 401,
+      "department": "Costume & Make-Up",
+      "job_title": "Costume Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 268,
+      "person_id": 654,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 268,
+      "person_id": 265,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 53,
+      "person_id": 92,
+      "department": "Art",
+      "job_title": "Set Decoration"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 358,
+      "person_id": 725,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 641,
+      "person_id": 959,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 641,
+      "person_id": 291,
+      "department": "Sound",
+      "job_title": "Music"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 641,
+      "person_id": 960,
+      "department": "Art",
+      "job_title": "Art Direction"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 641,
+      "person_id": 961,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 641,
+      "person_id": 962,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 514,
+      "person_id": 388,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 514,
+      "person_id": 320,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 746,
+      "person_id": 142,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 982,
+      "person_id": 281,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 982,
+      "person_id": 282,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 982,
+      "person_id": 15,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 982,
+      "person_id": 283,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 982,
+      "person_id": 284,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 848,
+      "person_id": 316,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 848,
+      "person_id": 269,
+      "department": "Writing",
+      "job_title": "Screenplay"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 848,
+      "person_id": 269,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 848,
+      "person_id": 269,
+      "department": "Writing",
+      "job_title": "Story"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 160,
+      "person_id": 917,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 160,
+      "person_id": 922,
+      "department": "Costume & Make-Up",
+      "job_title": "Costume Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 564,
+      "person_id": 225,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 564,
+      "person_id": 670,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 985,
+      "person_id": 658,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 985,
+      "person_id": 110,
+      "department": "Sound",
+      "job_title": "Music"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 985,
+      "person_id": 811,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 985,
+      "person_id": 812,
+      "department": "Writing",
+      "job_title": "Writer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 985,
+      "person_id": 812,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 158,
+      "person_id": 917,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 745,
+      "person_id": 2,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 745,
+      "person_id": 725,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 862,
+      "person_id": 487,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 862,
+      "person_id": 488,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 862,
+      "person_id": 489,
+      "department": "Art",
+      "job_title": "Art Direction"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 862,
+      "person_id": 490,
+      "department": "Visual Effects",
+      "job_title": "Special Effects Supervisor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 862,
+      "person_id": 491,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 525,
+      "person_id": 153,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 525,
+      "person_id": 153,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 263,
+      "person_id": 651,
+      "department": "Writing",
+      "job_title": "Writer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 970,
+      "person_id": 110,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 463,
+      "person_id": 290,
+      "department": "Writing",
+      "job_title": "Screenplay"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 463,
+      "person_id": 290,
+      "department": "Writing",
+      "job_title": "Story"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 463,
+      "person_id": 291,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 463,
+      "person_id": 292,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 463,
+      "person_id": 293,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 272,
+      "person_id": 888,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 538,
+      "person_id": 10,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 538,
+      "person_id": 699,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 538,
+      "person_id": 222,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 854,
+      "person_id": 542,
+      "department": "Writing",
+      "job_title": "Story"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 43,
+      "person_id": 291,
+      "department": "Sound",
+      "job_title": "Music"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 43,
+      "person_id": 398,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 43,
+      "person_id": 434,
+      "department": "Visual Effects",
+      "job_title": "Creature Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 43,
+      "person_id": 435,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 43,
+      "person_id": 436,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 679,
+      "person_id": 929,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 380,
+      "person_id": 217,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 380,
+      "person_id": 373,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 380,
+      "person_id": 373,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 380,
+      "person_id": 374,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 380,
+      "person_id": 374,
+      "department": "Writing",
+      "job_title": "Writer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 4,
+      "person_id": 785,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 4,
+      "person_id": 811,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 87,
+      "person_id": 849,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 328,
+      "person_id": 428,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 328,
+      "person_id": 917,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 328,
+      "person_id": 377,
+      "department": "Art",
+      "job_title": "Production Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 328,
+      "person_id": 378,
+      "department": "Art",
+      "job_title": "Set Decoration"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 752,
+      "person_id": 497,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 752,
+      "person_id": 865,
+      "department": "Art",
+      "job_title": "Production Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 752,
+      "person_id": 281,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 752,
+      "person_id": 281,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 752,
+      "person_id": 281,
+      "department": "Writing",
+      "job_title": "Characters"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 111,
+      "person_id": 851,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 111,
+      "person_id": 568,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 234,
+      "person_id": 761,
+      "department": "Writing",
+      "job_title": "Screenplay"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 234,
+      "person_id": 654,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 234,
+      "person_id": 763,
+      "department": "Sound",
+      "job_title": "Music"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 162,
+      "person_id": 451,
+      "department": "Writing",
+      "job_title": "Writer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 162,
+      "person_id": 452,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 162,
+      "person_id": 453,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 162,
+      "person_id": 454,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 162,
+      "person_id": 455,
+      "department": "Sound",
+      "job_title": "Music"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 979,
+      "person_id": 497,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 126,
+      "person_id": 313,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 126,
+      "person_id": 635,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 540,
+      "person_id": 497,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 540,
+      "person_id": 888,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 728,
+      "person_id": 864,
+      "department": "Sound",
+      "job_title": "Sound Designer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 8,
+      "person_id": 72,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 8,
+      "person_id": 143,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 8,
+      "person_id": 918,
+      "department": "Writing",
+      "job_title": "Storyboard"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 8,
+      "person_id": 390,
+      "department": "Sound",
+      "job_title": "Orchestrator"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 335,
+      "person_id": 35,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 521,
+      "person_id": 797,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 521,
+      "person_id": 704,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 521,
+      "person_id": 659,
+      "department": "Sound",
+      "job_title": "Music"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 521,
+      "person_id": 798,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 521,
+      "person_id": 799,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 823,
+      "person_id": 917,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 598,
+      "person_id": 709,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 431,
+      "person_id": 316,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 431,
+      "person_id": 829,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 431,
+      "person_id": 15,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 628,
+      "person_id": 382,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 628,
+      "person_id": 382,
+      "department": "Camera",
+      "job_title": "Camera Operator"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 628,
+      "person_id": 600,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 628,
+      "person_id": 649,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 628,
+      "person_id": 650,
+      "department": "Writing",
+      "job_title": "Screenplay"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 586,
+      "person_id": 220,
+      "department": "Writing",
+      "job_title": "Screenplay"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 586,
+      "person_id": 220,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 506,
+      "person_id": 897,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 506,
+      "person_id": 898,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 647,
+      "person_id": 658,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 647,
+      "person_id": 291,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 647,
+      "person_id": 813,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 647,
+      "person_id": 814,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 842,
+      "person_id": 505,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 842,
+      "person_id": 28,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 575,
+      "person_id": 144,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 505,
+      "person_id": 15,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 505,
+      "person_id": 843,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 149,
+      "person_id": 80,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 149,
+      "person_id": 81,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 149,
+      "person_id": 82,
+      "department": "Writing",
+      "job_title": "Writer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 149,
+      "person_id": 83,
+      "department": "Writing",
+      "job_title": "Screenplay"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 28,
+      "person_id": 348,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 28,
+      "person_id": 358,
+      "department": "Art",
+      "job_title": "Art Direction"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 28,
+      "person_id": 22,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 28,
+      "person_id": 888,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 690,
+      "person_id": 20,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 690,
+      "person_id": 367,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 690,
+      "person_id": 618,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 44,
+      "person_id": 111,
+      "department": "Writing",
+      "job_title": "Screenplay"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 44,
+      "person_id": 888,
+      "department": "Sound",
+      "job_title": "Music"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 44,
+      "person_id": 804,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 44,
+      "person_id": 681,
+      "department": "Camera",
+      "job_title": "Director of Photography"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 710,
+      "person_id": 658,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 710,
+      "person_id": 98,
+      "department": "Sound",
+      "job_title": "Original Music Composer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 710,
+      "person_id": 100,
+      "department": "Costume & Make-Up",
+      "job_title": "Costume Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 710,
+      "person_id": 101,
+      "department": "Art",
+      "job_title": "Production Design"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 701,
+      "person_id": 612,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 701,
+      "person_id": 612,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 701,
+      "person_id": 613,
+      "department": "Editing",
+      "job_title": "Editor"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 701,
+      "person_id": 398,
+      "department": "Production",
+      "job_title": "Casting"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 701,
+      "person_id": 614,
+      "department": "Production",
+      "job_title": "Executive Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 705,
+      "person_id": 316,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 705,
+      "person_id": 994,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 705,
+      "person_id": 103,
+      "department": "Directing",
+      "job_title": "Director"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 705,
+      "person_id": 104,
+      "department": "Production",
+      "job_title": "Producer"
+    },
+    {
+      "crew_assignment_id": null,
+      "media_id": 559,
+      "person_id": 86,
+      "department": "Production",
+      "job_title": "Producer"
+    }
+  ]
+}

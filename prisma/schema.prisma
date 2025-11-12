@@ -1,0 +1,284 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model MediaItem {
+  mediaId          BigInt  @id @map("media_id")
+  tmdbId           BigInt? @unique @map("tmdb_id")
+  mediaType        String  @map("media_type") @db.VarChar(10)
+  originalTitle    String  @map("original_title") @db.Text
+  overview         String? @db.Text
+  originalLanguage String? @map("original_language") @db.Char(2)
+  status           String? @db.VarChar(50)
+  popularity       Decimal @default(0) @db.Decimal(12, 6)
+  voteAverage      Decimal @default(0) @map("vote_average") @db.Decimal(3, 1)
+  voteCount        Int     @default(0) @map("vote_count")
+  posterPath       String? @map("poster_path") @db.Text
+  backdropPath     String? @map("backdrop_path") @db.Text
+  homepageUrl      String? @map("homepage_url") @db.Text
+
+  // Relationships
+  movie              Movie?
+  tvShow             TVShow?
+  mediaGenres        MediaGenre[]
+  mediaCompanies     MediaCompany[]
+  titleCastings      TitleCasting[]
+  titleCrewAssignments TitleCrewAssignment[]
+
+  @@map("MediaItem")
+}
+
+model Movie {
+  mediaId        BigInt   @id @map("media_id")
+  releaseDate    DateTime? @map("release_date") @db.Date
+  budget         BigInt   @default(0)
+  revenue        BigInt   @default(0)
+  adultFlag      Boolean  @default(false) @map("adult_flag")
+  runtimeMinutes Int?     @map("runtime_minutes")
+  collectionId   BigInt?  @map("collection_id")
+
+  // Relationships
+  mediaItem  MediaItem   @relation(fields: [mediaId], references: [mediaId], onDelete: Cascade)
+  collection Collection? @relation(fields: [collectionId], references: [collectionId], onDelete: SetNull)
+
+  @@map("Movie")
+}
+
+model TVShow {
+  mediaId           BigInt   @id @map("media_id")
+  firstAirDate      DateTime? @map("first_air_date") @db.Date
+  lastAirDate       DateTime? @map("last_air_date") @db.Date
+  inProduction      Boolean  @default(false) @map("in_production")
+  numberOfSeasons   Int      @default(0) @map("number_of_seasons")
+  numberOfEpisodes  Int      @default(0) @map("number_of_episodes")
+  showType          String?  @map("show_type") @db.VarChar(50)
+
+  // Relationships
+  mediaItem MediaItem @relation(fields: [mediaId], references: [mediaId], onDelete: Cascade)
+  seasons   Season[]
+
+  @@map("TVShow")
+}
+
+model Season {
+  seasonId     BigInt   @id @map("season_id")
+  tvMediaId    BigInt   @map("tv_media_id")
+  seasonNumber Int      @map("season_number")
+  name         String?  @db.Text
+  airDate      DateTime? @map("air_date") @db.Date
+  episodeCount Int      @default(0) @map("episode_count")
+  posterPath   String?  @map("poster_path") @db.Text
+
+  // Relationships
+  tvShow   TVShow    @relation(fields: [tvMediaId], references: [mediaId], onDelete: Cascade)
+  episodes Episode[]
+
+  @@unique([tvMediaId, seasonNumber])
+  @@map("Season")
+}
+
+model Episode {
+  episodeId       BigInt   @id @map("episode_id")
+  seasonId        BigInt   @map("season_id")
+  episodeNumber   Int      @map("episode_number")
+  name            String?  @db.Text
+  airDate         DateTime? @map("air_date") @db.Date
+  runtimeMinutes  Int?     @map("runtime_minutes")
+  overview        String?  @db.Text
+  stillPath       String?  @map("still_path") @db.Text
+
+  // Relationships
+  season              Season                @relation(fields: [seasonId], references: [seasonId], onDelete: Cascade)
+  episodeCastings     EpisodeCasting[]
+  episodeCrewAssignments EpisodeCrewAssignment[]
+
+  @@unique([seasonId, episodeNumber])
+  @@map("Episode")
+}
+
+model Person {
+  personId     BigInt   @id @map("person_id")
+  tmdbId       BigInt?  @unique @map("tmdb_id")
+  name         String   @db.Text
+  gender       Int?     @db.SmallInt
+  biography    String?  @db.Text
+  birthDate    DateTime? @map("birth_date") @db.Date
+  deathDate    DateTime? @map("death_date") @db.Date
+  placeOfBirth String?  @map("place_of_birth") @db.Text
+  profilePath  String?  @map("profile_path") @db.Text
+
+  // Relationships
+  actor      Actor?
+  crewMember CrewMember?
+
+  @@map("Person")
+}
+
+model Actor {
+  personId         BigInt @id @map("person_id")
+  actingDebutYear  Int?   @map("acting_debut_year")
+
+  // Relationships
+  person           Person            @relation(fields: [personId], references: [personId], onDelete: Cascade)
+  titleCastings    TitleCasting[]
+  episodeCastings  EpisodeCasting[]
+
+  @@map("Actor")
+}
+
+model CrewMember {
+  personId          BigInt @id @map("person_id")
+  primaryDepartment String? @map("primary_department") @db.VarChar(50)
+
+  // Relationships
+  person                   Person                    @relation(fields: [personId], references: [personId], onDelete: Cascade)
+  titleCrewAssignments     TitleCrewAssignment[]
+  episodeCrewAssignments   EpisodeCrewAssignment[]
+
+  @@map("CrewMember")
+}
+
+model Company {
+  companyId     BigInt @id @map("company_id")
+  tmdbId        BigInt? @unique @map("tmdb_id")
+  name          String @db.Text
+  originCountry String? @map("origin_country") @db.Char(2)
+  description   String? @db.Text
+  logoPath      String? @map("logo_path") @db.Text
+
+  // Relationships
+  mediaCompanies MediaCompany[]
+
+  @@map("Company")
+}
+
+model Collection {
+  collectionId BigInt  @id @map("collection_id")
+  tmdbId       BigInt? @unique @map("tmdb_id")
+  name         String  @db.Text
+  overview     String? @db.Text
+  posterPath   String? @map("poster_path") @db.Text
+  backdropPath String? @map("backdrop_path") @db.Text
+
+  // Relationships
+  movies Movie[]
+
+  @@map("Collection")
+}
+
+model Genre {
+  genreId BigInt @id @map("genre_id")
+  name    String @unique @db.Text
+
+  // Relationships
+  mediaGenres MediaGenre[]
+
+  @@map("Genre")
+}
+
+model MediaGenre {
+  mediaId BigInt
+  genreId BigInt
+
+  // Relationships
+  mediaItem MediaItem @relation(fields: [mediaId], references: [mediaId], onDelete: Cascade)
+  genre     Genre     @relation(fields: [genreId], references: [genreId], onDelete: Cascade)
+
+  @@unique([mediaId, genreId])
+  @@index([mediaId])
+  @@index([genreId])
+  @@map("MediaGenre")
+}
+
+model MediaCompany {
+  mediaCompanyId BigInt @id @default(autoincrement()) @map("media_company_id")
+  mediaId        BigInt @map("media_id")
+  companyId      BigInt @map("company_id")
+  role           String @db.VarChar(20) // production | distribution | network | other
+
+  // Relationships
+  mediaItem MediaItem @relation(fields: [mediaId], references: [mediaId], onDelete: Cascade)
+  company   Company   @relation(fields: [companyId], references: [companyId], onDelete: Cascade)
+
+  @@unique([mediaId, companyId, role])
+  @@index([mediaId])
+  @@index([companyId])
+  @@map("MediaCompany")
+}
+
+model TitleCasting {
+  castingId     BigInt  @id @default(autoincrement()) @map("casting_id")
+  mediaId       BigInt  @map("media_id")
+  personId      BigInt  @map("person_id")
+  characterName String? @map("character_name") @db.Text
+  castOrder     Int?    @map("cast_order")
+
+  // Relationships
+  mediaItem MediaItem @relation(fields: [mediaId], references: [mediaId], onDelete: Cascade)
+  actor     Actor     @relation(fields: [personId], references: [personId], onDelete: Cascade)
+
+  @@unique([mediaId, personId])
+  @@index([mediaId])
+  @@index([personId])
+  @@map("TitleCasting")
+}
+
+model EpisodeCasting {
+  castingId     BigInt  @id @default(autoincrement()) @map("casting_id")
+  episodeId     BigInt  @map("episode_id")
+  personId      BigInt  @map("person_id")
+  characterName String? @map("character_name") @db.Text
+  castOrder     Int?    @map("cast_order")
+
+  // Relationships
+  episode Episode @relation(fields: [episodeId], references: [episodeId], onDelete: Cascade)
+  actor   Actor   @relation(fields: [personId], references: [personId], onDelete: Cascade)
+
+  @@unique([episodeId, personId])
+  @@index([episodeId])
+  @@index([personId])
+  @@map("EpisodeCasting")
+}
+
+model TitleCrewAssignment {
+  crewAssignmentId BigInt  @id @default(autoincrement()) @map("crew_assignment_id")
+  mediaId          BigInt  @map("media_id")
+  personId         BigInt  @map("person_id")
+  department       String? @db.VarChar(50)
+  jobTitle         String? @map("job_title") @db.VarChar(100)
+
+  // Relationships
+  mediaItem  MediaItem  @relation(fields: [mediaId], references: [mediaId], onDelete: Cascade)
+  crewMember CrewMember @relation(fields: [personId], references: [personId], onDelete: Cascade)
+
+  @@unique([mediaId, personId, jobTitle])
+  @@index([mediaId])
+  @@index([personId])
+  @@map("TitleCrewAssignment")
+}
+
+model EpisodeCrewAssignment {
+  crewAssignmentId BigInt  @id @default(autoincrement()) @map("crew_assignment_id")
+  episodeId        BigInt  @map("episode_id")
+  personId         BigInt  @map("person_id")
+  department       String? @db.VarChar(50)
+  jobTitle         String? @map("job_title") @db.VarChar(100)
+
+  // Relationships
+  episode    Episode    @relation(fields: [episodeId], references: [episodeId], onDelete: Cascade)
+  crewMember CrewMember @relation(fields: [personId], references: [personId], onDelete: Cascade)
+
+  @@unique([episodeId, personId, jobTitle])
+  @@index([episodeId])
+  @@index([personId])
+  @@map("EpisodeCrewAssignment")
+}

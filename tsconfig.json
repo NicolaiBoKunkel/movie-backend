@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     /* Output structure */
-    "rootDir": "./src",
+  "rootDir": ".",
     "outDir": "./dist",
 
     /* Runtime & modules */
@@ -28,9 +28,9 @@
     "exactOptionalPropertyTypes": true,
     "isolatedModules": true,
 
-    /* Silence deprecation notices until v7 */
-    "ignoreDeprecations": "6.0"
+  /* Silence deprecation notices until v7 */
+  /* removed invalid ignoreDeprecations setting to satisfy current tsc */
   },
-  "include": ["src"],
+  "include": ["src", "scripts/seed_postgres_from_json.ts"],
   "exclude": ["node_modules", "dist"]
 }

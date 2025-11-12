@@ -12,6 +12,39 @@ services:
       - ./db/sql/postgres:/docker-entrypoint-initdb.d
       - pgdata:/var/lib/postgresql/data
 
+  db-init:
+    image: postgres:16
+    container_name: pgdb_init
+    depends_on:
+      - db
+    volumes:
+      - ./db/sql/postgres:/sql:ro
+    environment:
+      PGUSER: postgres
+      PGPASSWORD: postgres
+      PGHOST: db
+      PGDATABASE: moviedb
+      # Provide APP_DB_PW and ADMIN_DB_PW via env file or shell when running
+      APP_DB_PW: ${APP_DB_PW:-}
+      ADMIN_DB_PW: ${ADMIN_DB_PW:-}
+    entrypoint: ["/bin/bash","/sql/db-init.sh"]
+
+  seed-json:
+    image: node:18
+    container_name: seed_json
+    depends_on:
+      - db
+    volumes:
+      - ./:/usr/src/app
+    working_dir: /usr/src/app
+    environment:
+      # DATABASE_URL will be constructed to connect as postgres user for seeding
+      DATABASE_URL: "${DATABASE_URL:-postgres://postgres:postgres@db:5432/moviedb}"
+      APP_DB_PW: ${APP_DB_PW:-}
+    restart: "no"
+    # Execute the script explicitly with bash to avoid shebang/CRLF issues
+    entrypoint: ["bash", "/usr/src/app/scripts/docker/run_seed.sh"]
+
   pgadmin:
     image: dpage/pgadmin4:8
     container_name: pgadmin
@@ -20,6 +53,8 @@ services:
       PGADMIN_DEFAULT_PASSWORD: admin
     ports:
       - "5050:80"
+    volumes:
+      - ./docker/pgadmin/servers.json:/pgadmin4/servers.json:ro
     depends_on:
       - db
 
