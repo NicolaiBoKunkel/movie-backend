@@ -186,8 +186,8 @@ model Genre {
 }
 
 model MediaGenre {
-  mediaId BigInt
-  genreId BigInt
+  mediaId BigInt @map("media_id")
+  genreId BigInt @map("genre_id")
 
   // Relationships
   mediaItem MediaItem @relation(fields: [mediaId], references: [mediaId], onDelete: Cascade)

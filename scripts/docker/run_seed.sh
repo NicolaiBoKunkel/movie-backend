@@ -62,7 +62,5 @@ if [ $RC -ne 0 ]; then
   tail -f /dev/null
 fi
 
-echo "Seeder completed successfully. Container will remain running so service stays 'up'."
-tail -f /dev/null
-echo "Exiting after successful seed."
+echo "Seeder completed successfully. Exiting."
 exit 0
