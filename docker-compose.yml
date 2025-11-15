@@ -3,9 +3,9 @@ services:
     image: postgres:16
     container_name: pgdb
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: moviedb
+      POSTGRES_USER: ${PG_ADMIN_USER}
+      POSTGRES_PASSWORD: ${PG_ADMIN_PASSWORD}
+      POSTGRES_DB: ${PGDATABASE}
     ports:
       - "5432:5432"
     volumes:
@@ -20,13 +20,12 @@ services:
     volumes:
       - ./db/sql/postgres:/sql:ro
     environment:
-      PGUSER: postgres
-      PGPASSWORD: postgres
+      PGUSER: ${PG_ADMIN_USER}
+      PGPASSWORD: ${PG_ADMIN_PASSWORD}
       PGHOST: db
-      PGDATABASE: moviedb
-      # Provide APP_DB_PW and ADMIN_DB_PW via env file or shell when running
-      APP_DB_PW: ${APP_DB_PW:-}
-      ADMIN_DB_PW: ${ADMIN_DB_PW:-}
+      PGDATABASE: ${PGDATABASE}
+      APP_DB_PW: ${APP_DB_PW}
+      ADMIN_DB_PW: ${ADMIN_DB_PW}
     entrypoint: ["/bin/bash","/sql/db-init.sh"]
 
   seed-json:
@@ -38,9 +37,8 @@ services:
       - ./:/usr/src/app
     working_dir: /usr/src/app
     environment:
-      # DATABASE_URL will be constructed to connect as postgres user for seeding
-      DATABASE_URL: "${DATABASE_URL:-postgres://postgres:postgres@db:5432/moviedb}"
-      APP_DB_PW: ${APP_DB_PW:-}
+      DATABASE_URL: ${DATABASE_URL}
+      APP_DB_PW: ${APP_DB_PW}
     restart: "no"
     # Execute the script explicitly with bash to avoid shebang/CRLF issues
     entrypoint: ["bash", "/usr/src/app/scripts/docker/run_seed.sh"]
@@ -49,8 +47,8 @@ services:
     image: dpage/pgadmin4:8
     container_name: pgadmin
     environment:
-      PGADMIN_DEFAULT_EMAIL: admin@example.com
-      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
     ports:
       - "5050:80"
     volumes:
@@ -58,5 +56,52 @@ services:
     depends_on:
       - db
 
+  sfu-mongodb:
+    build: ./docker/mongodb
+    container_name: movie-mongo
+    ports:
+      - "27018:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MON_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MON_PASSWORD}
+    volumes:
+      - mongodata:/data/db
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - "8081:8081"
+    environment:
+      ME_CONFIG_MONGODB_SERVER: ${MON_HOST}
+      ME_CONFIG_MONGODB_PORT: ${MON_PORT}
+      ME_CONFIG_MONGODB_ADMINUSERNAME: ${MON_USERNAME}
+      ME_CONFIG_MONGODB_ADMINPASSWORD: ${MON_PASSWORD}
+      ME_CONFIG_BASICAUTH: "false"
+    depends_on:
+      - sfu-mongodb
+
+  neo4j:
+    image: neo4j:5.13-community
+    container_name: neo4j-db
+    ports:
+      - "7474:7474"  # Neo4j Browser
+      - "7687:7687"  # Bolt protocol
+    environment:
+      NEO4J_AUTH: ${NEO4J_AUTH}
+      NEO4J_ACCEPT_LICENSE_AGREEMENT: "yes"
+      NEO4J_dbms_memory_heap_initial__size: ${NEO4J_HEAP_INITIAL_SIZE}
+      NEO4J_dbms_memory_heap_max__size: ${NEO4J_HEAP_MAX_SIZE}
+      NEO4J_dbms_memory_pagecache_size: ${NEO4J_PAGECACHE_SIZE}
+    volumes:
+      - neo4jdata:/data
+      - neo4jlogs:/logs
+
 volumes:
   pgdata:
+  mongodata:
+    driver: local
+  neo4jdata:
+    driver: local
+  neo4jlogs:
+    driver: local
