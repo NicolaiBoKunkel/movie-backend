@@ -1,5 +1,7 @@
 node_modules/
+dist/
 .env
+*.log
 .DS_Store
-/generated/prisma
-migrater/
+*.tgz
+*.tar.gz

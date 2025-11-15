@@ -1,0 +1,27 @@
+{
+  "name": "movie-migrater",
+  "version": "1.0.0",
+  "description": "Movie database migrator for MongoDB and Neo4j",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.0.0",
+    "mongodb": "^5.0.0",
+    "neo4j-driver": "^5.0.0",
+    "typeorm": "^0.3.0",
+    "dotenv": "^16.0.0",
+    "reflect-metadata": "^0.1.13"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "ts-node": "^10.0.0",
+    "typescript": "^5.0.0",
+    "rimraf": "^5.0.0",
+    "prisma": "^5.0.0"
+  }
+}
