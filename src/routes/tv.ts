@@ -41,8 +41,11 @@ router.get('/', async (req, res) => {
         JOIN "TVShow" tv ON tv."media_id" = m."media_id"
         LEFT JOIN tv_genres tg ON tg."media_id" = m."media_id"
         WHERE
-          to_tsvector('english', coalesce(m."original_title",'') || ' ' || coalesce(m."overview",'')) @@ plainto_tsquery('english', $1)
-          OR m."original_title" ILIKE '%' || $1 || '%'
+          (
+            to_tsvector('english', coalesce(m."original_title",'') || ' ' || coalesce(m."overview",'')) @@ plainto_tsquery('english', $1)
+            OR m."original_title" ILIKE '%' || $1 || '%'
+          )
+          AND m."media_type" = 'tv'
         ORDER BY rank DESC NULLS LAST, m."media_id"
         LIMIT $2 OFFSET $3;
       `;
@@ -69,6 +72,7 @@ router.get('/', async (req, res) => {
       FROM "MediaItem" m
       JOIN "TVShow" tv ON tv."media_id" = m."media_id"
       LEFT JOIN tv_genres tg ON tg."media_id" = m."media_id"
+      WHERE m."media_type" = 'tv'
       ORDER BY m."media_id"
       LIMIT $1 OFFSET $2;
     `;

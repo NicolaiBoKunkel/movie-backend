@@ -1,0 +1,5 @@
+--Fix identity sequence for MediaItem so it starts AFTER the highest seeded id
+SELECT setval(
+  pg_get_serial_sequence('"MediaItem"', 'media_id'),
+  (SELECT COALESCE(MAX("media_id"), 1) FROM "MediaItem")
+);
