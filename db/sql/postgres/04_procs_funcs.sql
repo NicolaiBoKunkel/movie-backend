@@ -41,18 +41,20 @@ END;
 $$;
 
 
--- Add TV show with genres (atomic transaction)
+-- Add TV show with genres (atomic transaction, updated)
 CREATE OR REPLACE FUNCTION add_tvshow_with_genres(
-  p_tmdb_id        BIGINT,
-  p_title          TEXT,
-  p_first_air_date DATE,
-  p_genre_ids      BIGINT[],
-  p_language       CHAR(2)      DEFAULT 'en',
-  p_status         TEXT         DEFAULT 'Returning Series',
-  p_vote           NUMERIC(3,1) DEFAULT 0,
-  p_in_production  BOOLEAN      DEFAULT FALSE,
-  p_episode_count  INT          DEFAULT NULL,
-  p_season_count   INT          DEFAULT NULL
+  p_tmdb_id          BIGINT,
+  p_title            TEXT,
+  p_first_air_date   DATE,
+  p_genre_ids        BIGINT[],
+  p_last_air_date    DATE          DEFAULT NULL,
+  p_language         CHAR(2)       DEFAULT 'en',
+  p_status           TEXT          DEFAULT 'Returning Series',
+  p_vote             NUMERIC(3,1)  DEFAULT 0,
+  p_in_production    BOOLEAN       DEFAULT FALSE,
+  p_num_seasons      INT           DEFAULT 0,
+  p_num_episodes     INT           DEFAULT 0,
+  p_show_type        TEXT          DEFAULT 'Scripted'
 ) RETURNS BIGINT
 LANGUAGE plpgsql
 AS $$
@@ -66,9 +68,11 @@ BEGIN
   RETURNING "media_id" INTO v_media_id;
 
   INSERT INTO "TVShow"
-    ("media_id","first_air_date","in_production","episode_count","season_count")
+    ("media_id","first_air_date","last_air_date","in_production",
+     "number_of_seasons","number_of_episodes","show_type")
   VALUES
-    (v_media_id, p_first_air_date, p_in_production, p_episode_count, p_season_count);
+    (v_media_id, p_first_air_date, p_last_air_date, p_in_production,
+     p_num_seasons, p_num_episodes, p_show_type);
 
   IF p_genre_ids IS NOT NULL THEN
     INSERT INTO "MediaGenre" ("media_id","genre_id")
@@ -82,4 +86,5 @@ $$;
 
 -- Privilege grants for app and admin roles
 GRANT EXECUTE ON FUNCTION add_movie_with_genres(BIGINT, TEXT, DATE, BIGINT[], CHAR(2), TEXT, NUMERIC, BIGINT, BIGINT, BOOLEAN, INT, BIGINT) TO app_user, admin_user;
-GRANT EXECUTE ON FUNCTION add_tvshow_with_genres(BIGINT, TEXT, DATE, BIGINT[], CHAR(2), TEXT, NUMERIC, BOOLEAN, INT, INT) TO app_user, admin_user;
+GRANT EXECUTE ON FUNCTION add_tvshow_with_genres(BIGINT, TEXT, DATE, BIGINT[], DATE, CHAR(2), TEXT, NUMERIC, BOOLEAN, INT, INT, TEXT) TO app_user, admin_user;
+
