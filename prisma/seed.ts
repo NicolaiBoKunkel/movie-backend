@@ -648,7 +648,15 @@ async function main(): Promise<void> {
     
     // Seed new data
     await seedDatabase(data);
-    
+
+    // realign MediaItem identity/sequence with current data
+    await prisma.$executeRawUnsafe(`
+      SELECT setval(
+        pg_get_serial_sequence('"MediaItem"', 'media_id'),
+        (SELECT COALESCE(MAX("media_id"), 1) FROM "MediaItem")
+      );
+    `);
+
     // Print verification
     await printVerificationCounts();
     

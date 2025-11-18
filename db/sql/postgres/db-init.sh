@@ -81,6 +81,12 @@ fi
 # 4) Apply grants (07)
 run_as_postgres "07_users_privs.sql"
 
+# 4b) Create / refresh audit triggers
+run_as_postgres "05_triggers.sql"
+
+# 4c) Apply fulltext
+run_as_postgres "08_fulltext.sql"
+
 # 5) SQL seeder removed by request: this project uses JSON seeding instead.
 echo "NOTE: SQL file 02_seed.sql was removed; JSON seeding (seed-json) is the supported method now."
 
