@@ -7,8 +7,8 @@ WORKDIR /docker-entrypoint-initdb.d
 # Copy the initialization script into the container
 COPY mongo_init.sh /docker-entrypoint-initdb.d/
 
-# This caused builds to fail if `.env` does not exist in the build context
-# COPY .env /docker-entrypoint-initdb.d/
+# Copy the .env file into the container
+COPY .env /docker-entrypoint-initdb.d/
 
 # Make sure the script is executable 
 # (These were already commented out — leave them as-is)

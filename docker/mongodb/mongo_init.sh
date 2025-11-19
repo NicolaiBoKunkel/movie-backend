@@ -9,6 +9,18 @@ echo "MongoDB docker 'init script' have been started **************
 # load data from our .env file
 source .env
 
+# Strip any carriage returns from the environment variables (Windows line ending issue)
+MON_USERNAME=$(echo "$MON_USERNAME" | tr -d '\r')
+MON_PASSWORD=$(echo "$MON_PASSWORD" | tr -d '\r')
+MON_D1_USE=$(echo "$MON_D1_USE" | tr -d '\r')
+MON_D1_PASS=$(echo "$MON_D1_PASS" | tr -d '\r')
+MON_U1_USE=$(echo "$MON_U1_USE" | tr -d '\r')
+MON_U1_PASS=$(echo "$MON_U1_PASS" | tr -d '\r')
+MON_U2_USE=$(echo "$MON_U2_USE" | tr -d '\r')
+MON_U2_PASS=$(echo "$MON_U2_PASS" | tr -d '\r')
+MON_U3_USE=$(echo "$MON_U3_USE" | tr -d '\r')
+MON_U3_PASS=$(echo "$MON_U3_PASS" | tr -d '\r')
+
 # if the docker volume is initialized, then skip the rest of the file
 if [ -f /data/db/initialized ]; then
     echo "MongoDB is already initialized. Therefore the init script will be skipped"
