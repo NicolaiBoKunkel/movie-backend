@@ -7,6 +7,7 @@ import tvAdminRouter from './routes/tv.admin';
 import authRouter from './routes/auth/auth';
 import { requireAuth, requireRole } from './middleware/auth';
 import adminRouter from './routes/admin';
+import moviesNeoRouter from './routes/neo4j/movies.neo';
 
 
 const app = express();
@@ -25,6 +26,8 @@ app.use('/movies', requireAuth, requireRole('admin'), moviesPostRouter);
 app.use('/tv', requireAuth, requireRole('admin'), tvAdminRouter);
 app.use('/admin', adminRouter);
 
+// Anything neo4j related
+app.use("/neo/movies", moviesNeoRouter);
 
 
 export default app;
