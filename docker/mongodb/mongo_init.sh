@@ -41,11 +41,6 @@ mongosh --host "localhost" --u "$MON_USERNAME" --p "$MON_PASSWORD" --authenticat
 // switch or create db
 use shop;
 
-// create tables
-db.createCollection('product');
-db.createCollection('order');
-db.createCollection('user');
-
 // add to tables (from data folder - json files ?)
 
 // add roles

@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import MongoDataSource from "./mongoDataSource";
+import MongoDataSource, { CollectionsDataSource } from "./mongoDataSource";
 import { MediaItemMongo } from "./entities/mongo/MediaItemMongo";
 import { MovieMongo } from "./entities/mongo/MovieMongo";
 import { TVShowMongo } from "./entities/mongo/TVShowMongo";
@@ -64,6 +64,10 @@ const MigrateToMongo = async (prisma: PrismaClient) => {
     await episodeCrewAssignmentRepo.deleteMany({});
 
     console.log("Cleared existing MongoDB collections");
+
+    // Migrate fully nested MediaItems to separate 'collections' database
+    console.log("\nMigrating fully nested MediaItems to 'collections' database...");
+    await migrateFullyNestedMediaItems(prisma);
 
     // Migrate Genres
     console.log("Migrating genres...");
@@ -830,6 +834,273 @@ const MigrateToMongo = async (prisma: PrismaClient) => {
     throw error;
   } finally {
     await MongoDataSource.destroy();
+  }
+};
+
+// Helper function to migrate fully nested MediaItems with all related data
+const migrateFullyNestedMediaItems = async (
+  prisma: PrismaClient
+) => {
+  console.log("Connecting to 'collections' database...");
+  
+  try {
+    await CollectionsDataSource.initialize();
+    console.log("Connected to 'collections' database!");
+
+    // Get MongoDB native connection to work with any collection name
+    const connection = (CollectionsDataSource.driver as any).queryRunner.databaseConnection;
+    
+    // Clear existing data from custom-named collections
+    try {
+      await connection.db('collections').collection('movie_simple_example').deleteMany({});
+      await connection.db('collections').collection('movie_full_example').deleteMany({});
+      await connection.db('collections').collection('tvshow_full_example').deleteMany({});
+    } catch (e) {
+      // Collections might not exist yet, that's ok
+    }
+    console.log("Cleared existing data from 'collections' database");
+
+    console.log("Fetching all media items with full nested data...");
+
+    // Fetch all media items with all related data
+  const mediaItems = await prisma.mediaItem.findMany({
+    include: {
+      movie: {
+        include: {
+          collection: true
+        }
+      },
+      tvShow: {
+        include: {
+          seasons: {
+            include: {
+              episodes: {
+                include: {
+                  episodeCastings: {
+                    include: {
+                      actor: {
+                        include: {
+                          person: true
+                        }
+                      }
+                    }
+                  },
+                  episodeCrewAssignments: {
+                    include: {
+                      crewMember: {
+                        include: {
+                          person: true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      mediaGenres: {
+        include: {
+          genre: true
+        }
+      },
+      mediaCompanies: {
+        include: {
+          company: true
+        }
+      },
+      titleCastings: {
+        include: {
+          actor: {
+            include: {
+              person: true
+            }
+          }
+        }
+      },
+      titleCrewAssignments: {
+        include: {
+          crewMember: {
+            include: {
+              person: true
+            }
+          }
+        }
+      }
+    }
+  });
+
+  console.log(`Found ${mediaItems.length} media items to migrate`);
+
+  const fullyNestedDocs = mediaItems.map((mediaItem: any) => {
+    // Base media item data
+    const doc: any = {
+      mediaId: mediaItem.mediaId.toString(),
+      tmdbId: mediaItem.tmdbId?.toString(),
+      mediaType: mediaItem.mediaType,
+      originalTitle: mediaItem.originalTitle,
+      overview: mediaItem.overview,
+      originalLanguage: mediaItem.originalLanguage,
+      status: mediaItem.status,
+      popularity: parseFloat(mediaItem.popularity),
+      voteAverage: parseFloat(mediaItem.voteAverage),
+      voteCount: mediaItem.voteCount,
+      posterPath: mediaItem.posterPath,
+      backdropPath: mediaItem.backdropPath,
+      homepageUrl: mediaItem.homepageUrl
+    };
+
+    // Add movie-specific data with collection
+    if (mediaItem.movie) {
+      doc.movie = {
+        releaseDate: mediaItem.movie.releaseDate,
+        budget: Number(mediaItem.movie.budget),
+        revenue: Number(mediaItem.movie.revenue),
+        adultFlag: mediaItem.movie.adultFlag,
+        runtimeMinutes: mediaItem.movie.runtimeMinutes,
+        collectionId: mediaItem.movie.collectionId?.toString(),
+        collection: mediaItem.movie.collection ? {
+          collectionId: mediaItem.movie.collection.collectionId.toString(),
+          tmdbId: mediaItem.movie.collection.tmdbId?.toString(),
+          name: mediaItem.movie.collection.name,
+          overview: mediaItem.movie.collection.overview,
+          posterPath: mediaItem.movie.collection.posterPath,
+          backdropPath: mediaItem.movie.collection.backdropPath
+        } : null
+      };
+    }
+
+    // Add TV show-specific data with nested seasons and episodes
+    if (mediaItem.tvShow) {
+      doc.tvShow = {
+        firstAirDate: mediaItem.tvShow.firstAirDate,
+        lastAirDate: mediaItem.tvShow.lastAirDate,
+        inProduction: mediaItem.tvShow.inProduction,
+        numberOfSeasons: mediaItem.tvShow.numberOfSeasons,
+        numberOfEpisodes: mediaItem.tvShow.numberOfEpisodes,
+        showType: mediaItem.tvShow.showType,
+        seasons: mediaItem.tvShow.seasons.map((season: any) => ({
+          seasonId: season.seasonId.toString(),
+          seasonNumber: season.seasonNumber,
+          name: season.name,
+          airDate: season.airDate,
+          episodeCount: season.episodeCount,
+          posterPath: season.posterPath,
+          episodes: season.episodes.map((episode: any) => ({
+            episodeId: episode.episodeId.toString(),
+            episodeNumber: episode.episodeNumber,
+            name: episode.name,
+            airDate: episode.airDate,
+            runtimeMinutes: episode.runtimeMinutes,
+            overview: episode.overview,
+            stillPath: episode.stillPath,
+            cast: episode.episodeCastings.map((casting: any) => ({
+              castingId: casting.castingId.toString(),
+              personId: casting.actor.person.personId.toString(),
+              personName: casting.actor.person.name,
+              characterName: casting.characterName,
+              castOrder: casting.castOrder,
+              gender: casting.actor.person.gender,
+              profilePath: casting.actor.person.profilePath,
+              biography: casting.actor.person.biography,
+              birthDate: casting.actor.person.birthDate,
+              deathDate: casting.actor.person.deathDate,
+              placeOfBirth: casting.actor.person.placeOfBirth
+            })),
+            crew: episode.episodeCrewAssignments.map((assignment: any) => ({
+              crewAssignmentId: assignment.crewAssignmentId.toString(),
+              personId: assignment.crewMember.person.personId.toString(),
+              personName: assignment.crewMember.person.name,
+              department: assignment.department,
+              jobTitle: assignment.jobTitle,
+              gender: assignment.crewMember.person.gender,
+              profilePath: assignment.crewMember.person.profilePath,
+              biography: assignment.crewMember.person.biography,
+              birthDate: assignment.crewMember.person.birthDate,
+              deathDate: assignment.crewMember.person.deathDate,
+              placeOfBirth: assignment.crewMember.person.placeOfBirth
+            }))
+          }))
+        }))
+      };
+    }
+
+    // Add genres
+    doc.genres = mediaItem.mediaGenres.map((mg: any) => ({
+      genreId: mg.genre.genreId.toString(),
+      name: mg.genre.name
+    }));
+
+    // Add companies with roles
+    doc.companies = mediaItem.mediaCompanies.map((mc: any) => ({
+      companyId: mc.company.companyId.toString(),
+      name: mc.company.name,
+      role: mc.role,
+      originCountry: mc.company.originCountry,
+      logoPath: mc.company.logoPath,
+      description: mc.company.description
+    }));
+
+    // Add title-level cast (for movies and TV shows)
+    doc.cast = mediaItem.titleCastings.map((casting: any) => ({
+      castingId: casting.castingId.toString(),
+      personId: casting.actor.person.personId.toString(),
+      personName: casting.actor.person.name,
+      characterName: casting.characterName,
+      castOrder: casting.castOrder,
+      gender: casting.actor.person.gender,
+      profilePath: casting.actor.person.profilePath,
+      biography: casting.actor.person.biography,
+      birthDate: casting.actor.person.birthDate,
+      deathDate: casting.actor.person.deathDate,
+      placeOfBirth: casting.actor.person.placeOfBirth
+    }));
+
+    // Add title-level crew (for movies and TV shows)
+    doc.crew = mediaItem.titleCrewAssignments.map((assignment: any) => ({
+      crewAssignmentId: assignment.crewAssignmentId.toString(),
+      personId: assignment.crewMember.person.personId.toString(),
+      personName: assignment.crewMember.person.name,
+      department: assignment.department,
+      jobTitle: assignment.jobTitle,
+      gender: assignment.crewMember.person.gender,
+      profilePath: assignment.crewMember.person.profilePath,
+      biography: assignment.crewMember.person.biography,
+      birthDate: assignment.crewMember.person.birthDate,
+      deathDate: assignment.crewMember.person.deathDate,
+      placeOfBirth: assignment.crewMember.person.placeOfBirth
+    }));
+
+    return doc;
+  });
+
+  // Insert into custom-named collections
+  const movieFullDocs = fullyNestedDocs.filter((doc: any) => doc.mediaType === 'movie');
+  const tvShowFullDocs = fullyNestedDocs.filter((doc: any) => doc.mediaType === 'tv');
+
+  if (fullyNestedDocs.length > 0) {
+    await connection.db('collections').collection('movie_simple_example').insertMany(fullyNestedDocs);
+    console.log(`✓ Migrated ${fullyNestedDocs.length} fully nested media items to 'movie_simple_example' collection`);
+  }
+
+  if (movieFullDocs.length > 0) {
+    await connection.db('collections').collection('movie_full_example').insertMany(movieFullDocs);
+    console.log(`✓ Migrated ${movieFullDocs.length} fully nested movies to 'movie_full_example' collection`);
+  }
+
+  if (tvShowFullDocs.length > 0) {
+    await connection.db('collections').collection('tvshow_full_example').insertMany(tvShowFullDocs);
+    console.log(`✓ Migrated ${tvShowFullDocs.length} fully nested TV shows to 'tvshow_full_example' collection`);
+  }
+  
+  } catch (error) {
+    console.error("Error migrating to 'collections' database:", error);
+    throw error;
+  } finally {
+    if (CollectionsDataSource.isInitialized) {
+      await CollectionsDataSource.destroy();
+    }
   }
 };
 

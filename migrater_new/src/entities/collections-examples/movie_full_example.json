@@ -1,0 +1,175 @@
+{
+  "_id": "507f1f77bcf86cd799439011",
+  "mediaId": "1",
+  "tmdbId": "550",
+  "mediaType": "movie",
+  "originalTitle": "Fight Club",
+  "overview": "A ticking-time-bomb insomniac and a slippery soap salesman channel primal male aggression into a shocking new form of therapy. Their concept catches on, with underground fight clubs forming in every town, until an eccentric gets in the way and ignites an out-of-control spiral toward oblivion.",
+  "originalLanguage": "en",
+  "status": "Released",
+  "popularity": 63.869,
+  "voteAverage": 8.4,
+  "voteCount": 26280,
+  "posterPath": "/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK.jpg",
+  "backdropPath": "/fCayJrkfRaCRCTh8GqN30f8oyQF.jpg",
+  "homepageUrl": "http://www.foxmovies.com/movies/fight-club",
+  "movie": {
+    "releaseDate": "1999-10-15",
+    "budget": 63000000,
+    "revenue": 100853753,
+    "adultFlag": false,
+    "runtimeMinutes": 139,
+    "collectionId": null,
+    "collection": null
+  },
+  "genres": [
+    {
+      "genreId": "18",
+      "name": "Drama"
+    },
+    {
+      "genreId": "53",
+      "name": "Thriller"
+    },
+    {
+      "genreId": "35",
+      "name": "Comedy"
+    }
+  ],
+  "companies": [
+    {
+      "companyId": "508",
+      "name": "Regency Enterprises",
+      "role": "production",
+      "originCountry": "US",
+      "logoPath": "/7PzJdsLGlR7oW4J0J5Xcd0pHGRg.png"
+    },
+    {
+      "companyId": "711",
+      "name": "Fox 2000 Pictures",
+      "role": "production",
+      "originCountry": "US",
+      "logoPath": "/tEiIH5QesdheJmDAqQwvtN60727.png"
+    },
+    {
+      "companyId": "20",
+      "name": "20th Century Fox",
+      "role": "distribution",
+      "originCountry": "US",
+      "logoPath": "/qZCc1lty5FzX30aOCVRBLzaVmcp.png"
+    }
+  ],
+  "cast": [
+    {
+      "castingId": "101",
+      "personId": "287",
+      "personName": "Brad Pitt",
+      "characterName": "Tyler Durden",
+      "castOrder": 0,
+      "gender": 2,
+      "profilePath": "/cckcYc2v0yh1tc9QjRelptcOBko.jpg",
+      "biography": "William Bradley \"Brad\" Pitt (born December 18, 1963) is an American actor and film producer...",
+      "birthDate": "1963-12-18",
+      "placeOfBirth": "Shawnee, Oklahoma, USA"
+    },
+    {
+      "castingId": "102",
+      "personId": "819",
+      "personName": "Edward Norton",
+      "characterName": "The Narrator",
+      "castOrder": 1,
+      "gender": 2,
+      "profilePath": "/5XBzD5WuTyVQZeS4VI25z2moMeY.jpg",
+      "biography": "Edward Harrison Norton (born August 18, 1969) is an American actor and filmmaker...",
+      "birthDate": "1969-08-18",
+      "placeOfBirth": "Boston, Massachusetts, USA"
+    },
+    {
+      "castingId": "103",
+      "personId": "1283",
+      "personName": "Helena Bonham Carter",
+      "characterName": "Marla Singer",
+      "castOrder": 2,
+      "gender": 1,
+      "profilePath": "/DDeITcCpnBd0CkAIRPhggy9bt5.jpg",
+      "biography": "Helena Bonham Carter CBE (born 26 May 1966) is an English actress...",
+      "birthDate": "1966-05-26",
+      "placeOfBirth": "Golders Green, London, England, UK"
+    },
+    {
+      "castingId": "104",
+      "personId": "7470",
+      "personName": "Meat Loaf",
+      "characterName": "Robert 'Bob' Paulsen",
+      "castOrder": 3,
+      "gender": 2,
+      "profilePath": "/pwNyXgegO1nlZ8uWT847JM8EjGj.jpg",
+      "biography": "Michael Lee Aday (September 27, 1947 – January 20, 2022), known professionally as Meat Loaf...",
+      "birthDate": "1947-09-27",
+      "deathDate": "2022-01-20",
+      "placeOfBirth": "Dallas, Texas, USA"
+    }
+  ],
+  "crew": [
+    {
+      "crewAssignmentId": "201",
+      "personId": "7467",
+      "personName": "David Fincher",
+      "department": "Directing",
+      "jobTitle": "Director",
+      "gender": 2,
+      "profilePath": "/tpEczFclQZeKAiCeKZZ0adRvtfz.jpg",
+      "biography": "David Andrew Leo Fincher (born August 28, 1962) is an American film director...",
+      "birthDate": "1962-08-28",
+      "placeOfBirth": "Denver, Colorado, USA"
+    },
+    {
+      "crewAssignmentId": "202",
+      "personId": "7469",
+      "personName": "Jim Uhls",
+      "department": "Writing",
+      "jobTitle": "Screenplay",
+      "gender": 2,
+      "profilePath": null,
+      "biography": "Jim Uhls is an American screenwriter...",
+      "birthDate": null,
+      "placeOfBirth": null
+    },
+    {
+      "crewAssignmentId": "203",
+      "personId": "7471",
+      "personName": "Chuck Palahniuk",
+      "department": "Writing",
+      "jobTitle": "Novel",
+      "gender": 2,
+      "profilePath": "/8nOJDJ6SqwV2h7PjdLBDTvIxXvx.jpg",
+      "biography": "Charles Michael \"Chuck\" Palahniuk is an American novelist and freelance journalist...",
+      "birthDate": "1962-02-21",
+      "placeOfBirth": "Pasco, Washington, USA"
+    },
+    {
+      "crewAssignmentId": "204",
+      "personId": "7475",
+      "personName": "Jeff Cronenweth",
+      "department": "Camera",
+      "jobTitle": "Director of Photography",
+      "gender": 2,
+      "profilePath": "/2dLlZ6eKGKaCv0FDlSDoDt5V2ZL.jpg",
+      "biography": "Jeff Cronenweth, ASC is an American cinematographer...",
+      "birthDate": "1962-01-01",
+      "placeOfBirth": "Los Angeles, California, USA"
+    },
+    {
+      "crewAssignmentId": "205",
+      "personId": "7480",
+      "personName": "James Haygood",
+      "department": "Editing",
+      "jobTitle": "Editor",
+      "gender": 2,
+      "profilePath": null,
+      "biography": null,
+      "birthDate": null,
+      "placeOfBirth": null
+    }
+  ]
+}

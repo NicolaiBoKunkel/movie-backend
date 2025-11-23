@@ -1,0 +1,224 @@
+{
+  "_id": "507f1f77bcf86cd799439022",
+  "mediaId": "2",
+  "tmdbId": "1396",
+  "mediaType": "tv",
+  "originalTitle": "Breaking Bad",
+  "overview": "When Walter White, a New Mexico chemistry teacher, is diagnosed with Stage III cancer and given a prognosis of only two years left to live. He becomes filled with a sense of fearlessness and an unrelenting desire to secure his family's financial future at any cost as he enters the dangerous world of drugs and crime.",
+  "originalLanguage": "en",
+  "status": "Ended",
+  "popularity": 447.716,
+  "voteAverage": 8.9,
+  "voteCount": 12890,
+  "posterPath": "/ggFHVNu6YYI5L9pCfOacjizRGt.jpg",
+  "backdropPath": "/tsRy63Mu5cu8etL1X7ZLyf7UP1M.jpg",
+  "homepageUrl": "http://www.amc.com/shows/breaking-bad",
+  "tvShow": {
+    "firstAirDate": "2008-01-20",
+    "lastAirDate": "2013-09-29",
+    "inProduction": false,
+    "numberOfSeasons": 5,
+    "numberOfEpisodes": 62,
+    "showType": "Scripted",
+    "seasons": [
+      {
+        "seasonId": "3572",
+        "seasonNumber": 1,
+        "name": "Season 1",
+        "airDate": "2008-01-20",
+        "episodeCount": 7,
+        "posterPath": "/1BP4xYv9ZG4ZVHkL7ocOziBbSYH.jpg",
+        "episodes": [
+          {
+            "episodeId": "62085",
+            "episodeNumber": 1,
+            "name": "Pilot",
+            "airDate": "2008-01-20",
+            "runtimeMinutes": 58,
+            "overview": "When an unassuming high school chemistry teacher discovers he has a rare form of lung cancer, he decides to team up with a former student and create a top of the line crystal meth in a used RV, to provide for his family once he is gone.",
+            "stillPath": "/ydlY3iPfeOAvu8gVqrxPoMvzNCn.jpg",
+            "cast": [
+              {
+                "castingId": "1001",
+                "personId": "17419",
+                "personName": "Bryan Cranston",
+                "characterName": "Walter White",
+                "castOrder": 0,
+                "gender": 2,
+                "profilePath": "/7Jahy5LZX2Fo8fGJltMreAI49hC.jpg"
+              },
+              {
+                "castingId": "1002",
+                "personId": "84497",
+                "personName": "Aaron Paul",
+                "characterName": "Jesse Pinkman",
+                "castOrder": 1,
+                "gender": 2,
+                "profilePath": "/oTceEUb6A9Bg6DeUTJBTETUOEAy.jpg"
+              }
+            ],
+            "crew": [
+              {
+                "crewAssignmentId": "2001",
+                "personId": "66633",
+                "personName": "Vince Gilligan",
+                "department": "Directing",
+                "jobTitle": "Director",
+                "gender": 2,
+                "profilePath": "/wSTvJGz7QbJf1HK2Mv1Cev6W9TV.jpg"
+              },
+              {
+                "crewAssignmentId": "2002",
+                "personId": "66633",
+                "personName": "Vince Gilligan",
+                "department": "Writing",
+                "jobTitle": "Writer",
+                "gender": 2,
+                "profilePath": "/wSTvJGz7QbJf1HK2Mv1Cev6W9TV.jpg"
+              }
+            ]
+          },
+          {
+            "episodeId": "62086",
+            "episodeNumber": 2,
+            "name": "Cat's in the Bag...",
+            "airDate": "2008-01-27",
+            "runtimeMinutes": 48,
+            "overview": "Walt and Jesse attempt to tie up loose ends. The desperate situation gets more complicated with the flip of a coin. Walt's wife, Skyler, becomes suspicious of Walt's strange behavior.",
+            "stillPath": "/6DW4kCFD9Ki1VLJLfB8hXC7zK15.jpg",
+            "cast": [
+              {
+                "castingId": "1003",
+                "personId": "17419",
+                "personName": "Bryan Cranston",
+                "characterName": "Walter White",
+                "castOrder": 0,
+                "gender": 2,
+                "profilePath": "/7Jahy5LZX2Fo8fGJltMreAI49hC.jpg"
+              },
+              {
+                "castingId": "1004",
+                "personId": "84497",
+                "personName": "Aaron Paul",
+                "characterName": "Jesse Pinkman",
+                "castOrder": 1,
+                "gender": 2,
+                "profilePath": "/oTceEUb6A9Bg6DeUTJBTETUOEAy.jpg"
+              }
+            ],
+            "crew": [
+              {
+                "crewAssignmentId": "2003",
+                "personId": "18320",
+                "personName": "Adam Bernstein",
+                "department": "Directing",
+                "jobTitle": "Director",
+                "gender": 2,
+                "profilePath": "/mf4PIOCBibDIRKfEh4AqbXo6cSs.jpg"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "seasonId": "3573",
+        "seasonNumber": 2,
+        "name": "Season 2",
+        "airDate": "2009-03-08",
+        "episodeCount": 13,
+        "posterPath": "/e3oGYpoTUhOFK0BJfloru5ZmGV.jpg",
+        "episodes": []
+      }
+    ]
+  },
+  "genres": [
+    {
+      "genreId": "18",
+      "name": "Drama"
+    },
+    {
+      "genreId": "80",
+      "name": "Crime"
+    }
+  ],
+  "companies": [
+    {
+      "companyId": "2605",
+      "name": "AMC",
+      "role": "network",
+      "originCountry": "US",
+      "logoPath": "/pmvRmATOCaDykE6JrVoeYxlFHw3.png"
+    },
+    {
+      "companyId": "11073",
+      "name": "Sony Pictures Television Studios",
+      "role": "production",
+      "originCountry": "US",
+      "logoPath": "/aCbASRcI1MI7DXjPbSW9Fcv9uGR.png"
+    }
+  ],
+  "cast": [
+    {
+      "castingId": "301",
+      "personId": "17419",
+      "personName": "Bryan Cranston",
+      "characterName": "Walter White",
+      "castOrder": 0,
+      "gender": 2,
+      "profilePath": "/7Jahy5LZX2Fo8fGJltMreAI49hC.jpg",
+      "biography": "Bryan Lee Cranston (born March 7, 1956) is an American actor, director, and producer...",
+      "birthDate": "1956-03-07",
+      "placeOfBirth": "Hollywood, Los Angeles, California, USA"
+    },
+    {
+      "castingId": "302",
+      "personId": "84497",
+      "personName": "Aaron Paul",
+      "characterName": "Jesse Pinkman",
+      "castOrder": 1,
+      "gender": 2,
+      "profilePath": "/oTceEUb6A9Bg6DeUTJBTETUOEAy.jpg",
+      "biography": "Aaron Paul Sturtevant (born August 27, 1979) is an American actor...",
+      "birthDate": "1979-08-27",
+      "placeOfBirth": "Emmett, Idaho, USA"
+    },
+    {
+      "castingId": "303",
+      "personId": "14329",
+      "personName": "Anna Gunn",
+      "characterName": "Skyler White",
+      "castOrder": 2,
+      "gender": 1,
+      "profilePath": "/6yLKtfYFWbJp5HAZ8iman7S77F9.jpg",
+      "biography": "Anna Gunn (born August 11, 1968) is an American actress...",
+      "birthDate": "1968-08-11",
+      "placeOfBirth": "Santa Fe, New Mexico, USA"
+    }
+  ],
+  "crew": [
+    {
+      "crewAssignmentId": "401",
+      "personId": "66633",
+      "personName": "Vince Gilligan",
+      "department": "Production",
+      "jobTitle": "Executive Producer",
+      "gender": 2,
+      "profilePath": "/wSTvJGz7QbJf1HK2Mv1Cev6W9TV.jpg",
+      "biography": "George Vincent \"Vince\" Gilligan, Jr. (born February 10, 1967) is an American writer...",
+      "birthDate": "1967-02-10",
+      "placeOfBirth": "Richmond, Virginia, USA"
+    },
+    {
+      "crewAssignmentId": "402",
+      "personId": "29779",
+      "personName": "Mark Johnson",
+      "department": "Production",
+      "jobTitle": "Executive Producer",
+      "gender": 2,
+      "profilePath": "/yKGF6cbzyP03Gl1QhVLCu1gWSW6.jpg",
+      "biography": "Mark Johnson is an American film and television producer...",
+      "birthDate": "1945-12-27",
+      "placeOfBirth": "Washington, District of Columbia, USA"
+    }
+  ]
+}

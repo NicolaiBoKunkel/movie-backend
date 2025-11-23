@@ -17,9 +17,15 @@ import { EpisodeCastingMongo } from "./entities/mongo/EpisodeCastingMongo";
 import { TitleCrewAssignmentMongo } from "./entities/mongo/TitleCrewAssignmentMongo";
 import { EpisodeCrewAssignmentMongo } from "./entities/mongo/EpisodeCrewAssignmentMongo";
 
+// Parse the MongoDB URI to get base connection details
+const mongoUri = process.env.MONGODB_URI || "mongodb://root:password@localhost:27018/movie_db_mongo?authSource=admin";
+
+// Create collections database URI by replacing the database name
+const collectionsUri = mongoUri.replace(/\/[^\/\?]+(\?|$)/, '/collections$1');
+
 const MongoDataSource = new DataSource({
   type: "mongodb",
-  url: process.env.MONGODB_URI || "mongodb://localhost:27017/movie_db_mongo",
+  url: mongoUri,
   entities: [
     MediaItemMongo,
     MovieMongo,
@@ -43,4 +49,18 @@ const MongoDataSource = new DataSource({
   logging: false,
 });
 
+// Separate DataSource for nested collections database
+const CollectionsDataSource = new DataSource({
+  type: "mongodb",
+  url: process.env.MONGODB_COLLECTIONS_URI || collectionsUri,
+  entities: [
+    MediaItemMongo,
+    MovieMongo,
+    TVShowMongo
+  ],
+  synchronize: true,
+  logging: false,
+});
+
 export default MongoDataSource;
+export { CollectionsDataSource };
