@@ -5,7 +5,7 @@ import neo4j from "neo4j-driver";
 const router = Router();
 
 /**
- * GET /neo/movies
+ * GET /neo/tv
  * Query params:
  *   search?: string
  *   limit?: number
@@ -15,19 +15,19 @@ router.get("/", async (req, res) => {
 
   const search = (req.query.search as string)?.trim() ?? "";
   const limit = Math.min(Number(req.query.limit) || 25, 100);
-
   const limitInt = neo4j.int(limit);
 
   try {
     let result;
 
     if (search.length > 0) {
+      // Search TV shows by title or overview
       result = await session.run(
         `
-        MATCH (m:Movie)
-        WHERE toLower(m.originalTitle) CONTAINS toLower($search)
-           OR toLower(m.overview) CONTAINS toLower($search)
-        RETURN m
+        MATCH (t:TVShow)
+        WHERE toLower(t.originalTitle) CONTAINS toLower($search)
+           OR toLower(t.overview) CONTAINS toLower($search)
+        RETURN t
         LIMIT $limit
       `,
         { search, limit: limitInt }
@@ -35,26 +35,30 @@ router.get("/", async (req, res) => {
     } else {
       result = await session.run(
         `
-        MATCH (m:Movie)
-        RETURN m
+        MATCH (t:TVShow)
+        RETURN t
         LIMIT $limit
       `,
         { limit: limitInt }
       );
     }
 
-    const movies = result.records.map((r) => r.get("m").properties);
-    res.json(movies);
+    const shows = result.records.map((r) => r.get("t").properties);
+    res.json(shows);
+
   } catch (err) {
-    console.error("Neo4j GET /movies error:", err);
+    console.error("Neo4j GET /tv error:", err);
     res.status(500).json({ error: "Neo4j query failed" });
+
   } finally {
     await session.close();
   }
 });
 
+
 /**
- * GET /neo/movies/:id
+ * GET /neo/tv/:id
+ * Returns detailed TV show info + genres
  */
 router.get("/:id", async (req, res) => {
   const id = req.params.id;
@@ -65,27 +69,29 @@ router.get("/:id", async (req, res) => {
   try {
     const result = await session.run(
       `
-      MATCH (m:Movie {mediaId: $id})
-      OPTIONAL MATCH (m)-[:HAS_GENRE]->(g:Genre)
-      RETURN m, collect(g.name) AS genres
+      MATCH (t:TVShow {mediaId: $id})
+      OPTIONAL MATCH (t)-[:HAS_GENRE]->(g:Genre)
+      RETURN t, collect(g.name) AS genres
       LIMIT 1
       `,
       { id }
     );
 
     const record = result.records[0];
-    if (!record) return res.status(404).json({ error: "Movie not found" });
+    if (!record) return res.status(404).json({ error: "TV show not found" });
 
-    const movieNode = record.get("m");
+    const tvNode = record.get("t");
     const genreList = record.get("genres");
 
-    const movie = movieNode?.properties ?? {};
+    const tv = tvNode?.properties ?? {};
     const genres = Array.isArray(genreList) ? genreList : [];
 
-    res.json({ ...movie, genres });
+    res.json({ ...tv, genres });
+
   } catch (err) {
-    console.error("Neo4j GET /movies/:id error:", err);
+    console.error("Neo4j GET /tv/:id error:", err);
     res.status(500).json({ error: "Neo4j query failed" });
+
   } finally {
     await session.close();
   }

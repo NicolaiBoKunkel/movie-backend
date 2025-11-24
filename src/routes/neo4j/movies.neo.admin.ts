@@ -1,0 +1,204 @@
+import { Router } from "express";
+import { getSession } from "../../db/neo4j";
+import { requireAuth, requireRole } from "../../middleware/auth";
+import { z } from "zod";
+
+const router = Router();
+
+//ZOD SCHEMA FOR MOVIE CREATION / UPDATE
+const createMovieSchema = z.object({
+  mediaId: z.string().min(1),
+  tmdbId: z.string().min(1),
+  originalTitle: z.string().min(1),
+  overview: z.string().optional(),
+  releaseDate: z.string().optional(),
+  voteAverage: z.number().min(0).max(10).optional(),
+  budget: z.string().optional(),
+  revenue: z.string().optional(),
+  runtimeMinutes: z.number().optional(),
+  originalLanguage: z.string().optional(),
+  status: z.string().optional(),
+  genres: z.array(z.string()).optional(),
+});
+
+//POST /neo/movies (CREATE)
+router.post(
+  "/",
+  requireAuth,
+  requireRole("admin"),
+  async (req, res) => {
+    const parsed = createMovieSchema.safeParse(req.body);
+    if (!parsed.success) {
+      return res.status(400).json({
+        error: "Validation failed",
+        issues: parsed.error.issues,
+      });
+    }
+
+    const data = parsed.data;
+    const session = getSession();
+
+    try {
+      // Create movie node
+      await session.run(
+        `
+        MERGE (m:Movie {mediaId: $mediaId})
+        SET m += {
+          tmdbId: $tmdbId,
+          originalTitle: $originalTitle,
+          overview: $overview,
+          releaseDate: $releaseDate,
+          voteAverage: $voteAverage,
+          budget: $budget,
+          revenue: $revenue,
+          runtimeMinutes: $runtimeMinutes,
+          originalLanguage: $originalLanguage,
+          status: $status
+        }
+        `,
+        { ...data }
+      );
+
+      // Create genre relationships if any
+      if (data.genres && data.genres.length > 0) {
+        for (const g of data.genres) {
+          await session.run(
+            `
+            MERGE (ge:Genre {name: $g})
+            WITH ge
+            MATCH (m:Movie {mediaId: $id})
+            MERGE (m)-[:HAS_GENRE]->(ge)
+            `,
+            { g, id: data.mediaId }
+          );
+        }
+      }
+
+      res.status(201).json({ created: true, mediaId: data.mediaId });
+    } catch (err) {
+      console.error("Neo4j CREATE movie error:", err);
+      res.status(500).json({ error: "Failed to create movie" });
+    } finally {
+      await session.close();
+    }
+  }
+);
+
+
+//PUT /neo/movies/:id (UPDATE)
+const updateSchema = createMovieSchema.partial();
+
+router.put(
+  "/:id",
+  requireAuth,
+  requireRole("admin"),
+  async (req, res) => {
+    const id = req.params.id;
+
+    const parsed = updateSchema.safeParse(req.body);
+    if (!parsed.success) {
+      return res.status(400).json({
+        error: "Validation failed",
+        issues: parsed.error.issues,
+      });
+    }
+
+    const data = parsed.data;
+    const session = getSession();
+
+    try {
+      // Ensure node exists
+      const check = await session.run(
+        `MATCH (m:Movie {mediaId: $id}) RETURN m`,
+        { id }
+      );
+
+      if (check.records.length === 0) {
+        return res.status(404).json({ error: "Movie not found" });
+      }
+
+      // Update properties
+      await session.run(
+        `
+        MATCH (m:Movie {mediaId: $id})
+        SET m += $data
+        `,
+        { id, data }
+      );
+
+      // Update genres if provided
+      if (data.genres) {
+        // Remove old relations
+        await session.run(
+          `
+          MATCH (m:Movie {mediaId: $id})-[r:HAS_GENRE]->(:Genre)
+          DELETE r
+          `,
+          { id }
+        );
+
+        // Add new ones
+        for (const g of data.genres) {
+          await session.run(
+            `
+            MERGE (ge:Genre {name: $g})
+            WITH ge
+            MATCH (m:Movie {mediaId: $id})
+            MERGE (m)-[:HAS_GENRE]->(ge)
+            `,
+            { g, id }
+          );
+        }
+      }
+
+      res.json({ updated: true, mediaId: id });
+    } catch (err) {
+      console.error("Neo4j UPDATE movie error:", err);
+      res.status(500).json({ error: "Failed to update movie" });
+    } finally {
+      await session.close();
+    }
+  }
+);
+
+// DELETE /neo/movies/:id
+router.delete(
+  "/:id",
+  requireAuth,
+  requireRole("admin"),
+  async (req, res) => {
+    const id = req.params.id;
+    const session = getSession();
+
+    try {
+        const result = await session.run(
+        `
+        MATCH (m:Movie {mediaId: $id})
+        DETACH DELETE m
+        RETURN count(*) as deleted
+        `,
+        { id }
+        );
+
+        const record = result.records[0];
+        if (!record) {
+        return res.status(404).json({ error: "Movie not found" });
+        }
+
+        const deleted = record.get("deleted")?.toInt?.() ?? 0;
+
+        if (deleted === 0) {
+        return res.status(404).json({ error: "Movie not found" });
+        }
+
+        res.json({ deleted: true, mediaId: id });
+    } catch (err) {
+      console.error("Neo4j DELETE movie error:", err);
+      res.status(500).json({ error: "Failed to delete movie" });
+    } finally {
+      await session.close();
+    }
+  }
+);
+
+export default router;
