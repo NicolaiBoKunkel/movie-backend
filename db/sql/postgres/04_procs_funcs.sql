@@ -1,4 +1,4 @@
--- Functions for inserting movies and TV shows transactionally
+-- STORED FUNCTIONS
 
 -- Add movie with genres (atomic transaction)
 CREATE OR REPLACE FUNCTION add_movie_with_genres(
@@ -41,7 +41,7 @@ END;
 $$;
 
 
--- Add TV show with genres (atomic transaction, updated)
+-- Add TV show with genres (atomic transaction)
 CREATE OR REPLACE FUNCTION add_tvshow_with_genres(
   p_tmdb_id          BIGINT,
   p_title            TEXT,
@@ -84,7 +84,88 @@ END;
 $$;
 
 
--- Privilege grants for app and admin roles
-GRANT EXECUTE ON FUNCTION add_movie_with_genres(BIGINT, TEXT, DATE, BIGINT[], CHAR(2), TEXT, NUMERIC, BIGINT, BIGINT, BOOLEAN, INT, BIGINT) TO app_user, admin_user;
-GRANT EXECUTE ON FUNCTION add_tvshow_with_genres(BIGINT, TEXT, DATE, BIGINT[], DATE, CHAR(2), TEXT, NUMERIC, BOOLEAN, INT, INT, TEXT) TO app_user, admin_user;
+GRANT EXECUTE ON FUNCTION add_movie_with_genres(BIGINT, TEXT, DATE, BIGINT[], CHAR(2), TEXT, NUMERIC, BIGINT, BIGINT, BOOLEAN, INT, BIGINT)
+TO app_user, admin_user;
 
+GRANT EXECUTE ON FUNCTION add_tvshow_with_genres(BIGINT, TEXT, DATE, BIGINT[], DATE, CHAR(2), TEXT, NUMERIC, BOOLEAN, INT, INT, TEXT)
+TO app_user, admin_user;
+
+
+
+-- STORED PROCEDURES
+
+-- Delete MOVIE and all related records
+CREATE OR REPLACE PROCEDURE delete_movie_with_cleanup(p_media_id BIGINT)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+  DELETE FROM "MediaGenre" WHERE "media_id" = p_media_id;
+
+  DELETE FROM "TitleCasting" WHERE "media_id" = p_media_id;
+
+  DELETE FROM "TitleCrewAssignment" WHERE "media_id" = p_media_id;
+
+  DELETE FROM "MediaCompany" WHERE "media_id" = p_media_id;
+
+  DELETE FROM "Movie" WHERE "media_id" = p_media_id;
+
+  DELETE FROM "MediaItem"
+  WHERE "media_id" = p_media_id AND "media_type" = 'movie';
+
+  COMMIT;
+END;
+$$;
+
+GRANT EXECUTE ON PROCEDURE delete_movie_with_cleanup(BIGINT)
+TO app_user, admin_user;
+
+
+
+-- Delete TV SHOW and ALL related content
+CREATE OR REPLACE PROCEDURE delete_tvshow_with_cleanup(p_media_id BIGINT)
+LANGUAGE plpgsql
+AS $$
+DECLARE
+  v_season_ids BIGINT[];
+  v_episode_ids BIGINT[];
+BEGIN
+  SELECT array_agg("season_id")
+  INTO v_season_ids
+  FROM "Season"
+  WHERE "tv_media_id" = p_media_id;
+
+  IF v_season_ids IS NOT NULL THEN
+    SELECT array_agg("episode_id")
+    INTO v_episode_ids
+    FROM "Episode"
+    WHERE "season_id" = ANY(v_season_ids);
+  END IF;
+
+  IF v_episode_ids IS NOT NULL THEN
+    DELETE FROM "EpisodeCasting" WHERE "episode_id" = ANY(v_episode_ids);
+    DELETE FROM "EpisodeCrewAssignment" WHERE "episode_id" = ANY(v_episode_ids);
+    DELETE FROM "Episode" WHERE "episode_id" = ANY(v_episode_ids);
+  END IF;
+
+  IF v_season_ids IS NOT NULL THEN
+    DELETE FROM "Season" WHERE "season_id" = ANY(v_season_ids);
+  END IF;
+
+  DELETE FROM "MediaGenre" WHERE "media_id" = p_media_id;
+
+  DELETE FROM "TitleCasting" WHERE "media_id" = p_media_id;
+  DELETE FROM "TitleCrewAssignment" WHERE "media_id" = p_media_id;
+
+  DELETE FROM "MediaCompany" WHERE "media_id" = p_media_id;
+
+  DELETE FROM "TVShow" WHERE "media_id" = p_media_id;
+
+  DELETE FROM "MediaItem"
+  WHERE "media_id" = p_media_id AND "media_type" = 'tv';
+
+  COMMIT;
+END;
+$$;
+
+GRANT EXECUTE ON PROCEDURE delete_tvshow_with_cleanup(BIGINT)
+TO app_user, admin_user;
