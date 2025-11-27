@@ -18,7 +18,11 @@ const MigrateToNeo4j = async (prisma: PrismaClient) => {
     
     const constraints = [
       "CREATE CONSTRAINT media_id_unique IF NOT EXISTS FOR (m:MediaItem) REQUIRE m.mediaId IS UNIQUE",
-      "CREATE CONSTRAINT person_id_unique IF NOT EXISTS FOR (p:Person) REQUIRE p.personId IS UNIQUE", 
+      "CREATE CONSTRAINT movie_id_unique IF NOT EXISTS FOR (m:Movie) REQUIRE m.mediaId IS UNIQUE",
+      "CREATE CONSTRAINT tvshow_id_unique IF NOT EXISTS FOR (tv:TVShow) REQUIRE tv.mediaId IS UNIQUE",
+      "CREATE CONSTRAINT person_id_unique IF NOT EXISTS FOR (p:Person) REQUIRE p.personId IS UNIQUE",
+      "CREATE CONSTRAINT actor_id_unique IF NOT EXISTS FOR (a:Actor) REQUIRE a.personId IS UNIQUE",
+      "CREATE CONSTRAINT crew_id_unique IF NOT EXISTS FOR (c:CrewMember) REQUIRE c.personId IS UNIQUE",
       "CREATE CONSTRAINT company_id_unique IF NOT EXISTS FOR (c:Company) REQUIRE c.companyId IS UNIQUE",
       "CREATE CONSTRAINT genre_id_unique IF NOT EXISTS FOR (g:Genre) REQUIRE g.genreId IS UNIQUE",
       "CREATE CONSTRAINT collection_id_unique IF NOT EXISTS FOR (col:Collection) REQUIRE col.collectionId IS UNIQUE",
@@ -112,12 +116,8 @@ const MigrateToNeo4j = async (prisma: PrismaClient) => {
     });
     
     for (const person of persons) {
-      const labels = ["Person"];
-      if (person.actor) labels.push("Actor");
-      if (person.crewMember) labels.push("CrewMember");
-      
       await session.run(
-        `CREATE (p:${labels.join(":")} {
+        `CREATE (p:Person {
           personId: $personId,
           tmdbId: $tmdbId,
           name: $name,
@@ -126,9 +126,7 @@ const MigrateToNeo4j = async (prisma: PrismaClient) => {
           birthDate: $birthDate,
           deathDate: $deathDate,
           placeOfBirth: $placeOfBirth,
-          profilePath: $profilePath,
-          actingDebutYear: $actingDebutYear,
-          primaryDepartment: $primaryDepartment
+          profilePath: $profilePath
         })`,
         {
           personId: person.personId.toString(),
@@ -139,11 +137,57 @@ const MigrateToNeo4j = async (prisma: PrismaClient) => {
           birthDate: person.birthDate?.toISOString() || null,
           deathDate: person.deathDate?.toISOString() || null,
           placeOfBirth: person.placeOfBirth || null,
-          profilePath: person.profilePath || null,
-          actingDebutYear: person.actor?.actingDebutYear || null,
-          primaryDepartment: person.crewMember?.primaryDepartment || null
+          profilePath: person.profilePath || null
         }
       );
+
+      // Create Actor node if person is an actor
+      if (person.actor) {
+        await session.run(
+          `CREATE (a:Actor {
+            personId: $personId,
+            actingDebutYear: $actingDebutYear
+          })`,
+          {
+            personId: person.personId.toString(),
+            actingDebutYear: person.actor.actingDebutYear || null
+          }
+        );
+        
+        // Create relationship between Person and Actor
+        await session.run(
+          `MATCH (p:Person {personId: $personId})
+           MATCH (a:Actor {personId: $personId})
+           CREATE (p)-[:IS_ACTOR]->(a)`,
+          {
+            personId: person.personId.toString()
+          }
+        );
+      }
+
+      // Create CrewMember node if person is a crew member
+      if (person.crewMember) {
+        await session.run(
+          `CREATE (c:CrewMember {
+            personId: $personId,
+            primaryDepartment: $primaryDepartment
+          })`,
+          {
+            personId: person.personId.toString(),
+            primaryDepartment: person.crewMember.primaryDepartment || null
+          }
+        );
+        
+        // Create relationship between Person and CrewMember
+        await session.run(
+          `MATCH (p:Person {personId: $personId})
+           MATCH (c:CrewMember {personId: $personId})
+           CREATE (p)-[:IS_CREW_MEMBER]->(c)`,
+          {
+            personId: person.personId.toString()
+          }
+        );
+      }
     }
     console.log(`Migrated ${persons.length} persons`);
 
@@ -161,59 +205,115 @@ const MigrateToNeo4j = async (prisma: PrismaClient) => {
     });
     
     for (const item of mediaItems) {
-      const labels = ["MediaItem"];
-      if (item.movie) labels.push("Movie");
-      if (item.tvShow) labels.push("TVShow");
-      
-      const properties: any = {
-        mediaId: item.mediaId.toString(),
-        tmdbId: item.tmdbId?.toString(),
-        mediaType: item.mediaType,
-        originalTitle: item.originalTitle,
-        overview: item.overview,
-        originalLanguage: item.originalLanguage,
-        status: item.status,
-        popularity: parseFloat(item.popularity.toString()),
-        voteAverage: parseFloat(item.voteAverage.toString()),
-        voteCount: item.voteCount,
-        posterPath: item.posterPath,
-        backdropPath: item.backdropPath,
-        homepageUrl: item.homepageUrl
-      };
-
-      // Add movie-specific properties
-      if (item.movie) {
-        properties.releaseDate = item.movie.releaseDate?.toISOString() || null;
-        properties.budget = item.movie.budget.toString();
-        properties.revenue = item.movie.revenue.toString();
-        properties.adultFlag = item.movie.adultFlag;
-        properties.runtimeMinutes = item.movie.runtimeMinutes || null;
-      }
-
-      // Add TV show-specific properties
-      if (item.tvShow) {
-        properties.firstAirDate = item.tvShow.firstAirDate?.toISOString() || null;
-        properties.lastAirDate = item.tvShow.lastAirDate?.toISOString() || null;
-        properties.inProduction = item.tvShow.inProduction;
-        properties.numberOfSeasons = item.tvShow.numberOfSeasons;
-        properties.numberOfEpisodes = item.tvShow.numberOfEpisodes;
-        properties.showType = item.tvShow.showType || null;
-      }
-
+      // Create base MediaItem node
       await session.run(
-        `CREATE (m:${labels.join(":")} $properties)`,
-        { properties }
+        `CREATE (m:MediaItem {
+          mediaId: $mediaId,
+          tmdbId: $tmdbId,
+          mediaType: $mediaType,
+          originalTitle: $originalTitle,
+          overview: $overview,
+          originalLanguage: $originalLanguage,
+          status: $status,
+          popularity: $popularity,
+          voteAverage: $voteAverage,
+          voteCount: $voteCount,
+          posterPath: $posterPath,
+          backdropPath: $backdropPath,
+          homepageUrl: $homepageUrl
+        })`,
+        {
+          mediaId: item.mediaId.toString(),
+          tmdbId: item.tmdbId?.toString(),
+          mediaType: item.mediaType,
+          originalTitle: item.originalTitle,
+          overview: item.overview,
+          originalLanguage: item.originalLanguage,
+          status: item.status,
+          popularity: parseFloat(item.popularity.toString()),
+          voteAverage: parseFloat(item.voteAverage.toString()),
+          voteCount: item.voteCount,
+          posterPath: item.posterPath,
+          backdropPath: item.backdropPath,
+          homepageUrl: item.homepageUrl
+        }
       );
 
-      // Create relationship to collection for movies
-      if (item.movie?.collectionId) {
+      // Create Movie node if this is a movie
+      if (item.movie) {
         await session.run(
-          `MATCH (m:MediaItem {mediaId: $mediaId})
-           MATCH (col:Collection {collectionId: $collectionId})
-           CREATE (m)-[:PART_OF]->(col)`,
+          `CREATE (m:Movie {
+            mediaId: $mediaId,
+            releaseDate: $releaseDate,
+            budget: $budget,
+            revenue: $revenue,
+            adultFlag: $adultFlag,
+            runtimeMinutes: $runtimeMinutes
+          })`,
           {
             mediaId: item.mediaId.toString(),
-            collectionId: item.movie.collectionId.toString()
+            releaseDate: item.movie.releaseDate?.toISOString() || null,
+            budget: item.movie.budget.toString(),
+            revenue: item.movie.revenue.toString(),
+            adultFlag: item.movie.adultFlag,
+            runtimeMinutes: item.movie.runtimeMinutes || null
+          }
+        );
+
+        // Create relationship between MediaItem and Movie
+        await session.run(
+          `MATCH (mi:MediaItem {mediaId: $mediaId})
+           MATCH (m:Movie {mediaId: $mediaId})
+           CREATE (mi)-[:IS_MOVIE]->(m)`,
+          {
+            mediaId: item.mediaId.toString()
+          }
+        );
+
+        // Create relationship to collection if exists
+        if (item.movie.collectionId) {
+          await session.run(
+            `MATCH (m:Movie {mediaId: $mediaId})
+             MATCH (col:Collection {collectionId: $collectionId})
+             CREATE (m)-[:PART_OF]->(col)`,
+            {
+              mediaId: item.mediaId.toString(),
+              collectionId: item.movie.collectionId.toString()
+            }
+          );
+        }
+      }
+
+      // Create TVShow node if this is a TV show
+      if (item.tvShow) {
+        await session.run(
+          `CREATE (tv:TVShow {
+            mediaId: $mediaId,
+            firstAirDate: $firstAirDate,
+            lastAirDate: $lastAirDate,
+            inProduction: $inProduction,
+            numberOfSeasons: $numberOfSeasons,
+            numberOfEpisodes: $numberOfEpisodes,
+            showType: $showType
+          })`,
+          {
+            mediaId: item.mediaId.toString(),
+            firstAirDate: item.tvShow.firstAirDate?.toISOString() || null,
+            lastAirDate: item.tvShow.lastAirDate?.toISOString() || null,
+            inProduction: item.tvShow.inProduction,
+            numberOfSeasons: item.tvShow.numberOfSeasons,
+            numberOfEpisodes: item.tvShow.numberOfEpisodes,
+            showType: item.tvShow.showType || null
+          }
+        );
+
+        // Create relationship between MediaItem and TVShow
+        await session.run(
+          `MATCH (mi:MediaItem {mediaId: $mediaId})
+           MATCH (tv:TVShow {mediaId: $mediaId})
+           CREATE (mi)-[:IS_TV_SHOW]->(tv)`,
+          {
+            mediaId: item.mediaId.toString()
           }
         );
       }
@@ -256,7 +356,7 @@ const MigrateToNeo4j = async (prisma: PrismaClient) => {
 
       // Create relationship between TV show and season
       await session.run(
-        `MATCH (tv:MediaItem {mediaId: $mediaId})
+        `MATCH (tv:TVShow {mediaId: $mediaId})
          MATCH (s:Season {seasonId: $seasonId})
          CREATE (tv)-[:HAS_SEASON]->(s)`,
         {
@@ -355,9 +455,9 @@ const MigrateToNeo4j = async (prisma: PrismaClient) => {
     
     for (const tc of titleCastings) {
       await session.run(
-        `MATCH (p:Person {personId: $personId})
+        `MATCH (a:Actor {personId: $personId})
          MATCH (m:MediaItem {mediaId: $mediaId})
-         CREATE (p)-[:ACTED_IN {
+         CREATE (a)-[:ACTED_IN {
            characterName: $characterName,
            castOrder: $castOrder
          }]->(m)`,
@@ -377,9 +477,9 @@ const MigrateToNeo4j = async (prisma: PrismaClient) => {
     
     for (const tca of crewAssignments) {
       await session.run(
-        `MATCH (p:Person {personId: $personId})
+        `MATCH (c:CrewMember {personId: $personId})
          MATCH (m:MediaItem {mediaId: $mediaId})
-         CREATE (p)-[:WORKED_ON {
+         CREATE (c)-[:WORKED_ON {
            department: $department,
            jobTitle: $jobTitle
          }]->(m)`,
@@ -399,9 +499,9 @@ const MigrateToNeo4j = async (prisma: PrismaClient) => {
     
     for (const ec of episodeCastings) {
       await session.run(
-        `MATCH (p:Person {personId: $personId})
+        `MATCH (a:Actor {personId: $personId})
          MATCH (e:Episode {episodeId: $episodeId})
-         CREATE (p)-[:ACTED_IN_EPISODE {
+         CREATE (a)-[:ACTED_IN_EPISODE {
            characterName: $characterName,
            castOrder: $castOrder
          }]->(e)`,
@@ -421,9 +521,9 @@ const MigrateToNeo4j = async (prisma: PrismaClient) => {
     
     for (const eca of episodeCrewAssignments) {
       await session.run(
-        `MATCH (p:Person {personId: $personId})
+        `MATCH (c:CrewMember {personId: $personId})
          MATCH (e:Episode {episodeId: $episodeId})
-         CREATE (p)-[:WORKED_ON_EPISODE {
+         CREATE (c)-[:WORKED_ON_EPISODE {
            department: $department,
            jobTitle: $jobTitle
          }]->(e)`,
