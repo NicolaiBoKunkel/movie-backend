@@ -78,6 +78,12 @@ else
   echo "Schema appears present (MediaItem exists) - skipping schema application"
 fi
 
+# 3b) Apply stored functions + procedures
+run_as_postgres "04_procs_funcs.sql"
+
+# Apply DDL event logging (event trigger)
+run_as_postgres "06_events.sql"
+
 # 4) Apply grants (07)
 run_as_postgres "07_users_privs.sql"
 
