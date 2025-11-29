@@ -28,6 +28,10 @@
     "exactOptionalPropertyTypes": true,
     "isolatedModules": true,
 
+    /* REQUIRED for TypeORM */
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+
   /* Silence deprecation notices until v7 */
   /* removed invalid ignoreDeprecations setting to satisfy current tsc */
   },
