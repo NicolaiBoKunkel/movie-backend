@@ -5,23 +5,32 @@ import { z } from "zod";
 
 const router = Router();
 
-//ZOD SCHEMA FOR MOVIE CREATION / UPDATE
+// ZOD SCHEMA FOR MOVIE CREATION / UPDATE
 const createMovieSchema = z.object({
   mediaId: z.string().min(1),
   tmdbId: z.string().min(1),
   originalTitle: z.string().min(1),
   overview: z.string().optional(),
-  releaseDate: z.string().optional(),
-  voteAverage: z.number().min(0).max(10).optional(),
-  budget: z.string().optional(),
-  revenue: z.string().optional(),
-  runtimeMinutes: z.number().optional(),
   originalLanguage: z.string().optional(),
   status: z.string().optional(),
+  popularity: z.number().optional(),
+  voteAverage: z.number().min(0).max(10).optional(),
+  voteCount: z.number().optional(),
+  posterPath: z.string().optional(),
+  backdropPath: z.string().optional(),
+  homepageUrl: z.string().optional(),
+
+  // Movie-specific fields
+  releaseDate: z.string().optional(),
+  budget: z.number().optional(),
+  revenue: z.number().optional(),
+  adultFlag: z.boolean().optional(),
+  runtimeMinutes: z.number().optional(),
+
   genres: z.array(z.string()).optional(),
 });
 
-//POST /neo/movies (CREATE)
+// POST /neo/movies  (CREATE)
 router.post(
   "/",
   requireAuth,
@@ -39,37 +48,63 @@ router.post(
     const session = getSession();
 
     try {
-      // Create movie node
+      // --- Create MediaItem node ---
+      await session.run(
+        `
+        MERGE (mi:MediaItem {mediaId: $mediaId})
+        SET mi += {
+          mediaType: "movie",
+          tmdbId: $tmdbId,
+          originalTitle: $originalTitle,
+          overview: $overview,
+          originalLanguage: $originalLanguage,
+          status: $status,
+          popularity: $popularity,
+          voteAverage: $voteAverage,
+          voteCount: $voteCount,
+          posterPath: $posterPath,
+          backdropPath: $backdropPath,
+          homepageUrl: $homepageUrl
+        }
+        `,
+        data
+      );
+
+      // --- Create Movie node ---
       await session.run(
         `
         MERGE (m:Movie {mediaId: $mediaId})
         SET m += {
-          tmdbId: $tmdbId,
-          originalTitle: $originalTitle,
-          overview: $overview,
           releaseDate: $releaseDate,
-          voteAverage: $voteAverage,
           budget: $budget,
           revenue: $revenue,
-          runtimeMinutes: $runtimeMinutes,
-          originalLanguage: $originalLanguage,
-          status: $status
+          adultFlag: $adultFlag,
+          runtimeMinutes: $runtimeMinutes
         }
         `,
-        { ...data }
+        data
       );
 
-      // Create genre relationships if any
+      // --- Create IS_MOVIE relationship ---
+      await session.run(
+        `
+        MATCH (mi:MediaItem {mediaId: $mediaId})
+        MATCH (m:Movie {mediaId: $mediaId})
+        MERGE (mi)-[:IS_MOVIE]->(m)
+        `,
+        { mediaId: data.mediaId }
+      );
+
+      // --- Genres ---
       if (data.genres && data.genres.length > 0) {
         for (const g of data.genres) {
           await session.run(
             `
             MERGE (ge:Genre {name: $g})
-            WITH ge
-            MATCH (m:Movie {mediaId: $id})
-            MERGE (m)-[:HAS_GENRE]->(ge)
+            MATCH (mi:MediaItem {mediaId: $mediaId})
+            MERGE (mi)-[:HAS_GENRE]->(ge)
             `,
-            { g, id: data.mediaId }
+            { g, mediaId: data.mediaId }
           );
         }
       }
@@ -84,8 +119,7 @@ router.post(
   }
 );
 
-
-//PUT /neo/movies/:id (UPDATE)
+// PUT /neo/movies/:id (UPDATE)
 const updateSchema = createMovieSchema.partial();
 
 router.put(
@@ -107,9 +141,9 @@ router.put(
     const session = getSession();
 
     try {
-      // Ensure node exists
+      // Ensure MediaItem exists
       const check = await session.run(
-        `MATCH (m:Movie {mediaId: $id}) RETURN m`,
+        `MATCH (mi:MediaItem {mediaId: $id, mediaType: "movie"}) RETURN mi`,
         { id }
       );
 
@@ -117,21 +151,54 @@ router.put(
         return res.status(404).json({ error: "Movie not found" });
       }
 
-      // Update properties
+      // Update MediaItem fields
+      await session.run(
+        `
+        MATCH (mi:MediaItem {mediaId: $id})
+        SET mi += $mediaUpdates
+        `,
+        {
+          id,
+          mediaUpdates: {
+            tmdbId: data.tmdbId,
+            originalTitle: data.originalTitle,
+            overview: data.overview,
+            originalLanguage: data.originalLanguage,
+            status: data.status,
+            popularity: data.popularity,
+            voteAverage: data.voteAverage,
+            voteCount: data.voteCount,
+            posterPath: data.posterPath,
+            backdropPath: data.backdropPath,
+            homepageUrl: data.homepageUrl,
+          },
+        }
+      );
+
+      // Update Movie-specific fields
       await session.run(
         `
         MATCH (m:Movie {mediaId: $id})
-        SET m += $data
+        SET m += $movieUpdates
         `,
-        { id, data }
+        {
+          id,
+          movieUpdates: {
+            releaseDate: data.releaseDate,
+            budget: data.budget,
+            revenue: data.revenue,
+            adultFlag: data.adultFlag,
+            runtimeMinutes: data.runtimeMinutes,
+          },
+        }
       );
 
-      // Update genres if provided
+      // Update genres
       if (data.genres) {
-        // Remove old relations
+        // Remove old genres
         await session.run(
           `
-          MATCH (m:Movie {mediaId: $id})-[r:HAS_GENRE]->(:Genre)
+          MATCH (mi:MediaItem {mediaId: $id})-[r:HAS_GENRE]->(:Genre)
           DELETE r
           `,
           { id }
@@ -142,9 +209,8 @@ router.put(
           await session.run(
             `
             MERGE (ge:Genre {name: $g})
-            WITH ge
-            MATCH (m:Movie {mediaId: $id})
-            MERGE (m)-[:HAS_GENRE]->(ge)
+            MATCH (mi:MediaItem {mediaId: $id})
+            MERGE (mi)-[:HAS_GENRE]->(ge)
             `,
             { g, id }
           );
@@ -171,27 +237,23 @@ router.delete(
     const session = getSession();
 
     try {
-        const result = await session.run(
+      const result = await session.run(
         `
-        MATCH (m:Movie {mediaId: $id})
-        DETACH DELETE m
-        RETURN count(*) as deleted
+        MATCH (mi:MediaItem {mediaId: $id, mediaType: "movie"})
+        OPTIONAL MATCH (mi)-[:IS_MOVIE]->(m:Movie)
+        DETACH DELETE mi, m
+        RETURN count(*) AS deleted
         `,
         { id }
-        );
+      );
 
-        const record = result.records[0];
-        if (!record) {
+      const deleted = result.records[0]?.get("deleted")?.toInt?.() ?? 0;
+
+      if (deleted === 0) {
         return res.status(404).json({ error: "Movie not found" });
-        }
+      }
 
-        const deleted = record.get("deleted")?.toInt?.() ?? 0;
-
-        if (deleted === 0) {
-        return res.status(404).json({ error: "Movie not found" });
-        }
-
-        res.json({ deleted: true, mediaId: id });
+      res.json({ deleted: true, mediaId: id });
     } catch (err) {
       console.error("Neo4j DELETE movie error:", err);
       res.status(500).json({ error: "Failed to delete movie" });

@@ -106,28 +106,31 @@ router.get("/", async (req, res) => {
     if (search.length > 0) {
       result = await session.run(
         `
-        MATCH (m:Movie)
-        WHERE toLower(m.originalTitle) CONTAINS toLower($search)
-           OR toLower(m.overview) CONTAINS toLower($search)
-        OPTIONAL MATCH (m)-[:HAS_GENRE]->(g:Genre)
-        WITH m, collect(g.name) AS genres
-        RETURN m {.*, genres: genres} AS movie
+        MATCH (mi:MediaItem {mediaType: "movie"})
+        -[:IS_MOVIE]->(m:Movie)
+        WHERE toLower(mi.originalTitle) CONTAINS toLower($search)
+          OR toLower(mi.overview)      CONTAINS toLower($search)
+        OPTIONAL MATCH (mi)-[:HAS_GENRE]->(g:Genre)
+        WITH mi, collect(g.name) AS genres
+        RETURN mi {.*, genres: genres} AS movie
         LIMIT $limit
-      `,
+        `,
         { search, limit: neo4j.int(limit) }
       );
     } else {
       result = await session.run(
         `
-        MATCH (m:Movie)
-        OPTIONAL MATCH (m)-[:HAS_GENRE]->(g:Genre)
-        WITH m, collect(g.name) AS genres
-        RETURN m {.*, genres: genres} AS movie
+        MATCH (mi:MediaItem {mediaType: "movie"})
+        -[:IS_MOVIE]->(m:Movie)
+        OPTIONAL MATCH (mi)-[:HAS_GENRE]->(g:Genre)
+        WITH mi, collect(g.name) AS genres
+        RETURN mi {.*, genres: genres} AS movie
         LIMIT $limit
-      `,
+        `,
         { limit: neo4j.int(limit) }
       );
     }
+
 
     const movies = result.records.map((r) => {
       const props = r.get("movie");
@@ -157,59 +160,96 @@ router.get("/:id", async (req, res) => {
   try {
     const result = await session.run(
       `
-      MATCH (m:Movie {mediaId: $id})
+      MATCH (mi:MediaItem {mediaId: $id, mediaType: "movie"})
+      MATCH (mi)-[:IS_MOVIE]->(mov:Movie)
 
-      OPTIONAL MATCH (m)-[:HAS_GENRE]->(g:Genre)
-      WITH m, collect(g.name) AS genres
+      // Genres from MediaItem
+      OPTIONAL MATCH (mi)-[:HAS_GENRE]->(g:Genre)
+      WITH mi, mov, collect(g.name) AS genres
 
-      OPTIONAL MATCH (m)-[prod:PRODUCED_BY]->(c:Company)
-      WITH m, genres, collect({ 
-        companyId: c.companyId, 
-        name: c.name, 
-        role: prod.role 
-      }) AS companies
+      // Companies
+      OPTIONAL MATCH (mi)-[prod:PRODUCED_BY]->(c:Company)
+      WITH mi, mov, genres,
+          collect(
+            CASE WHEN c IS NULL THEN null ELSE {
+              companyId: c.companyId,
+              name:     c.name,
+              role:     prod.role
+            } END
+          ) AS companiesRaw
 
-      OPTIONAL MATCH (p:Person)-[a:ACTED_IN]->(m)
-      WITH m, genres, companies, collect({
-        personId: p.personId,
-        name: p.name,
-        characterName: a.characterName,
-        castOrder: a.castOrder
-      }) AS cast
+      // Cast: Actor -> MediaItem, with optional Person for name
+      OPTIONAL MATCH (a:Actor)-[aRel:ACTED_IN]->(mi)
+      OPTIONAL MATCH (a)-[:IS_ACTOR]->(p:Person)
+      WITH mi, mov, genres, companiesRaw,
+          collect(
+            CASE WHEN aRel IS NULL THEN null ELSE {
+              personId: coalesce(p.personId, a.personId),
+              name:     coalesce(p.name, ""),
+              characterName: aRel.characterName,
+              castOrder:     aRel.castOrder
+            } END
+          ) AS castRaw
 
-      OPTIONAL MATCH (p2:Person)-[w:WORKED_ON]->(m)
-      RETURN m, genres, companies, cast,
-      collect({
-        personId: p2.personId,
-        name: p2.name,
-        department: w.department,
-        jobTitle: w.jobTitle
-      }) AS crew
+      // Crew: CrewMember -> MediaItem, with optional Person for name
+      OPTIONAL MATCH (cm:CrewMember)-[w:WORKED_ON]->(mi)
+      OPTIONAL MATCH (cm)-[:IS_CREW_MEMBER]->(p2:Person)
+      WITH mi, mov, genres, companiesRaw, castRaw,
+          collect(
+            CASE WHEN w IS NULL THEN null ELSE {
+              personId: coalesce(p2.personId, cm.personId),
+              name:     coalesce(p2.name, ""),
+              department: w.department,
+              jobTitle:   w.jobTitle
+            } END
+          ) AS crewRaw
+
+      // Collection (Movie -> Collection)
+      OPTIONAL MATCH (mov)-[:PART_OF]->(col:Collection)
+      WITH mi, mov, genres, companiesRaw, castRaw, crewRaw,
+          col.collectionId AS collectionId
+
+      RETURN mi, mov, genres,
+            [c IN companiesRaw WHERE c IS NOT NULL] AS companies,
+            [c IN castRaw      WHERE c IS NOT NULL] AS cast,
+            [c IN crewRaw      WHERE c IS NOT NULL] AS crew,
+            collectionId
       LIMIT 1
       `,
       { id }
     );
+
 
     if (result.records.length === 0) {
       return res.status(404).json({ error: "Movie not found" });
     }
 
     const record = result.records[0]!;
-    
-    const movieNode = (record.get("m") as any)?.properties ?? {};
-    const genres = (record.get("genres") as any[]) ?? [];
-    const companies = (record.get("companies") as any[]) ?? [];
-    const cast = (record.get("cast") as any[]) ?? [];
-    const crew = (record.get("crew") as any[]) ?? [];
 
-    const dto = {
-      ...mapNeoMovie(movieNode, genres),
+    const mediaItemNode = (record.get("mi") as any)?.properties ?? {};
+    const movieNode = (record.get("mov") as any)?.properties ?? {};
+    const genres = (record.get("genres") as any[]) ?? [];
+    const companies = ((record.get("companies") as any[]) ?? []).filter(c => c && c.companyId);
+    const cast = ((record.get("cast") as any[]) ?? []).filter(c => c && c.personId);
+    const crew = ((record.get("crew") as any[]) ?? []).filter(c => c && c.personId);
+    const collectionId = record.get("collectionId") ?? null;
+
+    // Merge MediaItem + Movie properties into one object for the mapper
+    const combinedNode = {
+      ...mediaItemNode,
+      ...movieNode,
+      collectionId,
+    };
+
+    const dto: MovieDto = {
+      ...mapNeoMovie(combinedNode, genres),
       companies,
       cast,
-      crew
+      crew,
     };
 
     return res.json(dto);
+
 
   } catch (err) {
     console.error("Neo4j GET /movies/:id error:", err);
