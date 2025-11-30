@@ -1,0 +1,1365 @@
+{
+	"info": {
+		"_postman_id": "movie-backend-neo4j-collection",
+		"name": "Movie Backend Neo4j API - Complete Test Suite",
+		"description": "Comprehensive Neo4j API testing collection with positive and negative test cases for all Neo4j endpoints",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Login - Existing Admin",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const adminUsername = pm.environment.get('ADMIN_USERNAME') || 'admin_test_user';",
+									"pm.environment.set('NEO4J_ADMIN_USERNAME', adminUsername);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    pm.test(\"Status code is 200\", function () {",
+									"        pm.response.to.have.status(200);",
+									"    });",
+									"    ",
+									"    const jsonData = pm.response.json();",
+									"    pm.environment.set('NEO4J_ADMIN_TOKEN', jsonData.token);",
+									"    ",
+									"    pm.test(\"Logged in with admin role\", function () {",
+									"        pm.expect(jsonData.user.role).to.equal('admin');",
+									"    });",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"{{NEO4J_ADMIN_USERNAME}}\",\n  \"password\": \"securePassword123\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/auth/login",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Neo4j Movies (Public)",
+			"item": [
+				{
+					"name": "Get All Movies - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response is an array\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.be.an('array');",
+									"});",
+									"",
+									"pm.test(\"Response has movie objects with correct structure\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    if (jsonData.length > 0) {",
+									"        const movie = jsonData[0];",
+									"        pm.expect(movie).to.have.property('mediaId');",
+									"        pm.expect(movie).to.have.property('originalTitle');",
+									"        pm.expect(movie).to.have.property('voteAverage');",
+									"        pm.expect(movie).to.have.property('genres');",
+									"        pm.expect(movie.genres).to.be.an('array');",
+									"        ",
+									"        // Save a test movie ID for later use",
+									"        pm.environment.set('NEO4J_TEST_MOVIE_ID', movie.mediaId);",
+									"    }",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 500ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/neo/movies",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"neo",
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Movies with Limit",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response contains at most 5 movies\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.be.an('array');",
+									"    pm.expect(jsonData.length).to.be.at.most(5);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/neo/movies?limit=5",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"neo",
+								"movies"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Movies with Search",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response is an array\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.be.an('array');",
+									"});",
+									"",
+									"pm.test(\"Search results contain 'the' in title or overview\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    if (jsonData.length > 0) {",
+									"        const movie = jsonData[0];",
+									"        pm.expect(movie).to.have.property('originalTitle');",
+									"    }",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/neo/movies?search=the",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"neo",
+								"movies"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "the"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Movie by ID - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response has complete movie structure\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('mediaId');",
+									"    pm.expect(jsonData).to.have.property('tmdbId');",
+									"    pm.expect(jsonData).to.have.property('mediaType');",
+									"    pm.expect(jsonData).to.have.property('originalTitle');",
+									"    pm.expect(jsonData).to.have.property('overview');",
+									"    pm.expect(jsonData).to.have.property('voteAverage');",
+									"    pm.expect(jsonData).to.have.property('releaseDate');",
+									"    pm.expect(jsonData).to.have.property('genres');",
+									"    pm.expect(jsonData.mediaType).to.equal('movie');",
+									"});",
+									"",
+									"pm.test(\"Response has nested arrays\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.genres).to.be.an('array');",
+									"    pm.expect(jsonData).to.have.property('cast');",
+									"    pm.expect(jsonData).to.have.property('crew');",
+									"    pm.expect(jsonData).to.have.property('companies');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/neo/movies/{{NEO4J_TEST_MOVIE_ID}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"neo",
+								"movies",
+								"{{NEO4J_TEST_MOVIE_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Movie by ID - Fail (Non-existent)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Response has error message\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('error');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/neo/movies/nonexistent_movie_id_12345",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"neo",
+								"movies",
+								"nonexistent_movie_id_12345"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Neo4j Movies (Admin - SKIPPED)",
+			"item": [
+				{
+					"name": "Create Movie - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Response has created flag\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('created');",
+									"    pm.expect(jsonData.created).to.be.true;",
+									"    pm.expect(jsonData).to.have.property('mediaId');",
+									"    pm.environment.set('NEO4J_CREATED_MOVIE_ID', jsonData.mediaId);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{NEO4J_ADMIN_TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"mediaId\": \"neo4j_test_movie_{{$timestamp}}\",\n  \"tmdbId\": \"999888\",\n  \"originalTitle\": \"Neo4j Test Movie Creation\",\n  \"overview\": \"A test movie for Neo4j API testing\",\n  \"originalLanguage\": \"en\",\n  \"status\": \"Released\",\n  \"popularity\": 75.5,\n  \"voteAverage\": 7.5,\n  \"voteCount\": 1000,\n  \"releaseDate\": \"2024-01-15\",\n  \"budget\": 50000000,\n  \"revenue\": 150000000,\n  \"adultFlag\": false,\n  \"runtimeMinutes\": 120,\n  \"genres\": [\"Action\", \"Drama\"]\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/neo/movies",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"neo",
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Movie - Fail (No Auth)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"mediaId\": \"neo4j_unauth_movie\",\n  \"tmdbId\": \"999889\",\n  \"originalTitle\": \"Unauthorized Movie\",\n  \"originalLanguage\": \"en\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/neo/movies",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"neo",
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Movie - Fail (Invalid Data)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Response has validation error\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('error');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{NEO4J_ADMIN_TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"mediaId\": \"\",\n  \"tmdbId\": \"\",\n  \"originalTitle\": \"\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/neo/movies",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"neo",
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Movie - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response has updated flag\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('updated');",
+									"    pm.expect(jsonData.updated).to.be.true;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{NEO4J_ADMIN_TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"originalTitle\": \"Neo4j Test Movie Creation - Updated\",\n  \"voteAverage\": 8.5,\n  \"budget\": 60000000\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/neo/movies/{{NEO4J_CREATED_MOVIE_ID}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"neo",
+								"movies",
+								"{{NEO4J_CREATED_MOVIE_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Movie - Fail (No Auth)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"originalTitle\": \"Unauthorized Update\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/neo/movies/{{NEO4J_CREATED_MOVIE_ID}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"neo",
+								"movies",
+								"{{NEO4J_CREATED_MOVIE_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Movie - Fail (Non-existent)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{NEO4J_ADMIN_TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"originalTitle\": \"Update Non-existent\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/neo/movies/nonexistent_id_999",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"neo",
+								"movies",
+								"nonexistent_id_999"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Movie - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response has deleted flag\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('deleted');",
+									"    pm.expect(jsonData.deleted).to.be.true;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{NEO4J_ADMIN_TOKEN}}"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/neo/movies/{{NEO4J_CREATED_MOVIE_ID}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"neo",
+								"movies",
+								"{{NEO4J_CREATED_MOVIE_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Movie - Fail (No Auth)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/neo/movies/some_movie_id",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"neo",
+								"movies",
+								"some_movie_id"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Movie - Fail (Already Deleted)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{NEO4J_ADMIN_TOKEN}}"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/neo/movies/{{NEO4J_CREATED_MOVIE_ID}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"neo",
+								"movies",
+								"{{NEO4J_CREATED_MOVIE_ID}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Neo4j TV Shows (Public)",
+			"item": [
+				{
+					"name": "Get All TV Shows - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response is an array\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.be.an('array');",
+									"});",
+									"",
+									"pm.test(\"Response has TV show objects with correct structure\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    if (jsonData.length > 0) {",
+									"        const show = jsonData[0];",
+									"        pm.expect(show).to.have.property('mediaId');",
+									"        pm.expect(show).to.have.property('originalTitle');",
+									"        pm.expect(show).to.have.property('voteAverage');",
+									"        pm.expect(show).to.have.property('genres');",
+									"        pm.expect(show.genres).to.be.an('array');",
+									"        ",
+									"        pm.environment.set('NEO4J_TEST_TV_ID', show.mediaId);",
+									"    }",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/neo/tv",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"neo",
+								"tv"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get TV Shows with Limit",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response contains at most 5 TV shows\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.be.an('array');",
+									"    pm.expect(jsonData.length).to.be.at.most(5);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/neo/tv?limit=5",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"neo",
+								"tv"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get TV Shows with Search",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response is an array\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.be.an('array');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/neo/tv?search=the",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"neo",
+								"tv"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "the"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get TV Show by ID - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response has complete TV show structure\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('mediaId');",
+									"    pm.expect(jsonData).to.have.property('tmdbId');",
+									"    pm.expect(jsonData).to.have.property('mediaType');",
+									"    pm.expect(jsonData).to.have.property('originalTitle');",
+									"    pm.expect(jsonData).to.have.property('voteAverage');",
+									"    pm.expect(jsonData).to.have.property('firstAirDate');",
+									"    pm.expect(jsonData).to.have.property('genres');",
+									"    pm.expect(jsonData.mediaType).to.equal('tv');",
+									"});",
+									"",
+									"pm.test(\"Response has nested arrays including seasons\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.genres).to.be.an('array');",
+									"    pm.expect(jsonData).to.have.property('cast');",
+									"    pm.expect(jsonData).to.have.property('crew');",
+									"    pm.expect(jsonData).to.have.property('companies');",
+									"    pm.expect(jsonData).to.have.property('seasons');",
+									"    pm.expect(jsonData.seasons).to.be.an('array');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/neo/tv/{{NEO4J_TEST_TV_ID}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"neo",
+								"tv",
+								"{{NEO4J_TEST_TV_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get TV Show by ID - Fail (Non-existent)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Response has error message\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('error');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/neo/tv/nonexistent_tv_id_12345",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"neo",
+								"tv",
+								"nonexistent_tv_id_12345"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Neo4j TV Shows (Admin - SKIPPED)",
+			"item": [
+				{
+					"name": "Create TV Show - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Response has created flag\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('created');",
+									"    pm.expect(jsonData.created).to.be.true;",
+									"    pm.expect(jsonData).to.have.property('mediaId');",
+									"    pm.environment.set('NEO4J_CREATED_TV_ID', jsonData.mediaId);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{NEO4J_ADMIN_TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"mediaId\": \"neo4j_test_tv_{{$timestamp}}\",\n  \"tmdbId\": \"888999\",\n  \"originalTitle\": \"Neo4j Test TV Show Creation\",\n  \"overview\": \"A test TV show for Neo4j API testing\",\n  \"originalLanguage\": \"en\",\n  \"status\": \"Returning Series\",\n  \"popularity\": 85.5,\n  \"voteAverage\": 8.2,\n  \"voteCount\": 2000,\n  \"firstAirDate\": \"2023-01-10\",\n  \"lastAirDate\": \"2024-12-15\",\n  \"inProduction\": true,\n  \"numberOfSeasons\": 2,\n  \"numberOfEpisodes\": 20,\n  \"showType\": \"Scripted\",\n  \"genres\": [\"Drama\", \"Thriller\"]\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/neo/tv",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"neo",
+								"tv"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create TV Show - Fail (No Auth)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"mediaId\": \"neo4j_unauth_tv\",\n  \"tmdbId\": \"888998\",\n  \"originalTitle\": \"Unauthorized TV Show\",\n  \"originalLanguage\": \"en\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/neo/tv",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"neo",
+								"tv"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create TV Show - Fail (Invalid Data)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Response has validation error\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('error');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{NEO4J_ADMIN_TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"mediaId\": \"\",\n  \"tmdbId\": \"\",\n  \"originalTitle\": \"\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/neo/tv",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"neo",
+								"tv"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update TV Show - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response has updated flag\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('updated');",
+									"    pm.expect(jsonData.updated).to.be.true;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{NEO4J_ADMIN_TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"originalTitle\": \"Neo4j Test TV Show Creation - Updated\",\n  \"voteAverage\": 8.8,\n  \"numberOfSeasons\": 3\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/neo/tv/{{NEO4J_CREATED_TV_ID}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"neo",
+								"tv",
+								"{{NEO4J_CREATED_TV_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update TV Show - Fail (No Auth)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"originalTitle\": \"Unauthorized Update\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/neo/tv/{{NEO4J_CREATED_TV_ID}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"neo",
+								"tv",
+								"{{NEO4J_CREATED_TV_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update TV Show - Fail (Non-existent)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{NEO4J_ADMIN_TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"originalTitle\": \"Update Non-existent\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/neo/tv/nonexistent_tv_999",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"neo",
+								"tv",
+								"nonexistent_tv_999"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete TV Show - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response has deleted flag\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('deleted');",
+									"    pm.expect(jsonData.deleted).to.be.true;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{NEO4J_ADMIN_TOKEN}}"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/neo/tv/{{NEO4J_CREATED_TV_ID}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"neo",
+								"tv",
+								"{{NEO4J_CREATED_TV_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete TV Show - Fail (No Auth)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/neo/tv/some_tv_id",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"neo",
+								"tv",
+								"some_tv_id"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete TV Show - Fail (Already Deleted)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{NEO4J_ADMIN_TOKEN}}"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/neo/tv/{{NEO4J_CREATED_TV_ID}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"neo",
+								"tv",
+								"{{NEO4J_CREATED_TV_ID}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE_URL",
+			"value": "http://localhost:5000",
+			"type": "string"
+		}
+	]
+}

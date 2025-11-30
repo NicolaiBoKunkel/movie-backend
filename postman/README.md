@@ -4,7 +4,9 @@ This directory contains a comprehensive Postman collection and environment for t
 
 ## 📁 Files
 
-- **`Movie-Backend-API.postman_collection.json`** - Complete test collection with 50+ test cases
+- **`Movie-Backend-API.postman_collection.json`** - Complete test collection for PostgreSQL endpoints (50+ test cases)
+- **`Movie-Backend-MongoDB-API.postman_collection.json`** - Complete test collection for MongoDB endpoints
+- **`Movie-Backend-Neo4j-API.postman_collection.json`** - Complete test collection for Neo4j endpoints
 - **`Movie-Backend.postman_environment.json`** - Environment configuration with variables
 
 ## 🚀 Getting Started
@@ -13,30 +15,186 @@ This directory contains a comprehensive Postman collection and environment for t
 
 1. Open Postman
 2. Click **Import** button (top left)
-3. Drag and drop both JSON files or click "Upload Files"
-4. Select both files:
-   - `Movie-Backend-API.postman_collection.json`
-   - `Movie-Backend.postman_environment.json`
+3. Drag and drop the JSON files or click "Upload Files"
+4. Select the files:
+   - `Movie-Backend-API.postman_collection.json` (PostgreSQL tests)
+   - `Movie-Backend-MongoDB-API.postman_collection.json` (MongoDB tests)
+   - `Movie-Backend-Neo4j-API.postman_collection.json` (Neo4j tests)
+   - `Movie-Backend.postman_environment.json` (shared environment)
 
 ### 2. Configure Environment
 
 1. In Postman, select **"Movie Backend Environment"** from the environment dropdown (top right)
 2. Update the `BASE_URL` variable if your API runs on a different port:
-   - Default: `http://localhost:3000`
+   - Default: `http://localhost:5000`
    - Click the eye icon next to the environment dropdown to edit
 
 ### 3. Run Tests
 
-**Option A: Run Entire Collection**
-1. Click on the collection name "Movie Backend API - Complete Test Suite"
-2. Click **Run** button
-3. Select all requests or specific folders
-4. Click **Run Movie Backend API...**
+#### Prerequisites
 
-**Option B: Run Individual Tests**
-1. Navigate through the folders in the collection
-2. Click on any request
-3. Click **Send** button
+Before running the tests, ensure:
+- ✅ Docker containers are running: `docker compose up -d`
+- ✅ Backend API is running on `http://localhost:5000`
+- ✅ Database is seeded with initial data
+- ✅ All services (PostgreSQL, MongoDB, Neo4j) are healthy
+
+**Verify API is running:**
+```bash
+# Test health endpoint
+curl http://localhost:5000/health
+```
+
+#### Option A: Run Entire Collection (Recommended)
+
+This runs all 38 tests in sequence with proper order:
+
+1. **Open Collection Runner:**
+   - Click on the collection name "Movie Backend API - Complete Test Suite"
+   - Click the **Run** button (or right-click → Run collection)
+
+2. **Configure Runner:**
+   - Select **"Movie Backend Environment"** in the environment dropdown
+   - Check "Save responses" if you want to review response bodies
+   - Leave "Delay" at 0ms (or add small delay if experiencing rate limiting)
+   - Ensure "Persist variables" is checked (important for token passing)
+
+3. **Select Tests:**
+   - **Run All**: Keep all folders checked
+   - **Run Specific**: Uncheck folders you want to skip
+
+4. **Run Collection:**
+   - Click **"Run Movie Backend API..."** button
+   - Watch tests execute in real-time
+   - View pass/fail status for each test
+
+5. **Review Results:**
+   - See summary: X passed, Y failed
+   - Click on any test to see detailed assertions
+   - Export results if needed
+
+#### Option B: Run Individual Tests
+
+Test specific endpoints one at a time:
+
+1. **Navigate to Request:**
+   - Expand the collection folders
+   - Click on any specific request (e.g., "Get All Movies - Success")
+
+2. **Select Environment:**
+   - Make sure **"Movie Backend Environment"** is selected (top right)
+
+3. **Send Request:**
+   - Click the blue **Send** button
+   - View response body, status code, and time
+
+4. **Check Test Results:**
+   - Scroll to the **Test Results** tab (below response)
+   - See which assertions passed/failed
+
+#### Option C: Run by Folder
+
+Test specific functionality areas:
+
+1. Right-click on a folder (e.g., "Authentication" or "Movies (Admin)")
+2. Select **"Run folder"**
+3. Follow the same steps as Option A
+
+#### Recommended Test Execution Order
+
+For first-time execution, follow this order:
+
+```
+1. Health Check
+   └─ Verifies API is responding
+
+2. Authentication
+   ├─ Register - Success (First User - Admin)
+   ├─ Register - Success (Regular User)
+   ├─ Login - Success (Admin)  ← Saves ADMIN_TOKEN
+   └─ Login - Success (Regular User)  ← Saves USER_TOKEN
+
+3. Movies (Public)
+   └─ Get All Movies - Success  ← Saves TEST_MOVIE_ID
+
+4. Movies (Admin)
+   └─ Create Movie - Success  ← Saves CREATED_MOVIE_ID
+
+5. TV Shows (Public)
+   └─ Get All TV Shows - Success  ← Saves TEST_TV_ID
+
+6. TV Shows (Admin)
+   └─ Create TV Show - Success  ← Saves CREATED_TV_ID
+
+7. Admin
+   └─ Get Audit Logs - Success
+```
+
+**Why order matters:**
+- Authentication tests generate tokens needed by admin endpoints
+- Public GET tests save IDs for subsequent tests
+- Create tests save IDs for update/delete tests
+
+#### Using Newman (CLI Alternative)
+
+Run tests from command line using Newman:
+
+**Install Newman:**
+```bash
+npm install -g newman
+```
+
+**Run collection (from project root):**
+```bash
+newman run postman/Movie-Backend-API.postman_collection.json -e postman/Movie-Backend.postman_environment.json --timeout-request 10000
+```
+
+**Run with detailed JSON report:**
+```bash
+newman run postman/Movie-Backend-API.postman_collection.json -e postman/Movie-Backend.postman_environment.json --timeout-request 10000 --reporters cli,json --reporter-json-export test-results.json
+```
+
+**Run with delay between requests:**
+```bash
+newman run postman/Movie-Backend-API.postman_collection.json -e postman/Movie-Backend.postman_environment.json --timeout-request 10000 --delay-request 100
+```
+
+**Run specific folder:**
+```bash
+newman run postman/Movie-Backend-API.postman_collection.json -e postman/Movie-Backend.postman_environment.json --timeout-request 10000 --folder "Authentication"
+```
+
+### MongoDB API Tests
+
+A separate test collection is available for testing MongoDB endpoints:
+
+**Run MongoDB public tests (recommended):**
+```bash
+newman run postman/Movie-Backend-MongoDB-API.postman_collection.json -e postman/Movie-Backend.postman_environment.json --timeout-request 10000 --folder "MongoDB Movies (Public)" --folder "MongoDB TV Shows (Public)"
+```
+
+**Run all MongoDB tests:**
+```bash
+newman run postman/Movie-Backend-MongoDB-API.postman_collection.json -e postman/Movie-Backend.postman_environment.json --timeout-request 10000
+```
+
+**Note:** Admin tests for MongoDB require an existing admin user. Run the PostgreSQL tests first or create an admin user manually.
+
+### Neo4j API Tests
+
+A separate test collection is available for testing Neo4j graph database endpoints:
+
+**Run Neo4j public tests (recommended):**
+```bash
+newman run postman/Movie-Backend-Neo4j-API.postman_collection.json -e postman/Movie-Backend.postman_environment.json --timeout-request 10000 --folder "Neo4j Movies (Public)" --folder "Neo4j TV Shows (Public)"
+```
+
+**Run all Neo4j tests:**
+```bash
+newman run postman/Movie-Backend-Neo4j-API.postman_collection.json -e postman/Movie-Backend.postman_environment.json --timeout-request 10000
+```
+
+**Note:** Admin tests for Neo4j require an existing admin user. Run the PostgreSQL tests first or create an admin user manually.
 
 ## 📋 Test Collection Structure
 
@@ -262,6 +420,74 @@ If you encounter issues:
 2. Verify the backend server is running
 3. Ensure database is properly seeded
 4. Check Postman console for detailed errors (View → Show Postman Console)
+
+## 🐛 Troubleshooting Common Issues
+
+### Issue: "Could not get response" or Connection Refused
+
+**Solution:**
+```bash
+# Check if API is running
+curl http://localhost:5000/health
+
+# If not running, start the backend
+cd c:\Users\mikke\Desktop\code\2.semester\final_project\movie-backend
+npm run dev
+
+# Or start with Docker
+docker compose up -d
+```
+
+### Issue: Tests fail with 401 Unauthorized
+
+**Solution:**
+- Run authentication tests first to generate tokens
+- Ensure "Persist variables" is enabled in Collection Runner
+- Check that `ADMIN_TOKEN` and `USER_TOKEN` are saved in environment variables
+- Manually verify token by checking Environment variables (eye icon)
+
+### Issue: Tests fail with 404 Not Found
+
+**Solution:**
+- Ensure database is seeded with initial data
+- Run public endpoints (GET all movies/TV) first to populate test IDs
+- Check that `TEST_MOVIE_ID` and `TEST_TV_ID` are set in environment
+
+### Issue: Validation errors on create/update
+
+**Solution:**
+- Check request body format in the test
+- Ensure all required fields are present
+- Verify genre IDs exist in your database
+- Review error message in response body
+
+### Issue: Test fails with "Cannot read property"
+
+**Solution:**
+- Some tests depend on previous tests running first
+- Run full collection instead of individual tests
+- Reset environment variables and run from the beginning
+
+### Issue: Duplicate username errors
+
+**Solution:**
+- Tests create users with timestamps to avoid conflicts
+- If still occurring, manually delete test users from database
+- Or change the username in the pre-request script
+
+### Issue: Newman reports all tests failed
+
+**Solution:**
+```bash
+# Ensure environment file is specified
+newman run Movie-Backend-API.postman_collection.json -e Movie-Backend.postman_environment.json
+
+# Check if BASE_URL is accessible from command line
+curl http://localhost:5000/health
+
+# Verify JSON files are not corrupted
+# Re-export from Postman if needed
+```
 
 ## 📝 Assignment Deliverables
 

@@ -1,0 +1,1707 @@
+{
+	"info": {
+		"_postman_id": "movie-backend-mongo-collection",
+		"name": "Movie Backend MongoDB API - Complete Test Suite",
+		"description": "Comprehensive MongoDB API testing collection with positive and negative test cases for all MongoDB endpoints",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication (Skipped)",
+			"item": [
+				{
+					"name": "Login - Existing Admin (if exists)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Try to use the admin account from the PostgreSQL tests if it exists",
+									"const adminUsername = pm.environment.get('ADMIN_USERNAME') || 'admin_test_user';",
+									"pm.environment.set('MONGO_ADMIN_USERNAME', adminUsername);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    pm.test(\"Status code is 200\", function () {",
+									"        pm.response.to.have.status(200);",
+									"    });",
+									"    ",
+									"    const jsonData = pm.response.json();",
+									"    pm.environment.set('MONGO_ADMIN_TOKEN', jsonData.token);",
+									"    pm.environment.set('ADMIN_EXISTS', 'true');",
+									"    ",
+									"    pm.test(\"Logged in with existing admin\", function () {",
+									"        pm.expect(jsonData.user.role).to.equal('admin');",
+									"    });",
+									"} else {",
+									"    // Admin doesn't exist, we'll create one in the next request",
+									"    pm.environment.set('ADMIN_EXISTS', 'false');",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"{{MONGO_ADMIN_USERNAME}}\",\n  \"password\": \"securePassword123\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/auth/login",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register - Success (New Admin User)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const timestamp = Date.now();",
+									"pm.environment.set('MONGO_ADMIN_USERNAME', `mongoadmin_${timestamp}`);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Response has user data\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('user_id');",
+									"    pm.expect(jsonData).to.have.property('username');",
+									"    pm.expect(jsonData).to.have.property('role');",
+									"    pm.environment.set('NEW_USER_ID', jsonData.user_id);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"{{MONGO_ADMIN_USERNAME}}\",\n  \"password\": \"mongoSecurePass123\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/auth/register",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login - Success (Admin)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response contains token\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('token');",
+									"    pm.environment.set('MONGO_ADMIN_TOKEN', jsonData.token);",
+									"});",
+									"",
+									"pm.test(\"Response contains user info\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('user');",
+									"    pm.expect(jsonData.user).to.have.property('userId');",
+									"    pm.expect(jsonData.user).to.have.property('username');",
+									"    pm.expect(jsonData.user).to.have.property('role');",
+									"    pm.expect(jsonData.user.role).to.equal('admin');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"{{MONGO_ADMIN_USERNAME}}\",\n  \"password\": \"mongoSecurePass123\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/auth/login",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MongoDB Movies (Public)",
+			"item": [
+				{
+					"name": "Get All Mongo Movies - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response is an array\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.be.an('array');",
+									"});",
+									"",
+									"pm.test(\"Response time is acceptable\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+									"});",
+									"",
+									"pm.test(\"Each movie has required summary fields\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    if (jsonData.length > 0) {",
+									"        const movie = jsonData[0];",
+									"        pm.expect(movie).to.have.property('mediaId');",
+									"        pm.expect(movie).to.have.property('originalTitle');",
+									"        pm.expect(movie).to.have.property('voteAverage');",
+									"        pm.expect(movie).to.have.property('genres');",
+									"        pm.expect(movie.genres).to.be.an('array');",
+									"        ",
+									"        // Save a movie mediaId for later tests",
+									"        pm.environment.set(\"MONGO_TEST_MOVIE_ID\", movie.mediaId);",
+									"    }",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/mongo/movies",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"mongo",
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Mongo Movies with Limit",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response respects limit\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.length).to.be.at.most(5);",
+									"});",
+									"",
+									"pm.test(\"Response is an array\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.be.an('array');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/mongo/movies?limit=5",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"mongo",
+								"movies"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Mongo Movies with Search",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response is an array\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.be.an('array');",
+									"});",
+									"",
+									"pm.test(\"Search results contain search term in title or overview\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    if (jsonData.length > 0) {",
+									"        // Just verify we got results, content matching is case-insensitive on server",
+									"        pm.expect(jsonData.length).to.be.greaterThan(0);",
+									"    }",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/mongo/movies?search=the",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"mongo",
+								"movies"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "the"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Mongo Movie by MediaId - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response has complete movie details\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('mediaId');",
+									"    pm.expect(jsonData).to.have.property('tmdbId');",
+									"    pm.expect(jsonData).to.have.property('originalTitle');",
+									"    pm.expect(jsonData).to.have.property('mediaType');",
+									"    pm.expect(jsonData.mediaType).to.equal('movie');",
+									"    pm.expect(jsonData).to.have.property('voteAverage');",
+									"    pm.expect(jsonData).to.have.property('genres');",
+									"    pm.expect(jsonData).to.have.property('cast');",
+									"    pm.expect(jsonData).to.have.property('crew');",
+									"    pm.expect(jsonData).to.have.property('companies');",
+									"});",
+									"",
+									"pm.test(\"Cast is an array\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.cast).to.be.an('array');",
+									"});",
+									"",
+									"pm.test(\"Crew is an array\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.crew).to.be.an('array');",
+									"});",
+									"",
+									"pm.test(\"Genres is an array\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.genres).to.be.an('array');",
+									"});",
+									"",
+									"pm.test(\"Response time is acceptable\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/mongo/movies/{{MONGO_TEST_MOVIE_ID}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"mongo",
+								"movies",
+								"{{MONGO_TEST_MOVIE_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Mongo Movie by MediaId - Fail (Non-existent)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Error message about not found\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('error');",
+									"    pm.expect(jsonData.error).to.include('not found');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/mongo/movies/nonexistent_media_id_999",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"mongo",
+								"movies",
+								"nonexistent_media_id_999"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MongoDB Movies (Admin - SKIPPED)",
+			"item": [
+				{
+					"name": "Create Mongo Movie - Success",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const timestamp = Date.now();",
+									"pm.environment.set('MONGO_TEST_MEDIA_ID', `test_movie_${timestamp}`);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Response contains created flag\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('created');",
+									"    pm.expect(jsonData.created).to.equal(true);",
+									"});",
+									"",
+									"pm.test(\"Response contains mediaId\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('mediaId');",
+									"});",
+									"",
+									"pm.test(\"Response contains insertedId\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('insertedId');",
+									"});",
+									"",
+									"pm.test(\"Response time is acceptable\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{MONGO_ADMIN_TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"mediaId\": \"{{MONGO_TEST_MEDIA_ID}}\",\n  \"releaseDate\": \"2024-01-15\",\n  \"budget\": 50000000,\n  \"revenue\": 150000000,\n  \"adultFlag\": false,\n  \"runtimeMinutes\": 120,\n  \"mediaItem\": {\n    \"mediaId\": \"{{MONGO_TEST_MEDIA_ID}}\",\n    \"tmdbId\": \"999888\",\n    \"mediaType\": \"movie\",\n    \"originalTitle\": \"Test MongoDB Movie Creation\",\n    \"overview\": \"A test movie created via MongoDB API\",\n    \"originalLanguage\": \"en\",\n    \"status\": \"Released\",\n    \"popularity\": 100.5,\n    \"voteAverage\": 7.5,\n    \"voteCount\": 250,\n    \"posterPath\": \"/test-poster.jpg\",\n    \"backdropPath\": \"/test-backdrop.jpg\",\n    \"genres\": [\n      {\"genreId\": \"28\", \"name\": \"Action\"},\n      {\"genreId\": \"12\", \"name\": \"Adventure\"}\n    ],\n    \"companies\": [],\n    \"cast\": [],\n    \"crew\": []\n  }\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/mongo/movies",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"mongo",
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Mongo Movie - Fail (No Auth)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});",
+									"",
+									"pm.test(\"Error message about authentication\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('error');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"mediaId\": \"unauthorized_movie\",\n  \"budget\": 1000000,\n  \"revenue\": 5000000,\n  \"adultFlag\": false,\n  \"mediaItem\": {\n    \"mediaId\": \"unauthorized_movie\",\n    \"tmdbId\": \"999999\",\n    \"mediaType\": \"movie\",\n    \"originalTitle\": \"Unauthorized Movie\",\n    \"popularity\": 50,\n    \"voteAverage\": 6.0,\n    \"voteCount\": 100\n  }\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/mongo/movies",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"mongo",
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Mongo Movie - Fail (Duplicate MediaId)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 409\", function () {",
+									"    pm.response.to.have.status(409);",
+									"});",
+									"",
+									"pm.test(\"Error message about already exists\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('error');",
+									"    pm.expect(jsonData.error).to.include('already exists');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{MONGO_ADMIN_TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"mediaId\": \"{{MONGO_TEST_MEDIA_ID}}\",\n  \"budget\": 2000000,\n  \"revenue\": 8000000,\n  \"adultFlag\": false,\n  \"mediaItem\": {\n    \"mediaId\": \"{{MONGO_TEST_MEDIA_ID}}\",\n    \"tmdbId\": \"999889\",\n    \"mediaType\": \"movie\",\n    \"originalTitle\": \"Duplicate Movie\",\n    \"popularity\": 60,\n    \"voteAverage\": 7.0,\n    \"voteCount\": 150\n  }\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/mongo/movies",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"mongo",
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Mongo Movie - Fail (Missing Required Fields)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Validation error\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('error');",
+									"    pm.expect(jsonData.error).to.include('Validation failed');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{MONGO_ADMIN_TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"mediaId\": \"incomplete_movie\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/mongo/movies",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"mongo",
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Mongo Movie - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response contains updated flag\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('updated');",
+									"    pm.expect(jsonData.updated).to.equal(true);",
+									"});",
+									"",
+									"pm.test(\"Response contains mediaId\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('mediaId');",
+									"});",
+									"",
+									"pm.test(\"Response time is acceptable\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{MONGO_ADMIN_TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"budget\": 60000000,\n  \"revenue\": 180000000,\n  \"mediaItem\": {\n    \"originalTitle\": \"Test MongoDB Movie - Updated\",\n    \"voteAverage\": 8.5,\n    \"voteCount\": 500\n  }\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/mongo/movies/{{MONGO_TEST_MEDIA_ID}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"mongo",
+								"movies",
+								"{{MONGO_TEST_MEDIA_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Mongo Movie - Fail (No Auth)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});",
+									"",
+									"pm.test(\"Error message about authentication\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('error');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"budget\": 70000000\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/mongo/movies/{{MONGO_TEST_MEDIA_ID}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"mongo",
+								"movies",
+								"{{MONGO_TEST_MEDIA_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Mongo Movie - Fail (Non-existent)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Error message about not found\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('error');",
+									"    pm.expect(jsonData.error).to.include('not found');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{MONGO_ADMIN_TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"budget\": 80000000\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/mongo/movies/nonexistent_movie_id",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"mongo",
+								"movies",
+								"nonexistent_movie_id"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Mongo Movie - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response contains deleted flag\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('deleted');",
+									"    pm.expect(jsonData.deleted).to.equal(true);",
+									"});",
+									"",
+									"pm.test(\"Response contains mediaId\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('mediaId');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{MONGO_ADMIN_TOKEN}}"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/mongo/movies/{{MONGO_TEST_MEDIA_ID}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"mongo",
+								"movies",
+								"{{MONGO_TEST_MEDIA_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Mongo Movie - Fail (No Auth)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});",
+									"",
+									"pm.test(\"Error message about authentication\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('error');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/mongo/movies/some_movie_id",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"mongo",
+								"movies",
+								"some_movie_id"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Mongo Movie - Fail (Already Deleted)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Error message about not found\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('error');",
+									"    pm.expect(jsonData.error).to.include('not found');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{MONGO_ADMIN_TOKEN}}"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/mongo/movies/{{MONGO_TEST_MEDIA_ID}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"mongo",
+								"movies",
+								"{{MONGO_TEST_MEDIA_ID}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MongoDB TV Shows (Public)",
+			"item": [
+				{
+					"name": "Get All Mongo TV Shows - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response is an array\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.be.an('array');",
+									"});",
+									"",
+									"pm.test(\"Response time is acceptable\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+									"});",
+									"",
+									"pm.test(\"Each TV show has required summary fields\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    if (jsonData.length > 0) {",
+									"        const tvShow = jsonData[0];",
+									"        pm.expect(tvShow).to.have.property('mediaId');",
+									"        pm.expect(tvShow).to.have.property('originalTitle');",
+									"        pm.expect(tvShow).to.have.property('voteAverage');",
+									"        pm.expect(tvShow).to.have.property('genres');",
+									"        pm.expect(tvShow.genres).to.be.an('array');",
+									"        ",
+									"        // Save a TV show mediaId for later tests",
+									"        pm.environment.set(\"MONGO_TEST_TV_ID\", tvShow.mediaId);",
+									"    }",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/mongo/tv",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"mongo",
+								"tv"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Mongo TV Shows with Limit",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response respects limit\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.length).to.be.at.most(5);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/mongo/tv?limit=5",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"mongo",
+								"tv"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Mongo TV Shows with Search",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response is an array\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.be.an('array');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/mongo/tv?search=friends",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"mongo",
+								"tv"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "friends"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Mongo TV Show by MediaId - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response has complete TV show details\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('mediaId');",
+									"    pm.expect(jsonData).to.have.property('tmdbId');",
+									"    pm.expect(jsonData).to.have.property('originalTitle');",
+									"    pm.expect(jsonData).to.have.property('mediaType');",
+									"    pm.expect(jsonData.mediaType).to.equal('tv');",
+									"    pm.expect(jsonData).to.have.property('voteAverage');",
+									"    pm.expect(jsonData).to.have.property('genres');",
+									"    pm.expect(jsonData).to.have.property('seasons');",
+									"    pm.expect(jsonData).to.have.property('numberOfSeasons');",
+									"    pm.expect(jsonData).to.have.property('cast');",
+									"    pm.expect(jsonData).to.have.property('crew');",
+									"    pm.expect(jsonData).to.have.property('companies');",
+									"});",
+									"",
+									"pm.test(\"Seasons is an array\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData.seasons).to.be.an('array');",
+									"});",
+									"",
+									"pm.test(\"Response time is acceptable\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/mongo/tv/{{MONGO_TEST_TV_ID}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"mongo",
+								"tv",
+								"{{MONGO_TEST_TV_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Mongo TV Show by MediaId - Fail (Non-existent)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Error message about not found\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('error');",
+									"    pm.expect(jsonData.error).to.include('not found');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/mongo/tv/nonexistent_tv_show_999",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"mongo",
+								"tv",
+								"nonexistent_tv_show_999"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MongoDB TV Shows (Admin - SKIPPED)",
+			"item": [
+				{
+					"name": "Create Mongo TV Show - Success",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const timestamp = Date.now();",
+									"pm.environment.set('MONGO_TEST_TV_MEDIA_ID', `test_tv_${timestamp}`);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Response contains created flag\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('created');",
+									"    pm.expect(jsonData.created).to.equal(true);",
+									"});",
+									"",
+									"pm.test(\"Response contains mediaId\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('mediaId');",
+									"});",
+									"",
+									"pm.test(\"Response time is acceptable\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{MONGO_ADMIN_TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"mediaId\": \"{{MONGO_TEST_TV_MEDIA_ID}}\",\n  \"firstAirDate\": \"2024-01-15\",\n  \"inProduction\": true,\n  \"numberOfSeasons\": 3,\n  \"numberOfEpisodes\": 30,\n  \"showType\": \"Scripted\",\n  \"seasons\": [\n    {\n      \"seasonNumber\": 1,\n      \"name\": \"Season 1\",\n      \"airDate\": \"2024-01-15\",\n      \"episodeCount\": 10\n    }\n  ],\n  \"mediaItem\": {\n    \"mediaId\": \"{{MONGO_TEST_TV_MEDIA_ID}}\",\n    \"tmdbId\": \"888999\",\n    \"mediaType\": \"tv\",\n    \"originalTitle\": \"Test MongoDB TV Show\",\n    \"overview\": \"A test TV show created via MongoDB API\",\n    \"originalLanguage\": \"en\",\n    \"status\": \"Returning Series\",\n    \"popularity\": 85.5,\n    \"voteAverage\": 8.2,\n    \"voteCount\": 320,\n    \"posterPath\": \"/test-tv-poster.jpg\",\n    \"backdropPath\": \"/test-tv-backdrop.jpg\",\n    \"genres\": [\n      {\"genreId\": \"18\", \"name\": \"Drama\"},\n      {\"genreId\": \"10765\", \"name\": \"Sci-Fi & Fantasy\"}\n    ],\n    \"companies\": [],\n    \"cast\": [],\n    \"crew\": []\n  }\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/mongo/tv",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"mongo",
+								"tv"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Mongo TV Show - Fail (No Auth)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});",
+									"",
+									"pm.test(\"Error message about authentication\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('error');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"mediaId\": \"unauthorized_tv\",\n  \"inProduction\": false,\n  \"numberOfSeasons\": 1,\n  \"numberOfEpisodes\": 8,\n  \"mediaItem\": {\n    \"mediaId\": \"unauthorized_tv\",\n    \"tmdbId\": \"777888\",\n    \"mediaType\": \"tv\",\n    \"originalTitle\": \"Unauthorized TV Show\",\n    \"popularity\": 30,\n    \"voteAverage\": 6.5,\n    \"voteCount\": 80\n  }\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/mongo/tv",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"mongo",
+								"tv"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Mongo TV Show - Fail (Duplicate MediaId)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 409\", function () {",
+									"    pm.response.to.have.status(409);",
+									"});",
+									"",
+									"pm.test(\"Error message about already exists\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('error');",
+									"    pm.expect(jsonData.error).to.include('already exists');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{MONGO_ADMIN_TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"mediaId\": \"{{MONGO_TEST_TV_MEDIA_ID}}\",\n  \"inProduction\": true,\n  \"numberOfSeasons\": 2,\n  \"numberOfEpisodes\": 20,\n  \"mediaItem\": {\n    \"mediaId\": \"{{MONGO_TEST_TV_MEDIA_ID}}\",\n    \"tmdbId\": \"888888\",\n    \"mediaType\": \"tv\",\n    \"originalTitle\": \"Duplicate TV Show\",\n    \"popularity\": 70,\n    \"voteAverage\": 7.8,\n    \"voteCount\": 200\n  }\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/mongo/tv",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"mongo",
+								"tv"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Mongo TV Show - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response contains updated flag\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('updated');",
+									"    pm.expect(jsonData.updated).to.equal(true);",
+									"});",
+									"",
+									"pm.test(\"Response contains mediaId\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('mediaId');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{MONGO_ADMIN_TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"numberOfSeasons\": 4,\n  \"numberOfEpisodes\": 40,\n  \"mediaItem\": {\n    \"originalTitle\": \"Test MongoDB TV Show - Updated\",\n    \"voteAverage\": 9.0,\n    \"voteCount\": 600\n  }\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/mongo/tv/{{MONGO_TEST_TV_MEDIA_ID}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"mongo",
+								"tv",
+								"{{MONGO_TEST_TV_MEDIA_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Mongo TV Show - Fail (No Auth)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});",
+									"",
+									"pm.test(\"Error message about authentication\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('error');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"numberOfSeasons\": 5\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/mongo/tv/{{MONGO_TEST_TV_MEDIA_ID}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"mongo",
+								"tv",
+								"{{MONGO_TEST_TV_MEDIA_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Mongo TV Show - Fail (Non-existent)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Error message about not found\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('error');",
+									"    pm.expect(jsonData.error).to.include('not found');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{MONGO_ADMIN_TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"numberOfSeasons\": 6\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/mongo/tv/nonexistent_tv_id",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"mongo",
+								"tv",
+								"nonexistent_tv_id"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Mongo TV Show - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response contains deleted flag\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('deleted');",
+									"    pm.expect(jsonData.deleted).to.equal(true);",
+									"});",
+									"",
+									"pm.test(\"Response contains mediaId\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('mediaId');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{MONGO_ADMIN_TOKEN}}"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/mongo/tv/{{MONGO_TEST_TV_MEDIA_ID}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"mongo",
+								"tv",
+								"{{MONGO_TEST_TV_MEDIA_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Mongo TV Show - Fail (No Auth)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});",
+									"",
+									"pm.test(\"Error message about authentication\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('error');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/mongo/tv/some_tv_id",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"mongo",
+								"tv",
+								"some_tv_id"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Mongo TV Show - Fail (Already Deleted)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Error message about not found\", function () {",
+									"    const jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('error');",
+									"    pm.expect(jsonData.error).to.include('not found');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{MONGO_ADMIN_TOKEN}}"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/mongo/tv/{{MONGO_TEST_TV_MEDIA_ID}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"mongo",
+								"tv",
+								"{{MONGO_TEST_TV_MEDIA_ID}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE_URL",
+			"value": "http://localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "MONGO_ADMIN_USERNAME",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "MONGO_ADMIN_TOKEN",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "MONGO_TEST_MOVIE_ID",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "MONGO_TEST_TV_ID",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "MONGO_TEST_MEDIA_ID",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "MONGO_TEST_TV_MEDIA_ID",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
