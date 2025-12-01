@@ -50,14 +50,14 @@ describe('TV Shows API Integration Tests', () => {
         .expect(200);
 
       if (listResponse.body.length > 0) {
-        const tvId = listResponse.body[0].media_id;
+        const tvId = listResponse.body[0].mediaId;
         
         const response = await request(app)
           .get(`/tv/${tvId}`)
           .expect(200);
 
-        expect(response.body).toHaveProperty('media_id', tvId);
-        expect(response.body).toHaveProperty('original_title');
+        expect(response.body).toHaveProperty('mediaId', tvId);
+        expect(response.body).toHaveProperty('originalTitle');
       }
     });
 

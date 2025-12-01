@@ -63,14 +63,14 @@ describe('Movies API Integration Tests', () => {
         .expect(200);
 
       if (listResponse.body.length > 0) {
-        const movieId = listResponse.body[0].media_id;
+        const movieId = listResponse.body[0].mediaId;
         
         const response = await request(app)
           .get(`/movies/${movieId}`)
           .expect(200);
 
-        expect(response.body).toHaveProperty('media_id', movieId);
-        expect(response.body).toHaveProperty('original_title');
+        expect(response.body).toHaveProperty('mediaId', movieId);
+        expect(response.body).toHaveProperty('originalTitle');
       }
     });
 
