@@ -1,4 +1,6 @@
 import express from 'express';
+import cors from 'cors';
+
 import healthRouter from './routes/health';
 import moviesRouter from './routes/movies';
 import moviesPostRouter from './routes/movies.admin';
@@ -14,35 +16,41 @@ import tvNeoAdmin from './routes/neo4j/tv.neo.admin';
 import moviesMongoRouter from "./routes/mongo/movies.mongo";
 import moviesMongoAdmin from "./routes/mongo/movies.mongo.admin";
 import tvMongoRouter from "./routes/mongo/tv.mongo";
-import tvMongoAdmin from "./routes/mongo/tv.mongo.admin"; // later
-
-
+import tvMongoAdmin from "./routes/mongo/tv.mongo.admin";
 
 const app = express();
+
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 
+// Public routes
 app.use('/health', healthRouter);
 app.use('/auth', authRouter);
 
-// Our public reads
 app.use('/movies', moviesRouter);
 app.use('/tv', tvRouter);
 
-
-// Our protect creates with admin:
+// Admin protected
 app.use('/movies', requireAuth, requireRole('admin'), moviesPostRouter);
 app.use('/tv', requireAuth, requireRole('admin'), tvAdminRouter);
 app.use('/admin', adminRouter);
 
-// Public neo4j reads
+// Neo4j public
 app.use("/neo/movies", moviesNeoRouter);
 app.use("/neo/tv", tvNeoRouter);
 
-//Protected neo4j reads
+// Neo4j admin
 app.use("/neo/movies", requireAuth, requireRole('admin'), moviesNeoAdmin);
 app.use("/neo/tv", requireAuth, requireRole('admin'), tvNeoAdmin);
 
-
+// Mongo public/admin
 app.use("/mongo/movies", moviesMongoRouter);
 app.use("/mongo/movies", requireAuth, requireRole("admin"), moviesMongoAdmin);
 

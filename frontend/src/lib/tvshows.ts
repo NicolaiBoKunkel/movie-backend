@@ -4,17 +4,19 @@ const BACKEND_URL =
 /**
  * Fetch all TV shows (summary list)
  */
-export async function fetchTvShows() {
-  const res = await fetch(`${BACKEND_URL}/tv`, {
-    cache: "no-store",
-  });
+export async function fetchTvShows(page: number = 1, limit: number = 12) {
+  const offset = (page - 1) * limit;
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch TV shows");
-  }
+  const res = await fetch(
+    `${BACKEND_URL}/tv?limit=${limit}&offset=${offset}`,
+    { cache: "no-store" }
+  );
+
+  if (!res.ok) throw new Error("Failed to fetch TV shows");
 
   return res.json();
 }
+
 
 /**
  * Fetch one TV show by ID

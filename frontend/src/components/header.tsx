@@ -57,6 +57,10 @@ export default function Header() {
           </div>
         </Link>
         <div className="flex gap-4 text-lg font-semibold relative">
+
+          <NavLink href="/">Home</NavLink>
+
+
           {/* Movies Dropdown */}
           <div ref={moviesRef} className="relative">
             <button
@@ -108,41 +112,6 @@ export default function Header() {
               </div>
             )}
           </div>
-
-
-          <NavLink href="/popularPeople">Popular People</NavLink>
-          <NavLink href="/aboutUs">About</NavLink>
-        </div>
-      </div>
-
-      {/* Right: Search + Auth */}
-      <div className="flex flex-col sm:flex-row gap-2 sm:items-center w-full lg:w-auto justify-end">
-
-        {/* Auth Controls */}
-        <div className="text-white text-sm flex items-center gap-2">
-          {user ? (
-            <>
-              <Link
-                href={`/user/${user.username}`}
-                className="hidden sm:inline font-medium underline hover:text-white"
-              >
-                Welcome, {user.username}!
-              </Link>
-              <button
-                onClick={handleLogout}
-                className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded"
-              >
-                Logout
-              </button>
-            </>
-          ) : (
-            <Link
-              href="/login"
-              className="bg-white text-teal-700 font-bold px-3 py-1 rounded hover:bg-teal-100"
-            >
-              Login / Register
-            </Link>
-          )}
         </div>
       </div>
     </nav>
