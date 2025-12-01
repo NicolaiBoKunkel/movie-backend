@@ -3,10 +3,6 @@ import pool from '../db/pool';
 
 const router = Router();
 
-/**
- * Canonical movie shape we want all databases to return
- * (If you don't have some fields in SQL, you can drop them or keep them as optional.)
- */
 export type MovieDto = {
   mediaId: string;
   tmdbId: string;
@@ -18,7 +14,7 @@ export type MovieDto = {
   popularity: number | null;
   voteAverage: number;
   voteCount: number | null;
-  releaseDate: string | null;  // ISO string
+  releaseDate: string | null;
   budget: number | null;
   revenue: number | null;
   adultFlag: boolean;
@@ -27,20 +23,16 @@ export type MovieDto = {
   genres: string[];
 };
 
-/**
- * Lighter version used for GET /movies (list)
- */
 export type MovieSummaryDto = {
   mediaId: string;
   originalTitle: string;
   voteAverage: number;
   genres: string[];
+  posterPath: string | null;
+  overview: string | null;
+  releaseDate: string | null;
 };
 
-/**
- * Map a full movie row (from GET /movies/:id query) to our canonical DTO.
- * Adjust property names in here to match your actual column names.
- */
 function mapSqlMovie(row: any): MovieDto {
   return {
     mediaId: String(row.media_id),
@@ -63,25 +55,18 @@ function mapSqlMovie(row: any): MovieDto {
   };
 }
 
-/**
- * Map a list-row (from vw_movies_with_genres) to a lighter summary DTO.
- */
 function mapSqlMovieSummary(row: any): MovieSummaryDto {
   return {
     mediaId: String(row.media_id),
     originalTitle: row.original_title,
     voteAverage: Number(row.vote_average),
+    posterPath: row.poster_path ?? null,
+    overview: row.overview ?? null,
+    releaseDate: row.release_date ? row.release_date.toISOString() : null,
     genres: Array.isArray(row.genres) ? row.genres : [],
   };
 }
 
-/**
- * GET /movies
- * Query params:
- *   search?: string   - full-text search over title+overview (falls back to ILIKE)
- *   limit?: number    - default 10, max 100
- *   offset?: number   - default 0
- */
 router.get('/', async (req, res) => {
   try {
     const search = (req.query.search as string | undefined)?.trim() ?? '';
@@ -91,54 +76,59 @@ router.get('/', async (req, res) => {
     if (search.length > 0) {
       const sql = `
         SELECT
-          m."media_id",
-          m."original_title",
-          m."vote_average"::float8 AS vote_average,
+          m.media_id,
+          m.original_title,
+          m.vote_average::float8 AS vote_average,
+          m.poster_path,
+          m.overview,
+          mo.release_date,
           CASE
-            WHEN v."genres" = '' THEN ARRAY[]::text[]
-            ELSE string_to_array(v."genres", ', ')
+            WHEN v.genres = '' THEN ARRAY[]::text[]
+            ELSE string_to_array(v.genres, ', ')
           END AS genres,
           ts_rank(
-            to_tsvector('english', coalesce(m."original_title",'') || ' ' || coalesce(m."overview",'')),
+            to_tsvector('english', coalesce(m.original_title,'') || ' ' || coalesce(m.overview,'')),
             plainto_tsquery('english', $1)
           ) AS rank
         FROM "MediaItem" m
-        JOIN "Movie" mo ON mo."media_id" = m."media_id"
-        LEFT JOIN vw_movies_with_genres v ON v."media_id" = m."media_id"
+        JOIN "Movie" mo ON mo.media_id = m.media_id
+        LEFT JOIN vw_movies_with_genres v ON v.media_id = m.media_id
         WHERE
-          to_tsvector('english', coalesce(m."original_title",'') || ' ' || coalesce(m."overview",'')) @@ plainto_tsquery('english', $1)
-          OR m."original_title" ILIKE '%' || $1 || '%'
-        ORDER BY rank DESC NULLS LAST, m."media_id"
+          to_tsvector('english', coalesce(m.original_title,'') || ' ' || coalesce(m.overview,'')) @@ plainto_tsquery('english', $1)
+          OR m.original_title ILIKE '%' || $1 || '%'
+        ORDER BY rank DESC NULLS LAST, m.media_id
         LIMIT $2 OFFSET $3;
       `;
       const { rows } = await pool.query(sql, [search, limit, offset]);
-      const movies = rows.map(mapSqlMovieSummary);
-      return res.json(movies);
+      return res.json(rows.map(mapSqlMovieSummary));
     }
 
     const sql = `
       SELECT
-        "media_id",
-        "original_title",
-        "vote_average"::float8 AS vote_average,
+        m.media_id,
+        m.original_title,
+        m.vote_average::float8 AS vote_average,
+        m.poster_path,
+        m.overview,
+        mo.release_date,
         CASE
-          WHEN "genres" = '' THEN ARRAY[]::text[]
-          ELSE string_to_array("genres", ', ')
+          WHEN v.genres = '' THEN ARRAY[]::text[]
+          ELSE string_to_array(v.genres, ', ')
         END AS genres
-      FROM vw_movies_with_genres
-      ORDER BY "media_id"
+      FROM "MediaItem" m
+      JOIN "Movie" mo ON mo.media_id = m.media_id
+      LEFT JOIN vw_movies_with_genres v ON v.media_id = m.media_id
+      ORDER BY m.media_id
       LIMIT $1 OFFSET $2;
     `;
     const { rows } = await pool.query(sql, [limit, offset]);
-    const movies = rows.map(mapSqlMovieSummary);
-    return res.json(movies);
+    return res.json(rows.map(mapSqlMovieSummary));
   } catch (err) {
     console.error('[GET /movies] error:', err);
-    return res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ error: 'Internal server error' });
   }
 });
 
-/** GET /movies/:id — full movie with cast, crew, companies, genres */
 router.get('/:id', async (req, res) => {
   const id = Number(req.params.id);
   if (!Number.isInteger(id) || id <= 0) {
@@ -146,9 +136,6 @@ router.get('/:id', async (req, res) => {
   }
 
   try {
-    //
-    // 1) Fetch main movie info + genres
-    //
     const movieSql = `
       SELECT
         m.media_id,
@@ -184,7 +171,6 @@ router.get('/:id', async (req, res) => {
     }
     const movie = mapSqlMovie(movieResult.rows[0]);
 
-    // 2) Fetch cast
     const castSql = `
       SELECT 
         p.person_id,
@@ -197,7 +183,6 @@ router.get('/:id', async (req, res) => {
       ORDER BY tc.cast_order ASC NULLS LAST;
     `;
     const castResult = await pool.query(castSql, [id]);
-
     const cast = castResult.rows.map(r => ({
       personId: String(r.person_id),
       name: r.name,
@@ -205,7 +190,6 @@ router.get('/:id', async (req, res) => {
       castOrder: r.cast_order,
     }));
 
-    // 3) Fetch crew
     const crewSql = `
       SELECT
         p.person_id,
@@ -218,7 +202,6 @@ router.get('/:id', async (req, res) => {
       ORDER BY p.name ASC;
     `;
     const crewResult = await pool.query(crewSql, [id]);
-
     const crew = crewResult.rows.map(r => ({
       personId: String(r.person_id),
       name: r.name,
@@ -226,7 +209,6 @@ router.get('/:id', async (req, res) => {
       jobTitle: r.job_title,
     }));
 
-    // 4) Fetch companies
     const companiesSql = `
       SELECT
         c.company_id,
@@ -238,14 +220,12 @@ router.get('/:id', async (req, res) => {
       ORDER BY c.name ASC;
     `;
     const companiesResult = await pool.query(companiesSql, [id]);
-
     const companies = companiesResult.rows.map(r => ({
       companyId: String(r.company_id),
       name: r.name,
       role: r.role,
     }));
 
-    // 5) Return unified DTO
     return res.json({
       ...movie,
       cast,
@@ -254,9 +234,8 @@ router.get('/:id', async (req, res) => {
     });
   } catch (err) {
     console.error('[GET /movies/:id] error:', err);
-    return res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ error: 'Internal server error' });
   }
 });
-
 
 export default router;
