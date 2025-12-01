@@ -4,8 +4,14 @@ import Link from "next/link";
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-teal-50 px-6">
-      <h1 className="text-4xl font-bold text-teal-700 mb-10 text-center">
+    <div
+      className="min-h-screen flex flex-col items-center justify-center bg-teal-50 px-6"
+      data-cy="home-page"
+    >
+      <h1
+        className="text-4xl font-bold text-teal-700 mb-10 text-center"
+        data-cy="home-title"
+      >
         Welcome to the Movie & TV Show Explorer
       </h1>
 
@@ -15,6 +21,7 @@ export default function HomePage() {
         <Link
           href="/highestRatedMovies"
           className="bg-teal-600 text-white px-8 py-4 rounded-lg text-xl font-semibold shadow-md hover:bg-teal-700 transition"
+          data-cy="go-to-movies-btn"
         >
           Highest Rated Movies with TMDB API
         </Link>
@@ -23,6 +30,7 @@ export default function HomePage() {
         <Link
           href="/tvshows"
           className="bg-teal-600 text-white px-8 py-4 rounded-lg text-xl font-semibold shadow-md hover:bg-teal-700 transition"
+          data-cy="go-to-tv-btn"
         >
           TV Shows with SQL Database
         </Link>

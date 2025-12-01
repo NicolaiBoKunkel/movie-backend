@@ -12,7 +12,9 @@ interface TvShow {
   originalTitle: string;
   voteAverage: number;
   genres: string[];
-  posterPath?: string | null;
+  posterPath: string | null;
+  overview: string | null;
+  firstAirDate: string | null;
 }
 
 export default function TvShowsPageClient() {
@@ -30,8 +32,6 @@ export default function TvShowsPageClient() {
       setIsLoading(true);
       try {
         const data = await fetchTvShows(currentPage, limit);
-        console.log("TV SHOW DATA:", data);
-
         setShows(data);
       } catch (err) {
         console.error("TV Shows fetch error:", err);

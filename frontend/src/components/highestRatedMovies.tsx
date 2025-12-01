@@ -21,9 +21,6 @@ interface TMDBResponse<T> {
   total_results: number;
 }
 
-/**
- * Highest Rated Movies (via our Next.js API route)
- */
 const HighRatedMovies = () => {
   const [data, setData] = useState<TMDBResponse<Movie> | null>(null);
   const [error, setError] = useState("");
@@ -73,6 +70,7 @@ const HighRatedMovies = () => {
 
       <div className="flex justify-center items-center gap-4 mt-6">
         <button
+          data-cy="movies-prev-btn"
           disabled={currentPage <= 1}
           onClick={() => goToPage(currentPage - 1)}
           className="bg-white text-teal-700 font-bold px-3 py-1 rounded hover:bg-teal-100 disabled:opacity-50"
@@ -80,11 +78,15 @@ const HighRatedMovies = () => {
           Previous
         </button>
 
-        <span className="px-4 py-2 text-center font-medium">
+        <span
+          data-cy="movies-current-page"
+          className="px-4 py-2 text-center font-medium"
+        >
           Page {currentPage}
         </span>
 
         <button
+          data-cy="movies-next-btn"
           disabled={currentPage >= data.total_pages}
           onClick={() => goToPage(currentPage + 1)}
           className="bg-white text-teal-700 font-bold px-3 py-1 rounded hover:bg-teal-100 disabled:opacity-50"

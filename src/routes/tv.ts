@@ -3,7 +3,6 @@ import pool from "../db/pool";
 
 const router = Router();
 
-   //CANONICAL TV DTO + MAPPERS
 export type TVShowDto = {
   mediaId: string;
   tmdbId: string;
@@ -42,11 +41,31 @@ export type TVShowDto = {
   }[];
 };
 
-function mapSqlTvSummary(row: any) {
+export type TVShowSummaryDto = {
+  mediaId: string;
+  originalTitle: string;
+  voteAverage: number;
+  posterPath: string | null;
+  backdropPath: string | null;
+  overview: string | null;
+  firstAirDate: string | null;
+  genres: string[];
+};
+
+function mapSqlTvSummary(row: any): TVShowSummaryDto {
   return {
     mediaId: String(row.media_id),
     originalTitle: row.original_title,
     voteAverage: Number(row.vote_average),
+
+    posterPath: row.poster_path ?? null,
+    backdropPath: row.backdrop_path ?? null,
+    overview: row.overview ?? null,
+
+    firstAirDate: row.first_air_date
+      ? row.first_air_date.toISOString()
+      : null,
+
     genres: Array.isArray(row.genres) ? row.genres : [],
   };
 }
@@ -66,12 +85,18 @@ function mapSqlTvShow(row: any, seasons: any[]): TVShowDto {
     voteAverage: Number(row.vote_average),
     voteCount: row.vote_count != null ? Number(row.vote_count) : null,
 
-    firstAirDate: row.first_air_date ? row.first_air_date.toISOString() : null,
-    lastAirDate: row.last_air_date ? row.last_air_date.toISOString() : null,
+    firstAirDate: row.first_air_date
+      ? row.first_air_date.toISOString()
+      : null,
+    lastAirDate: row.last_air_date
+      ? row.last_air_date.toISOString()
+      : null,
 
     inProduction: Boolean(row.in_production),
-    numberOfSeasons: row.number_of_seasons != null ? Number(row.number_of_seasons) : null,
-    numberOfEpisodes: row.number_of_episodes != null ? Number(row.number_of_episodes) : null,
+    numberOfSeasons:
+      row.number_of_seasons != null ? Number(row.number_of_seasons) : null,
+    numberOfEpisodes:
+      row.number_of_episodes != null ? Number(row.number_of_episodes) : null,
 
     showType: row.show_type ?? null,
 
@@ -91,8 +116,6 @@ function mapSqlTvShow(row: any, seasons: any[]): TVShowDto {
   };
 }
 
-   //GET /tv  (SUMMARY LIST + SEARCH)
-
 router.get("/", async (req, res) => {
   try {
     const search = (req.query.search as string)?.trim() ?? "";
@@ -111,8 +134,10 @@ router.get("/", async (req, res) => {
           m.media_id,
           m.original_title,
           m.vote_average::float8 AS vote_average,
+          m.poster_path,
+          m.backdrop_path,
           m.overview,
-          m.popularity::float8 AS popularity,
+          tv.first_air_date,
           CASE WHEN tg.genres IS NULL OR tg.genres = ''
                THEN ARRAY[]::text[]
                ELSE string_to_array(tg.genres, ', ')
@@ -124,10 +149,11 @@ router.get("/", async (req, res) => {
         FROM "MediaItem" m
         JOIN "TVShow" tv ON tv.media_id = m.media_id
         LEFT JOIN tv_genres tg ON tg.media_id = m.media_id
-        WHERE m.media_type = 'tv' AND (
-          to_tsvector('english', coalesce(m.original_title,'') || ' ' || coalesce(m.overview,'')) @@ plainto_tsquery('english', $1)
-          OR m.original_title ILIKE '%' || $1 || '%'
-        )
+        WHERE m.media_type = 'tv'
+          AND (
+            to_tsvector('english', coalesce(m.original_title,'') || ' ' || coalesce(m.overview,'')) @@ plainto_tsquery('english', $1)
+            OR m.original_title ILIKE '%' || $1 || '%'
+          )
         ORDER BY rank DESC NULLS LAST, m.media_id
         LIMIT $2 OFFSET $3;
       `;
@@ -147,6 +173,10 @@ router.get("/", async (req, res) => {
         m.media_id,
         m.original_title,
         m.vote_average::float8 AS vote_average,
+        m.poster_path,
+        m.backdrop_path,
+        m.overview,
+        tv.first_air_date,
         CASE WHEN tg.genres IS NULL OR tg.genres = ''
              THEN ARRAY[]::text[]
              ELSE string_to_array(tg.genres, ', ')
@@ -167,14 +197,12 @@ router.get("/", async (req, res) => {
   }
 });
 
-   //GET /tv/:id  (FULL DETAILS)
 router.get("/:id", async (req, res) => {
   const id = Number(req.params.id);
   if (!Number.isInteger(id) || id <= 0)
     return res.status(400).json({ error: "Invalid id" });
 
   try {
-       //1. MAIN TV SHOW + GENRES
     const sql = `
       WITH tv_genres AS (
         SELECT mg.media_id, string_agg(g.name, ', ') AS genres
@@ -202,45 +230,40 @@ router.get("/:id", async (req, res) => {
 
     const row = tvRes.rows[0];
 
-       //2. SEASONS
-    const seasonSql = `
-      SELECT season_number, name, air_date, episode_count, poster_path
-      FROM "Season"
-      WHERE tv_media_id = $1
-      ORDER BY season_number;
-    `;
-    const seasonRes = await pool.query(seasonSql, [id]);
+    const seasonRes = await pool.query(
+      `SELECT season_number, name, air_date, episode_count, poster_path
+       FROM "Season"
+       WHERE tv_media_id = $1
+       ORDER BY season_number;`,
+      [id]
+    );
 
-       //3. CAST
-    const castSql = `
-      SELECT p.person_id, p.name, tc.character_name, tc.cast_order
-      FROM "TitleCasting" tc
-      JOIN "Person" p ON p.person_id = tc.person_id
-      WHERE tc.media_id = $1
-      ORDER BY tc.cast_order;
-    `;
-    const castRes = await pool.query(castSql, [id]);
+    const castRes = await pool.query(
+      `SELECT p.person_id, p.name, tc.character_name, tc.cast_order
+       FROM "TitleCasting" tc
+       JOIN "Person" p ON p.person_id = tc.person_id
+       WHERE tc.media_id = $1
+       ORDER BY tc.cast_order;`,
+      [id]
+    );
 
-       //4. CREW
-    const crewSql = `
-      SELECT p.person_id, p.name, tca.department, tca.job_title
-      FROM "TitleCrewAssignment" tca
-      JOIN "Person" p ON p.person_id = tca.person_id
-      WHERE tca.media_id = $1;
-    `;
-    const crewRes = await pool.query(crewSql, [id]);
+    const crewRes = await pool.query(
+      `SELECT p.person_id, p.name, tca.department, tca.job_title
+       FROM "TitleCrewAssignment" tca
+       JOIN "Person" p ON p.person_id = tca.person_id
+       WHERE tca.media_id = $1;`,
+      [id]
+    );
 
-       //5. COMPANIES
-    const companySql = `
-      SELECT c.company_id, c.name, mc.role
-      FROM "MediaCompany" mc
-      JOIN "Company" c ON c.company_id = mc.company_id
-      WHERE mc.media_id = $1;
-    `;
-    const companyRes = await pool.query(companySql, [id]);
+    const companyRes = await pool.query(
+      `SELECT c.company_id, c.name, mc.role
+       FROM "MediaCompany" mc
+       JOIN "Company" c ON c.company_id = mc.company_id
+       WHERE mc.media_id = $1;`,
+      [id]
+    );
 
-       //6. FINAL DTO
-    const dto = {
+    return res.json({
       ...mapSqlTvShow(row, seasonRes.rows),
 
       cast: castRes.rows.map((c) => ({
@@ -262,14 +285,11 @@ router.get("/:id", async (req, res) => {
         name: c.name,
         role: c.role,
       })),
-    };
-
-    return res.json(dto);
+    });
   } catch (err) {
     console.error("[GET /tv/:id] error:", err);
     res.status(500).json({ error: "Internal server error" });
   }
 });
-
 
 export default router;
