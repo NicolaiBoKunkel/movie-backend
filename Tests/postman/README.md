@@ -146,22 +146,22 @@ npm install -g newman
 
 **Run collection (from project root):**
 ```bash
-newman run postman/Movie-Backend-API.postman_collection.json -e postman/Movie-Backend.postman_environment.json --timeout-request 10000
+newman run Tests/postman/Movie-Backend-API.postman_collection.json -e Tests/postman/Movie-Backend.postman_environment.json --timeout-request 10000
 ```
 
 **Run with detailed JSON report:**
 ```bash
-newman run postman/Movie-Backend-API.postman_collection.json -e postman/Movie-Backend.postman_environment.json --timeout-request 10000 --reporters cli,json --reporter-json-export test-results.json
+newman run Tests/postman/Movie-Backend-API.postman_collection.json -e Tests/postman/Movie-Backend.postman_environment.json --timeout-request 10000 --reporters cli,json --reporter-json-export test-results.json
 ```
 
 **Run with delay between requests:**
 ```bash
-newman run postman/Movie-Backend-API.postman_collection.json -e postman/Movie-Backend.postman_environment.json --timeout-request 10000 --delay-request 100
+newman run Tests/postman/Movie-Backend-API.postman_collection.json -e Tests/postman/Movie-Backend.postman_environment.json --timeout-request 10000 --delay-request 100
 ```
 
 **Run specific folder:**
 ```bash
-newman run postman/Movie-Backend-API.postman_collection.json -e postman/Movie-Backend.postman_environment.json --timeout-request 10000 --folder "Authentication"
+newman run Tests/postman/Movie-Backend-API.postman_collection.json -e Tests/postman/Movie-Backend.postman_environment.json --timeout-request 10000 --folder "Authentication"
 ```
 
 ### MongoDB API Tests
@@ -170,12 +170,12 @@ A separate test collection is available for testing MongoDB endpoints:
 
 **Run MongoDB public tests (recommended):**
 ```bash
-newman run postman/Movie-Backend-MongoDB-API.postman_collection.json -e postman/Movie-Backend.postman_environment.json --timeout-request 10000 --folder "MongoDB Movies (Public)" --folder "MongoDB TV Shows (Public)"
+newman run Tests/postman/Movie-Backend-MongoDB-API.postman_collection.json -e Tests/postman/Movie-Backend.postman_environment.json --timeout-request 10000 --folder "MongoDB Movies (Public)" --folder "MongoDB TV Shows (Public)"
 ```
 
 **Run all MongoDB tests:**
 ```bash
-newman run postman/Movie-Backend-MongoDB-API.postman_collection.json -e postman/Movie-Backend.postman_environment.json --timeout-request 10000
+newman run Tests/postman/Movie-Backend-MongoDB-API.postman_collection.json -e Tests/postman/Movie-Backend.postman_environment.json --timeout-request 10000
 ```
 
 **Note:** Admin tests for MongoDB require an existing admin user. Run the PostgreSQL tests first or create an admin user manually.
@@ -186,12 +186,12 @@ A separate test collection is available for testing Neo4j graph database endpoin
 
 **Run Neo4j public tests (recommended):**
 ```bash
-newman run postman/Movie-Backend-Neo4j-API.postman_collection.json -e postman/Movie-Backend.postman_environment.json --timeout-request 10000 --folder "Neo4j Movies (Public)" --folder "Neo4j TV Shows (Public)"
+newman run Tests/postman/Movie-Backend-Neo4j-API.postman_collection.json -e Tests/postman/Movie-Backend.postman_environment.json --timeout-request 10000 --folder "Neo4j Movies (Public)" --folder "Neo4j TV Shows (Public)"
 ```
 
 **Run all Neo4j tests:**
 ```bash
-newman run postman/Movie-Backend-Neo4j-API.postman_collection.json -e postman/Movie-Backend.postman_environment.json --timeout-request 10000
+newman run Tests/postman/Movie-Backend-Neo4j-API.postman_collection.json -e Tests/postman/Movie-Backend.postman_environment.json --timeout-request 10000
 ```
 
 **Note:** Admin tests for Neo4j require an existing admin user. Run the PostgreSQL tests first or create an admin user manually.
@@ -480,7 +480,7 @@ docker compose up -d
 **Solution:**
 ```bash
 # Ensure environment file is specified
-newman run Movie-Backend-API.postman_collection.json -e Movie-Backend.postman_environment.json
+newman run Tests/postman/Movie-Backend-API.postman_collection.json -e Tests/postman/Movie-Backend.postman_environment.json
 
 # Check if BASE_URL is accessible from command line
 curl http://localhost:5000/health
