@@ -61,7 +61,14 @@ const HighRatedMovies = () => {
   if (isLoading || !data) return <div>Loading...</div>;
 
   return (
-    <ParallaxPage backgroundImage="/home.jpg" title="Highest Rated Movies with TMDB API">
+    <ParallaxPage
+      backgroundImage="/home.jpg"
+      title={
+        <span data-cy="movies-page-title">
+          Highest Rated Movies with TMDB API
+        </span>
+      }
+    >
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {data.results.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />

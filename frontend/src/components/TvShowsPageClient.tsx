@@ -48,12 +48,18 @@ export default function TvShowsPageClient() {
   };
 
   return (
-    <ParallaxPage backgroundImage="/home.jpg" title="TV Shows with PostgreSQL">
+    <ParallaxPage
+      backgroundImage="/home.jpg"
+      title={<span data-cy="tvshows-page-title">TV Shows with PostgreSQL</span>}
+    >
       {isLoading ? (
         <div>Loading...</div>
       ) : (
         <>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+            data-cy="tvshows-list"
+          >
             {shows.map((show) => (
               <TvShowCard key={show.mediaId} show={show} />
             ))}
@@ -61,6 +67,7 @@ export default function TvShowsPageClient() {
 
           <div className="flex justify-center items-center gap-4 mt-6">
             <button
+              data-cy="tvshows-prev-btn"
               disabled={currentPage <= 1}
               onClick={() => goToPage(currentPage - 1)}
               className="bg-white text-teal-700 font-bold px-3 py-1 rounded hover:bg-teal-100 disabled:opacity-50"
@@ -68,11 +75,15 @@ export default function TvShowsPageClient() {
               Previous
             </button>
 
-            <span className="px-4 py-2 text-center font-medium">
+            <span
+              data-cy="tvshows-current-page"
+              className="px-4 py-2 text-center font-medium"
+            >
               Page {currentPage}
             </span>
 
             <button
+              data-cy="tvshows-next-btn"
               onClick={() => goToPage(currentPage + 1)}
               className="bg-white text-teal-700 font-bold px-3 py-1 rounded hover:bg-teal-100"
             >

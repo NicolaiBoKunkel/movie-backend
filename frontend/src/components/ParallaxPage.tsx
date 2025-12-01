@@ -4,15 +4,18 @@ import { ReactNode } from 'react';
 
 interface ParallaxPageProps {
   backgroundImage: string;
-  title?: string;
+  title?: string | ReactNode;
   children: ReactNode;
 }
 
 /**
  * A component that creates a parallax effect with a background image.
  */
-
-export default function ParallaxPage({ backgroundImage, title, children }: ParallaxPageProps) {
+export default function ParallaxPage({
+  backgroundImage,
+  title,
+  children,
+}: ParallaxPageProps) {
   return (
     <div
       className="relative w-full min-h-screen bg-cover bg-top bg-fixed"
@@ -24,7 +27,10 @@ export default function ParallaxPage({ backgroundImage, title, children }: Paral
       <div className="max-w-7xl mx-auto px-4 pt-16 relative z-10">
         <div className="backdrop-blur-sm bg-white/80 p-6 rounded shadow-md">
           {title && (
-            <h1 className="text-3xl font-bold text-center text-teal-800 mb-6">
+            <h1
+              className="text-3xl font-bold text-center text-teal-800 mb-6"
+              data-cy="parallax-title"
+            >
               {title}
             </h1>
           )}

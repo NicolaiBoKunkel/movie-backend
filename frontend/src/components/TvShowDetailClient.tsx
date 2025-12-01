@@ -73,6 +73,7 @@ export default function TvShowDetailClient({ show }: { show: TvShowDetails }) {
         backgroundImage: backdropUrl ? `url(${backdropUrl})` : undefined,
         backgroundColor: "#f3f4f6",
       }}
+      data-cy="tv-detail-page"
     >
       <div
         className={`max-w-5xl mx-auto px-4 ${
@@ -94,94 +95,81 @@ export default function TvShowDetailClient({ show }: { show: TvShowDetails }) {
 
           {/* TEXT PANEL */}
           <div className="p-6 space-y-3 flex-1">
-            <h1 className="text-3xl font-bold text-gray-900">
+
+            <h1
+              className="text-3xl font-bold text-gray-900"
+              data-cy="tv-detail-title"
+            >
               {show.originalTitle}
             </h1>
 
-            {/* Overview */}
             {show.overview && (
-              <p className="text-gray-700">{show.overview}</p>
+              <p className="text-gray-700" data-cy="tv-detail-overview">
+                {show.overview}
+              </p>
             )}
 
             {/* QUICK FACTS */}
             <div className="text-sm text-gray-600 space-y-1">
-              <p>
+
+              <p data-cy="tv-detail-showtype">
                 <strong>Show Type:</strong> {show.showType || "N/A"}
               </p>
-              <p>
+
+              <p data-cy="tv-detail-status">
                 <strong>Status:</strong> {show.status || "N/A"}
               </p>
-              <p>
+
+              <p data-cy="tv-detail-inproduction">
                 <strong>In Production:</strong>{" "}
                 {show.inProduction ? "Yes" : "No"}
               </p>
-              <p>
-                <strong>First Air Date:</strong>{" "}
-                {show.firstAirDate || "N/A"}
+
+              <p data-cy="tv-detail-first-air">
+                <strong>First Air Date:</strong> {show.firstAirDate || "N/A"}
               </p>
-              <p>
-                <strong>Last Air Date:</strong>{" "}
-                {show.lastAirDate || "N/A"}
+
+              <p data-cy="tv-detail-last-air">
+                <strong>Last Air Date:</strong> {show.lastAirDate || "N/A"}
               </p>
-              <p>
+
+              <p data-cy="tv-detail-seasons">
                 <strong>Seasons:</strong> {show.numberOfSeasons ?? "?"}
               </p>
-              <p>
+
+              <p data-cy="tv-detail-episodes">
                 <strong>Episodes:</strong> {show.numberOfEpisodes ?? "?"}
               </p>
-              <p>
+
+              <p data-cy="tv-detail-genres">
                 <strong>Genres:</strong>{" "}
                 {show.genres.length ? show.genres.join(", ") : "N/A"}
               </p>
-              <p>
+
+              <p data-cy="tv-detail-rating">
                 <strong>Rating:</strong> ⭐ {show.voteAverage} (
                 {show.voteCount ?? 0} votes)
               </p>
-              <p>
-                <strong>Popularity:</strong> {show.popularity ?? "N/A"}
-              </p>
-              <p>
+
+              <p data-cy="tv-detail-language">
                 <strong>Language:</strong>{" "}
                 {show.originalLanguage.toUpperCase()}
               </p>
 
-              {show.homepageUrl && (
-                <p>
-                  <strong>Homepage:</strong>{" "}
-                  <a
-                    href={show.homepageUrl}
-                    target="_blank"
-                    className="text-teal-700 underline"
-                  >
-                    Visit Website
-                  </a>
-                </p>
-              )}
             </div>
           </div>
         </div>
 
-        {/* SEASONS */}
+        {/* Seasons */}
         {show.seasons.length > 0 && (
-          <div className="backdrop-blur-sm bg-white/80 mt-6 p-6 rounded shadow-md">
+          <div
+            className="backdrop-blur-sm bg-white/80 mt-6 p-6 rounded shadow-md"
+            data-cy="tvshow-detail-seasons-section"
+          >
             <h2 className="text-2xl font-bold mb-4">📺 Seasons</h2>
-
             <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
               {show.seasons.map((s) => (
-                <div
-                  key={s.seasonNumber}
-                  className="rounded shadow bg-white p-3"
-                >
-                  {s.posterPath && (
-                    <Image
-                      src={`https://image.tmdb.org/t/p/w300${s.posterPath}`}
-                      alt={s.name || `Season ${s.seasonNumber}`}
-                      width={300}
-                      height={450}
-                      className="rounded"
-                    />
-                  )}
-
+                <div key={s.seasonNumber} className="rounded shadow bg-white p-3">
                   <h3 className="font-semibold mt-2">
                     Season {s.seasonNumber} — {s.episodeCount} episodes
                   </h3>
@@ -194,24 +182,14 @@ export default function TvShowDetailClient({ show }: { show: TvShowDetails }) {
           </div>
         )}
 
-        {/* PRODUCTION COMPANIES */}
-        {show.companies.length > 0 && (
-          <div className="backdrop-blur-sm bg-white/80 mt-6 p-6 rounded shadow-md">
-            <h2 className="text-2xl font-bold mb-4">🏛 Production Companies</h2>
-            <ul className="space-y-2">
-              {show.companies.map((c) => (
-                <li key={c.companyId}>
-                  {c.name} — <em>{c.role}</em>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-
         {/* CAST */}
-        {show.cast.length > 0 && (
-          <div className="backdrop-blur-sm bg-white/80 mt-6 p-6 rounded shadow-md">
-            <h2 className="text-2xl font-bold mb-4">🎭 Cast</h2>
+        <div
+          className="backdrop-blur-sm bg-white/80 mt-6 p-6 rounded shadow-md"
+          data-cy="tvshow-detail-cast-section"
+        >
+          <h2 className="text-2xl font-bold mb-4">🎭 Cast</h2>
+
+          {show.cast.length > 0 ? (
             <ul className="space-y-2">
               {show.cast.slice(0, 15).map((m) => (
                 <li key={m.personId}>
@@ -219,22 +197,10 @@ export default function TvShowDetailClient({ show }: { show: TvShowDetails }) {
                 </li>
               ))}
             </ul>
-          </div>
-        )}
-
-        {/* CREW */}
-        {show.crew.length > 0 && (
-          <div className="backdrop-blur-sm bg-white/80 mt-6 p-6 rounded shadow-md">
-            <h2 className="text-2xl font-bold mb-4">🎬 Crew</h2>
-            <ul className="space-y-2">
-              {show.crew.map((c) => (
-                <li key={c.personId}>
-                  {c.name} — {c.department} ({c.jobTitle})
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+          ) : (
+            <p className="text-gray-600">No cast data available.</p>
+          )}
+        </div>
       </div>
     </div>
   );

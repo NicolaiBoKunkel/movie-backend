@@ -16,16 +16,17 @@ interface TvShowSummary {
 export default function TvShowCard({ show }: { show: TvShowSummary }) {
   const TMDB_BASE = "https://image.tmdb.org/t/p/original";
 
-  // If poster exists in DB, use TMDB full URL, otherwise fallback to placeholder
   const posterSrc = show.posterPath
     ? `${TMDB_BASE}${show.posterPath}`
     : "/placeholder-poster.png";
 
   return (
-    <div className="rounded shadow-lg bg-teal-100 transform transition-transform duration-300 hover:scale-105 hover:shadow-xl px-6 py-4">
-      
+    <div
+      className="rounded shadow-lg bg-teal-100 transform transition-transform duration-300 hover:scale-105 hover:shadow-xl px-6 py-4"
+      data-cy="tvshow-card"
+    >
       {/* Poster */}
-      <Link href={`/tvshow/${show.mediaId}`}>
+      <Link href={`/tvshow/${show.mediaId}`} data-cy="tvshow-card-link">
         <div className="relative w-[185px] h-[278px]">
           <Image
             src={posterSrc}
@@ -40,13 +41,19 @@ export default function TvShowCard({ show }: { show: TvShowSummary }) {
       {/* Title */}
       <div className="mt-4">
         <Link href={`/tvshow/${show.mediaId}`}>
-          <h5 className="font-bold text-xl mb-2 text-gray-900 drop-shadow-sm">
+          <h5
+            className="font-bold text-xl mb-2 text-gray-900 drop-shadow-sm"
+            data-cy="tvshow-card-title"
+          >
             {show.originalTitle.substring(0, 200)}
           </h5>
         </Link>
 
         {/* Rating */}
-        <div className="flex items-center mb-2 text-gray-900">
+        <div
+          className="flex items-center mb-2 text-gray-900"
+          data-cy="tvshow-card-rating"
+        >
           <svg
             className="w-4 h-4 text-yellow-300 me-1"
             xmlns="http://www.w3.org/2000/svg"
@@ -59,14 +66,17 @@ export default function TvShowCard({ show }: { show: TvShowSummary }) {
         </div>
 
         {/* Overview Preview */}
-        <p className="text-gray-800">
+        <p className="text-gray-800" data-cy="tvshow-card-overview">
           {(show.overview ?? "No overview available")
             .substring(0, 125)
             .concat("...")}
         </p>
 
         {/* First Air Date */}
-        <div className="flex justify-between items-center mt-4">
+        <div
+          className="flex justify-between items-center mt-4"
+          data-cy="tvshow-card-first-air-date"
+        >
           <span className="text-gray-800">
             {show.firstAirDate ? show.firstAirDate.substring(0, 10) : ""}
           </span>
