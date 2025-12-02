@@ -2,13 +2,9 @@ name: SonarCloud Scan
 
 on:
   push:
-    branches:
-      - main
-      - Nicolai_static_testing_and_more
+    branches: [ main ]
   pull_request:
-    branches:
-      - main
-      - Nicolai_static_testing_and_more
+    branches: [ main ]
 
 jobs:
   sonarcloud:
@@ -28,9 +24,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run tests with coverage (allow failure)
-        run: |
-          npm test -- --coverage || true
+      - name: Run tests with coverage
+        run: npm test -- --coverage
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v2
