@@ -97,6 +97,24 @@ services:
       - neo4jdata:/data
       - neo4jlogs:/logs
 
+  frontend:
+    build:
+      context: ./frontend
+      target: development
+    container_name: movie-frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+      - /app/.next
+    environment:
+      NODE_ENV: development
+    depends_on:
+      - db
+      - sfu-mongodb
+      - neo4j
+
 volumes:
   pgdata:
   mongodata:
