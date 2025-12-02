@@ -97,6 +97,42 @@ services:
       - neo4jdata:/data
       - neo4jlogs:/logs
 
+  backend:
+    build:
+      context: .
+      target: development
+    container_name: movie-backend
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./src:/app/src
+      - ./prisma:/app/prisma
+      - /app/node_modules
+    environment:
+      NODE_ENV: development
+      PORT: 5000
+      DATABASE_URL: ${DATABASE_URL}
+      PGHOST: db
+      PGPORT: 5432
+      PGDATABASE: ${PGDATABASE}
+      PGUSER: ${PGUSER}
+      PGPASSWORD: ${PGPASSWORD}
+      MONGODB_URI: mongodb://${MON_USERNAME}:${MON_PASSWORD}@sfu-mongodb:27017/${MON_DATABASE}?authSource=admin
+      MON_HOST: sfu-mongodb
+      MON_PORT: 27017
+      MON_USERNAME: ${MON_USERNAME}
+      MON_PASSWORD: ${MON_PASSWORD}
+      MON_DATABASE: ${MON_DATABASE}
+      NEO4J_URI: bolt://neo4j:7687
+      NEO4J_USER: ${NEO4J_USER}
+      NEO4J_PASSWORD: ${NEO4J_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET}
+    depends_on:
+      - db
+      - db-init
+      - sfu-mongodb
+      - neo4j
+
   frontend:
     build:
       context: ./frontend
@@ -110,10 +146,10 @@ services:
       - /app/.next
     environment:
       NODE_ENV: development
+      NEXT_PUBLIC_API_URL: http://localhost:5000
+      BACKEND_URL: http://backend:5000
     depends_on:
-      - db
-      - sfu-mongodb
-      - neo4j
+      - backend
 
 volumes:
   pgdata:

@@ -1,5 +1,7 @@
+// Use BACKEND_URL for server-side requests (inside Docker)
+// Use NEXT_PUBLIC_BACKEND_URL for client-side requests (browser)
 const BACKEND_URL =
-  process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:5000";
+  process.env.BACKEND_URL || process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:5000";
 
 /**
  * Fetch all TV shows (summary list)
