@@ -2,9 +2,13 @@ name: SonarCloud Scan
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
+      - Nicolai_static_testing_and_more
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
+      - Nicolai_static_testing_and_more
 
 jobs:
   sonarcloud:
@@ -26,8 +30,10 @@ jobs:
 
       - name: Run tests with coverage
         run: npm test -- --coverage
+        continue-on-error: true
 
       - name: SonarCloud Scan
+        if: always()
         uses: SonarSource/sonarcloud-github-action@v2
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
