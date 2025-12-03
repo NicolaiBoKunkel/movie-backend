@@ -1,0 +1,29 @@
+{
+  "name": "moviedb-seeder",
+  "version": "1.0.0",
+  "description": "Fetch data from The Movie Database (TMDB) API and seed into database",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "fetch": "ts-node src/index.ts fetch",
+    "seed": "ts-node src/index.ts seed",
+    "fetch-and-seed": "ts-node src/index.ts fetch-and-seed"
+  },
+  "keywords": [
+    "tmdb",
+    "seeder",
+    "moviedb"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.2",
+    "dotenv": "^16.3.1",
+    "p-queue": "^6.6.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}

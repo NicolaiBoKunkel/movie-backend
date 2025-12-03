@@ -2,1056 +2,4746 @@
   "Season": [
     {
       "season_id": 1,
-      "tv_media_id": 1957,
+      "tv_media_id": 201,
       "season_number": 1,
       "name": "Season 1",
-      "air_date": "2003-10-03",
-      "episode_count": 5,
-      "poster_path": null
+      "air_date": "2016-07-15",
+      "episode_count": 8,
+      "poster_path": "/rbnuP7hlynAMLdqcQRCpZW9qDkV.jpg"
     },
     {
       "season_id": 2,
-      "tv_media_id": 1938,
-      "season_number": 1,
-      "name": "Season 1",
-      "air_date": "2012-01-23",
-      "episode_count": 11,
-      "poster_path": null
+      "tv_media_id": 201,
+      "season_number": 2,
+      "name": "Stranger Things 2",
+      "air_date": "2017-10-27",
+      "episode_count": 9,
+      "poster_path": "/74nFJmiapxKuUBXRbSu6VqGGcuo.jpg"
     },
     {
       "season_id": 3,
-      "tv_media_id": 1062,
-      "season_number": 1,
-      "name": "Season 1",
-      "air_date": "2001-07-31",
+      "tv_media_id": 201,
+      "season_number": 3,
+      "name": "Stranger Things 3",
+      "air_date": "2019-07-04",
       "episode_count": 8,
-      "poster_path": null
+      "poster_path": "/sDms9g40ZBhjMIfX9YqqaqId8sK.jpg"
     },
     {
       "season_id": 4,
-      "tv_media_id": 1062,
-      "season_number": 2,
-      "name": "Season 2",
-      "air_date": "2008-09-25",
-      "episode_count": 6,
-      "poster_path": null
+      "tv_media_id": 202,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2025-10-26",
+      "episode_count": 8,
+      "poster_path": "/vij5NnWQsMnhT6sylaN9X3wjOkU.jpg"
     },
     {
       "season_id": 5,
-      "tv_media_id": 1062,
-      "season_number": 3,
-      "name": "Season 3",
-      "air_date": "2015-09-20",
-      "episode_count": 6,
-      "poster_path": null
+      "tv_media_id": 203,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "1999-09-20",
+      "episode_count": 22,
+      "poster_path": "/fMcB4Kznfz3sR4Jkg1lOtf5blCp.jpg"
     },
     {
       "season_id": 6,
-      "tv_media_id": 1490,
-      "season_number": 1,
-      "name": "Season 1",
-      "air_date": "2006-04-25",
-      "episode_count": 12,
-      "poster_path": null
+      "tv_media_id": 203,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2000-10-20",
+      "episode_count": 21,
+      "poster_path": "/9yyzbzZuPUPlnvhuyi4VmDac1SL.jpg"
     },
     {
       "season_id": 7,
-      "tv_media_id": 1375,
-      "season_number": 1,
-      "name": "Season 1",
-      "air_date": "2015-03-11",
-      "episode_count": 10,
-      "poster_path": null
+      "tv_media_id": 203,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2001-09-28",
+      "episode_count": 23,
+      "poster_path": "/9S59DS9XpzrBRcDhrEsurHxaTwD.jpg"
     },
     {
       "season_id": 8,
-      "tv_media_id": 1375,
-      "season_number": 2,
-      "name": "Season 2",
-      "air_date": "2012-01-18",
-      "episode_count": 6,
-      "poster_path": null
+      "tv_media_id": 204,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2005-09-13",
+      "episode_count": 22,
+      "poster_path": "/fFn80y3PPmCcTbIIjQS5ft0jNFc.jpg"
     },
     {
       "season_id": 9,
-      "tv_media_id": 1003,
-      "season_number": 1,
-      "name": "Season 1",
-      "air_date": "2003-08-11",
-      "episode_count": 7,
-      "poster_path": null
+      "tv_media_id": 204,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2006-09-28",
+      "episode_count": 22,
+      "poster_path": "/235GDaro5DuRJ9ogXmV7tOB6W5j.jpg"
     },
     {
       "season_id": 10,
-      "tv_media_id": 1208,
-      "season_number": 1,
-      "name": "Season 1",
-      "air_date": "2019-02-04",
-      "episode_count": 12,
-      "poster_path": null
+      "tv_media_id": 204,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2007-10-04",
+      "episode_count": 16,
+      "poster_path": "/vDIg3XI9JHfEORxTWstO2seUyCw.jpg"
     },
     {
       "season_id": 11,
-      "tv_media_id": 1350,
+      "tv_media_id": 205,
       "season_number": 1,
       "name": "Season 1",
-      "air_date": "2014-09-13",
-      "episode_count": 8,
-      "poster_path": null
+      "air_date": "2005-03-27",
+      "episode_count": 9,
+      "poster_path": "/ulGju8GyXE36wCgmvyFJL3sLiVm.jpg"
     },
     {
       "season_id": 12,
-      "tv_media_id": 1350,
+      "tv_media_id": 205,
       "season_number": 2,
       "name": "Season 2",
-      "air_date": "2007-05-13",
-      "episode_count": 9,
-      "poster_path": null
+      "air_date": "2005-09-25",
+      "episode_count": 27,
+      "poster_path": "/bO0S3fU8Tcqn0g5DCmDcX1oqA2t.jpg"
     },
     {
       "season_id": 13,
-      "tv_media_id": 1350,
+      "tv_media_id": 205,
       "season_number": 3,
       "name": "Season 3",
-      "air_date": "2007-01-09",
-      "episode_count": 8,
-      "poster_path": null
+      "air_date": "2006-09-21",
+      "episode_count": 25,
+      "poster_path": "/aY7NuvFj5Uzliy0nrFxVWmlZFiK.jpg"
     },
     {
       "season_id": 14,
-      "tv_media_id": 1249,
+      "tv_media_id": 206,
       "season_number": 1,
       "name": "Season 1",
-      "air_date": "2008-01-17",
+      "air_date": "2022-11-13",
       "episode_count": 9,
-      "poster_path": null
+      "poster_path": "/qJ579ciJ2vZxVVBJUbz8UwvIGkh.jpg"
     },
     {
       "season_id": 15,
-      "tv_media_id": 1249,
+      "tv_media_id": 206,
       "season_number": 2,
       "name": "Season 2",
-      "air_date": "2004-05-28",
-      "episode_count": 9,
-      "poster_path": null
+      "air_date": "2024-09-15",
+      "episode_count": 10,
+      "poster_path": "/fGvZspAOXxpbcU5TGnJjK9KS3YZ.jpg"
     },
     {
       "season_id": 16,
-      "tv_media_id": 1922,
-      "season_number": 1,
-      "name": "Season 1",
-      "air_date": "2000-10-27",
-      "episode_count": 9,
-      "poster_path": null
+      "tv_media_id": 206,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2025-09-21",
+      "episode_count": 10,
+      "poster_path": "/ckvMEfC8QojNQemiBdyjT3vZPtP.jpg"
     },
     {
       "season_id": 17,
-      "tv_media_id": 1366,
+      "tv_media_id": 207,
       "season_number": 1,
       "name": "Season 1",
-      "air_date": "2010-06-03",
+      "air_date": "2025-11-28",
       "episode_count": 6,
-      "poster_path": null
+      "poster_path": "/tSoFSTmHsTmK50HPYDj0jD1Qbi6.jpg"
     },
     {
       "season_id": 18,
-      "tv_media_id": 1855,
+      "tv_media_id": 208,
       "season_number": 1,
       "name": "Season 1",
-      "air_date": "2003-09-20",
-      "episode_count": 7,
-      "poster_path": null
+      "air_date": "2018-10-16",
+      "episode_count": 20,
+      "poster_path": "/c5tWybs91GuwEFOucnj7yZu2YLu.jpg"
     },
     {
       "season_id": 19,
-      "tv_media_id": 1855,
+      "tv_media_id": 208,
       "season_number": 2,
       "name": "Season 2",
-      "air_date": "2008-01-18",
-      "episode_count": 5,
-      "poster_path": null
+      "air_date": "2019-09-29",
+      "episode_count": 20,
+      "poster_path": "/arPUIveaNTdlZeSrOPrgof6UvhQ.jpg"
     },
     {
       "season_id": 20,
-      "tv_media_id": 1855,
+      "tv_media_id": 208,
       "season_number": 3,
       "name": "Season 3",
-      "air_date": "2008-04-14",
-      "episode_count": 8,
-      "poster_path": null
+      "air_date": "2021-01-03",
+      "episode_count": 14,
+      "poster_path": "/6hChiX0vIjWY4y2kz1WndHVMsDu.jpg"
     },
     {
       "season_id": 21,
-      "tv_media_id": 1018,
+      "tv_media_id": 209,
       "season_number": 1,
       "name": "Season 1",
-      "air_date": "2014-07-18",
-      "episode_count": 10,
-      "poster_path": null
+      "air_date": "2003-09-23",
+      "episode_count": 23,
+      "poster_path": "/AdMZuXYZTLZ24iZLKwrQaHp3YCR.jpg"
     },
     {
       "season_id": 22,
-      "tv_media_id": 1773,
-      "season_number": 1,
-      "name": "Season 1",
-      "air_date": "2013-03-07",
-      "episode_count": 6,
-      "poster_path": null
+      "tv_media_id": 209,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2004-09-28",
+      "episode_count": 23,
+      "poster_path": "/rmjfoD5lTGD0I1sXMxLapPT0MOe.jpg"
     },
     {
       "season_id": 23,
-      "tv_media_id": 1773,
-      "season_number": 2,
-      "name": "Season 2",
-      "air_date": "2007-11-30",
-      "episode_count": 10,
-      "poster_path": null
+      "tv_media_id": 209,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2005-09-20",
+      "episode_count": 24,
+      "poster_path": "/tS64hCnGsAl3dceUlVx5cDlOP2t.jpg"
     },
     {
       "season_id": 24,
-      "tv_media_id": 1117,
+      "tv_media_id": 210,
       "season_number": 1,
       "name": "Season 1",
-      "air_date": "2014-06-07",
-      "episode_count": 9,
-      "poster_path": null
+      "air_date": "2006-09-29",
+      "episode_count": 12,
+      "poster_path": "/rmhoMEHK3ZP2EAXX2VpxuKpW3Bf.jpg"
     },
     {
       "season_id": 25,
-      "tv_media_id": 1117,
+      "tv_media_id": 210,
       "season_number": 2,
       "name": "Season 2",
-      "air_date": "2018-03-12",
-      "episode_count": 10,
-      "poster_path": null
+      "air_date": "2007-09-28",
+      "episode_count": 12,
+      "poster_path": "/t8o6P0pTsnfgsUo6AXSuaiw9fgG.jpg"
     },
     {
       "season_id": 26,
-      "tv_media_id": 1117,
+      "tv_media_id": 210,
       "season_number": 3,
       "name": "Season 3",
-      "air_date": "2000-12-19",
-      "episode_count": 7,
-      "poster_path": null
+      "air_date": "2008-09-26",
+      "episode_count": 12,
+      "poster_path": "/8zyoh0AtArOyTq0F2USckRGzZEU.jpg"
     },
     {
       "season_id": 27,
-      "tv_media_id": 1810,
+      "tv_media_id": 211,
       "season_number": 1,
       "name": "Season 1",
-      "air_date": "2001-04-03",
-      "episode_count": 7,
-      "poster_path": null
+      "air_date": "2019-12-20",
+      "episode_count": 8,
+      "poster_path": "/uZsV5ZIZQMHekWDQQMsBwN0C3yA.jpg"
     },
     {
       "season_id": 28,
-      "tv_media_id": 1246,
-      "season_number": 1,
-      "name": "Season 1",
-      "air_date": "2016-04-29",
-      "episode_count": 9,
-      "poster_path": null
+      "tv_media_id": 211,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2021-12-17",
+      "episode_count": 8,
+      "poster_path": "/7vjaCdMw15FEbXyLQTVa04URsPm.jpg"
     },
     {
       "season_id": 29,
-      "tv_media_id": 1246,
-      "season_number": 2,
-      "name": "Season 2",
-      "air_date": "2013-06-23",
-      "episode_count": 7,
-      "poster_path": null
+      "tv_media_id": 211,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2023-06-29",
+      "episode_count": 8,
+      "poster_path": "/6AoIvJZTUWa3VKbl5AgcvaxczQX.jpg"
     },
     {
       "season_id": 30,
-      "tv_media_id": 1246,
-      "season_number": 3,
-      "name": "Season 3",
-      "air_date": "2010-03-03",
-      "episode_count": 6,
-      "poster_path": null
+      "tv_media_id": 212,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "1989-12-16",
+      "episode_count": 13,
+      "poster_path": "/t544zSFUNyvmyeP4sHotlcEX3zH.jpg"
     },
     {
       "season_id": 31,
-      "tv_media_id": 1741,
-      "season_number": 1,
-      "name": "Season 1",
-      "air_date": "2011-09-22",
-      "episode_count": 11,
-      "poster_path": null
+      "tv_media_id": 212,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "1990-10-11",
+      "episode_count": 22,
+      "poster_path": "/bRyDlUQQafSoIT052jpjLBMe8TH.jpg"
     },
     {
       "season_id": 32,
-      "tv_media_id": 1851,
-      "season_number": 1,
-      "name": "Season 1",
-      "air_date": "2010-10-25",
-      "episode_count": 7,
-      "poster_path": null
+      "tv_media_id": 212,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "1991-09-19",
+      "episode_count": 24,
+      "poster_path": "/9ghmIhWJJuTx3UHyfVVBXQoUGvI.jpg"
     },
     {
       "season_id": 33,
-      "tv_media_id": 1237,
+      "tv_media_id": 213,
       "season_number": 1,
       "name": "Season 1",
-      "air_date": "2015-08-25",
-      "episode_count": 11,
-      "poster_path": null
+      "air_date": "2011-01-09",
+      "episode_count": 12,
+      "poster_path": "/gJdT0Hm5nhoAnNkgWTh6Oxusvnq.jpg"
     },
     {
       "season_id": 34,
-      "tv_media_id": 1125,
-      "season_number": 1,
-      "name": "Season 1",
-      "air_date": "2001-11-17",
-      "episode_count": 9,
-      "poster_path": null
+      "tv_media_id": 213,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2012-01-08",
+      "episode_count": 12,
+      "poster_path": "/k8QLDHT1v65ONfIrKk3jPV4AlTA.jpg"
     },
     {
       "season_id": 35,
-      "tv_media_id": 1896,
-      "season_number": 1,
-      "name": "Season 1",
-      "air_date": "2011-08-28",
-      "episode_count": 5,
-      "poster_path": null
+      "tv_media_id": 213,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2013-01-13",
+      "episode_count": 12,
+      "poster_path": "/ipeHq0WHa3B89xBY4UqzMO4aBNM.jpg"
     },
     {
       "season_id": 36,
-      "tv_media_id": 1110,
+      "tv_media_id": 214,
       "season_number": 1,
       "name": "Season 1",
-      "air_date": "2003-06-21",
-      "episode_count": 11,
-      "poster_path": null
+      "air_date": "2011-04-17",
+      "episode_count": 10,
+      "poster_path": "/wgfKiqzuMrFIkU1M68DDDY8kGC1.jpg"
     },
     {
       "season_id": 37,
-      "tv_media_id": 1203,
-      "season_number": 1,
-      "name": "Season 1",
-      "air_date": "2012-05-19",
-      "episode_count": 12,
-      "poster_path": null
+      "tv_media_id": 214,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2012-04-01",
+      "episode_count": 10,
+      "poster_path": "/9xfNkPwDOqyeUvfNhs1XlWA0esP.jpg"
     },
     {
       "season_id": 38,
-      "tv_media_id": 1203,
-      "season_number": 2,
-      "name": "Season 2",
-      "air_date": "2016-10-09",
-      "episode_count": 8,
-      "poster_path": null
+      "tv_media_id": 214,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2013-03-31",
+      "episode_count": 10,
+      "poster_path": "/5MkZjRnCKiIGn3bkXrXfndEzqOU.jpg"
     },
     {
       "season_id": 39,
-      "tv_media_id": 1202,
+      "tv_media_id": 215,
       "season_number": 1,
       "name": "Season 1",
-      "air_date": "2015-08-20",
-      "episode_count": 5,
-      "poster_path": null
+      "air_date": "2005-09-22",
+      "episode_count": 22,
+      "poster_path": "/w7KYo8SDpI2joKEzxhzJMbluyeS.jpg"
     },
     {
       "season_id": 40,
-      "tv_media_id": 1202,
+      "tv_media_id": 215,
       "season_number": 2,
       "name": "Season 2",
-      "air_date": "2010-07-30",
-      "episode_count": 11,
-      "poster_path": null
+      "air_date": "2006-09-20",
+      "episode_count": 23,
+      "poster_path": "/5RkngSb1jo4DpFfTkxCdFGZtubO.jpg"
     },
     {
       "season_id": 41,
-      "tv_media_id": 1202,
+      "tv_media_id": 215,
       "season_number": 3,
       "name": "Season 3",
-      "air_date": "2014-09-19",
-      "episode_count": 9,
-      "poster_path": null
+      "air_date": "2007-09-26",
+      "episode_count": 20,
+      "poster_path": "/iAMSBqbzn6sL1n2b5KM1INlBqko.jpg"
     },
     {
       "season_id": 42,
-      "tv_media_id": 1362,
+      "tv_media_id": 216,
       "season_number": 1,
       "name": "Season 1",
-      "air_date": "2000-10-02",
-      "episode_count": 8,
-      "poster_path": null
+      "air_date": "2013-09-23",
+      "episode_count": 22,
+      "poster_path": "/kDEItvTUVpDOMQzPqNxgX5ihAWQ.jpg"
     },
     {
       "season_id": 43,
-      "tv_media_id": 1532,
-      "season_number": 1,
-      "name": "Season 1",
-      "air_date": "2017-06-27",
-      "episode_count": 11,
-      "poster_path": null
+      "tv_media_id": 216,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2014-09-22",
+      "episode_count": 22,
+      "poster_path": "/4q6rIEn62nqxxgeuF9rDdDkUnl1.jpg"
     },
     {
       "season_id": 44,
-      "tv_media_id": 1532,
-      "season_number": 2,
-      "name": "Season 2",
-      "air_date": "2016-04-14",
-      "episode_count": 10,
-      "poster_path": null
+      "tv_media_id": 216,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2015-10-01",
+      "episode_count": 23,
+      "poster_path": "/mivR9jhIye1XT4vdGL5pWC28cYz.jpg"
     },
     {
       "season_id": 45,
-      "tv_media_id": 1669,
+      "tv_media_id": 217,
       "season_number": 1,
       "name": "Season 1",
-      "air_date": "2009-02-17",
-      "episode_count": 6,
-      "poster_path": null
+      "air_date": "2004-11-16",
+      "episode_count": 22,
+      "poster_path": "/lXBIhFheyDRA72vRQvYF1mkEF27.jpg"
     },
     {
       "season_id": 46,
-      "tv_media_id": 1650,
-      "season_number": 1,
-      "name": "Season 1",
-      "air_date": "2005-10-12",
-      "episode_count": 9,
-      "poster_path": null
+      "tv_media_id": 217,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2005-09-13",
+      "episode_count": 24,
+      "poster_path": "/j2LxTsMhXYqfi4k9Vome8kQc26U.jpg"
     },
     {
       "season_id": 47,
-      "tv_media_id": 1650,
-      "season_number": 2,
-      "name": "Season 2",
-      "air_date": "2000-08-12",
-      "episode_count": 12,
-      "poster_path": null
+      "tv_media_id": 217,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2006-09-05",
+      "episode_count": 24,
+      "poster_path": "/muuLevUfVbpq87lWljfZ8HLga6b.jpg"
     },
     {
       "season_id": 48,
-      "tv_media_id": 1650,
-      "season_number": 3,
-      "name": "Season 3",
-      "air_date": "2015-09-20",
+      "tv_media_id": 218,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2025-11-06",
       "episode_count": 9,
-      "poster_path": null
+      "poster_path": "/nrM2xFUfKJJEmZzd5d7kohT2G0C.jpg"
     },
     {
       "season_id": 49,
-      "tv_media_id": 1443,
+      "tv_media_id": 219,
       "season_number": 1,
       "name": "Season 1",
-      "air_date": "2007-12-06",
-      "episode_count": 8,
-      "poster_path": null
+      "air_date": "2008-01-20",
+      "episode_count": 7,
+      "poster_path": "/1BP4xYv9ZG4ZVHkL7ocOziBbSYH.jpg"
     },
     {
       "season_id": 50,
-      "tv_media_id": 1443,
+      "tv_media_id": 219,
       "season_number": 2,
       "name": "Season 2",
-      "air_date": "2005-12-14",
-      "episode_count": 8,
-      "poster_path": null
+      "air_date": "2009-03-08",
+      "episode_count": 13,
+      "poster_path": "/e3oGYpoTUhOFK0BJfloru5ZmGV.jpg"
     },
     {
       "season_id": 51,
-      "tv_media_id": 1830,
-      "season_number": 1,
-      "name": "Season 1",
-      "air_date": "2015-02-27",
-      "episode_count": 12,
-      "poster_path": null
+      "tv_media_id": 219,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2010-03-21",
+      "episode_count": 13,
+      "poster_path": "/ffP8Q8ew048YofHRnFVM18B2fPG.jpg"
     },
     {
       "season_id": 52,
-      "tv_media_id": 1661,
+      "tv_media_id": 220,
       "season_number": 1,
-      "name": "Season 1",
-      "air_date": "2017-02-20",
-      "episode_count": 9,
-      "poster_path": null
+      "name": "Series 1",
+      "air_date": "1997-03-23",
+      "episode_count": 5,
+      "poster_path": "/cqMxajdquXGOCiUb9SlkJd8lgBz.jpg"
     },
     {
       "season_id": 53,
-      "tv_media_id": 1592,
-      "season_number": 1,
-      "name": "Season 1",
-      "air_date": "2011-04-09",
-      "episode_count": 10,
-      "poster_path": null
+      "tv_media_id": 220,
+      "season_number": 2,
+      "name": "Series 2",
+      "air_date": "1999-01-20",
+      "episode_count": 4,
+      "poster_path": "/tHfNRh3bbGyPpMkcjV8nf2PMYT8.jpg"
     },
     {
       "season_id": 54,
-      "tv_media_id": 1506,
-      "season_number": 1,
-      "name": "Season 1",
-      "air_date": "2013-01-11",
-      "episode_count": 6,
-      "poster_path": null
+      "tv_media_id": 220,
+      "season_number": 3,
+      "name": "Series 3",
+      "air_date": "1999-12-31",
+      "episode_count": 4,
+      "poster_path": "/1MRgidncCyQPD1eLJlrchbid49h.jpg"
     },
     {
       "season_id": 55,
-      "tv_media_id": 1506,
-      "season_number": 2,
-      "name": "Season 2",
-      "air_date": "2005-11-23",
-      "episode_count": 8,
-      "poster_path": null
+      "tv_media_id": 221,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "1999-01-31",
+      "episode_count": 7,
+      "poster_path": "/5E4yhF7TVrr1l8aq7GM6IdLTsrP.jpg"
     },
     {
       "season_id": 56,
-      "tv_media_id": 1304,
-      "season_number": 1,
-      "name": "Season 1",
-      "air_date": "2009-05-26",
-      "episode_count": 10,
-      "poster_path": null
+      "tv_media_id": 221,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "1999-09-23",
+      "episode_count": 21,
+      "poster_path": "/rskVG2RP0Uzamv9zzslYE7TYPdE.jpg"
     },
     {
       "season_id": 57,
-      "tv_media_id": 1113,
-      "season_number": 1,
-      "name": "Season 1",
-      "air_date": "2006-01-20",
-      "episode_count": 8,
-      "poster_path": null
+      "tv_media_id": 221,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2001-07-11",
+      "episode_count": 22,
+      "poster_path": "/5sK70w0MLNVa7OeJeOqRmSZUUmr.jpg"
     },
     {
       "season_id": 58,
-      "tv_media_id": 1113,
-      "season_number": 2,
-      "name": "Season 2",
-      "air_date": "2003-12-17",
-      "episode_count": 11,
-      "poster_path": null
+      "tv_media_id": 222,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2025-11-05",
+      "episode_count": 12,
+      "poster_path": "/uz62a7Cjex3o5hYH8wmd5IjZ25R.jpg"
     },
     {
       "season_id": 59,
-      "tv_media_id": 1113,
-      "season_number": 3,
-      "name": "Season 3",
-      "air_date": "2008-12-07",
-      "episode_count": 6,
-      "poster_path": null
+      "tv_media_id": 223,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "1990-09-13",
+      "episode_count": 22,
+      "poster_path": "/hGrkBU5p60zZj9bMByo9cegZfhl.jpg"
     },
     {
       "season_id": 60,
-      "tv_media_id": 1300,
-      "season_number": 1,
-      "name": "Season 1",
-      "air_date": "2016-09-12",
-      "episode_count": 10,
-      "poster_path": null
+      "tv_media_id": 223,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "1991-09-16",
+      "episode_count": 22,
+      "poster_path": "/nykyEGoMsVPnyrnoUL0g93YJPQZ.jpg"
     },
     {
       "season_id": 61,
-      "tv_media_id": 1300,
-      "season_number": 2,
-      "name": "Season 2",
-      "air_date": "2007-11-16",
-      "episode_count": 8,
-      "poster_path": null
+      "tv_media_id": 223,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "1992-09-22",
+      "episode_count": 22,
+      "poster_path": "/emKji2D1tLAJsFad84ENA4PufI5.jpg"
     },
     {
       "season_id": 62,
-      "tv_media_id": 1120,
+      "tv_media_id": 224,
       "season_number": 1,
       "name": "Season 1",
-      "air_date": "2017-05-17",
-      "episode_count": 12,
-      "poster_path": null
+      "air_date": "2025-10-07",
+      "episode_count": 41,
+      "poster_path": "/xbBJBKssJr85OzAJNSuWdkh5p4v.jpg"
     },
     {
       "season_id": 63,
-      "tv_media_id": 1120,
-      "season_number": 2,
-      "name": "Season 2",
-      "air_date": "2019-01-15",
-      "episode_count": 6,
-      "poster_path": null
+      "tv_media_id": 225,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2025-03-19",
+      "episode_count": 13,
+      "poster_path": "/vonVvqsKNBUQJiXlZXK1BnS2d8y.jpg"
     },
     {
       "season_id": 64,
-      "tv_media_id": 1788,
-      "season_number": 1,
-      "name": "Season 1",
-      "air_date": "2006-07-14",
-      "episode_count": 9,
-      "poster_path": null
+      "tv_media_id": 225,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2025-09-17",
+      "episode_count": 15,
+      "poster_path": "/l3P7COdRTZT3KZThyZlxlYYbZwQ.jpg"
     },
     {
       "season_id": 65,
-      "tv_media_id": 1788,
-      "season_number": 2,
-      "name": "Season 2",
-      "air_date": "2003-10-02",
-      "episode_count": 7,
-      "poster_path": null
+      "tv_media_id": 226,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2024-05-09",
+      "episode_count": 6,
+      "poster_path": "/rvpU75hL0K66GCt1GvJn3AzGGzy.jpg"
     },
     {
       "season_id": 66,
-      "tv_media_id": 1788,
-      "season_number": 3,
-      "name": "Season 3",
-      "air_date": "2008-11-26",
+      "tv_media_id": 226,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2025-11-07",
       "episode_count": 6,
-      "poster_path": null
+      "poster_path": "/mHmuHBEKJ8muABCzhAUd8g3WHVK.jpg"
     },
     {
       "season_id": 67,
-      "tv_media_id": 1022,
-      "season_number": 1,
-      "name": "Season 1",
-      "air_date": "2011-10-02",
-      "episode_count": 6,
+      "tv_media_id": 226,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": null,
+      "episode_count": 0,
       "poster_path": null
     },
     {
       "season_id": 68,
-      "tv_media_id": 1022,
-      "season_number": 2,
-      "name": "Season 2",
-      "air_date": "2006-12-09",
-      "episode_count": 8,
-      "poster_path": null
+      "tv_media_id": 227,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2017-09-25",
+      "episode_count": 10,
+      "poster_path": "/t3yVaAlmCLBwbqTrKGcWHwuCmkh.jpg"
     },
     {
       "season_id": 69,
-      "tv_media_id": 1452,
-      "season_number": 1,
-      "name": "Season 1",
-      "air_date": "2014-11-18",
+      "tv_media_id": 227,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2019-03-26",
       "episode_count": 10,
-      "poster_path": null
+      "poster_path": "/q3MHZ356OmjZpJ6iYCzs231H0o9.jpg"
     },
     {
       "season_id": 70,
-      "tv_media_id": 1213,
-      "season_number": 1,
-      "name": "Season 1",
-      "air_date": "2013-05-27",
-      "episode_count": 12,
-      "poster_path": null
+      "tv_media_id": 227,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2020-07-17",
+      "episode_count": 10,
+      "poster_path": "/yZxKtG0QMq4YEq7dlR97C0dmUS2.jpg"
     },
     {
       "season_id": 71,
-      "tv_media_id": 1213,
-      "season_number": 2,
-      "name": "Season 2",
-      "air_date": "2008-03-15",
-      "episode_count": 11,
-      "poster_path": null
+      "tv_media_id": 228,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2011-10-02",
+      "episode_count": 12,
+      "poster_path": "/ySYtq74W3kxsiPTGrGm1ADDpz8m.jpg"
     },
     {
       "season_id": 72,
-      "tv_media_id": 1213,
-      "season_number": 3,
-      "name": "Season 3",
-      "air_date": "2000-03-09",
+      "tv_media_id": 228,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2012-09-29",
       "episode_count": 12,
-      "poster_path": null
+      "poster_path": "/4pUBj6vFlyL1jQbqpealfbcgl8k.jpg"
     },
     {
       "season_id": 73,
-      "tv_media_id": 1112,
-      "season_number": 1,
-      "name": "Season 1",
-      "air_date": "2009-10-20",
-      "episode_count": 11,
-      "poster_path": null
+      "tv_media_id": 228,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2013-09-28",
+      "episode_count": 12,
+      "poster_path": "/txtXQgLi6MHLXHNKpDjQsjkZ48m.jpg"
     },
     {
       "season_id": 74,
-      "tv_media_id": 1112,
-      "season_number": 2,
-      "name": "Season 2",
-      "air_date": "2018-02-10",
-      "episode_count": 9,
-      "poster_path": null
+      "tv_media_id": 229,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "1994-09-22",
+      "episode_count": 24,
+      "poster_path": "/odCW88Cq5hAF0ZFVOkeJmeQv1nV.jpg"
     },
     {
       "season_id": 75,
-      "tv_media_id": 1112,
-      "season_number": 3,
-      "name": "Season 3",
-      "air_date": "2002-06-23",
-      "episode_count": 12,
-      "poster_path": null
+      "tv_media_id": 229,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "1995-09-21",
+      "episode_count": 24,
+      "poster_path": "/kC9VHoMh1KkoAYfsY3QlHpZRxDy.jpg"
     },
     {
       "season_id": 76,
-      "tv_media_id": 1782,
-      "season_number": 1,
-      "name": "Season 1",
-      "air_date": "2002-04-17",
-      "episode_count": 9,
-      "poster_path": null
+      "tv_media_id": 229,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "1996-09-16",
+      "episode_count": 25,
+      "poster_path": "/n9u4pslqb6tpiLc8soldL5IbAyG.jpg"
     },
     {
       "season_id": 77,
-      "tv_media_id": 1523,
+      "tv_media_id": 230,
       "season_number": 1,
       "name": "Season 1",
-      "air_date": "2007-09-01",
-      "episode_count": 11,
-      "poster_path": null
+      "air_date": "2022-09-23",
+      "episode_count": 38,
+      "poster_path": "/t8fojtnnA0dunBrkU4aPVxMka2G.jpg"
     },
     {
       "season_id": 78,
-      "tv_media_id": 1280,
-      "season_number": 1,
-      "name": "Season 1",
-      "air_date": "2012-03-07",
-      "episode_count": 12,
-      "poster_path": null
+      "tv_media_id": 230,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2023-09-15",
+      "episode_count": 37,
+      "poster_path": "/yKFdT0Lk4tlsPdZjbINbi8sIeCF.jpg"
     },
     {
       "season_id": 79,
-      "tv_media_id": 1278,
-      "season_number": 1,
-      "name": "Season 1",
-      "air_date": "2016-06-28",
-      "episode_count": 6,
-      "poster_path": null
+      "tv_media_id": 230,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2024-09-13",
+      "episode_count": 28,
+      "poster_path": "/d9wbMyGLnjewOGnpxKMbPLRJarB.jpg"
     },
     {
       "season_id": 80,
-      "tv_media_id": 1278,
-      "season_number": 2,
-      "name": "Season 2",
-      "air_date": "2003-07-23",
-      "episode_count": 5,
-      "poster_path": null
+      "tv_media_id": 231,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2018-06-20",
+      "episode_count": 9,
+      "poster_path": "/pAYgWMmwfyMTf1thfbzoPDAE7dc.jpg"
     },
     {
       "season_id": 81,
-      "tv_media_id": 1647,
-      "season_number": 1,
-      "name": "Season 1",
-      "air_date": "2006-09-13",
-      "episode_count": 8,
-      "poster_path": null
+      "tv_media_id": 231,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2019-06-19",
+      "episode_count": 10,
+      "poster_path": "/3ePlESS6eyUj9W7yPEbzhwWaiFo.jpg"
     },
     {
       "season_id": 82,
-      "tv_media_id": 1647,
-      "season_number": 2,
-      "name": "Season 2",
-      "air_date": "2003-10-03",
-      "episode_count": 9,
-      "poster_path": null
+      "tv_media_id": 231,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2020-06-21",
+      "episode_count": 10,
+      "poster_path": "/eaJm0zFJenaaSNhPtgdrgGV00VG.jpg"
     },
     {
       "season_id": 83,
-      "tv_media_id": 1647,
-      "season_number": 3,
-      "name": "Season 3",
-      "air_date": "2003-06-23",
-      "episode_count": 10,
-      "poster_path": null
+      "tv_media_id": 232,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2013-03-03",
+      "episode_count": 9,
+      "poster_path": "/uYaskJzmBhBdvkitDTjlH6gj9Pt.jpg"
     },
     {
       "season_id": 84,
-      "tv_media_id": 1621,
-      "season_number": 1,
-      "name": "Season 1",
-      "air_date": "2003-06-14",
-      "episode_count": 6,
-      "poster_path": null
+      "tv_media_id": 232,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2014-02-27",
+      "episode_count": 10,
+      "poster_path": "/g2Pgu5Dae9P99yJs0xZQtEagA76.jpg"
     },
     {
       "season_id": 85,
-      "tv_media_id": 1621,
-      "season_number": 2,
-      "name": "Season 2",
-      "air_date": "2018-01-24",
-      "episode_count": 12,
-      "poster_path": null
+      "tv_media_id": 232,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2015-02-19",
+      "episode_count": 10,
+      "poster_path": "/jICv5UxLDvUqCp1D2jAb0PSJWAw.jpg"
     },
     {
       "season_id": 86,
-      "tv_media_id": 1621,
-      "season_number": 3,
-      "name": "Season 3",
-      "air_date": "2015-08-20",
-      "episode_count": 12,
-      "poster_path": null
+      "tv_media_id": 233,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2008-09-23",
+      "episode_count": 23,
+      "poster_path": "/pwHJelCchUwPqDFpq09oXJiNzhr.jpg"
     },
     {
       "season_id": 87,
-      "tv_media_id": 1730,
-      "season_number": 1,
-      "name": "Season 1",
-      "air_date": "2003-06-23",
-      "episode_count": 12,
-      "poster_path": null
+      "tv_media_id": 233,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2009-09-24",
+      "episode_count": 23,
+      "poster_path": "/rA10pF8GxXNS7g5kHWMuJX1mjvw.jpg"
     },
     {
       "season_id": 88,
-      "tv_media_id": 1730,
-      "season_number": 2,
-      "name": "Season 2",
-      "air_date": "2017-05-28",
-      "episode_count": 8,
-      "poster_path": null
+      "tv_media_id": 233,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2010-09-23",
+      "episode_count": 24,
+      "poster_path": "/wpaqE4DyH47rVXmGVmpOU9eoZac.jpg"
     },
     {
       "season_id": 89,
-      "tv_media_id": 1730,
-      "season_number": 3,
-      "name": "Season 3",
-      "air_date": "2003-06-16",
-      "episode_count": 9,
-      "poster_path": null
+      "tv_media_id": 234,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2022-11-23",
+      "episode_count": 8,
+      "poster_path": "/v9fNsN3WNXObKJjBWkiKMuT3XoR.jpg"
     },
     {
       "season_id": 90,
-      "tv_media_id": 1682,
-      "season_number": 1,
-      "name": "Season 1",
-      "air_date": "2000-09-13",
+      "tv_media_id": 234,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2025-08-06",
       "episode_count": 8,
-      "poster_path": null
+      "poster_path": "/aamw6JjKwTy6bdviyIcFKekSD6x.jpg"
     },
     {
       "season_id": 91,
-      "tv_media_id": 1180,
-      "season_number": 1,
-      "name": "Season 1",
-      "air_date": "2013-12-29",
-      "episode_count": 9,
+      "tv_media_id": 234,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": null,
+      "episode_count": 8,
       "poster_path": null
     },
     {
       "season_id": 92,
-      "tv_media_id": 1180,
-      "season_number": 2,
-      "name": "Season 2",
-      "air_date": "2010-07-01",
-      "episode_count": 5,
-      "poster_path": null
+      "tv_media_id": 235,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2010-10-31",
+      "episode_count": 6,
+      "poster_path": "/wAXeO9Qyne3C6LEibz3zOQc2Y70.jpg"
     },
     {
       "season_id": 93,
-      "tv_media_id": 1180,
-      "season_number": 3,
-      "name": "Season 3",
-      "air_date": "2018-06-22",
-      "episode_count": 9,
-      "poster_path": null
+      "tv_media_id": 235,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2011-10-16",
+      "episode_count": 13,
+      "poster_path": "/9bpP0gsdNH9o7rwe0dlIG67vb2r.jpg"
     },
     {
       "season_id": 94,
-      "tv_media_id": 1331,
-      "season_number": 1,
-      "name": "Season 1",
-      "air_date": "2005-03-07",
-      "episode_count": 11,
-      "poster_path": null
+      "tv_media_id": 235,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2012-10-13",
+      "episode_count": 16,
+      "poster_path": "/waWZO9WlZkh7rXKjLtzttoQDsew.jpg"
     },
     {
       "season_id": 95,
-      "tv_media_id": 1331,
-      "season_number": 2,
-      "name": "Season 2",
-      "air_date": "2008-01-11",
+      "tv_media_id": 236,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2011-06-23",
       "episode_count": 12,
-      "poster_path": null
+      "poster_path": "/6gbwMw7k8Utq2lP6y91BdnYfDXg.jpg"
     },
     {
       "season_id": 96,
-      "tv_media_id": 1331,
-      "season_number": 3,
-      "name": "Season 3",
-      "air_date": "2007-11-26",
-      "episode_count": 10,
-      "poster_path": null
+      "tv_media_id": 236,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2012-06-14",
+      "episode_count": 16,
+      "poster_path": "/xxZPBZZHkii6o2yFDrBSTZvC2Yr.jpg"
     },
     {
       "season_id": 97,
-      "tv_media_id": 1159,
-      "season_number": 1,
-      "name": "Season 1",
-      "air_date": "2008-05-30",
-      "episode_count": 9,
-      "poster_path": null
+      "tv_media_id": 236,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2013-07-16",
+      "episode_count": 16,
+      "poster_path": "/j9nAfPK8csOMMZ9tjPLsiQIV0H2.jpg"
     },
     {
       "season_id": 98,
-      "tv_media_id": 1797,
+      "tv_media_id": 237,
       "season_number": 1,
       "name": "Season 1",
-      "air_date": "2003-01-11",
-      "episode_count": 9,
-      "poster_path": null
+      "air_date": "2015-10-05",
+      "episode_count": 12,
+      "poster_path": "/ocv8PzwfQUsFHSSdUvK7wZI85Dx.jpg"
     },
     {
       "season_id": 99,
-      "tv_media_id": 1797,
+      "tv_media_id": 237,
       "season_number": 2,
       "name": "Season 2",
-      "air_date": "2012-06-23",
-      "episode_count": 7,
-      "poster_path": null
+      "air_date": "2019-04-10",
+      "episode_count": 12,
+      "poster_path": "/wZO2S6w4DesZKJCJGeO2CO65p0z.jpg"
     },
     {
       "season_id": 100,
-      "tv_media_id": 1797,
+      "tv_media_id": 237,
       "season_number": 3,
       "name": "Season 3",
-      "air_date": "2008-03-26",
-      "episode_count": 8,
-      "poster_path": null
+      "air_date": "2025-10-12",
+      "episode_count": 12,
+      "poster_path": "/5OXorpOxMpGksF93iWNQjUJDk1c.jpg"
     },
     {
       "season_id": 101,
-      "tv_media_id": 1707,
+      "tv_media_id": 238,
       "season_number": 1,
       "name": "Season 1",
-      "air_date": "2001-09-24",
-      "episode_count": 10,
-      "poster_path": null
+      "air_date": "2024-01-18",
+      "episode_count": 8,
+      "poster_path": "/wslBT9lKS1GacsCldrQXIUFY2a2.jpg"
     },
     {
       "season_id": 102,
-      "tv_media_id": 1707,
+      "tv_media_id": 238,
       "season_number": 2,
       "name": "Season 2",
-      "air_date": "2001-10-04",
-      "episode_count": 5,
-      "poster_path": null
+      "air_date": "2025-10-29",
+      "episode_count": 8,
+      "poster_path": "/aVYHMW8pdzJ9qG1OGRMKyGy9xor.jpg"
     },
     {
       "season_id": 103,
-      "tv_media_id": 1707,
-      "season_number": 3,
-      "name": "Season 3",
-      "air_date": "2017-04-12",
-      "episode_count": 8,
-      "poster_path": null
+      "tv_media_id": 239,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2005-09-13",
+      "episode_count": 22,
+      "poster_path": "/4igyUKBczIh9Mb0k3A3DvCqmnpS.jpg"
     },
     {
       "season_id": 104,
-      "tv_media_id": 1878,
-      "season_number": 1,
-      "name": "Season 1",
-      "air_date": "2012-09-01",
-      "episode_count": 7,
-      "poster_path": null
+      "tv_media_id": 239,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2006-08-30",
+      "episode_count": 21,
+      "poster_path": "/19NQmkV7mNXGmBLu8CYyH3JKOcv.jpg"
     },
     {
       "season_id": 105,
-      "tv_media_id": 1878,
-      "season_number": 2,
-      "name": "Season 2",
-      "air_date": "2016-11-19",
-      "episode_count": 6,
-      "poster_path": null
+      "tv_media_id": 239,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2007-09-25",
+      "episode_count": 15,
+      "poster_path": "/jyEa3u9cYAe5sNkLojEajPoMVUn.jpg"
     },
     {
       "season_id": 106,
-      "tv_media_id": 1878,
+      "tv_media_id": 240,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2005-03-24",
+      "episode_count": 6,
+      "poster_path": "/d71JQWhX75ZE2D383DlIsHVH1In.jpg"
+    },
+    {
+      "season_id": 107,
+      "tv_media_id": 240,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2005-09-20",
+      "episode_count": 22,
+      "poster_path": "/sAd3RhOjhTuaIBpyiI1QmB0YUq8.jpg"
+    },
+    {
+      "season_id": 108,
+      "tv_media_id": 240,
       "season_number": 3,
       "name": "Season 3",
-      "air_date": "2007-07-16",
+      "air_date": "2006-09-21",
+      "episode_count": 23,
+      "poster_path": "/1SR5ZR0KNHTRvAzFayaKbhKAFSu.jpg"
+    },
+    {
+      "season_id": 109,
+      "tv_media_id": 241,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2025-10-03",
+      "episode_count": 12,
+      "poster_path": "/e8FeYSMY5C1IEO1Nu4MRmELqUxN.jpg"
+    },
+    {
+      "season_id": 110,
+      "tv_media_id": 242,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2016-01-25",
+      "episode_count": 13,
+      "poster_path": "/e6FQvm5jycG9xx1ZWowIYBc3Shn.jpg"
+    },
+    {
+      "season_id": 111,
+      "tv_media_id": 242,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2016-09-19",
+      "episode_count": 18,
+      "poster_path": "/NhVsRaNhfXknIseUb2hY02gqom.jpg"
+    },
+    {
+      "season_id": 112,
+      "tv_media_id": 242,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2017-10-02",
+      "episode_count": 26,
+      "poster_path": "/x4oi3N7JNF0QGtBzyLJjolivmWx.jpg"
+    },
+    {
+      "season_id": 113,
+      "tv_media_id": 243,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2025-11-02",
+      "episode_count": 10,
+      "poster_path": "/azyUkfTYgVkC4GDQax670G23aS0.jpg"
+    },
+    {
+      "season_id": 114,
+      "tv_media_id": 244,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2005-08-29",
+      "episode_count": 22,
+      "poster_path": "/UeJcx1hV0gJkvZEvv7t6PjtBq2.jpg"
+    },
+    {
+      "season_id": 115,
+      "tv_media_id": 244,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2006-08-21",
+      "episode_count": 22,
+      "poster_path": "/sRZyjc1BVnVFnTkeU33TG9C6Djd.jpg"
+    },
+    {
+      "season_id": 116,
+      "tv_media_id": 244,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2007-09-17",
+      "episode_count": 13,
+      "poster_path": "/vlEtqQFkz4oqXaKo5tQzR2gtmWw.jpg"
+    },
+    {
+      "season_id": 117,
+      "tv_media_id": 245,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2009-09-08",
+      "episode_count": 22,
+      "poster_path": "/4bFr4FDCzjaxyJhkDEfAOOmpo7G.jpg"
+    },
+    {
+      "season_id": 118,
+      "tv_media_id": 245,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2010-09-07",
+      "episode_count": 22,
+      "poster_path": "/qtxsFhfYu758GYyJ6EX5faJSXGP.jpg"
+    },
+    {
+      "season_id": 119,
+      "tv_media_id": 245,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2011-09-12",
+      "episode_count": 22,
+      "poster_path": "/bQSJ9kkDmQisD2WE7btAZaX782f.jpg"
+    },
+    {
+      "season_id": 120,
+      "tv_media_id": 246,
+      "season_number": 1,
+      "name": "Underbelly",
+      "air_date": "2008-02-13",
+      "episode_count": 13,
+      "poster_path": "/qvFnaoLXUSkzhsHRR1wFvi0NJ7B.jpg"
+    },
+    {
+      "season_id": 121,
+      "tv_media_id": 246,
+      "season_number": 2,
+      "name": "A Tale of Two Cities",
+      "air_date": "2009-02-09",
+      "episode_count": 13,
+      "poster_path": "/983IATMtloqb6K8UBmFtRoMnPdP.jpg"
+    },
+    {
+      "season_id": 122,
+      "tv_media_id": 246,
+      "season_number": 3,
+      "name": "The Golden Mile",
+      "air_date": "2010-04-11",
+      "episode_count": 13,
+      "poster_path": "/vBTKLbBXsjKEGzbal9TgYhLiEPS.jpg"
+    },
+    {
+      "season_id": 123,
+      "tv_media_id": 247,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2022-02-20",
+      "episode_count": 10,
+      "poster_path": "/ps46NdLlH70ptDD8ailTL8TCZU3.jpg"
+    },
+    {
+      "season_id": 124,
+      "tv_media_id": 247,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2023-04-23",
+      "episode_count": 10,
+      "poster_path": "/1JdjopyVdtT8ZcGLfQtqTF2DEx4.jpg"
+    },
+    {
+      "season_id": 125,
+      "tv_media_id": 247,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2024-09-22",
+      "episode_count": 10,
+      "poster_path": "/sj64QEEb6JM1CdCfXHaIbA3WPx8.jpg"
+    },
+    {
+      "season_id": 126,
+      "tv_media_id": 248,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2014-10-06",
+      "episode_count": 23,
+      "poster_path": "/A3H6pewHfoy2bXmNhvycOe0xzlC.jpg"
+    },
+    {
+      "season_id": 127,
+      "tv_media_id": 248,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2015-10-05",
+      "episode_count": 23,
+      "poster_path": "/8xWZPVX1cv9V5YD1RPeLj9QZDE9.jpg"
+    },
+    {
+      "season_id": 128,
+      "tv_media_id": 248,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2016-10-03",
+      "episode_count": 23,
+      "poster_path": "/rN1hgV8Ag3bZmkv33Udm93hIxQp.jpg"
+    },
+    {
+      "season_id": 129,
+      "tv_media_id": 249,
+      "season_number": 1,
+      "name": "Blood and Sand",
+      "air_date": "2010-01-22",
+      "episode_count": 13,
+      "poster_path": "/hxz2M0mIWeynSpsYckhmT7gyOOc.jpg"
+    },
+    {
+      "season_id": 130,
+      "tv_media_id": 249,
+      "season_number": 2,
+      "name": "Vengeance",
+      "air_date": "2012-01-27",
+      "episode_count": 10,
+      "poster_path": "/iHjUhNXGnD3aKiq0GA3BgEfwCmw.jpg"
+    },
+    {
+      "season_id": 131,
+      "tv_media_id": 249,
+      "season_number": 3,
+      "name": "War of the Damned",
+      "air_date": "2013-01-25",
+      "episode_count": 10,
+      "poster_path": "/oCGRNYrt17nKEHJTcJl7c5KEr77.jpg"
+    },
+    {
+      "season_id": 132,
+      "tv_media_id": 250,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2000-10-06",
+      "episode_count": 23,
+      "poster_path": "/4476Frhzun0BilSwZFgiQ6Nkrb8.jpg"
+    },
+    {
+      "season_id": 133,
+      "tv_media_id": 250,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2001-09-27",
+      "episode_count": 23,
+      "poster_path": "/vPNwbSgfIrTsKbRPElYQ5OdDSOv.jpg"
+    },
+    {
+      "season_id": 134,
+      "tv_media_id": 250,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2002-09-25",
+      "episode_count": 23,
+      "poster_path": "/t7A6CvGB4zElX8DKv7srwFVQUBo.jpg"
+    },
+    {
+      "season_id": 135,
+      "tv_media_id": 251,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2003-09-22",
+      "episode_count": 24,
+      "poster_path": "/9NmUF41Izd5E4k69g4klkoh4zTb.jpg"
+    },
+    {
+      "season_id": 136,
+      "tv_media_id": 251,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2004-09-20",
+      "episode_count": 24,
+      "poster_path": "/l03f6HTmnc82LlDCvR2q6pfWO87.jpg"
+    },
+    {
+      "season_id": 137,
+      "tv_media_id": 251,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2005-09-19",
+      "episode_count": 24,
+      "poster_path": "/I5Hhdvc5UIEyhgpRoNPqj99H49.jpg"
+    },
+    {
+      "season_id": 138,
+      "tv_media_id": 252,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2024-11-17",
+      "episode_count": 10,
+      "poster_path": "/rxWtATtTdwx0ERQjQ7BtVOMyq5r.jpg"
+    },
+    {
+      "season_id": 139,
+      "tv_media_id": 252,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2025-11-16",
+      "episode_count": 10,
+      "poster_path": "/euP1ytkbTAbpHwSv5vGdCip9mOH.jpg"
+    },
+    {
+      "season_id": 140,
+      "tv_media_id": 253,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2019-11-20",
+      "episode_count": 27,
+      "poster_path": "/tZuarGU7wrYkKhn8m5JEBmYIYJd.jpg"
+    },
+    {
+      "season_id": 141,
+      "tv_media_id": 253,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2020-09-30",
+      "episode_count": 37,
+      "poster_path": "/pQ6FyOdo3zZAs2tpHqVBoea8i7K.jpg"
+    },
+    {
+      "season_id": 142,
+      "tv_media_id": 253,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2021-10-06",
+      "episode_count": 34,
+      "poster_path": "/mmwOR1vhzh9sk6o66GZFV5cG4X7.jpg"
+    },
+    {
+      "season_id": 143,
+      "tv_media_id": 254,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2015-10-19",
+      "episode_count": 26,
+      "poster_path": "/o14MqblEe6YBODpzppwXasPjT6k.jpg"
+    },
+    {
+      "season_id": 144,
+      "tv_media_id": 254,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2017-10-26",
+      "episode_count": 25,
+      "poster_path": "/5LXzwYLvxVrxm8LpV3i7qUznSrx.jpg"
+    },
+    {
+      "season_id": 145,
+      "tv_media_id": 254,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2019-04-14",
+      "episode_count": 26,
+      "poster_path": "/ctdMxZIjB5aNhedUDSaz8SvhrRv.jpg"
+    },
+    {
+      "season_id": 146,
+      "tv_media_id": 255,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2025-10-09",
+      "episode_count": 10,
+      "poster_path": "/4S2gS1mECZ5wDRBVAZE6KWmJHI3.jpg"
+    },
+    {
+      "season_id": 147,
+      "tv_media_id": 256,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2009-03-09",
+      "episode_count": 10,
+      "poster_path": "/9OE42PKojV7IueBxAAhbQbyfc6L.jpg"
+    },
+    {
+      "season_id": 148,
+      "tv_media_id": 256,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2009-09-21",
+      "episode_count": 24,
+      "poster_path": "/xA3s9Ti1p2kfoW9GBUXeZ2U6NE8.jpg"
+    },
+    {
+      "season_id": 149,
+      "tv_media_id": 256,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2010-09-20",
+      "episode_count": 24,
+      "poster_path": "/d5IgnFWM6r3K8N2S8SROdUZwpsE.jpg"
+    },
+    {
+      "season_id": 150,
+      "tv_media_id": 257,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2001-11-06",
+      "episode_count": 24,
+      "poster_path": "/gYbW4kqZFO8SQlgdYeVnnRQNJ6L.jpg"
+    },
+    {
+      "season_id": 151,
+      "tv_media_id": 257,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2002-10-29",
+      "episode_count": 24,
+      "poster_path": "/waK2AidxJTsKv7xS0NtJGL1chx6.jpg"
+    },
+    {
+      "season_id": 152,
+      "tv_media_id": 257,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2003-10-28",
+      "episode_count": 24,
+      "poster_path": "/zd1FcyL46thHHXmpu8XhutIBj77.jpg"
+    },
+    {
+      "season_id": 153,
+      "tv_media_id": 258,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2025-07-06",
+      "episode_count": 24,
+      "poster_path": "/roRQOpLyHeuoZANfbsRae045o6.jpg"
+    },
+    {
+      "season_id": 154,
+      "tv_media_id": 259,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2025-10-27",
+      "episode_count": 8,
+      "poster_path": "/wNb7PxdshRHLkJiDgfOuDB0IamA.jpg"
+    },
+    {
+      "season_id": 155,
+      "tv_media_id": 260,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "1996-07-22",
+      "episode_count": 6,
+      "poster_path": "/yCk9E4zzDi5W9zpDc2L8vCeLA.jpg"
+    },
+    {
+      "season_id": 156,
+      "tv_media_id": 260,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "1997-01-06",
+      "episode_count": 16,
+      "poster_path": "/w7sob0PFeYV0S2Q8v1PMhge8qQS.jpg"
+    },
+    {
+      "season_id": 157,
+      "tv_media_id": 260,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "1998-03-09",
+      "episode_count": 33,
+      "poster_path": "/jXrc4QyW1berVN4ZaX2eX0jOPsq.jpg"
+    },
+    {
+      "season_id": 158,
+      "tv_media_id": 261,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "1971-09-15",
+      "episode_count": 7,
+      "poster_path": "/9O7rjHpYgcoat3h4fBnoW1XRAAR.jpg"
+    },
+    {
+      "season_id": 159,
+      "tv_media_id": 261,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "1972-09-17",
+      "episode_count": 8,
+      "poster_path": "/hPQgn3TEQVmaVat0E0jao2ASv0b.jpg"
+    },
+    {
+      "season_id": 160,
+      "tv_media_id": 261,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "1973-09-23",
+      "episode_count": 8,
+      "poster_path": "/bYVHfswHtzsHlDpaNz04koH8ZQn.jpg"
+    },
+    {
+      "season_id": 161,
+      "tv_media_id": 262,
+      "season_number": 1,
+      "name": "Series 1",
+      "air_date": "2013-09-12",
+      "episode_count": 6,
+      "poster_path": "/vPlsKun2WZEsqe3yZTmebxtwElW.jpg"
+    },
+    {
+      "season_id": 162,
+      "tv_media_id": 262,
+      "season_number": 2,
+      "name": "Series 2",
+      "air_date": "2014-10-02",
+      "episode_count": 6,
+      "poster_path": "/m4JPtC3gWUsq0GlfNK3SdgkL9XG.jpg"
+    },
+    {
+      "season_id": 163,
+      "tv_media_id": 262,
+      "season_number": 3,
+      "name": "Series 3",
+      "air_date": "2016-05-05",
+      "episode_count": 6,
+      "poster_path": "/b4m8G5j2HkGKh5yeCsV43askQVB.jpg"
+    },
+    {
+      "season_id": 164,
+      "tv_media_id": 263,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2025-10-06",
+      "episode_count": 8,
+      "poster_path": "/qHBVXipaleawbvr9ESBj8vv9gth.jpg"
+    },
+    {
+      "season_id": 165,
+      "tv_media_id": 264,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2024-01-26",
+      "episode_count": 8,
+      "poster_path": "/bSDF1ZzH0PVkEs1lVo68pA5MiGS.jpg"
+    },
+    {
+      "season_id": 166,
+      "tv_media_id": 264,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2025-04-25",
+      "episode_count": 13,
+      "poster_path": "/k7eHdEa37xlDNENab2gsitsbhkK.jpg"
+    },
+    {
+      "season_id": 167,
+      "tv_media_id": 265,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2012-10-10",
+      "episode_count": 24,
+      "poster_path": "/fTVZTV41lI9EFPTEjwRBmierHUE.jpg"
+    },
+    {
+      "season_id": 168,
+      "tv_media_id": 265,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2013-09-24",
+      "episode_count": 22,
+      "poster_path": "/wqsi6oKOc8hGA8153pJEM5Pc9jQ.jpg"
+    },
+    {
+      "season_id": 169,
+      "tv_media_id": 265,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2014-09-23",
+      "episode_count": 23,
+      "poster_path": "/28WoFa8Fqc2g8kAWGTCoe7xhfEI.jpg"
+    },
+    {
+      "season_id": 170,
+      "tv_media_id": 266,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2021-09-17",
+      "episode_count": 9,
+      "poster_path": "/jlbrV1Kl4Y8pWXu12SppebRs7On.jpg"
+    },
+    {
+      "season_id": 171,
+      "tv_media_id": 266,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2024-12-26",
+      "episode_count": 7,
+      "poster_path": "/sXZhtWLo3fecavpDuOyJiayjt32.jpg"
+    },
+    {
+      "season_id": 172,
+      "tv_media_id": 266,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2025-06-27",
+      "episode_count": 6,
+      "poster_path": "/6VZsJ37aJDvf45PLJk7Z0UVhzxt.jpg"
+    },
+    {
+      "season_id": 173,
+      "tv_media_id": 267,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2009-09-23",
+      "episode_count": 24,
+      "poster_path": "/i1KhQoI391KaEA5fKArrzoTvNDk.jpg"
+    },
+    {
+      "season_id": 174,
+      "tv_media_id": 267,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2010-09-22",
+      "episode_count": 24,
+      "poster_path": "/yvBc8av9K1g5QRtBDnP5xY69jb4.jpg"
+    },
+    {
+      "season_id": 175,
+      "tv_media_id": 267,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2011-09-21",
+      "episode_count": 24,
+      "poster_path": "/a4EJOG8VOV02veUIYtu4lX6FVdr.jpg"
+    },
+    {
+      "season_id": 176,
+      "tv_media_id": 268,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2014-01-08",
+      "episode_count": 15,
+      "poster_path": "/A1rwtojFg3ClDEs55RGDt6243sx.jpg"
+    },
+    {
+      "season_id": 177,
+      "tv_media_id": 268,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2014-09-24",
+      "episode_count": 23,
+      "poster_path": "/afq2obuEF6h1PTmK4Ayl3ePZuU7.jpg"
+    },
+    {
+      "season_id": 178,
+      "tv_media_id": 268,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2015-09-30",
+      "episode_count": 23,
+      "poster_path": "/r4JpxAZzVBu5ISbYZRNZypehVaN.jpg"
+    },
+    {
+      "season_id": 179,
+      "tv_media_id": 269,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2017-09-25",
+      "episode_count": 18,
+      "poster_path": "/d3hscDmXX3ZMg52H6PZjfRA95hv.jpg"
+    },
+    {
+      "season_id": 180,
+      "tv_media_id": 269,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2018-09-24",
+      "episode_count": 18,
+      "poster_path": "/sIq4SFloM0JSeRNAQVqb5g5zAng.jpg"
+    },
+    {
+      "season_id": 181,
+      "tv_media_id": 269,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2019-09-23",
+      "episode_count": 20,
+      "poster_path": "/8QFssOwaWZ3eB60cGwDpfrZBscv.jpg"
+    },
+    {
+      "season_id": 182,
+      "tv_media_id": 270,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2023-09-21",
+      "episode_count": 34,
+      "poster_path": "/xaA5hNNSqHdGLgaetNu80Bu3Co2.jpg"
+    },
+    {
+      "season_id": 183,
+      "tv_media_id": 270,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2024-09-26",
+      "episode_count": 29,
+      "poster_path": "/mOzx60VbvN46YdGDeobWXddr5ze.jpg"
+    },
+    {
+      "season_id": 184,
+      "tv_media_id": 270,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": null,
+      "episode_count": 4,
+      "poster_path": null
+    },
+    {
+      "season_id": 185,
+      "tv_media_id": 271,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2005-02-06",
+      "episode_count": 7,
+      "poster_path": "/8bSEmNdnEBOCdKzCs3FKcSguUz.jpg"
+    },
+    {
+      "season_id": 186,
+      "tv_media_id": 271,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2005-09-11",
+      "episode_count": 16,
+      "poster_path": "/ujW8p4k4gAbka9ZuXQFQLZjBEbg.jpg"
+    },
+    {
+      "season_id": 187,
+      "tv_media_id": 271,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2006-09-10",
+      "episode_count": 19,
+      "poster_path": "/7mzhkPfCwo5yToU5ZSbQhoBf1db.jpg"
+    },
+    {
+      "season_id": 188,
+      "tv_media_id": 272,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2020-10-02",
+      "episode_count": 49,
+      "poster_path": "/k3LNFvoLJidIinXkvmahCpShL12.jpg"
+    },
+    {
+      "season_id": 189,
+      "tv_media_id": 273,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2017-09-25",
+      "episode_count": 22,
+      "poster_path": "/aW9mbHCdsI0b9UJ7o8Teq9RzL9L.jpg"
+    },
+    {
+      "season_id": 190,
+      "tv_media_id": 273,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2018-09-24",
+      "episode_count": 22,
+      "poster_path": "/2ssD8oXwmCrd42lw9eNUCCynMr9.jpg"
+    },
+    {
+      "season_id": 191,
+      "tv_media_id": 273,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2019-09-26",
+      "episode_count": 21,
+      "poster_path": "/1vcEZVuv3ZwHUb6bm6fSWB9HTJc.jpg"
+    },
+    {
+      "season_id": 192,
+      "tv_media_id": 274,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2017-11-01",
+      "episode_count": 22,
+      "poster_path": "/oW61C2vQfAT33324CklzzuEdyxw.jpg"
+    },
+    {
+      "season_id": 193,
+      "tv_media_id": 274,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2018-09-26",
+      "episode_count": 23,
+      "poster_path": "/5LkqvZwp0LXzpumpnFp5eMgaMGE.jpg"
+    },
+    {
+      "season_id": 194,
+      "tv_media_id": 274,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2019-10-01",
+      "episode_count": 21,
+      "poster_path": "/dM1WYFrRtnkOZR1oVtCpBhscoPu.jpg"
+    },
+    {
+      "season_id": 195,
+      "tv_media_id": 275,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2013-12-02",
+      "episode_count": 11,
+      "poster_path": "/8BXUZ0nnR3DZsf30DYMFHfuTxxi.jpg"
+    },
+    {
+      "season_id": 196,
+      "tv_media_id": 275,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2015-07-26",
+      "episode_count": 10,
+      "poster_path": "/xcYamBmQmSCpl9L1B5ihesnR1Gb.jpg"
+    },
+    {
+      "season_id": 197,
+      "tv_media_id": 275,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2017-04-01",
+      "episode_count": 10,
+      "poster_path": "/rX55zDxWkNuG4wyQyfMBkSk75df.jpg"
+    },
+    {
+      "season_id": 198,
+      "tv_media_id": 276,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2019-07-25",
+      "episode_count": 8,
+      "poster_path": "/iikrapejulhIvbNgUjj468mUE0I.jpg"
+    },
+    {
+      "season_id": 199,
+      "tv_media_id": 276,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2020-09-03",
+      "episode_count": 8,
+      "poster_path": "/9rXhd3cVMcMDlhqrgWkuQVsNkVF.jpg"
+    },
+    {
+      "season_id": 200,
+      "tv_media_id": 276,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2022-06-02",
+      "episode_count": 8,
+      "poster_path": "/7Ns6tO3aYjppI5bFhyYZurOYGBT.jpg"
+    },
+    {
+      "season_id": 201,
+      "tv_media_id": 277,
+      "season_number": 1,
+      "name": "SPY x FAMILY",
+      "air_date": "2022-04-09",
+      "episode_count": 25,
+      "poster_path": "/nShEY0JnMOsvdhEnmYvL9mowIKz.jpg"
+    },
+    {
+      "season_id": 202,
+      "tv_media_id": 277,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2023-10-07",
+      "episode_count": 12,
+      "poster_path": "/7NAvPYPAu7MeHwP8E9sn81PqsRh.jpg"
+    },
+    {
+      "season_id": 203,
+      "tv_media_id": 277,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2025-10-04",
+      "episode_count": 13,
+      "poster_path": "/cH9ASljQhRKGMsN8LG6Ldexz0I0.jpg"
+    },
+    {
+      "season_id": 204,
+      "tv_media_id": 278,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2025-11-13",
+      "episode_count": 6,
+      "poster_path": "/d3K7mugQwGdWf1Q9Fnb0m8y1Mng.jpg"
+    },
+    {
+      "season_id": 205,
+      "tv_media_id": 279,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "1962-10-01",
+      "episode_count": 64,
+      "poster_path": null
+    },
+    {
+      "season_id": 206,
+      "tv_media_id": 279,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "1963-01-01",
+      "episode_count": 258,
+      "poster_path": null
+    },
+    {
+      "season_id": 207,
+      "tv_media_id": 279,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "1964-01-01",
+      "episode_count": 257,
+      "poster_path": null
+    },
+    {
+      "season_id": 208,
+      "tv_media_id": 280,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2014-02-17",
+      "episode_count": 191,
+      "poster_path": "/jZ4lEt1vT260afMQIwVQcVFsAys.jpg"
+    },
+    {
+      "season_id": 209,
+      "tv_media_id": 280,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2015-01-05",
+      "episode_count": 223,
+      "poster_path": "/4K6wA4raiWSNRL7AWMM0oPbVr8m.jpg"
+    },
+    {
+      "season_id": 210,
+      "tv_media_id": 280,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2015-09-21",
+      "episode_count": 86,
+      "poster_path": "/xFOVcKxo7SSexJiLsTw2PrbNGcZ.jpg"
+    },
+    {
+      "season_id": 211,
+      "tv_media_id": 281,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2022-02-03",
+      "episode_count": 8,
+      "poster_path": "/bQnnKBe3VsvXKMoNCaYmRzs1Dup.jpg"
+    },
+    {
+      "season_id": 212,
+      "tv_media_id": 281,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2023-12-14",
+      "episode_count": 8,
+      "poster_path": "/jFuH0md41x5mB4qj5344mSmtHrO.jpg"
+    },
+    {
+      "season_id": 213,
+      "tv_media_id": 281,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2025-02-20",
+      "episode_count": 8,
+      "poster_path": "/uF5v0SPpKzC9dWXIspA1x2zEDKO.jpg"
+    },
+    {
+      "season_id": 214,
+      "tv_media_id": 282,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "1999-01-10",
+      "episode_count": 13,
+      "poster_path": "/3NsJzafk0Sp7yE9yShzQsybHw4x.jpg"
+    },
+    {
+      "season_id": 215,
+      "tv_media_id": 282,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2000-01-16",
+      "episode_count": 13,
+      "poster_path": "/wvCOKWM1abB5CfuWKqDYeMRV3lN.jpg"
+    },
+    {
+      "season_id": 216,
+      "tv_media_id": 282,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2001-03-04",
+      "episode_count": 13,
+      "poster_path": "/zFuz2PgkHDr9Lx5YAEmiWbXKCio.jpg"
+    },
+    {
+      "season_id": 217,
+      "tv_media_id": 283,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2018-09-09",
+      "episode_count": 10,
+      "poster_path": "/8gLj7Me3thkldVdt69tVQeXPXgJ.jpg"
+    },
+    {
+      "season_id": 218,
+      "tv_media_id": 283,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2019-12-26",
+      "episode_count": 10,
+      "poster_path": "/lWeMqcS4RDtdlap0bC4FSjczceQ.jpg"
+    },
+    {
+      "season_id": 219,
+      "tv_media_id": 283,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2021-10-15",
+      "episode_count": 10,
+      "poster_path": "/mcK87FRKu2cacZ90U1mlXq0hnA7.jpg"
+    },
+    {
+      "season_id": 220,
+      "tv_media_id": 284,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "1962-10-01",
+      "episode_count": 64,
+      "poster_path": null
+    },
+    {
+      "season_id": 221,
+      "tv_media_id": 284,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "1963-01-01",
+      "episode_count": 258,
+      "poster_path": null
+    },
+    {
+      "season_id": 222,
+      "tv_media_id": 284,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "1964-01-01",
+      "episode_count": 257,
+      "poster_path": null
+    },
+    {
+      "season_id": 223,
+      "tv_media_id": 285,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2014-02-17",
+      "episode_count": 191,
+      "poster_path": "/jZ4lEt1vT260afMQIwVQcVFsAys.jpg"
+    },
+    {
+      "season_id": 224,
+      "tv_media_id": 285,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2015-01-05",
+      "episode_count": 223,
+      "poster_path": "/4K6wA4raiWSNRL7AWMM0oPbVr8m.jpg"
+    },
+    {
+      "season_id": 225,
+      "tv_media_id": 285,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2015-09-21",
+      "episode_count": 86,
+      "poster_path": "/xFOVcKxo7SSexJiLsTw2PrbNGcZ.jpg"
+    },
+    {
+      "season_id": 226,
+      "tv_media_id": 286,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2011-06-05",
+      "episode_count": 12,
+      "poster_path": "/sXz3t61MDvJwHnVplZR7pY3QEGc.jpg"
+    },
+    {
+      "season_id": 227,
+      "tv_media_id": 286,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2012-06-03",
+      "episode_count": 12,
+      "poster_path": "/jB3EEi9ay0vpjlnMTV48GfO39l6.jpg"
+    },
+    {
+      "season_id": 228,
+      "tv_media_id": 286,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2013-06-03",
+      "episode_count": 24,
+      "poster_path": "/ek2tpyvRNCa8PsY6PgPHy2rqa3l.jpg"
+    },
+    {
+      "season_id": 229,
+      "tv_media_id": 287,
+      "season_number": 1,
+      "name": "Series 1",
+      "air_date": "2005-03-26",
+      "episode_count": 13,
+      "poster_path": "/9Jt2FFCAME7eHDC28r4qCHErhhF.jpg"
+    },
+    {
+      "season_id": 230,
+      "tv_media_id": 287,
+      "season_number": 2,
+      "name": "Series 2",
+      "air_date": "2006-04-15",
+      "episode_count": 13,
+      "poster_path": "/oXVmsIkZCgJDNcZJJxzvV7zwyb1.jpg"
+    },
+    {
+      "season_id": 231,
+      "tv_media_id": 287,
+      "season_number": 3,
+      "name": "Series 3",
+      "air_date": "2007-04-01",
+      "episode_count": 13,
+      "poster_path": "/67xbjSv353G2rqQIs6dnDKc6P11.jpg"
+    },
+    {
+      "season_id": 232,
+      "tv_media_id": 288,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2025-11-13",
+      "episode_count": 6,
+      "poster_path": "/d3K7mugQwGdWf1Q9Fnb0m8y1Mng.jpg"
+    },
+    {
+      "season_id": 233,
+      "tv_media_id": 289,
+      "season_number": 1,
+      "name": "Season 1952",
+      "air_date": "1952-12-26",
+      "episode_count": 6,
+      "poster_path": "/lEOhLYxSlqYcAlSSunb0fbXkKM5.jpg"
+    },
+    {
+      "season_id": 234,
+      "tv_media_id": 289,
+      "season_number": 2,
+      "name": "Season 1953",
+      "air_date": "1953-01-01",
+      "episode_count": 1,
+      "poster_path": "/irxJNLAXFNwkoARq62Aj4MBRxoG.jpg"
+    },
+    {
+      "season_id": 235,
+      "tv_media_id": 289,
+      "season_number": 3,
+      "name": "Season 1954",
+      "air_date": "1954-01-01",
+      "episode_count": 1,
+      "poster_path": "/1rltcJ60qGJhCVavjLxU6pnBgda.jpg"
+    },
+    {
+      "season_id": 236,
+      "tv_media_id": 290,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2012-10-10",
+      "episode_count": 23,
+      "poster_path": "/pAdZsHyk7ROQqHzzK8QIM8OnR5f.jpg"
+    },
+    {
+      "season_id": 237,
+      "tv_media_id": 290,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2013-10-09",
+      "episode_count": 23,
+      "poster_path": "/wF9HS0mLjO0rwjUYw9iCxlpy0KU.jpg"
+    },
+    {
+      "season_id": 238,
+      "tv_media_id": 290,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2014-10-08",
+      "episode_count": 23,
+      "poster_path": "/uWwGLfG1SVeXseEo5VYO2IfT5VJ.jpg"
+    },
+    {
+      "season_id": 239,
+      "tv_media_id": 291,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2020-04-01",
+      "episode_count": 9,
+      "poster_path": "/xAJIdD5u9lo1RezhfcSq6s1jH2A.jpg"
+    },
+    {
+      "season_id": 240,
+      "tv_media_id": 291,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2024-04-01",
+      "episode_count": 8,
+      "poster_path": "/peIJKRl5qmu4qE5zwdJnnUJdkyU.jpg"
+    },
+    {
+      "season_id": 241,
+      "tv_media_id": 291,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2025-10-05",
+      "episode_count": 8,
+      "poster_path": "/jaEzu8potop0SALBaiMlRVBqTon.jpg"
+    },
+    {
+      "season_id": 242,
+      "tv_media_id": 292,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "1997-07-27",
+      "episode_count": 22,
+      "poster_path": "/tiib6A0kZ0NoUeuUbcU0hIu2jlM.jpg"
+    },
+    {
+      "season_id": 243,
+      "tv_media_id": 292,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "1998-06-26",
+      "episode_count": 22,
+      "poster_path": "/lBMPJS97E8t6ULrE6hrZSkdne15.jpg"
+    },
+    {
+      "season_id": 244,
+      "tv_media_id": 292,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "1999-06-25",
+      "episode_count": 22,
+      "poster_path": "/y784rvtXTNm2g6x3LqIpAFWY6di.jpg"
+    },
+    {
+      "season_id": 245,
+      "tv_media_id": 293,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "1989-07-05",
+      "episode_count": 5,
+      "poster_path": "/5tnnUOx3fp94UwHMl6tRdkYfEuG.jpg"
+    },
+    {
+      "season_id": 246,
+      "tv_media_id": 293,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "1991-01-23",
+      "episode_count": 12,
+      "poster_path": "/pnIzg5YwOFrfJnQ31z9T2wviPBF.jpg"
+    },
+    {
+      "season_id": 247,
+      "tv_media_id": 293,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "1991-09-18",
+      "episode_count": 23,
+      "poster_path": "/nkhwnuxdDrVFKKC6qUPs6G7bvbO.jpg"
+    },
+    {
+      "season_id": 248,
+      "tv_media_id": 294,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2002-09-23",
+      "episode_count": 24,
+      "poster_path": "/9duJAosWZI9dZyKtPwl3aKwcC2T.jpg"
+    },
+    {
+      "season_id": 249,
+      "tv_media_id": 294,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2003-09-22",
+      "episode_count": 24,
+      "poster_path": "/35sfB9DPpIbgoXICR566dq2tzYx.jpg"
+    },
+    {
+      "season_id": 250,
+      "tv_media_id": 294,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2004-09-20",
+      "episode_count": 24,
+      "poster_path": "/pECopkUk4eMbcjp96DNQN0KqpP0.jpg"
+    },
+    {
+      "season_id": 251,
+      "tv_media_id": 295,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2015-02-08",
+      "episode_count": 10,
+      "poster_path": "/iwwHYFrVJF3mkHHMp77120gnYUq.jpg"
+    },
+    {
+      "season_id": 252,
+      "tv_media_id": 295,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2016-02-15",
+      "episode_count": 10,
+      "poster_path": "/4NDwAQjFD8bTOsMKxYdl8IK10R9.jpg"
+    },
+    {
+      "season_id": 253,
+      "tv_media_id": 295,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2017-04-10",
+      "episode_count": 10,
+      "poster_path": "/r8SbgTsSjfxROv7ibk2vzx8iN9h.jpg"
+    },
+    {
+      "season_id": 254,
+      "tv_media_id": 296,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2014-03-19",
+      "episode_count": 13,
+      "poster_path": "/jAsSkxSGEjeEEHL3KiWXr3NwyPG.jpg"
+    },
+    {
+      "season_id": 255,
+      "tv_media_id": 296,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2014-10-22",
+      "episode_count": 16,
+      "poster_path": "/4ngujsHppz4Imxh7qf9NQIIMlLY.jpg"
+    },
+    {
+      "season_id": 256,
+      "tv_media_id": 296,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2016-01-21",
+      "episode_count": 16,
+      "poster_path": "/ayebqASxTXVSo9Qoug6M5YowZS0.jpg"
+    },
+    {
+      "season_id": 257,
+      "tv_media_id": 297,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "1997-08-13",
+      "episode_count": 13,
+      "poster_path": "/sxCj0Iun46sUUsF5I2NQY6rml4c.jpg"
+    },
+    {
+      "season_id": 258,
+      "tv_media_id": 297,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "1998-04-01",
+      "episode_count": 18,
+      "poster_path": "/fSlMHxDB6Ln9V1wwuI9M1ylcE68.jpg"
+    },
+    {
+      "season_id": 259,
+      "tv_media_id": 297,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "1999-04-07",
+      "episode_count": 17,
+      "poster_path": "/996EYWRu4zksbNodgs1Omri02Yi.jpg"
+    },
+    {
+      "season_id": 260,
+      "tv_media_id": 298,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2010-09-24",
+      "episode_count": 22,
+      "poster_path": "/6PIkEHETIAmtIqKJEAU1Xr41r42.jpg"
+    },
+    {
+      "season_id": 261,
+      "tv_media_id": 298,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2011-09-23",
+      "episode_count": 22,
+      "poster_path": "/qkIouFUj8GwvrugxB9Vi3duMpnn.jpg"
+    },
+    {
+      "season_id": 262,
+      "tv_media_id": 298,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2012-09-28",
+      "episode_count": 23,
+      "poster_path": "/xzEpCch3KVJ5yeacXc3KhLqCGw0.jpg"
+    },
+    {
+      "season_id": 263,
+      "tv_media_id": 299,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2002-07-12",
+      "episode_count": 12,
+      "poster_path": "/2VEOQtRZVOb4Vh49njzX0fe5adu.jpg"
+    },
+    {
+      "season_id": 264,
+      "tv_media_id": 299,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2003-06-20",
+      "episode_count": 16,
+      "poster_path": "/aoVU0UOnbiBCAAVRl2XPauvDoSR.jpg"
+    },
+    {
+      "season_id": 265,
+      "tv_media_id": 299,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2004-06-18",
+      "episode_count": 16,
+      "poster_path": "/ixrXJULlb7jE5UtgSFr9CYkC9zx.jpg"
+    },
+    {
+      "season_id": 266,
+      "tv_media_id": 300,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2023-06-15",
+      "episode_count": 10,
+      "poster_path": "/4vgwDh36BdJu0QO300MDtN1xpYm.jpg"
+    },
+    {
+      "season_id": 267,
+      "tv_media_id": 300,
+      "season_number": 2,
+      "name": "Act 2",
+      "air_date": "2025-07-10",
+      "episode_count": 9,
+      "poster_path": "/dwFOm1tsXE1ScaiIFXZqswg2B30.jpg"
+    },
+    {
+      "season_id": 268,
+      "tv_media_id": 301,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2004-10-03",
+      "episode_count": 23,
+      "poster_path": "/loERayOsYU1xdTH2JLOuug1vHIK.jpg"
+    },
+    {
+      "season_id": 269,
+      "tv_media_id": 301,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2005-09-25",
+      "episode_count": 23,
+      "poster_path": "/v3Yi3CqcKRr0pis0xnyNavnZj3D.jpg"
+    },
+    {
+      "season_id": 270,
+      "tv_media_id": 301,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2006-09-24",
+      "episode_count": 23,
+      "poster_path": "/4Q64W87EgCaEjWMI9foQ4PI3NiN.jpg"
+    },
+    {
+      "season_id": 271,
+      "tv_media_id": 302,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2025-05-21",
+      "episode_count": 8,
+      "poster_path": "/sgE0v0kLG0B8CFzPi3QzBvukrdI.jpg"
+    },
+    {
+      "season_id": 272,
+      "tv_media_id": 303,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2005-10-13",
+      "episode_count": 52,
+      "poster_path": null
+    },
+    {
+      "season_id": 273,
+      "tv_media_id": 303,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2006-04-13",
+      "episode_count": 88,
+      "poster_path": null
+    },
+    {
+      "season_id": 274,
+      "tv_media_id": 303,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2007-05-09",
+      "episode_count": 260,
+      "poster_path": null
+    },
+    {
+      "season_id": 275,
+      "tv_media_id": 304,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2002-07-12",
+      "episode_count": 12,
+      "poster_path": "/2VEOQtRZVOb4Vh49njzX0fe5adu.jpg"
+    },
+    {
+      "season_id": 276,
+      "tv_media_id": 304,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2003-06-20",
+      "episode_count": 16,
+      "poster_path": "/aoVU0UOnbiBCAAVRl2XPauvDoSR.jpg"
+    },
+    {
+      "season_id": 277,
+      "tv_media_id": 304,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2004-06-18",
+      "episode_count": 16,
+      "poster_path": "/ixrXJULlb7jE5UtgSFr9CYkC9zx.jpg"
+    },
+    {
+      "season_id": 278,
+      "tv_media_id": 305,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2002-09-23",
+      "episode_count": 24,
+      "poster_path": "/9duJAosWZI9dZyKtPwl3aKwcC2T.jpg"
+    },
+    {
+      "season_id": 279,
+      "tv_media_id": 305,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2003-09-22",
+      "episode_count": 24,
+      "poster_path": "/35sfB9DPpIbgoXICR566dq2tzYx.jpg"
+    },
+    {
+      "season_id": 280,
+      "tv_media_id": 305,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2004-09-20",
+      "episode_count": 24,
+      "poster_path": "/pECopkUk4eMbcjp96DNQN0KqpP0.jpg"
+    },
+    {
+      "season_id": 281,
+      "tv_media_id": 306,
+      "season_number": 1,
+      "name": "Indigo League",
+      "air_date": "1997-04-01",
+      "episode_count": 82,
+      "poster_path": "/f14a75WxUcKBu7nPBQjyJufIFuC.jpg"
+    },
+    {
+      "season_id": 282,
+      "tv_media_id": 306,
+      "season_number": 2,
+      "name": "Adventures in the Orange Islands",
+      "air_date": "1999-01-28",
+      "episode_count": 36,
+      "poster_path": "/jvPiZgn081n1yfb1Stm54dS5bB6.jpg"
+    },
+    {
+      "season_id": 283,
+      "tv_media_id": 306,
+      "season_number": 3,
+      "name": "The Johto Journeys",
+      "air_date": "1999-10-14",
+      "episode_count": 41,
+      "poster_path": "/n5lhMLbT3FQtI6EUN84bEHZPfsm.jpg"
+    },
+    {
+      "season_id": 284,
+      "tv_media_id": 307,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2021-11-14",
+      "episode_count": 10,
+      "poster_path": "/p4TQupPl1FSJbktoFLn1899xsrJ.jpg"
+    },
+    {
+      "season_id": 285,
+      "tv_media_id": 307,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2023-01-15",
+      "episode_count": 10,
+      "poster_path": "/d9JSilY7nM3J7LtBMXXNqJ03aDY.jpg"
+    },
+    {
+      "season_id": 286,
+      "tv_media_id": 307,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2024-06-02",
+      "episode_count": 10,
+      "poster_path": "/lJ1yyRGdwuE10pXgJaV0DvvRUiS.jpg"
+    },
+    {
+      "season_id": 287,
+      "tv_media_id": 308,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2010-09-24",
+      "episode_count": 22,
+      "poster_path": "/6PIkEHETIAmtIqKJEAU1Xr41r42.jpg"
+    },
+    {
+      "season_id": 288,
+      "tv_media_id": 308,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2011-09-23",
+      "episode_count": 22,
+      "poster_path": "/qkIouFUj8GwvrugxB9Vi3duMpnn.jpg"
+    },
+    {
+      "season_id": 289,
+      "tv_media_id": 308,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2012-09-28",
+      "episode_count": 23,
+      "poster_path": "/xzEpCch3KVJ5yeacXc3KhLqCGw0.jpg"
+    },
+    {
+      "season_id": 290,
+      "tv_media_id": 309,
+      "season_number": 1,
+      "name": "Season 1952",
+      "air_date": "1952-12-26",
+      "episode_count": 6,
+      "poster_path": "/lEOhLYxSlqYcAlSSunb0fbXkKM5.jpg"
+    },
+    {
+      "season_id": 291,
+      "tv_media_id": 309,
+      "season_number": 2,
+      "name": "Season 1953",
+      "air_date": "1953-01-01",
+      "episode_count": 1,
+      "poster_path": "/irxJNLAXFNwkoARq62Aj4MBRxoG.jpg"
+    },
+    {
+      "season_id": 292,
+      "tv_media_id": 309,
+      "season_number": 3,
+      "name": "Season 1954",
+      "air_date": "1954-01-01",
+      "episode_count": 1,
+      "poster_path": "/1rltcJ60qGJhCVavjLxU6pnBgda.jpg"
+    },
+    {
+      "season_id": 293,
+      "tv_media_id": 310,
+      "season_number": 1,
+      "name": "1st AVN Awards",
+      "air_date": null,
+      "episode_count": 1,
+      "poster_path": null
+    },
+    {
+      "season_id": 294,
+      "tv_media_id": 310,
+      "season_number": 2,
+      "name": "2nd AVN Awards",
+      "air_date": null,
+      "episode_count": 1,
+      "poster_path": null
+    },
+    {
+      "season_id": 295,
+      "tv_media_id": 310,
+      "season_number": 3,
+      "name": "3rd AVN Awards",
+      "air_date": null,
+      "episode_count": 1,
+      "poster_path": null
+    },
+    {
+      "season_id": 296,
+      "tv_media_id": 311,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2005-09-19",
+      "episode_count": 22,
+      "poster_path": "/7n8OEMRgIVkyPfswdBaftEBqQnI.jpg"
+    },
+    {
+      "season_id": 297,
+      "tv_media_id": 311,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2006-09-18",
+      "episode_count": 22,
+      "poster_path": "/8OEKsU865P88LrAO6dZ157VNvHV.jpg"
+    },
+    {
+      "season_id": 298,
+      "tv_media_id": 311,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2007-09-24",
+      "episode_count": 20,
+      "poster_path": "/4QwuGNHzByZxXftS01EMbks7Cn7.jpg"
+    },
+    {
+      "season_id": 299,
+      "tv_media_id": 312,
+      "season_number": 1,
+      "name": "Class 1",
+      "air_date": "2022-11-18",
+      "episode_count": 8,
+      "poster_path": "/xRw3akJQdfgqx0x4fiHW7nIkEUJ.jpg"
+    },
+    {
+      "season_id": 300,
+      "tv_media_id": 312,
+      "season_number": 2,
+      "name": "Class 2",
+      "air_date": "2025-04-25",
+      "episode_count": 8,
+      "poster_path": "/aW7mGixv2dZdQtbve4deYyfewHH.jpg"
+    },
+    {
+      "season_id": 301,
+      "tv_media_id": 313,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2024-01-08",
+      "episode_count": 8,
+      "poster_path": "/bs70WStsspaiclienWGeMBUDotQ.jpg"
+    },
+    {
+      "season_id": 302,
+      "tv_media_id": 314,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2014-02-25",
+      "episode_count": 99,
+      "poster_path": "/6aTObv741nQNeIrNhevVw3OlVQw.jpg"
+    },
+    {
+      "season_id": 303,
+      "tv_media_id": 314,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2014-09-23",
+      "episode_count": 161,
+      "poster_path": "/9YWItv0lGK3y9ntfh1W4BGujgbS.jpg"
+    },
+    {
+      "season_id": 304,
+      "tv_media_id": 314,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2015-09-22",
+      "episode_count": 160,
+      "poster_path": "/orQvRPb1z9kn5RVLSsgho12ewdT.jpg"
+    },
+    {
+      "season_id": 305,
+      "tv_media_id": 315,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2024-02-27",
+      "episode_count": 15,
+      "poster_path": "/7NVE1GLgOh5VxRiu0EcwEAzRgYW.jpg"
+    },
+    {
+      "season_id": 306,
+      "tv_media_id": 315,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2024-09-24",
+      "episode_count": 34,
+      "poster_path": "/lCiVWEXvhjLklWsa88yYjsjyF1u.jpg"
+    },
+    {
+      "season_id": 307,
+      "tv_media_id": 315,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2025-09-16",
+      "episode_count": 12,
+      "poster_path": "/6pwPvDCXO71UKA2tVtG8rYPwyOy.jpg"
+    },
+    {
+      "season_id": 308,
+      "tv_media_id": 316,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2010-09-06",
+      "episode_count": 12,
+      "poster_path": "/mRWce3WBdN584m4GEZsmMijzOvf.jpg"
+    },
+    {
+      "season_id": 309,
+      "tv_media_id": 316,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2010-11-29",
+      "episode_count": 28,
+      "poster_path": "/zGfuagnlOcBuAsDFE38Ng4J3zYK.jpg"
+    },
+    {
+      "season_id": 310,
+      "tv_media_id": 316,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2011-09-19",
+      "episode_count": 39,
+      "poster_path": "/pTqLx1eteuPPeu5f8w60QpNRDEr.jpg"
+    },
+    {
+      "season_id": 311,
+      "tv_media_id": 317,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "1989-01-08",
+      "episode_count": 10,
+      "poster_path": "/2d9FljyOKvizbqk4pL9YOQZQUYs.jpg"
+    },
+    {
+      "season_id": 312,
+      "tv_media_id": 317,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "1990-01-07",
+      "episode_count": 9,
+      "poster_path": "/lhlbiX3DZHQOZ0SHPDAbhFcf9Zs.jpg"
+    },
+    {
+      "season_id": 313,
+      "tv_media_id": 317,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "1990-09-16",
+      "episode_count": 11,
+      "poster_path": "/2bGM0b6S9KJBuTshwRRFogDs4dT.jpg"
+    },
+    {
+      "season_id": 314,
+      "tv_media_id": 318,
+      "season_number": 1,
+      "name": "Solo Leveling",
+      "air_date": "2024-01-07",
+      "episode_count": 25,
+      "poster_path": "/geCRueV3ElhRTr0xtJuEWJt6dJ1.jpg"
+    },
+    {
+      "season_id": 315,
+      "tv_media_id": 319,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2010-09-20",
+      "episode_count": 24,
+      "poster_path": "/neZuaVx5r6MoaOPnh4BSkZ5yy7e.jpg"
+    },
+    {
+      "season_id": 316,
+      "tv_media_id": 319,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2011-09-19",
+      "episode_count": 23,
+      "poster_path": "/mxytlJqr51qMrw2RGky2pb0LoNQ.jpg"
+    },
+    {
+      "season_id": 317,
+      "tv_media_id": 319,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2012-09-24",
+      "episode_count": 24,
+      "poster_path": "/sPBOmNZ40pGLdlTW3wteMT91B5Y.jpg"
+    },
+    {
+      "season_id": 318,
+      "tv_media_id": 320,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2018-09-27",
+      "episode_count": 6,
+      "poster_path": "/1M3nSBbqr6tZ4iBsOCVPxg9T8wM.jpg"
+    },
+    {
+      "season_id": 319,
+      "tv_media_id": 320,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2020-02-08",
+      "episode_count": 5,
+      "poster_path": "/iR5uXP41lkGlAlRXIkkdnRjF4QZ.jpg"
+    },
+    {
+      "season_id": 320,
+      "tv_media_id": 321,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "1993-09-10",
+      "episode_count": 24,
+      "poster_path": "/18qw1aoFAumYaXCGGi3cw6zhmfj.jpg"
+    },
+    {
+      "season_id": 321,
+      "tv_media_id": 321,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "1994-09-16",
+      "episode_count": 25,
+      "poster_path": "/8xZ1Zf82CclxaltP6grBRtR7Nwg.jpg"
+    },
+    {
+      "season_id": 322,
+      "tv_media_id": 321,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "1995-09-22",
+      "episode_count": 24,
+      "poster_path": "/5MUaZbR136JMbvZTBEQY93EbVHv.jpg"
+    },
+    {
+      "season_id": 323,
+      "tv_media_id": 322,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2014-01-12",
+      "episode_count": 8,
+      "poster_path": "/gf5PFAwzcrRjd26zqcumqeMZV0W.jpg"
+    },
+    {
+      "season_id": 324,
+      "tv_media_id": 322,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2015-06-21",
+      "episode_count": 8,
+      "poster_path": "/owTL3WTY4Yax2qClnwbaDsOO72r.jpg"
+    },
+    {
+      "season_id": 325,
+      "tv_media_id": 322,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2019-01-13",
+      "episode_count": 8,
+      "poster_path": "/qnD7ExuaBF4QdcgxlB1B1HyLxXA.jpg"
+    },
+    {
+      "season_id": 326,
+      "tv_media_id": 323,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2023-01-11",
+      "episode_count": 24,
+      "poster_path": "/3k94oxp4zio6o3JquKbrmXhSAu6.jpg"
+    },
+    {
+      "season_id": 327,
+      "tv_media_id": 324,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2004-05-31",
+      "episode_count": 52,
+      "poster_path": "/men2i9opuHgJUfjgHG5qOBmiBpi.jpg"
+    },
+    {
+      "season_id": 328,
+      "tv_media_id": 324,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2006-09-04",
+      "episode_count": 52,
+      "poster_path": "/neFKjqIPKUlYHNWm2AnAOywwYx4.jpg"
+    },
+    {
+      "season_id": 329,
+      "tv_media_id": 324,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2009-05-04",
+      "episode_count": 52,
+      "poster_path": "/wZgUu2DuazJid6e6ZNXI9A1lrag.jpg"
+    },
+    {
+      "season_id": 330,
+      "tv_media_id": 325,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2014-04-15",
+      "episode_count": 10,
+      "poster_path": "/matO9b040ibkviZV5mmDdKpQMEV.jpg"
+    },
+    {
+      "season_id": 331,
+      "tv_media_id": 325,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2015-10-12",
+      "episode_count": 10,
+      "poster_path": "/xeKfy7m8rPl08mQ6ZfbkgOy6Hdj.jpg"
+    },
+    {
+      "season_id": 332,
+      "tv_media_id": 325,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2017-04-19",
+      "episode_count": 10,
+      "poster_path": "/dYHoNzcpQXzU2qBMZYbyOnrcuvi.jpg"
+    },
+    {
+      "season_id": 333,
+      "tv_media_id": 326,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2022-04-01",
+      "episode_count": 6,
+      "poster_path": "/oBqlO6ZjTcVFiE0lBj89lAOi18s.jpg"
+    },
+    {
+      "season_id": 334,
+      "tv_media_id": 326,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2022-12-02",
+      "episode_count": 6,
+      "poster_path": "/8FM8KCgZQSbLLXcZew0MSj6so1k.jpg"
+    },
+    {
+      "season_id": 335,
+      "tv_media_id": 326,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2023-11-29",
+      "episode_count": 6,
+      "poster_path": "/vJI9OcHFHxDy6ZeEmXfM5zhApXV.jpg"
+    },
+    {
+      "season_id": 336,
+      "tv_media_id": 327,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2025-07-15",
+      "episode_count": 142,
+      "poster_path": "/dMI08pxLxcxTdTNeUeJsqPI1KMA.jpg"
+    },
+    {
+      "season_id": 337,
+      "tv_media_id": 328,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2011-12-04",
+      "episode_count": 3,
+      "poster_path": "/ztdy1f1cAjwsO0GpVKzNuqZ0PMv.jpg"
+    },
+    {
+      "season_id": 338,
+      "tv_media_id": 328,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2013-02-11",
+      "episode_count": 3,
+      "poster_path": "/y71DeJiAv0dV8H8hiFnuIuyc0Gx.jpg"
+    },
+    {
+      "season_id": 339,
+      "tv_media_id": 328,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2016-10-21",
+      "episode_count": 6,
+      "poster_path": "/3mKYrlZpFbpFu7CaVxoleO68MFG.jpg"
+    },
+    {
+      "season_id": 340,
+      "tv_media_id": 329,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2010-04-05",
+      "episode_count": 26,
+      "poster_path": "/48lmWkg3X8QBZJcERrsyQsbjQCp.jpg"
+    },
+    {
+      "season_id": 341,
+      "tv_media_id": 329,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2010-10-11",
+      "episode_count": 26,
+      "poster_path": "/3KZOhPKh9GdXdVKKH3wLwbpQBdo.jpg"
+    },
+    {
+      "season_id": 342,
+      "tv_media_id": 329,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2011-07-11",
+      "episode_count": 26,
+      "poster_path": "/1ECczcYio4VBesP78CGryXuBnrY.jpg"
+    },
+    {
+      "season_id": 343,
+      "tv_media_id": 330,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2019-11-22",
+      "episode_count": 56,
+      "poster_path": "/eQV1y4D5qiUclm5exqMxTq9l2ud.jpg"
+    },
+    {
+      "season_id": 344,
+      "tv_media_id": 331,
+      "season_number": 1,
+      "name": "Murder House",
+      "air_date": "2011-10-05",
+      "episode_count": 12,
+      "poster_path": "/n7qB6yELp8k4tW4SalLLl7dC923.jpg"
+    },
+    {
+      "season_id": 345,
+      "tv_media_id": 331,
+      "season_number": 2,
+      "name": "Asylum",
+      "air_date": "2012-10-17",
+      "episode_count": 13,
+      "poster_path": "/5tjLJZCzBeP8wMaMkUTVVaoZFFY.jpg"
+    },
+    {
+      "season_id": 346,
+      "tv_media_id": 331,
+      "season_number": 3,
+      "name": "Coven",
+      "air_date": "2013-10-09",
+      "episode_count": 13,
+      "poster_path": "/mXitazUTbOGU0zCPCcHQqTmde7y.jpg"
+    },
+    {
+      "season_id": 347,
+      "tv_media_id": 332,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "1988-06-01",
+      "episode_count": 16,
+      "poster_path": "/n6APNvs6nPCP29D9AQ8yV0m1hn9.jpg"
+    },
+    {
+      "season_id": 348,
+      "tv_media_id": 332,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "1989-06-03",
+      "episode_count": 20,
+      "poster_path": "/2rSzjrcODt15N9lSI0lBrdcyrHe.jpg"
+    },
+    {
+      "season_id": 349,
+      "tv_media_id": 332,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "1989-08-12",
+      "episode_count": 15,
+      "poster_path": "/7IFoiivf3j4oQ87ETZ5xc9JBnhQ.jpg"
+    },
+    {
+      "season_id": 350,
+      "tv_media_id": 333,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2020-12-10",
+      "episode_count": 8,
+      "poster_path": "/kXAd0if2gba1nLAkeozRT93Qgg7.jpg"
+    },
+    {
+      "season_id": 351,
+      "tv_media_id": 333,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2022-12-22",
+      "episode_count": 8,
+      "poster_path": "/s3ZAS0AGLQ668sFveVFinAd2zVy.jpg"
+    },
+    {
+      "season_id": 352,
+      "tv_media_id": 333,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2025-09-25",
+      "episode_count": 6,
+      "poster_path": "/1B1hllL2Fjap1f2EUsHjBqny3Kg.jpg"
+    },
+    {
+      "season_id": 353,
+      "tv_media_id": 334,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "1970-11-29",
+      "episode_count": 2,
+      "poster_path": "/6TAYXllilCc5poENxNsfG8AXcDh.jpg"
+    },
+    {
+      "season_id": 354,
+      "tv_media_id": 334,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "1971-01-10",
+      "episode_count": 11,
+      "poster_path": "/gGxLhorzl8vYC1v3sgs8w2XRc5D.jpg"
+    },
+    {
+      "season_id": 355,
+      "tv_media_id": 334,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "1972-01-09",
+      "episode_count": 11,
+      "poster_path": "/5ZIxNyUXw1vtSt7ZuzCCkYf4FJH.jpg"
+    },
+    {
+      "season_id": 356,
+      "tv_media_id": 335,
+      "season_number": 1,
+      "name": "Limited Series",
+      "air_date": "2025-11-13",
+      "episode_count": 8,
+      "poster_path": "/jxf7JCfIMvGONWTNUIJ068sFixK.jpg"
+    },
+    {
+      "season_id": 357,
+      "tv_media_id": 336,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2022-09-27",
+      "episode_count": 36,
+      "poster_path": "/nyhBueT07zQS7wWLYFDNO8LdO3N.jpg"
+    },
+    {
+      "season_id": 358,
+      "tv_media_id": 336,
+      "season_number": 2,
+      "name": "Strange Tales of Tang Dynasty 2",
+      "air_date": "2024-07-18",
+      "episode_count": 40,
+      "poster_path": "/589Ou3hOx9xLzMhX0NGZNjQioIF.jpg"
+    },
+    {
+      "season_id": 359,
+      "tv_media_id": 336,
+      "season_number": 3,
+      "name": "Strange Tales of Tang Dynasty 3",
+      "air_date": "2025-11-08",
+      "episode_count": 40,
+      "poster_path": "/b6Awsj16flaCMCSIIW5GFoYAsYU.jpg"
+    },
+    {
+      "season_id": 360,
+      "tv_media_id": 337,
+      "season_number": 1,
+      "name": "Saiyan Saga",
+      "air_date": "1989-04-26",
+      "episode_count": 39,
+      "poster_path": "/6iyu8rF9lRGWmDC8UnNlvNlJjRB.jpg"
+    },
+    {
+      "season_id": 361,
+      "tv_media_id": 337,
+      "season_number": 2,
+      "name": "Namek Saga",
+      "air_date": "1990-03-14",
+      "episode_count": 35,
+      "poster_path": "/nFI492Jd9cMvG5Y0wfAHbe0lpXk.jpg"
+    },
+    {
+      "season_id": 362,
+      "tv_media_id": 337,
+      "season_number": 3,
+      "name": "Frieza Saga",
+      "air_date": "1991-01-30",
+      "episode_count": 33,
+      "poster_path": "/qrpK9feifrOiUP0H0XJvXmW1fJq.jpg"
+    },
+    {
+      "season_id": 363,
+      "tv_media_id": 338,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2011-10-02",
+      "episode_count": 62,
+      "poster_path": "/4jA40N280wb9NT7yjtFdcJND5aq.jpg"
+    },
+    {
+      "season_id": 364,
+      "tv_media_id": 338,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2012-12-15",
+      "episode_count": 74,
+      "poster_path": "/itMuFli5HRafl3ofO5srdN0mmCQ.jpg"
+    },
+    {
+      "season_id": 365,
+      "tv_media_id": 338,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2014-07-07",
+      "episode_count": 12,
+      "poster_path": "/eHv7DcRol9xrpwE14D4GuRdgcH0.jpg"
+    },
+    {
+      "season_id": 366,
+      "tv_media_id": 339,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2022-08-21",
+      "episode_count": 10,
+      "poster_path": "/lx6hsqWXq4aVrXPjCqnMHFrGL5u.jpg"
+    },
+    {
+      "season_id": 367,
+      "tv_media_id": 339,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2024-06-16",
+      "episode_count": 8,
+      "poster_path": "/lZwxqNWnT1dRl76ry6BM0FPqCUg.jpg"
+    },
+    {
+      "season_id": 368,
+      "tv_media_id": 339,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": null,
+      "episode_count": 1,
+      "poster_path": null
+    },
+    {
+      "season_id": 369,
+      "tv_media_id": 340,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2025-10-19",
+      "episode_count": 6,
+      "poster_path": "/qmmHl3EiFKuDLTVYHGwlV9UhtNw.jpg"
+    },
+    {
+      "season_id": 370,
+      "tv_media_id": 341,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2011-12-18",
+      "episode_count": 50,
+      "poster_path": "/xn55RGAn90b9eBPj82105VQThfF.jpg"
+    },
+    {
+      "season_id": 371,
+      "tv_media_id": 341,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2012-02-13",
+      "episode_count": 50,
+      "poster_path": "/5Ex1NQPM3S0UY6QzicdkSbTJfz5.jpg"
+    },
+    {
+      "season_id": 372,
+      "tv_media_id": 341,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2012-04-10",
+      "episode_count": 34,
+      "poster_path": "/5Ex1NQPM3S0UY6QzicdkSbTJfz5.jpg"
+    },
+    {
+      "season_id": 373,
+      "tv_media_id": 342,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2000-01-09",
+      "episode_count": 16,
+      "poster_path": "/3lpqhHg3s0FqBb0lXBk0Fzodye4.jpg"
+    },
+    {
+      "season_id": 374,
+      "tv_media_id": 342,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2000-11-05",
+      "episode_count": 25,
+      "poster_path": "/AtuQTd80P5SoaqT0BTh6yyM1XYZ.jpg"
+    },
+    {
+      "season_id": 375,
+      "tv_media_id": 342,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2001-11-11",
+      "episode_count": 22,
+      "poster_path": "/tQGXeQZwQE3cP1TtTbDoYsDA8tJ.jpg"
+    },
+    {
+      "season_id": 376,
+      "tv_media_id": 343,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2017-08-09",
+      "episode_count": 10,
+      "poster_path": "/jq8RyL2fhdS5FCvEufhers9yxUJ.jpg"
+    },
+    {
+      "season_id": 377,
+      "tv_media_id": 343,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2018-08-22",
+      "episode_count": 10,
+      "poster_path": "/21gSChFiZT1ke7QSOoQjmLx7EU5.jpg"
+    },
+    {
+      "season_id": 378,
+      "tv_media_id": 343,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2019-09-10",
+      "episode_count": 10,
+      "poster_path": "/hTmpEcVMC49YqVdf4sXUz49L62Q.jpg"
+    },
+    {
+      "season_id": 379,
+      "tv_media_id": 344,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "1957-09-20",
+      "episode_count": 39,
+      "poster_path": "/bBwEPS1UHw9xeobvkafRQfhQwqG.jpg"
+    },
+    {
+      "season_id": 380,
+      "tv_media_id": 344,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "1958-09-20",
+      "episode_count": 30,
+      "poster_path": "/fhUQymMQdsxN00SVxIILkksfTV1.jpg"
+    },
+    {
+      "season_id": 381,
+      "tv_media_id": 344,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "1959-10-02",
+      "episode_count": 26,
+      "poster_path": "/p9xB3spPyvzLuPcA1odsQSYyPVR.jpg"
+    },
+    {
+      "season_id": 382,
+      "tv_media_id": 345,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2005-09-26",
+      "episode_count": 313,
+      "poster_path": "/7lepnXbhtOiT8hvoDdvmB0TY9bZ.jpg"
+    },
+    {
+      "season_id": 383,
+      "tv_media_id": 345,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2007-02-01",
+      "episode_count": 207,
+      "poster_path": "/bNRnl5uCoqUOR3MWDLzWEmXq3o6.jpg"
+    },
+    {
+      "season_id": 384,
+      "tv_media_id": 345,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2007-12-19",
+      "episode_count": 183,
+      "poster_path": "/64my7t1S2yHHadBDA45uJ12lVjF.jpg"
+    },
+    {
+      "season_id": 385,
+      "tv_media_id": 346,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2021-07-11",
+      "episode_count": 6,
+      "poster_path": "/jJXV3H1SAvQpjSTIKZBUyAGica3.jpg"
+    },
+    {
+      "season_id": 386,
+      "tv_media_id": 346,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2022-10-30",
+      "episode_count": 7,
+      "poster_path": "/zqcvTkB9k6uO7Q3uiEFdD7BOc9x.jpg"
+    },
+    {
+      "season_id": 387,
+      "tv_media_id": 346,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2025-02-16",
+      "episode_count": 8,
+      "poster_path": "/gbSaK9v1CbcYH1ISgbM7XObD2dW.jpg"
+    },
+    {
+      "season_id": 388,
+      "tv_media_id": 347,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "1998-10-07",
+      "episode_count": 22,
+      "poster_path": "/vYWhZVUNy3R21K2zLKTWYQkwoSY.jpg"
+    },
+    {
+      "season_id": 389,
+      "tv_media_id": 347,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "1999-09-30",
+      "episode_count": 22,
+      "poster_path": "/39YobNQoO0EQgwRjdDfAUvqfKM.jpg"
+    },
+    {
+      "season_id": 390,
+      "tv_media_id": 347,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2000-10-05",
+      "episode_count": 22,
+      "poster_path": "/kcOZyvO4yQjdjjx2q2RWFGEVsqe.jpg"
+    },
+    {
+      "season_id": 391,
+      "tv_media_id": 348,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2010-11-08",
+      "episode_count": 165,
+      "poster_path": "/14rMpwY6vkKqI7M8NfGoTdLJdjY.jpg"
+    },
+    {
+      "season_id": 392,
+      "tv_media_id": 348,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2011-11-07",
+      "episode_count": 162,
+      "poster_path": "/i3E8wmNMcnDO1orKDWDw9fn98Rw.jpg"
+    },
+    {
+      "season_id": 393,
+      "tv_media_id": 348,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2012-11-05",
+      "episode_count": 159,
+      "poster_path": "/CNMqy8689atKASrEpPgogeS3Qv.jpg"
+    },
+    {
+      "season_id": 394,
+      "tv_media_id": 349,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2020-01-06",
+      "episode_count": 8,
+      "poster_path": "/pE2v7nbYcv6FTfRApYOFTo4INfC.jpg"
+    },
+    {
+      "season_id": 395,
+      "tv_media_id": 350,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2025-11-06",
+      "episode_count": 12,
+      "poster_path": "/wfntYNjE8ZsfFKniWY07maFNJbj.jpg"
+    },
+    {
+      "season_id": 396,
+      "tv_media_id": 351,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2000-10-05",
+      "episode_count": 21,
+      "poster_path": "/m2ifBydSzBhCDDpN1zOe88IkLkA.jpg"
+    },
+    {
+      "season_id": 397,
+      "tv_media_id": 351,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2001-10-09",
+      "episode_count": 22,
+      "poster_path": "/b2plKGzuN6wvbX4kEJmgs2ctlzA.jpg"
+    },
+    {
+      "season_id": 398,
+      "tv_media_id": 351,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2002-09-24",
+      "episode_count": 22,
+      "poster_path": "/twrCvF05MhErrhqXRfs0i4XqIj3.jpg"
+    },
+    {
+      "season_id": 399,
+      "tv_media_id": 352,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2009-07-16",
+      "episode_count": 22,
+      "poster_path": null
+    },
+    {
+      "season_id": 400,
+      "tv_media_id": 352,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2010-01-14",
+      "episode_count": 29,
+      "poster_path": null
+    },
+    {
+      "season_id": 401,
+      "tv_media_id": 352,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2010-09-09",
+      "episode_count": 44,
+      "poster_path": null
+    },
+    {
+      "season_id": 402,
+      "tv_media_id": 353,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2019-04-21",
+      "episode_count": 8,
+      "poster_path": "/z5aVnxOQzrLhP2QXd605vVMDWlD.jpg"
+    },
+    {
+      "season_id": 403,
+      "tv_media_id": 353,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2021-04-04",
+      "episode_count": 8,
+      "poster_path": "/h1gDWOLatQBeqYnDLPUXtgFjWXL.jpg"
+    },
+    {
+      "season_id": 404,
+      "tv_media_id": 353,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2022-12-11",
+      "episode_count": 8,
+      "poster_path": "/j2ZxdRAak7CmO6iRY7KS2dttSjx.jpg"
+    },
+    {
+      "season_id": 405,
+      "tv_media_id": 354,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2022-09-01",
+      "episode_count": 8,
+      "poster_path": "/umRaUV2ku9MMtEunMQt3uCO1OgE.jpg"
+    },
+    {
+      "season_id": 406,
+      "tv_media_id": 354,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2024-08-29",
+      "episode_count": 8,
+      "poster_path": "/m93DIqlwcHWiepTl6WXPiOlw4E9.jpg"
+    },
+    {
+      "season_id": 407,
+      "tv_media_id": 354,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": null,
+      "episode_count": 0,
+      "poster_path": null
+    },
+    {
+      "season_id": 408,
+      "tv_media_id": 355,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2018-10-05",
+      "episode_count": 8,
+      "poster_path": "/hYC4bHfvjVYMfYuTpmwNofqAG0X.jpg"
+    },
+    {
+      "season_id": 409,
+      "tv_media_id": 355,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2019-09-06",
+      "episode_count": 8,
+      "poster_path": "/aJaVtEhdLTkQdoficiHPb6am54y.jpg"
+    },
+    {
+      "season_id": 410,
+      "tv_media_id": 355,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2020-03-13",
+      "episode_count": 8,
+      "poster_path": "/3NTAbAiao4JLzFQw6YxP1YZppM8.jpg"
+    },
+    {
+      "season_id": 411,
+      "tv_media_id": 356,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2019-06-16",
+      "episode_count": 8,
+      "poster_path": "/5mi3aRl16yKmfpQJMzvqN5TXkdA.jpg"
+    },
+    {
+      "season_id": 412,
+      "tv_media_id": 356,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2022-01-09",
+      "episode_count": 8,
+      "poster_path": "/jtnfNzqZwN4E32FGGxx1YZaBWWf.jpg"
+    },
+    {
+      "season_id": 413,
+      "tv_media_id": 357,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2025-11-14",
+      "episode_count": 35,
+      "poster_path": null
+    },
+    {
+      "season_id": 414,
+      "tv_media_id": 358,
+      "season_number": 1,
+      "name": "Kamen Rider",
+      "air_date": "1971-04-03",
+      "episode_count": 98,
+      "poster_path": "/rcKL0MWv4uKuTZHm2KK3PTlVoQZ.jpg"
+    },
+    {
+      "season_id": 415,
+      "tv_media_id": 358,
+      "season_number": 2,
+      "name": "V3",
+      "air_date": "1973-02-17",
+      "episode_count": 52,
+      "poster_path": "/s0azNGu1gI225VusaCzIxOWT3Yy.jpg"
+    },
+    {
+      "season_id": 416,
+      "tv_media_id": 358,
+      "season_number": 3,
+      "name": "X",
+      "air_date": "1974-02-16",
+      "episode_count": 35,
+      "poster_path": "/votD2WQ8gM15sMJCEZHfMmCfXvv.jpg"
+    },
+    {
+      "season_id": 417,
+      "tv_media_id": 359,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2003-09-23",
+      "episode_count": 22,
+      "poster_path": "/tZVt3ShwTqdi9fBoPSmxRbVXemg.jpg"
+    },
+    {
+      "season_id": 418,
+      "tv_media_id": 359,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2004-09-21",
+      "episode_count": 23,
+      "poster_path": "/fs1P1X9zxxpHN6czc00qasjYr7c.jpg"
+    },
+    {
+      "season_id": 419,
+      "tv_media_id": 359,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2005-10-05",
+      "episode_count": 22,
+      "poster_path": "/vSN4DqHyzJkKNafXS0iDUFKAw9u.jpg"
+    },
+    {
+      "season_id": 420,
+      "tv_media_id": 360,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2015-11-17",
+      "episode_count": 18,
+      "poster_path": "/49LPQsmjxfqIC2Yva5JNylHIMgy.jpg"
+    },
+    {
+      "season_id": 421,
+      "tv_media_id": 360,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2016-09-22",
+      "episode_count": 23,
+      "poster_path": "/nfUKh7ScIgzBbWRmscjwnUZL7Gc.jpg"
+    },
+    {
+      "season_id": 422,
+      "tv_media_id": 360,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2017-11-21",
+      "episode_count": 20,
+      "poster_path": "/ospEQcKUjzvesnHI13vgycrnSDI.jpg"
+    },
+    {
+      "season_id": 423,
+      "tv_media_id": 361,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2002-10-03",
+      "episode_count": 52,
+      "poster_path": "/fmps15jQsy74PjxnaxxeVEyuNnX.jpg"
+    },
+    {
+      "season_id": 424,
+      "tv_media_id": 361,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": null,
+      "episode_count": 52,
+      "poster_path": "/yBHXns4g7gWcWuQfOzL4Jekj74e.jpg"
+    },
+    {
+      "season_id": 425,
+      "tv_media_id": 361,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": null,
+      "episode_count": 54,
+      "poster_path": "/uVf4TahDsV9iNgNgE0SVWkNZYw9.jpg"
+    },
+    {
+      "season_id": 426,
+      "tv_media_id": 362,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2025-10-10",
+      "episode_count": 12,
+      "poster_path": "/vkSrFAtLQ1gm1EfbZS7NsCqWetE.jpg"
+    },
+    {
+      "season_id": 427,
+      "tv_media_id": 363,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2009-09-22",
+      "episode_count": 24,
+      "poster_path": "/6YujC5uWswGgWWR8B6oZP5EH1BP.jpg"
+    },
+    {
+      "season_id": 428,
+      "tv_media_id": 363,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2010-09-21",
+      "episode_count": 24,
+      "poster_path": "/lA6gIsvtmhjomTIapF2D3TQwkcj.jpg"
+    },
+    {
+      "season_id": 429,
+      "tv_media_id": 363,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2011-09-20",
+      "episode_count": 24,
+      "poster_path": "/eD92MbzIfqjWJp4jxc1nrEHDsdY.jpg"
+    },
+    {
+      "season_id": 430,
+      "tv_media_id": 364,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2018-05-02",
+      "episode_count": 10,
+      "poster_path": "/lLrKXnM3WPEtrPCd1aTHT6x3hn.jpg"
+    },
+    {
+      "season_id": 431,
+      "tv_media_id": 364,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2019-04-24",
+      "episode_count": 10,
+      "poster_path": "/77kyNXN6yCRjDt9eBMj96vLMx8W.jpg"
+    },
+    {
+      "season_id": 432,
+      "tv_media_id": 364,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2021-01-01",
+      "episode_count": 10,
+      "poster_path": "/f9ccj6MfeAsOk1qAqpifJwzxdfn.jpg"
+    },
+    {
+      "season_id": 433,
+      "tv_media_id": 365,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2007-02-22",
+      "episode_count": 19,
+      "poster_path": "/hf29LEGFhhe3rePWERKjAF8tBMn.jpg"
+    },
+    {
+      "season_id": 434,
+      "tv_media_id": 365,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2007-10-11",
+      "episode_count": 13,
+      "poster_path": "/9qzaKZgRW6VCbeB2RYfTKcJtSZq.jpg"
+    },
+    {
+      "season_id": 435,
+      "tv_media_id": 365,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2008-04-17",
+      "episode_count": 12,
+      "poster_path": "/qB7FrPtN2j9NZIyVUKHv13XzdRv.jpg"
+    },
+    {
+      "season_id": 436,
+      "tv_media_id": 366,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2024-02-11",
+      "episode_count": 13,
+      "poster_path": "/ivhqGQa4ndqDatKiASIfSMJIJuh.jpg"
+    },
+    {
+      "season_id": 437,
+      "tv_media_id": 366,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2024-10-13",
+      "episode_count": 20,
+      "poster_path": "/nU9zGHC1GRHVoTSTaKiRy1RljNd.jpg"
+    },
+    {
+      "season_id": 438,
+      "tv_media_id": 366,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2025-10-19",
+      "episode_count": 10,
+      "poster_path": "/6fRz5Pq9ehouIUrXGoxyV58OG0m.jpg"
+    },
+    {
+      "season_id": 439,
+      "tv_media_id": 367,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "1978-01-02",
+      "episode_count": 19,
+      "poster_path": null
+    },
+    {
+      "season_id": 440,
+      "tv_media_id": 367,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "1980-10-27",
+      "episode_count": 13,
+      "poster_path": null
+    },
+    {
+      "season_id": 441,
+      "tv_media_id": 367,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "1983-01-31",
       "episode_count": 6,
       "poster_path": null
     },
     {
-      "season_id": 107,
-      "tv_media_id": 1295,
+      "season_id": 442,
+      "tv_media_id": 368,
       "season_number": 1,
       "name": "Season 1",
-      "air_date": "2008-12-08",
-      "episode_count": 11,
-      "poster_path": null
+      "air_date": "2024-09-17",
+      "episode_count": 13,
+      "poster_path": "/ylTZ6bfmPrwUz01A0VpvluGFWsv.jpg"
     },
     {
-      "season_id": 108,
-      "tv_media_id": 1881,
-      "season_number": 1,
-      "name": "Season 1",
-      "air_date": "2011-10-04",
-      "episode_count": 8,
-      "poster_path": null
-    },
-    {
-      "season_id": 109,
-      "tv_media_id": 1881,
+      "season_id": 443,
+      "tv_media_id": 368,
       "season_number": 2,
       "name": "Season 2",
-      "air_date": "2015-01-24",
-      "episode_count": 11,
+      "air_date": "2025-09-16",
+      "episode_count": 10,
+      "poster_path": "/xCtaUDBUP1iKqtoqpHfeH1T2pWF.jpg"
+    },
+    {
+      "season_id": 444,
+      "tv_media_id": 369,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "1969-11-10",
+      "episode_count": 130,
+      "poster_path": "/lOZQqJN5xKDxCNAZZHSz99mR7kC.jpg"
+    },
+    {
+      "season_id": 445,
+      "tv_media_id": 369,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "1970-11-09",
+      "episode_count": 145,
+      "poster_path": "/etTHbxv1IGLAloxwoFbYkf1mujJ.jpg"
+    },
+    {
+      "season_id": 446,
+      "tv_media_id": 369,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "1971-11-08",
+      "episode_count": 130,
+      "poster_path": "/w9SchkoQux5Gmxj6bDCbxdNJVQG.jpg"
+    },
+    {
+      "season_id": 447,
+      "tv_media_id": 370,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2015-10-10",
+      "episode_count": 8,
+      "poster_path": "/kjk9HoU1QIr8uvFBHyxzGyWzcss.jpg"
+    },
+    {
+      "season_id": 448,
+      "tv_media_id": 370,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2017-03-16",
+      "episode_count": 8,
+      "poster_path": "/aH1xyGWfAWDTq5YVEQFkwr40M4V.jpg"
+    },
+    {
+      "season_id": 449,
+      "tv_media_id": 370,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2018-11-19",
+      "episode_count": 10,
+      "poster_path": "/7ZTRAuWXq1amsMtVIAll6qB0Hc2.jpg"
+    },
+    {
+      "season_id": 450,
+      "tv_media_id": 371,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2021-03-25",
+      "episode_count": 8,
+      "poster_path": "/yDWJYRAwMNKbIYT8ZB33qy84uzO.jpg"
+    },
+    {
+      "season_id": 451,
+      "tv_media_id": 371,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2023-11-02",
+      "episode_count": 8,
+      "poster_path": "/dMOpdkrDC5dQxqNydgKxXjBKyAc.jpg"
+    },
+    {
+      "season_id": 452,
+      "tv_media_id": 371,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2025-02-06",
+      "episode_count": 8,
+      "poster_path": "/hWBc5kZCtZ2dDZvU7aQNkNrTerh.jpg"
+    },
+    {
+      "season_id": 453,
+      "tv_media_id": 372,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2013-09-17",
+      "episode_count": 22,
+      "poster_path": "/9hL8os3A3pGpdvQtt029zj2pURy.jpg"
+    },
+    {
+      "season_id": 454,
+      "tv_media_id": 372,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2014-09-28",
+      "episode_count": 23,
+      "poster_path": "/lvST5TSkJqN4yyhDy5IgyoBDize.jpg"
+    },
+    {
+      "season_id": 455,
+      "tv_media_id": 372,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2015-09-27",
+      "episode_count": 23,
+      "poster_path": "/nANfJdvb4GRl5p45PTNvpMhaqu7.jpg"
+    },
+    {
+      "season_id": 456,
+      "tv_media_id": 373,
+      "season_number": 1,
+      "name": "Book One",
+      "air_date": "2014-08-09",
+      "episode_count": 16,
+      "poster_path": "/yE9EvhZh8mOPmPh4ZqApea4JHpn.jpg"
+    },
+    {
+      "season_id": 457,
+      "tv_media_id": 373,
+      "season_number": 2,
+      "name": "Book Two",
+      "air_date": "2016-04-09",
+      "episode_count": 13,
+      "poster_path": "/qkq78mSY5pjpAWqJFaBBXcfVzGx.jpg"
+    },
+    {
+      "season_id": 458,
+      "tv_media_id": 373,
+      "season_number": 3,
+      "name": "Book Three",
+      "air_date": "2017-09-10",
+      "episode_count": 13,
+      "poster_path": "/pCTSO32nTmJHkEFAv3qJLhVueEa.jpg"
+    },
+    {
+      "season_id": 459,
+      "tv_media_id": 374,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2007-09-24",
+      "episode_count": 17,
+      "poster_path": "/zqAL2rav7Tg8uwDtLurqZVN3mtr.jpg"
+    },
+    {
+      "season_id": 460,
+      "tv_media_id": 374,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2008-09-22",
+      "episode_count": 23,
+      "poster_path": "/2NBwUBZ4clwj6qO9fBinfxiB0dR.jpg"
+    },
+    {
+      "season_id": 461,
+      "tv_media_id": 374,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2009-09-21",
+      "episode_count": 23,
+      "poster_path": "/j64iUb52W2IYE9qV9pLi5tFq8IE.jpg"
+    },
+    {
+      "season_id": 462,
+      "tv_media_id": 375,
+      "season_number": 1,
+      "name": "1993",
+      "air_date": "1993-01-11",
+      "episode_count": 45,
+      "poster_path": "/iZY3funQBvnqiKNHg2Zx4VsylCl.jpg"
+    },
+    {
+      "season_id": 463,
+      "tv_media_id": 375,
+      "season_number": 2,
+      "name": "1994",
+      "air_date": "1994-01-03",
+      "episode_count": 47,
+      "poster_path": "/4J79G0lvPvzWELujZnn0h1RtQ8E.jpg"
+    },
+    {
+      "season_id": 464,
+      "tv_media_id": 375,
+      "season_number": 3,
+      "name": "1995",
+      "air_date": "1995-01-01",
+      "episode_count": 48,
+      "poster_path": "/lJtdXMT2bWCyGb3iU7fwFcj94gb.jpg"
+    },
+    {
+      "season_id": 465,
+      "tv_media_id": 376,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2006-07-07",
+      "episode_count": 15,
+      "poster_path": "/nrLVAnTW5RMexnwXvy7Qj07ZYpv.jpg"
+    },
+    {
+      "season_id": 466,
+      "tv_media_id": 376,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2007-07-13",
+      "episode_count": 16,
+      "poster_path": "/jbTszdyXswxjuEeA1LSUEwDeb5k.jpg"
+    },
+    {
+      "season_id": 467,
+      "tv_media_id": 376,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2008-07-18",
+      "episode_count": 16,
+      "poster_path": "/4Dt1czakfRfYlVYK9bJA4fuYTzB.jpg"
+    },
+    {
+      "season_id": 468,
+      "tv_media_id": 377,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2009-07-16",
+      "episode_count": 22,
       "poster_path": null
     },
     {
-      "season_id": 110,
-      "tv_media_id": 1881,
+      "season_id": 469,
+      "tv_media_id": 377,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2010-01-14",
+      "episode_count": 29,
+      "poster_path": null
+    },
+    {
+      "season_id": 470,
+      "tv_media_id": 377,
       "season_number": 3,
       "name": "Season 3",
-      "air_date": "2013-10-27",
+      "air_date": "2010-09-09",
+      "episode_count": 44,
+      "poster_path": null
+    },
+    {
+      "season_id": 471,
+      "tv_media_id": 378,
+      "season_number": 1,
+      "name": "East Blue",
+      "air_date": "1999-10-20",
+      "episode_count": 61,
+      "poster_path": "/9hW62RDq5Dno8vLABXscddjEq9M.jpg"
+    },
+    {
+      "season_id": 472,
+      "tv_media_id": 378,
+      "season_number": 2,
+      "name": "Whiskey Peak & Little Garden",
+      "air_date": null,
+      "episode_count": 16,
+      "poster_path": "/egsfvwuojnsNZRTrqLkWyw09p6f.jpg"
+    },
+    {
+      "season_id": 473,
+      "tv_media_id": 378,
+      "season_number": 3,
+      "name": "Drum Island",
+      "air_date": null,
+      "episode_count": 14,
+      "poster_path": "/fyOt2eCAVAB5tUpf4oOrLqX1cYD.jpg"
+    },
+    {
+      "season_id": 474,
+      "tv_media_id": 379,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "1987-09-28",
+      "episode_count": 25,
+      "poster_path": "/t1g6GLBQj8pfAla4qA0r5TnLw0R.jpg"
+    },
+    {
+      "season_id": 475,
+      "tv_media_id": 379,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "1988-11-21",
+      "episode_count": 22,
+      "poster_path": "/3recmOpquLOM31YOvVNQlR6U94H.jpg"
+    },
+    {
+      "season_id": 476,
+      "tv_media_id": 379,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "1989-09-25",
+      "episode_count": 26,
+      "poster_path": "/odNdFj4dblGPRfwdDo7U0599fWI.jpg"
+    },
+    {
+      "season_id": 477,
+      "tv_media_id": 380,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2012-09-27",
+      "episode_count": 24,
+      "poster_path": "/pWAPoWdikJLUdmXyydRH2zLDRlJ.jpg"
+    },
+    {
+      "season_id": 478,
+      "tv_media_id": 380,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2013-09-26",
+      "episode_count": 24,
+      "poster_path": "/zPmYTR1JodXCcATNfXwPzpOob9L.jpg"
+    },
+    {
+      "season_id": 479,
+      "tv_media_id": 380,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2014-10-30",
+      "episode_count": 24,
+      "poster_path": "/3b9xUAiAvwJ68xIPl5E31xnoK5f.jpg"
+    },
+    {
+      "season_id": 480,
+      "tv_media_id": 381,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2014-09-22",
+      "episode_count": 22,
+      "poster_path": "/xT5VlSSbqrSmhi09n8O6p44jgYE.jpg"
+    },
+    {
+      "season_id": 481,
+      "tv_media_id": 381,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2015-09-20",
+      "episode_count": 22,
+      "poster_path": "/8SaXrtKanONwycmWqPiCZWliJbQ.jpg"
+    },
+    {
+      "season_id": 482,
+      "tv_media_id": 381,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2016-09-19",
+      "episode_count": 22,
+      "poster_path": "/uAgmQGjH8T6J8edHcYFqyFacmFP.jpg"
+    },
+    {
+      "season_id": 483,
+      "tv_media_id": 382,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "1993-04-10",
+      "episode_count": 91,
+      "poster_path": "/k5CuBy00DQCuAg5pPWtyQWOcy3P.jpg"
+    },
+    {
+      "season_id": 484,
+      "tv_media_id": 382,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": null,
+      "episode_count": 120,
+      "poster_path": null
+    },
+    {
+      "season_id": 485,
+      "tv_media_id": 382,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": null,
+      "episode_count": 81,
+      "poster_path": null
+    },
+    {
+      "season_id": 486,
+      "tv_media_id": 383,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2025-03-30",
+      "episode_count": 10,
+      "poster_path": "/abeH7n5pcuQcwYcTxG6DTZvXLP1.jpg"
+    },
+    {
+      "season_id": 487,
+      "tv_media_id": 384,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2025-11-12",
+      "episode_count": 14,
+      "poster_path": "/wXQEzvvFCHjHMKt0KYkvN6jz2wN.jpg"
+    },
+    {
+      "season_id": 488,
+      "tv_media_id": 385,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2017-12-01",
+      "episode_count": 10,
+      "poster_path": "/spN6icwSwuAuOcuZLC9bKjK6N2i.jpg"
+    },
+    {
+      "season_id": 489,
+      "tv_media_id": 385,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2019-06-21",
+      "episode_count": 8,
+      "poster_path": "/4IPFQ7gb50dEDXSML7ENtt2TiN5.jpg"
+    },
+    {
+      "season_id": 490,
+      "tv_media_id": 385,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2020-06-27",
+      "episode_count": 8,
+      "poster_path": "/5Dk9V5K7IlFQTTHbuc6KvKWLD55.jpg"
+    },
+    {
+      "season_id": 491,
+      "tv_media_id": 386,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2022-06-15",
+      "episode_count": 7,
+      "poster_path": "/6yCL5HB1ugO3bMwloEDNiNdadUa.jpg"
+    },
+    {
+      "season_id": 492,
+      "tv_media_id": 386,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2023-07-12",
+      "episode_count": 8,
+      "poster_path": "/A7ziP4QaTRAwWqGhHyknN5UULlf.jpg"
+    },
+    {
+      "season_id": 493,
+      "tv_media_id": 386,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2025-07-15",
+      "episode_count": 11,
+      "poster_path": "/9j1Z6Scp0pia1yQEsDeEnx3N5l7.jpg"
+    },
+    {
+      "season_id": 494,
+      "tv_media_id": 387,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2023-05-04",
+      "episode_count": 10,
+      "poster_path": "/qcUzKCQX79LxbRLrk6Ssw2b5mjD.jpg"
+    },
+    {
+      "season_id": 495,
+      "tv_media_id": 387,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2024-11-14",
+      "episode_count": 10,
+      "poster_path": "/qblHRA3QDNZi1xrOsJodBxluCnT.jpg"
+    },
+    {
+      "season_id": 496,
+      "tv_media_id": 388,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2019-09-09",
+      "episode_count": 87,
+      "poster_path": "/40xMyC9DRVMhGaU2JVn4Dl0xGfc.jpg"
+    },
+    {
+      "season_id": 497,
+      "tv_media_id": 388,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2020-09-21",
+      "episode_count": 45,
+      "poster_path": "/rUrkO77RtQ0NC77yh0B8FCQpUZM.jpg"
+    },
+    {
+      "season_id": 498,
+      "tv_media_id": 388,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2021-09-13",
+      "episode_count": 185,
+      "poster_path": "/1Qjgh4fGYpxgZXUTDIuoXhDRf0s.jpg"
+    },
+    {
+      "season_id": 499,
+      "tv_media_id": 389,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2002-06-02",
+      "episode_count": 13,
+      "poster_path": "/blgnd2APWtxsxGyctmZyaMPO4Ym.jpg"
+    },
+    {
+      "season_id": 500,
+      "tv_media_id": 389,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2003-06-01",
       "episode_count": 12,
-      "poster_path": null
+      "poster_path": "/scOZiOzUePpz7JnWRpjI8HcY1RU.jpg"
     },
     {
-      "season_id": 111,
-      "tv_media_id": 1291,
-      "season_number": 1,
-      "name": "Season 1",
-      "air_date": "2003-04-24",
-      "episode_count": 9,
-      "poster_path": null
-    },
-    {
-      "season_id": 112,
-      "tv_media_id": 1291,
-      "season_number": 2,
-      "name": "Season 2",
-      "air_date": "2016-08-06",
-      "episode_count": 8,
-      "poster_path": null
-    },
-    {
-      "season_id": 113,
-      "tv_media_id": 1291,
+      "season_id": 501,
+      "tv_media_id": 389,
       "season_number": 3,
       "name": "Season 3",
-      "air_date": "2015-08-04",
-      "episode_count": 5,
-      "poster_path": null
+      "air_date": "2004-09-19",
+      "episode_count": 12,
+      "poster_path": "/mWo4dHE0XXsKgZOQQCtkHl3IHrf.jpg"
     },
     {
-      "season_id": 114,
-      "tv_media_id": 1725,
+      "season_id": 502,
+      "tv_media_id": 390,
       "season_number": 1,
       "name": "Season 1",
-      "air_date": "2001-05-07",
-      "episode_count": 9,
-      "poster_path": null
-    },
-    {
-      "season_id": 115,
-      "tv_media_id": 1122,
-      "season_number": 1,
-      "name": "Season 1",
-      "air_date": "2019-02-10",
+      "air_date": "2025-02-27",
       "episode_count": 8,
-      "poster_path": null
+      "poster_path": "/uD36dAATEjqkZydjSzgCRYvfmno.jpg"
     },
     {
-      "season_id": 116,
-      "tv_media_id": 1122,
+      "season_id": 503,
+      "tv_media_id": 390,
       "season_number": 2,
       "name": "Season 2",
-      "air_date": "2007-01-28",
-      "episode_count": 0,
-      "poster_path": null
+      "air_date": "2025-10-05",
+      "episode_count": 8,
+      "poster_path": "/9pxRMetW8ZwnepLnIf37YWuNvgk.jpg"
     },
     {
-      "season_id": 117,
-      "tv_media_id": 1122,
+      "season_id": 504,
+      "tv_media_id": 391,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2007-10-14",
+      "episode_count": 13,
+      "poster_path": "/zQWIUOj6PFZyzjVq8xXYhjgWJcp.jpg"
+    },
+    {
+      "season_id": 505,
+      "tv_media_id": 391,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2008-10-05",
+      "episode_count": 18,
+      "poster_path": "/5uKH89oo9DOqbF26hiCy3USJzOH.jpg"
+    },
+    {
+      "season_id": 506,
+      "tv_media_id": 391,
       "season_number": 3,
       "name": "Season 3",
-      "air_date": "2013-05-23",
-      "episode_count": 0,
-      "poster_path": null
+      "air_date": "2009-10-04",
+      "episode_count": 18,
+      "poster_path": "/u38vvHsCJyPpMZViwA7yASnYeP3.jpg"
+    },
+    {
+      "season_id": 507,
+      "tv_media_id": 392,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2025-06-16",
+      "episode_count": 24,
+      "poster_path": "/7X0m38WTUr8UPREkWIQlTTJB8h6.jpg"
+    },
+    {
+      "season_id": 508,
+      "tv_media_id": 393,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2021-04-09",
+      "episode_count": 16,
+      "poster_path": "/siTjgijCzztAC8k2ZmYEbnp5Nsy.jpg"
+    },
+    {
+      "season_id": 509,
+      "tv_media_id": 393,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2023-02-17",
+      "episode_count": 16,
+      "poster_path": "/spgLjJFpZ1w8yZv1DV3PihzUPZ.jpg"
+    },
+    {
+      "season_id": 510,
+      "tv_media_id": 393,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2025-11-21",
+      "episode_count": 16,
+      "poster_path": "/4zOMSvp4xLPEimMLWDuHMDO5N06.jpg"
+    },
+    {
+      "season_id": 511,
+      "tv_media_id": 394,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2025-11-19",
+      "episode_count": 22,
+      "poster_path": "/9LiLf7qwO6IrmZq8zgN3IdTURnO.jpg"
+    },
+    {
+      "season_id": 512,
+      "tv_media_id": 395,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2005-04-22",
+      "episode_count": 1445,
+      "poster_path": "/9ZN1P32SHviL3SV51qLivxycvcx.jpg"
+    },
+    {
+      "season_id": 513,
+      "tv_media_id": 396,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "1999-03-28",
+      "episode_count": 9,
+      "poster_path": "/fFmcuUsz3Z2c2Kn9AgjJKP5WWNG.jpg"
+    },
+    {
+      "season_id": 514,
+      "tv_media_id": 396,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "1999-09-26",
+      "episode_count": 20,
+      "poster_path": "/73wNUIJoi50I8RozwncfPurfk8g.jpg"
+    },
+    {
+      "season_id": 515,
+      "tv_media_id": 396,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2000-11-05",
+      "episode_count": 15,
+      "poster_path": "/3b7s0n9vpyrSQkohX8wxnmNKA9l.jpg"
+    },
+    {
+      "season_id": 516,
+      "tv_media_id": 397,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2005-10-17",
+      "episode_count": 32,
+      "poster_path": "/nWav1eGR0hdhswcmqOb0SPNQ2k1.jpg"
+    },
+    {
+      "season_id": 517,
+      "tv_media_id": 397,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2006-01-09",
+      "episode_count": 161,
+      "poster_path": "/zwfzHp1oyDnahwwQ6wegdxYY9z0.jpg"
+    },
+    {
+      "season_id": 518,
+      "tv_media_id": 397,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2007-01-08",
+      "episode_count": 138,
+      "poster_path": "/ApgsuPVyuiWTzCo6aHfvaLhoAi8.jpg"
+    },
+    {
+      "season_id": 519,
+      "tv_media_id": 398,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "1995-09-23",
+      "episode_count": 22,
+      "poster_path": "/f7UZ659kUTIEyWFCW1dg4Mgy84N.jpg"
+    },
+    {
+      "season_id": 520,
+      "tv_media_id": 398,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "1997-01-03",
+      "episode_count": 15,
+      "poster_path": "/oTX7Ksx1ySfxIsqaqvIds4hrGwk.jpg"
+    },
+    {
+      "season_id": 521,
+      "tv_media_id": 398,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "1997-09-23",
+      "episode_count": 24,
+      "poster_path": "/ja2fxem49izv8U1vbmMeje8jjGA.jpg"
+    },
+    {
+      "season_id": 522,
+      "tv_media_id": 399,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "1958-09-30",
+      "episode_count": 40,
+      "poster_path": "/uzrDsLqxYaw3aqfJP6jnpbsfQMX.jpg"
+    },
+    {
+      "season_id": 523,
+      "tv_media_id": 399,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "1959-09-29",
+      "episode_count": 36,
+      "poster_path": "/j6kwS70dLobbAIxHP0umeGWkZl9.jpg"
+    },
+    {
+      "season_id": 524,
+      "tv_media_id": 399,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "1960-09-27",
+      "episode_count": 34,
+      "poster_path": "/5GReYe4Vf4zW4Y9Gzagmib3hLA9.jpg"
+    },
+    {
+      "season_id": 525,
+      "tv_media_id": 400,
+      "season_number": 1,
+      "name": "Season 1",
+      "air_date": "2019-02-25",
+      "episode_count": 13,
+      "poster_path": "/eZsAH2EDCg92pW6tT6LrcwCtH8i.jpg"
+    },
+    {
+      "season_id": 526,
+      "tv_media_id": 400,
+      "season_number": 2,
+      "name": "Season 2",
+      "air_date": "2019-09-24",
+      "episode_count": 19,
+      "poster_path": "/dqFUoiylQ0qbpwz3QQxnO3dDdtc.jpg"
+    },
+    {
+      "season_id": 527,
+      "tv_media_id": 400,
+      "season_number": 3,
+      "name": "Season 3",
+      "air_date": "2021-01-05",
+      "episode_count": 16,
+      "poster_path": "/9PTRS9BJsAr1VBdTClYpmnd7aiy.jpg"
     }
   ]
 }

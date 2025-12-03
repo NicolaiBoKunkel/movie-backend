@@ -16,7 +16,7 @@ export const MongoDataSource = new DataSource({
     TVShowMongo
   ],
   synchronize: false,
-  logging: false,
+  logging: true,
 });
 
 export default MongoDataSource;

@@ -2,6 +2,12 @@ const request = require('supertest');
 const app = require('../../src/app').default;
 
 describe('Movies API Integration Tests', () => {
+  // Cleanup after all tests
+  afterAll(async () => {
+    // Allow time for any pending operations to complete
+    await new Promise(resolve => setTimeout(resolve, 500));
+  });
+
   describe('GET /movies', () => {
     test('should return a list of movies', async () => {
       const response = await request(app)
@@ -32,8 +38,8 @@ describe('Movies API Integration Tests', () => {
       expect(Array.isArray(response.body)).toBe(true);
       
       if (response.body.length > 0) {
-        expect(response.body[0]).toHaveProperty('media_id');
-        expect(response.body[0]).toHaveProperty('original_title');
+        expect(response.body[0]).toHaveProperty('mediaId');
+        expect(response.body[0]).toHaveProperty('originalTitle');
       }
     });
 

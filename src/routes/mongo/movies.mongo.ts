@@ -147,6 +147,7 @@ router.get("/", async (req, res) => {
       docs = await movieRepo.find({ take: limit });
     }
 
+    console.log(`Found ${docs.length} movies in MongoDB`);
     const movies = docs.map(mapMongoMovieSummary);
     res.json(movies);
   } catch (err) {

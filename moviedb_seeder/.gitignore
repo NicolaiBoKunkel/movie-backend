@@ -1,0 +1,19 @@
+# Ignore node modules
+node_modules/
+
+# Ignore environment variables
+.env
+
+# Ignore output directory (generated files)
+output/
+
+# Ignore TypeScript build output
+dist/
+
+# Ignore logs
+*.log
+npm-debug.log*
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
