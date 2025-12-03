@@ -4,8 +4,8 @@
 // Set test environment
 process.env.NODE_ENV = 'test';
 
-// Increase timeout for integration tests
-jest.setTimeout(10000);
+// Increase timeout for integration tests (30 seconds for slow queries)
+jest.setTimeout(30000);
 
 // Mock console methods to reduce noise during testing (optional)
 global.console = {

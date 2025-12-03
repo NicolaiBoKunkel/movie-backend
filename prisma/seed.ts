@@ -253,9 +253,28 @@ async function seedDatabase(data: SeedData): Promise<void> {
       // 2. Seed MediaItem
       console.log('🎬 Seeding media items...');
       const mediaItems = safeGetArray(data, 'MediaItem');
+      const validMediaIds = new Set<bigint>();
+      const validTVMediaIds = new Set<bigint>();
+      const validSeasonIds = new Set<bigint>();
+      
       if (mediaItems.length > 0) {
         const transformedMediaItems = transformData(mediaItems, 'MediaItem');
+        
+        // Track seen tmdb_ids to skip duplicates
+        const seenTmdbIds = new Set<bigint>();
+        let skippedDuplicates = 0;
+        
         for (const mediaItem of transformedMediaItems) {
+          // Skip if we've already seen this tmdb_id
+          if (mediaItem.tmdb_id !== null && seenTmdbIds.has(BigInt(mediaItem.tmdb_id))) {
+            skippedDuplicates++;
+            continue;
+          }
+          
+          if (mediaItem.tmdb_id !== null) {
+            seenTmdbIds.add(BigInt(mediaItem.tmdb_id));
+          }
+          
           await tx.mediaItem.upsert({
             where: { mediaId: mediaItem.media_id },
             update: {},
@@ -275,16 +294,28 @@ async function seedDatabase(data: SeedData): Promise<void> {
               homepageUrl: mediaItem.homepage_url
             }
           });
+          
+          // Track this as a valid media_id
+          validMediaIds.add(BigInt(mediaItem.media_id));
         }
-        console.log(`✅ Seeded ${mediaItems.length} media items`);
+        console.log(`✅ Seeded ${mediaItems.length - skippedDuplicates} media items (${skippedDuplicates} duplicates skipped)`);
       }
       
       // 3. Seed Movies and TV Shows
       console.log('🎭 Seeding movies and TV shows...');
       const movies = safeGetArray(data, 'Movie');
+      let moviesSeeded = 0;
+      let moviesSkipped = 0;
+      
       if (movies.length > 0) {
         const transformedMovies = transformData(movies, 'Movie');
         for (const movie of transformedMovies) {
+          // Skip if media_id doesn't exist (was filtered out as duplicate)
+          if (!validMediaIds.has(BigInt(movie.media_id))) {
+            moviesSkipped++;
+            continue;
+          }
+          
           await tx.movie.upsert({
             where: { mediaId: movie.media_id },
             update: {},
@@ -298,14 +329,24 @@ async function seedDatabase(data: SeedData): Promise<void> {
               collectionId: movie.collection_id
             }
           });
+          moviesSeeded++;
         }
-        console.log(`✅ Seeded ${movies.length} movies`);
+        console.log(`✅ Seeded ${moviesSeeded} movies (${moviesSkipped} skipped due to missing media_id)`);
       }
       
       const tvShows = safeGetArray(data, 'TVShow');
+      let tvShowsSeeded = 0;
+      let tvShowsSkipped = 0;
+      
       if (tvShows.length > 0) {
         const transformedTVShows = transformData(tvShows, 'TVShow');
         for (const tvShow of transformedTVShows) {
+          // Skip if media_id doesn't exist (was filtered out as duplicate)
+          if (!validMediaIds.has(BigInt(tvShow.media_id))) {
+            tvShowsSkipped++;
+            continue;
+          }
+          
           await tx.tVShow.upsert({
             where: { mediaId: tvShow.media_id },
             update: {},
@@ -319,15 +360,26 @@ async function seedDatabase(data: SeedData): Promise<void> {
               showType: tvShow.show_type
             }
           });
+          tvShowsSeeded++;
+          validTVMediaIds.add(BigInt(tvShow.media_id));
         }
-        console.log(`✅ Seeded ${tvShows.length} TV shows`);
+        console.log(`✅ Seeded ${tvShowsSeeded} TV shows (${tvShowsSkipped} skipped due to missing media_id)`);
       }
       
       // 4. Seed Seasons and Episodes
       console.log('📺 Seeding seasons and episodes...');
+      let seasonsSeeded = 0;
+      let seasonsSkipped = 0;
+      
       if (data.Season && data.Season.length > 0) {
         const transformedSeasons = transformData(data.Season, 'Season');
         for (const season of transformedSeasons) {
+          // Skip if tv_media_id doesn't exist
+          if (!validTVMediaIds.has(BigInt(season.tv_media_id))) {
+            seasonsSkipped++;
+            continue;
+          }
+          
           await tx.season.upsert({
             where: { seasonId: season.season_id },
             update: {},
@@ -341,13 +393,24 @@ async function seedDatabase(data: SeedData): Promise<void> {
               posterPath: season.poster_path
             }
           });
+          seasonsSeeded++;
+          validSeasonIds.add(BigInt(season.season_id));
         }
-        console.log(`✅ Seeded ${data.Season.length} seasons`);
+        console.log(`✅ Seeded ${seasonsSeeded} seasons (${seasonsSkipped} skipped due to missing tv_media_id)`);
       }
+      
+      let episodesSeeded = 0;
+      let episodesSkipped = 0;
       
       if (data.Episode && data.Episode.length > 0) {
         const transformedEpisodes = transformData(data.Episode, 'Episode');
         for (const episode of transformedEpisodes) {
+          // Skip if season_id doesn't exist
+          if (!validSeasonIds.has(BigInt(episode.season_id))) {
+            episodesSkipped++;
+            continue;
+          }
+          
           await tx.episode.upsert({
             where: { episodeId: episode.episode_id },
             update: {},
@@ -362,8 +425,9 @@ async function seedDatabase(data: SeedData): Promise<void> {
               stillPath: episode.still_path
             }
           });
+          episodesSeeded++;
         }
-        console.log(`✅ Seeded ${data.Episode.length} episodes`);
+        console.log(`✅ Seeded ${episodesSeeded} episodes (${episodesSkipped} skipped due to missing season_id)`);
       }
       
       // 5. Seed Actor and CrewMember roles
@@ -400,9 +464,18 @@ async function seedDatabase(data: SeedData): Promise<void> {
       
       // 6. Seed relationship tables
       console.log('🔗 Seeding relationships...');
+      let mediaGenreSeeded = 0;
+      let mediaGenreSkipped = 0;
+      
       if (data.MediaGenre && data.MediaGenre.length > 0) {
         const transformedMediaGenres = transformData(data.MediaGenre, 'MediaGenre');
         for (const mediaGenre of transformedMediaGenres) {
+          // Skip if media_id doesn't exist
+          if (!validMediaIds.has(BigInt(mediaGenre.media_id))) {
+            mediaGenreSkipped++;
+            continue;
+          }
+          
           await tx.mediaGenre.upsert({
             where: {
               mediaId_genreId: {
@@ -416,13 +489,23 @@ async function seedDatabase(data: SeedData): Promise<void> {
               genreId: mediaGenre.genre_id
             }
           });
+          mediaGenreSeeded++;
         }
-        console.log(`✅ Seeded ${data.MediaGenre.length} media-genre relationships`);
+        console.log(`✅ Seeded ${mediaGenreSeeded} media-genre relationships (${mediaGenreSkipped} skipped)`);
       }
+      
+      let mediaCompanySeeded = 0;
+      let mediaCompanySkipped = 0;
       
       if (data.MediaCompany && data.MediaCompany.length > 0) {
         const transformedMediaCompanies = transformData(data.MediaCompany, 'MediaCompany');
         for (const mediaCompany of transformedMediaCompanies) {
+          // Skip if media_id doesn't exist
+          if (!validMediaIds.has(BigInt(mediaCompany.media_id))) {
+            mediaCompanySkipped++;
+            continue;
+          }
+          
           await tx.mediaCompany.upsert({
             where: {
               mediaId_companyId_role: {
@@ -438,8 +521,9 @@ async function seedDatabase(data: SeedData): Promise<void> {
               role: mediaCompany.role
             }
           });
+          mediaCompanySeeded++;
         }
-        console.log(`✅ Seeded ${data.MediaCompany.length} media-company relationships`);
+        console.log(`✅ Seeded ${mediaCompanySeeded} media-company relationships (${mediaCompanySkipped} skipped)`);
       }
       
       // 7. Seed casting and crew assignments
@@ -453,13 +537,11 @@ async function seedDatabase(data: SeedData): Promise<void> {
       if (data.TitleCasting && data.TitleCasting.length > 0) {
         const transformedTitleCastings = transformData(data.TitleCasting, 'TitleCasting');
         
-        // Filter out casting records with invalid person_id references
+        // Filter out casting records with invalid person_id or media_id references
         const validTitleCastings = transformedTitleCastings.filter(casting => {
           const personIdExists = existingPersonIds.has(Number(casting.person_id));
-          if (!personIdExists) {
-            console.log(`⚠️ Skipping TitleCasting with invalid person_id: ${casting.person_id}`);
-          }
-          return personIdExists;
+          const mediaIdExists = validMediaIds.has(BigInt(casting.media_id));
+          return personIdExists && mediaIdExists;
         });
         
         for (const casting of validTitleCastings) {
@@ -479,18 +561,16 @@ async function seedDatabase(data: SeedData): Promise<void> {
             }
           });
         }
-        console.log(`✅ Seeded ${validTitleCastings.length} title castings (${data.TitleCasting.length - validTitleCastings.length} skipped due to invalid person_id)`);
+        console.log(`✅ Seeded ${validTitleCastings.length} title castings (${data.TitleCasting.length - validTitleCastings.length} skipped due to invalid person_id or media_id)`);
       }
       
       if (data.EpisodeCasting && data.EpisodeCasting.length > 0) {
         const transformedEpisodeCastings = transformData(data.EpisodeCasting, 'EpisodeCasting');
         
-        // Filter out casting records with invalid person_id references
+        // Filter out casting records with invalid person_id or episode_id references
         const validEpisodeCastings = transformedEpisodeCastings.filter(casting => {
           const personIdExists = existingPersonIds.has(Number(casting.person_id));
-          if (!personIdExists) {
-            console.log(`⚠️ Skipping EpisodeCasting with invalid person_id: ${casting.person_id}`);
-          }
+          // Note: episode_id validation would require tracking valid episode IDs, skipping for now
           return personIdExists;
         });
         
@@ -517,13 +597,11 @@ async function seedDatabase(data: SeedData): Promise<void> {
       if (data.TitleCrewAssignment && data.TitleCrewAssignment.length > 0) {
         const transformedTitleCrewAssignments = transformData(data.TitleCrewAssignment, 'TitleCrewAssignment');
         
-        // Filter out crew assignment records with invalid person_id references
+        // Filter out crew assignment records with invalid person_id or media_id references
         const validTitleCrewAssignments = transformedTitleCrewAssignments.filter(assignment => {
           const personIdExists = existingPersonIds.has(Number(assignment.person_id));
-          if (!personIdExists) {
-            console.log(`⚠️ Skipping TitleCrewAssignment with invalid person_id: ${assignment.person_id}`);
-          }
-          return personIdExists;
+          const mediaIdExists = validMediaIds.has(BigInt(assignment.media_id));
+          return personIdExists && mediaIdExists;
         });
         
         for (const assignment of validTitleCrewAssignments) {
@@ -544,7 +622,7 @@ async function seedDatabase(data: SeedData): Promise<void> {
             }
           });
         }
-        console.log(`✅ Seeded ${validTitleCrewAssignments.length} title crew assignments (${data.TitleCrewAssignment.length - validTitleCrewAssignments.length} skipped due to invalid person_id)`);
+        console.log(`✅ Seeded ${validTitleCrewAssignments.length} title crew assignments (${data.TitleCrewAssignment.length - validTitleCrewAssignments.length} skipped due to invalid person_id or media_id)`);
       }
       
       if (data.EpisodeCrewAssignment && data.EpisodeCrewAssignment.length > 0) {
@@ -553,9 +631,7 @@ async function seedDatabase(data: SeedData): Promise<void> {
         // Filter out crew assignment records with invalid person_id references
         const validEpisodeCrewAssignments = transformedEpisodeCrewAssignments.filter(assignment => {
           const personIdExists = existingPersonIds.has(Number(assignment.person_id));
-          if (!personIdExists) {
-            console.log(`⚠️ Skipping EpisodeCrewAssignment with invalid person_id: ${assignment.person_id}`);
-          }
+          // Note: episode_id validation would require tracking valid episode IDs
           return personIdExists;
         });
         
@@ -580,8 +656,8 @@ async function seedDatabase(data: SeedData): Promise<void> {
         console.log(`✅ Seeded ${validEpisodeCrewAssignments.length} episode crew assignments (${data.EpisodeCrewAssignment.length - validEpisodeCrewAssignments.length} skipped due to invalid person_id)`);
       }
     }, {
-      maxWait: 300000, // 5 minutes
-      timeout: 300000  // 5 minutes
+      maxWait: 1800000, // 30 minutes
+      timeout: 1800000  // 30 minutes
     });
     
     console.log('🎉 Database seeding completed successfully!');

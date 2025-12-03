@@ -2,6 +2,12 @@ const request = require('supertest');
 const app = require('../../src/app').default;
 
 describe('TV Shows API Integration Tests', () => {
+  // Cleanup after all tests
+  afterAll(async () => {
+    // Allow time for any pending operations to complete
+    await new Promise(resolve => setTimeout(resolve, 500));
+  });
+
   describe('GET /tv', () => {
     test('should return a list of TV shows', async () => {
       const response = await request(app)

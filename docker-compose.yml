@@ -37,7 +37,7 @@ services:
       - ./:/usr/src/app
     working_dir: /usr/src/app
     environment:
-      DATABASE_URL: ${DATABASE_URL}
+      DATABASE_URL: postgres://postgres:postgres@db:5432/moviedb
       APP_DB_PW: ${APP_DB_PW}
     restart: "no"
     # Execute the script explicitly with bash to avoid shebang/CRLF issues
@@ -111,7 +111,7 @@ services:
     environment:
       NODE_ENV: development
       PORT: 5000
-      DATABASE_URL: ${DATABASE_URL}
+      DATABASE_URL: postgres://postgres:postgres@db:5432/moviedb
       PGHOST: db
       PGPORT: 5432
       PGDATABASE: ${PGDATABASE}

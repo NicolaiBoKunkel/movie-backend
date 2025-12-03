@@ -10,5 +10,9 @@ module.exports = {
   ],
   coverageDirectory: 'coverage',
   verbose: true,
-  testTimeout: 10000,
+  testTimeout: 30000,
+  setupFilesAfterEnv: ['<rootDir>/Tests/Integration_Test/setup.js'],
+  globalTeardown: '<rootDir>/Tests/Integration_Test/teardown.js',
+  forceExit: true,
+  detectOpenHandles: true,
 };

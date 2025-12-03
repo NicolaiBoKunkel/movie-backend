@@ -2,6 +2,12 @@ const request = require('supertest');
 const app = require('../../src/app').default;
 
 describe('Neo4j API Integration Tests', () => {
+  // Cleanup after all tests
+  afterAll(async () => {
+    // Allow time for any pending operations to complete
+    await new Promise(resolve => setTimeout(resolve, 500));
+  });
+
   describe('GET /neo/movies', () => {
     test('should return movies from Neo4j', async () => {
       const response = await request(app)
