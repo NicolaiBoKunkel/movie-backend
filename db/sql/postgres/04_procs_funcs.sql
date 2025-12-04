@@ -149,11 +149,11 @@ BEGIN
      p_num_seasons, p_num_episodes, p_show_type);
 
   ---------------------------------------------------------------------
-  -- Insert Genre links
+  -- Insert Genre links (FIXED: added AS gid)
   ---------------------------------------------------------------------
   IF p_genre_ids IS NOT NULL THEN
     INSERT INTO "MediaGenre" ("media_id", "genre_id")
-    SELECT v_media_id, gid FROM unnest(p_genre_ids);
+    SELECT v_media_id, gid FROM unnest(p_genre_ids) AS gid;
   END IF;
 
   RETURN v_media_id;
@@ -195,7 +195,6 @@ $$;
 
 GRANT EXECUTE ON PROCEDURE delete_movie_with_cleanup(BIGINT)
 TO app_user, admin_user;
-
 
 
 
@@ -263,4 +262,3 @@ $$;
 
 GRANT EXECUTE ON PROCEDURE delete_tvshow_with_cleanup(BIGINT)
 TO app_user, admin_user;
-
