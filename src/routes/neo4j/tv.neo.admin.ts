@@ -53,47 +53,116 @@ router.post(
     const session = getSession();
 
     try {
+      // Build SET clauses dynamically based on what's provided
+      const mediaItemSets: string[] = [
+        'mi.mediaType = $mediaType',
+        'mi.tmdbId = $tmdbId',
+        'mi.originalTitle = $originalTitle'
+      ];
+      
+      const mediaItemParams: any = {
+        mediaId: data.mediaId,
+        mediaType: "tv",
+        tmdbId: data.tmdbId,
+        originalTitle: data.originalTitle,
+      };
+      
+      if (data.overview !== undefined) {
+        mediaItemSets.push('mi.overview = $overview');
+        mediaItemParams.overview = data.overview;
+      }
+      if (data.originalLanguage !== undefined) {
+        mediaItemSets.push('mi.originalLanguage = $originalLanguage');
+        mediaItemParams.originalLanguage = data.originalLanguage;
+      }
+      if (data.status !== undefined) {
+        mediaItemSets.push('mi.status = $status');
+        mediaItemParams.status = data.status;
+      }
+      if (data.popularity !== undefined) {
+        mediaItemSets.push('mi.popularity = $popularity');
+        mediaItemParams.popularity = data.popularity;
+      }
+      if (data.voteAverage !== undefined) {
+        mediaItemSets.push('mi.voteAverage = $voteAverage');
+        mediaItemParams.voteAverage = data.voteAverage;
+      }
+      if (data.voteCount !== undefined) {
+        mediaItemSets.push('mi.voteCount = $voteCount');
+        mediaItemParams.voteCount = data.voteCount;
+      }
+      if (data.posterPath !== undefined) {
+        mediaItemSets.push('mi.posterPath = $posterPath');
+        mediaItemParams.posterPath = data.posterPath;
+      }
+      if (data.backdropPath !== undefined) {
+        mediaItemSets.push('mi.backdropPath = $backdropPath');
+        mediaItemParams.backdropPath = data.backdropPath;
+      }
+      if (data.homepageUrl !== undefined) {
+        mediaItemSets.push('mi.homepageUrl = $homepageUrl');
+        mediaItemParams.homepageUrl = data.homepageUrl;
+      }
+
       //
       // Create MediaItem (shared fields)
       //
       await session.run(
         `
         MERGE (mi:MediaItem {mediaId: $mediaId})
-        SET mi += {
-          mediaType: "tv",
-          tmdbId: $tmdbId,
-          originalTitle: $originalTitle,
-          overview: $overview,
-          originalLanguage: $originalLanguage,
-          status: $status,
-          popularity: $popularity,
-          voteAverage: $voteAverage,
-          voteCount: $voteCount,
-          posterPath: $posterPath,
-          backdropPath: $backdropPath,
-          homepageUrl: $homepageUrl
-        }
+        SET ${mediaItemSets.join(', ')}
         `,
-        data
+        mediaItemParams
       );
+
+      // Build TVShow SET clauses
+      const tvSets: string[] = [];
+      const tvParams: any = {
+        mediaId: data.mediaId,
+      };
+      
+      if (data.firstAirDate !== undefined) {
+        tvSets.push('t.firstAirDate = $firstAirDate');
+        tvParams.firstAirDate = data.firstAirDate;
+      }
+      if (data.lastAirDate !== undefined) {
+        tvSets.push('t.lastAirDate = $lastAirDate');
+        tvParams.lastAirDate = data.lastAirDate;
+      }
+      if (data.inProduction !== undefined) {
+        tvSets.push('t.inProduction = $inProduction');
+        tvParams.inProduction = data.inProduction;
+      }
+      if (data.numberOfSeasons !== undefined) {
+        tvSets.push('t.numberOfSeasons = $numberOfSeasons');
+        tvParams.numberOfSeasons = data.numberOfSeasons;
+      }
+      if (data.numberOfEpisodes !== undefined) {
+        tvSets.push('t.numberOfEpisodes = $numberOfEpisodes');
+        tvParams.numberOfEpisodes = data.numberOfEpisodes;
+      }
+      if (data.showType !== undefined) {
+        tvSets.push('t.showType = $showType');
+        tvParams.showType = data.showType;
+      }
 
       //
       // Create TVShow (TV-specific fields)
       //
-      await session.run(
-        `
-        MERGE (t:TVShow {mediaId: $mediaId})
-        SET t += {
-          firstAirDate: $firstAirDate,
-          lastAirDate: $lastAirDate,
-          inProduction: $inProduction,
-          numberOfSeasons: $numberOfSeasons,
-          numberOfEpisodes: $numberOfEpisodes,
-          showType: $showType
-        }
-        `,
-        data
-      );
+      if (tvSets.length > 0) {
+        await session.run(
+          `
+          MERGE (t:TVShow {mediaId: $mediaId})
+          SET ${tvSets.join(', ')}
+          `,
+          tvParams
+        );
+      } else {
+        await session.run(
+          `MERGE (t:TVShow {mediaId: $mediaId})`,
+          tvParams
+        );
+      }
 
       //
       // Link MediaItem -> TVShow
@@ -101,6 +170,7 @@ router.post(
       await session.run(
         `
         MATCH (mi:MediaItem {mediaId: $mediaId})
+        WITH mi
         MATCH (t:TVShow {mediaId: $mediaId})
         MERGE (mi)-[:IS_TV_SHOW]->(t)
         `,
@@ -115,6 +185,7 @@ router.post(
           await session.run(
             `
             MERGE (ge:Genre {name: $g})
+            WITH ge
             MATCH (mi:MediaItem {mediaId: $mediaId})
             MERGE (mi)-[:HAS_GENRE]->(ge)
             `,
