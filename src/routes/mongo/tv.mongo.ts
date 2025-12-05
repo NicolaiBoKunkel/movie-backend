@@ -4,7 +4,6 @@ import { TVShowMongo } from "../../entities/mongo/TVShowMongo";
 
 const router = Router();
 
-   //Summary Mapper (GET /mongo/tv)
 function mapMongoTvSummary(doc: any) {
   const item = doc.mediaItem ?? {};
 
@@ -15,11 +14,11 @@ function mapMongoTvSummary(doc: any) {
     genres: Array.isArray(item.genres)
       ? item.genres.map((g: any) => g.name)
       : [],
+    posterPath: item.posterPath ?? null,
+    backdropPath: item.backdropPath ?? null,
   };
 }
 
-
-   //Full Mapper (GET /mongo/tv/:id)
 function mapMongoTvShow(doc: any) {
   const m = doc.mediaItem ?? {};
   const tv = m.tvShow ?? {};
@@ -101,7 +100,6 @@ function mapMongoTvShow(doc: any) {
   };
 }
 
-   //GET /mongo/tv  (Summary List + Search)
 router.get("/", async (req, res) => {
   try {
     const tvRepo = MongoDataSource.getMongoRepository(TVShowMongo);
@@ -132,8 +130,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-
-   //GET /mongo/tv/:mediaId  (Full Details)
 router.get("/:mediaId", async (req, res) => {
   const { mediaId } = req.params;
 
