@@ -53,7 +53,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"username\": \"{{NEO4J_ADMIN_USERNAME}}\",\n  \"password\": \"securePassword123\"\n}"
+							"raw": "{\n  \"username\": \"{{ADMIN_USERNAME}}\",\n  \"password\": \"{{ADMIN_PASSWORD}}\"\n}"
 						},
 						"url": {
 							"raw": "{{BASE_URL}}/auth/login",

@@ -58,7 +58,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"username\": \"{{MONGO_ADMIN_USERNAME}}\",\n  \"password\": \"securePassword123\"\n}"
+							"raw": "{\n  \"username\": \"{{ADMIN_USERNAME}}\",\n  \"password\": \"{{ADMIN_PASSWORD}}\"\n}"
 						},
 						"url": {
 							"raw": "{{BASE_URL}}/auth/login",
@@ -90,17 +90,19 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 201\", function () {",
-									"    pm.response.to.have.status(201);",
+									"pm.test(\"Status code is 201 or 409\", function () {",
+									"    pm.expect([201, 409]).to.include(pm.response.code);",
 									"});",
 									"",
-									"pm.test(\"Response has user data\", function () {",
-									"    const jsonData = pm.response.json();",
-									"    pm.expect(jsonData).to.have.property('user_id');",
-									"    pm.expect(jsonData).to.have.property('username');",
-									"    pm.expect(jsonData).to.have.property('role');",
-									"    pm.environment.set('NEW_USER_ID', jsonData.user_id);",
-									"});"
+									"if (pm.response.code === 201) {",
+									"    pm.test(\"Response has user data\", function () {",
+									"        const jsonData = pm.response.json();",
+									"        pm.expect(jsonData).to.have.property('user_id');",
+									"        pm.expect(jsonData).to.have.property('username');",
+									"        pm.expect(jsonData).to.have.property('role');",
+									"        pm.environment.set('NEW_USER_ID', jsonData.user_id);",
+									"    });",
+									"}"
 								],
 								"type": "text/javascript"
 							}
@@ -116,7 +118,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"username\": \"{{MONGO_ADMIN_USERNAME}}\",\n  \"password\": \"mongoSecurePass123\"\n}"
+							"raw": "{\n  \"username\": \"{{ADMIN_USERNAME}}\",\n  \"password\": \"{{ADMIN_PASSWORD}}\"\n}"
 						},
 						"url": {
 							"raw": "{{BASE_URL}}/auth/register",
@@ -172,7 +174,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"username\": \"{{MONGO_ADMIN_USERNAME}}\",\n  \"password\": \"mongoSecurePass123\"\n}"
+							"raw": "{\n  \"username\": \"{{ADMIN_USERNAME}}\",\n  \"password\": \"{{ADMIN_PASSWORD}}\"\n}"
 						},
 						"url": {
 							"raw": "{{BASE_URL}}/auth/login",

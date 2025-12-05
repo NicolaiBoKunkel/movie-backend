@@ -48,47 +48,114 @@ router.post(
     const session = getSession();
 
     try {
+      // Build SET clauses dynamically based on what's provided
+      const mediaItemSets: string[] = [
+        'mi.mediaType = $mediaType',
+        'mi.tmdbId = $tmdbId',
+        'mi.originalTitle = $originalTitle'
+      ];
+      
+      const mediaItemParams: any = {
+        mediaId: data.mediaId,
+        mediaType: "movie",
+        tmdbId: data.tmdbId,
+        originalTitle: data.originalTitle,
+      };
+      
+      if (data.overview !== undefined) {
+        mediaItemSets.push('mi.overview = $overview');
+        mediaItemParams.overview = data.overview;
+      }
+      if (data.originalLanguage !== undefined) {
+        mediaItemSets.push('mi.originalLanguage = $originalLanguage');
+        mediaItemParams.originalLanguage = data.originalLanguage;
+      }
+      if (data.status !== undefined) {
+        mediaItemSets.push('mi.status = $status');
+        mediaItemParams.status = data.status;
+      }
+      if (data.popularity !== undefined) {
+        mediaItemSets.push('mi.popularity = $popularity');
+        mediaItemParams.popularity = data.popularity;
+      }
+      if (data.voteAverage !== undefined) {
+        mediaItemSets.push('mi.voteAverage = $voteAverage');
+        mediaItemParams.voteAverage = data.voteAverage;
+      }
+      if (data.voteCount !== undefined) {
+        mediaItemSets.push('mi.voteCount = $voteCount');
+        mediaItemParams.voteCount = data.voteCount;
+      }
+      if (data.posterPath !== undefined) {
+        mediaItemSets.push('mi.posterPath = $posterPath');
+        mediaItemParams.posterPath = data.posterPath;
+      }
+      if (data.backdropPath !== undefined) {
+        mediaItemSets.push('mi.backdropPath = $backdropPath');
+        mediaItemParams.backdropPath = data.backdropPath;
+      }
+      if (data.homepageUrl !== undefined) {
+        mediaItemSets.push('mi.homepageUrl = $homepageUrl');
+        mediaItemParams.homepageUrl = data.homepageUrl;
+      }
+
       // --- Create MediaItem node ---
       await session.run(
         `
         MERGE (mi:MediaItem {mediaId: $mediaId})
-        SET mi += {
-          mediaType: "movie",
-          tmdbId: $tmdbId,
-          originalTitle: $originalTitle,
-          overview: $overview,
-          originalLanguage: $originalLanguage,
-          status: $status,
-          popularity: $popularity,
-          voteAverage: $voteAverage,
-          voteCount: $voteCount,
-          posterPath: $posterPath,
-          backdropPath: $backdropPath,
-          homepageUrl: $homepageUrl
-        }
+        SET ${mediaItemSets.join(', ')}
         `,
-        data
+        mediaItemParams
       );
 
+      // Build Movie SET clauses
+      const movieSets: string[] = [];
+      const movieParams: any = {
+        mediaId: data.mediaId,
+      };
+      
+      if (data.releaseDate !== undefined) {
+        movieSets.push('m.releaseDate = $releaseDate');
+        movieParams.releaseDate = data.releaseDate;
+      }
+      if (data.budget !== undefined) {
+        movieSets.push('m.budget = $budget');
+        movieParams.budget = data.budget;
+      }
+      if (data.revenue !== undefined) {
+        movieSets.push('m.revenue = $revenue');
+        movieParams.revenue = data.revenue;
+      }
+      if (data.adultFlag !== undefined) {
+        movieSets.push('m.adultFlag = $adultFlag');
+        movieParams.adultFlag = data.adultFlag;
+      }
+      if (data.runtimeMinutes !== undefined) {
+        movieSets.push('m.runtimeMinutes = $runtimeMinutes');
+        movieParams.runtimeMinutes = data.runtimeMinutes;
+      }
+
       // --- Create Movie node ---
-      await session.run(
-        `
-        MERGE (m:Movie {mediaId: $mediaId})
-        SET m += {
-          releaseDate: $releaseDate,
-          budget: $budget,
-          revenue: $revenue,
-          adultFlag: $adultFlag,
-          runtimeMinutes: $runtimeMinutes
-        }
-        `,
-        data
-      );
+      if (movieSets.length > 0) {
+        await session.run(
+          `
+          MERGE (m:Movie {mediaId: $mediaId})
+          SET ${movieSets.join(', ')}
+          `,
+          movieParams
+        );
+      } else {
+        await session.run(
+          `MERGE (m:Movie {mediaId: $mediaId})`,
+          movieParams
+        );
+      }
 
       // --- Create IS_MOVIE relationship ---
       await session.run(
         `
         MATCH (mi:MediaItem {mediaId: $mediaId})
+        WITH mi
         MATCH (m:Movie {mediaId: $mediaId})
         MERGE (mi)-[:IS_MOVIE]->(m)
         `,

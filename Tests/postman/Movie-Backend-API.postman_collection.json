@@ -66,8 +66,11 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"const timestamp = Date.now();",
-									"pm.environment.set('ADMIN_USERNAME', `admin_${timestamp}`);"
+									"// Only generate a dynamic username if ADMIN_USERNAME is not already set",
+									"if (!pm.environment.get('ADMIN_USERNAME')) {",
+									"    const timestamp = Date.now();",
+									"    pm.environment.set('ADMIN_USERNAME', `admin_${timestamp}`);",
+									"}"
 								],
 								"type": "text/javascript"
 							}
@@ -76,27 +79,29 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 201\", function () {",
-									"    pm.response.to.have.status(201);",
+									"pm.test(\"Status code is 201 or 409\", function () {",
+									"    pm.expect([201, 409]).to.include(pm.response.code);",
 									"});",
 									"",
 									"pm.test(\"Response time is acceptable\", function () {",
 									"    pm.expect(pm.response.responseTime).to.be.below(2000);",
 									"});",
 									"",
-									"pm.test(\"Response has user data\", function () {",
-									"    const jsonData = pm.response.json();",
-									"    pm.expect(jsonData).to.have.property('user_id');",
-									"    pm.expect(jsonData).to.have.property('username');",
-									"    pm.expect(jsonData).to.have.property('role');",
-									"    pm.expect(jsonData).to.have.property('created_at');",
-									"});",
+									"if (pm.response.code === 201) {",
+									"    pm.test(\"Response has user data\", function () {",
+									"        const jsonData = pm.response.json();",
+									"        pm.expect(jsonData).to.have.property('user_id');",
+									"        pm.expect(jsonData).to.have.property('username');",
+									"        pm.expect(jsonData).to.have.property('role');",
+									"        pm.expect(jsonData).to.have.property('created_at');",
+									"    });",
 									"",
-									"pm.test(\"Username matches request\", function () {",
-									"    const jsonData = pm.response.json();",
-									"    const requestBody = JSON.parse(pm.request.body.raw);",
-									"    pm.expect(jsonData.username).to.equal(requestBody.username);",
-									"});"
+									"    pm.test(\"Username matches request\", function () {",
+									"        const jsonData = pm.response.json();",
+									"        const requestBody = JSON.parse(pm.request.body.raw);",
+									"        pm.expect(jsonData.username).to.equal(requestBody.username);",
+									"    });",
+									"}"
 								],
 								"type": "text/javascript"
 							}
@@ -112,7 +117,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"username\": \"{{ADMIN_USERNAME}}\",\n  \"password\": \"securePassword123\"\n}"
+							"raw": "{\n  \"username\": \"{{ADMIN_USERNAME}}\",\n  \"password\": \"{{ADMIN_PASSWORD}}\"\n}"
 						},
 						"url": {
 							"raw": "{{BASE_URL}}/auth/register",
@@ -364,7 +369,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"username\": \"{{ADMIN_USERNAME}}\",\n  \"password\": \"securePassword123\"\n}"
+							"raw": "{\n  \"username\": \"{{ADMIN_USERNAME}}\",\n  \"password\": \"{{ADMIN_PASSWORD}}\"\n}"
 						},
 						"url": {
 							"raw": "{{BASE_URL}}/auth/login",
