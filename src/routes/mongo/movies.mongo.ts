@@ -4,9 +4,6 @@ import { MovieMongo } from "../../entities/mongo/MovieMongo";
 
 const router = Router();
 
-
-   //Canonical Movie DTO + Mapping Helpers
-
 export type MovieDto = {
   mediaId: string;
   tmdbId: string;
@@ -25,6 +22,9 @@ export type MovieDto = {
   runtimeMinutes: number | null;
   collectionId: string | null;
   genres: string[];
+  posterPath: string | null;
+  backdropPath: string | null;
+  homepageUrl: string | null;
 
   cast: {
     personId: string;
@@ -47,7 +47,6 @@ export type MovieDto = {
   }[];
 };
 
-   //Full Movie Mapper
 function mapMongoMovie(doc: any): MovieDto {
   const m = doc.mediaItem || {};
 
@@ -76,39 +75,38 @@ function mapMongoMovie(doc: any): MovieDto {
 
     genres: Array.isArray(m.genres) ? m.genres.map((g: any) => g.name) : [],
 
-    cast:
-      Array.isArray(m.cast)
-        ? m.cast.map((c: any) => ({
-            personId: String(c.personId),
-            name: c.name ?? "",
-            characterName: c.characterName ?? null,
-            castOrder: c.castOrder != null ? Number(c.castOrder) : null,
-          }))
-        : [],
+    posterPath: m.posterPath ?? null,
+    backdropPath: m.backdropPath ?? null,
+    homepageUrl: m.homepageUrl ?? null,
 
-    crew:
-      Array.isArray(m.crew)
-        ? m.crew.map((w: any) => ({
-            personId: String(w.personId),
-            name: w.name ?? "",
-            department: w.department ?? null,
-            jobTitle: w.jobTitle ?? null,
-          }))
-        : [],
+    cast: Array.isArray(m.cast)
+      ? m.cast.map((c: any) => ({
+          personId: String(c.personId),
+          name: c.name ?? "",
+          characterName: c.characterName ?? null,
+          castOrder: c.castOrder != null ? Number(c.castOrder) : null,
+        }))
+      : [],
 
-    companies:
-      Array.isArray(m.companies)
-        ? m.companies.map((c: any) => ({
-            companyId: String(c.companyId),
-            name: c.name ?? "",
-            role: c.role ?? null,
-          }))
-        : [],
+    crew: Array.isArray(m.crew)
+      ? m.crew.map((w: any) => ({
+          personId: String(w.personId),
+          name: w.name ?? "",
+          department: w.department ?? null,
+          jobTitle: w.jobTitle ?? null,
+        }))
+      : [],
+
+    companies: Array.isArray(m.companies)
+      ? m.companies.map((c: any) => ({
+          companyId: String(c.companyId),
+          name: c.name ?? "",
+          role: c.role ?? null,
+        }))
+      : [],
   };
 }
 
-
-   //Summary Mapper for GET /mongo/movies
 function mapMongoMovieSummary(doc: any) {
   const m = doc.mediaItem || {};
 
@@ -116,14 +114,12 @@ function mapMongoMovieSummary(doc: any) {
     mediaId: String(doc.mediaId),
     originalTitle: m.originalTitle ?? "",
     voteAverage: Number(m.voteAverage ?? 0),
-    genres: Array.isArray(m.genres)
-      ? m.genres.map((g: any) => g.name)
-      : [],
+    genres: Array.isArray(m.genres) ? m.genres.map((g: any) => g.name) : [],
+    posterPath: m.posterPath ?? null,
+    backdropPath: m.backdropPath ?? null,
   };
 }
 
-
-   //GET /mongo/movies (list + search)
 router.get("/", async (req, res) => {
   try {
     const movieRepo = MongoDataSource.getMongoRepository(MovieMongo);
@@ -147,7 +143,6 @@ router.get("/", async (req, res) => {
       docs = await movieRepo.find({ take: limit });
     }
 
-    console.log(`Found ${docs.length} movies in MongoDB`);
     const movies = docs.map(mapMongoMovieSummary);
     res.json(movies);
   } catch (err) {
@@ -156,8 +151,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-
-   //GET /mongo/movies/:mediaId (full canonical details)
 router.get("/:mediaId", async (req, res) => {
   const { mediaId } = req.params;
 

@@ -1,13 +1,8 @@
-import { Router } from 'express';
-import pool from '../db/pool';
-import { z } from 'zod';
+import { Router } from "express";
+import pool from "../db/pool";
+import { z } from "zod";
 
 const router = Router();
-
-// ======================================================================
-// CREATE TV SHOW (POST /tv)
-// Full CRUD: includes all MediaItem + TVShow fields
-// ======================================================================
 
 const createTvSchema = z.object({
   tmdbId: z.number().int().positive(),
@@ -16,236 +11,359 @@ const createTvSchema = z.object({
   genreIds: z.array(z.number().int().positive()).min(1),
 
   lastAirDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).nullable().optional(),
-
-  // MediaItem metadata
   overview: z.string().nullable().optional(),
-  language: z.string().length(2).default('en'),
-  status: z.string().min(1).max(50).default('Returning Series'),
-  popularity: z.number().optional(),
+  language: z.string().length(2).default("en"),
+  status: z.string().min(1).max(50).default("Returning Series"),
+
+  popularity: z.number().nonnegative().optional(),
   vote: z.number().min(0).max(10).optional(),
-  voteCount: z.number().int().optional(),
+  voteCount: z.number().int().nonnegative().optional(),
+
   posterPath: z.string().nullable().optional(),
   backdropPath: z.string().nullable().optional(),
   homepageUrl: z.string().nullable().optional(),
 
-  // TV-specific
   inProduction: z.boolean().optional(),
-  numSeasons: z.number().int().min(0).optional(),
-  numEpisodes: z.number().int().min(0).optional(),
+  numSeasons: z.number().int().nonnegative().optional(),
+  numEpisodes: z.number().int().nonnegative().optional(),
   showType: z.string().min(1).max(100).optional(),
 });
 
-router.post('/', async (req, res) => {
+const updateTvSchema = z.object({
+  title: z.string().min(1).max(500).optional(),
+  overview: z.string().nullable().optional(),
+  language: z.string().length(2).optional(),
+  status: z.string().min(1).max(50).optional(),
+
+  popularity: z.number().nonnegative().optional(),
+  vote: z.number().min(0).max(10).optional(),
+  voteCount: z.number().int().nonnegative().optional(),
+
+  posterPath: z.string().nullable().optional(),
+  backdropPath: z.string().nullable().optional(),
+  homepageUrl: z.string().nullable().optional(),
+
+  firstAirDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
+  lastAirDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).nullable().optional(),
+
+  inProduction: z.boolean().optional(),
+  numSeasons: z.number().int().nonnegative().optional(),
+  numEpisodes: z.number().int().nonnegative().optional(),
+  showType: z.string().min(1).max(100).optional(),
+
+  genreIds: z.array(z.number().int().positive()).optional(),
+});
+
+
+
+async function fetchFullTvShow(id: number) {
+  const tvSql = `
+    SELECT
+      m.*,
+      tv.*,
+      COALESCE(json_agg(
+        DISTINCT jsonb_build_object(
+          'genre_id', g.genre_id,
+          'genre_name', g.name
+        )
+      ) FILTER (WHERE g.genre_id IS NOT NULL), '[]') AS genres
+    FROM "MediaItem" m
+    JOIN "TVShow" tv ON tv.media_id = m.media_id
+    LEFT JOIN "MediaGenre" mg ON mg.media_id = m.media_id
+    LEFT JOIN "Genre" g ON g.genre_id = mg.genre_id
+    WHERE m.media_id = $1 AND m.media_type = 'tv'
+    GROUP BY m.media_id, tv.media_id;
+  `;
+  const tv = await pool.query(tvSql, [id]);
+  if (tv.rowCount === 0) return null;
+  const row = tv.rows[0];
+
+  const seasons = await pool.query(
+    `SELECT season_number, name, air_date, episode_count, poster_path
+     FROM "Season"
+     WHERE tv_media_id = $1
+     ORDER BY season_number`,
+    [id]
+  );
+
+  const cast = await pool.query(
+    `SELECT p.person_id, p.name, tc.character_name, tc.cast_order
+     FROM "TitleCasting" tc
+     JOIN "Person" p ON p.person_id = tc.person_id
+     WHERE tc.media_id = $1
+     ORDER BY tc.cast_order ASC NULLS LAST`,
+    [id]
+  );
+
+  const crew = await pool.query(
+    `SELECT p.person_id, p.name, tca.department, tca.job_title
+     FROM "TitleCrewAssignment" tca
+     JOIN "Person" p ON p.person_id = tca.person_id
+     WHERE tca.media_id = $1
+     ORDER BY p.name`,
+    [id]
+  );
+
+  const companies = await pool.query(
+    `SELECT c.company_id, c.name, mc.role
+     FROM "MediaCompany" mc
+     JOIN "Company" c ON c.company_id = mc.company_id
+     WHERE mc.media_id = $1
+     ORDER BY c.name`,
+    [id]
+  );
+
+  return {
+    mediaId: String(row.media_id),
+    tmdbId: row.tmdb_id ? String(row.tmdb_id) : null,
+    mediaType: "tv",
+
+    originalTitle: row.original_title,
+    overview: row.overview ?? null,
+    originalLanguage: row.original_language ?? null,
+    status: row.status ?? null,
+
+    popularity: Number(row.popularity ?? 0),
+    voteAverage: Number(row.vote_average),
+    voteCount: Number(row.vote_count ?? 0),
+
+    firstAirDate: row.first_air_date ? row.first_air_date.toISOString() : null,
+    lastAirDate: row.last_air_date ? row.last_air_date.toISOString() : null,
+
+    inProduction: Boolean(row.in_production),
+    numberOfSeasons: row.number_of_seasons,
+    numberOfEpisodes: row.number_of_episodes,
+
+    showType: row.show_type ?? null,
+
+    posterPath: row.poster_path ?? null,
+    backdropPath: row.backdrop_path ?? null,
+    homepageUrl: row.homepage_url ?? null,
+
+    genres: row.genres.map((g: any) => ({
+      genreId: String(g.genre_id),
+      name: g.genre_name,
+    })),
+
+    seasons: seasons.rows.map((s) => ({
+      seasonNumber: s.season_number,
+      name: s.name,
+      airDate: s.air_date ? s.air_date.toISOString() : null,
+      episodeCount: s.episode_count,
+      posterPath: s.poster_path,
+    })),
+
+    cast: cast.rows.map((c) => ({
+      personId: String(c.person_id),
+      name: c.name,
+      characterName: c.character_name,
+      castOrder: c.cast_order,
+    })),
+
+    crew: crew.rows.map((c) => ({
+      personId: String(c.person_id),
+      name: c.name,
+      department: c.department,
+      jobTitle: c.job_title,
+    })),
+
+    companies: companies.rows.map((c) => ({
+      companyId: String(c.company_id),
+      name: c.name,
+      role: c.role,
+    })),
+  };
+}
+
+router.post("/", async (req, res) => {
   const parsed = createTvSchema.safeParse(req.body);
   if (!parsed.success) {
-    return res.status(400).json({ error: 'Validation failed', issues: parsed.error.issues });
+    return res.status(400).json({ error: "Validation failed", issues: parsed.error.issues });
   }
-
   const b = parsed.data;
 
   try {
     const sql = `
       SELECT add_tvshow_with_genres(
         $1, $2, $3::date, $4::bigint[], $5::date,
-
-        $6,  -- overview
-        $7,  -- language
-        $8,  -- status
-        $9,  -- popularity
-        $10, -- vote_average
-        $11, -- vote_count
-        $12, -- poster_path
-        $13, -- backdrop_path
-        $14, -- homepage_url
-
-        $15, -- in_production
-        $16, -- num_seasons
-        $17, -- num_episodes
-        $18  -- show_type
+        $6, $7, $8, $9, $10, $11,
+        $12, $13, $14,
+        $15, $16, $17, $18
       ) AS media_id;
     `;
 
     const params = [
-      b.tmdbId,              // 1
-      b.title,               // 2
-      b.firstAirDate,        // 3
-      b.genreIds,            // 4
-      b.lastAirDate ?? null, // 5
+      b.tmdbId,
+      b.title,
+      b.firstAirDate,
+      b.genreIds,
+      b.lastAirDate ?? null,
 
-      b.overview ?? null,    // 6
-      b.language,            // 7
-      b.status,              // 8
-      b.popularity ?? null,  // 9
-      b.vote ?? null,        // 10
-      b.voteCount ?? null,   // 11
-      b.posterPath ?? null,  // 12
-      b.backdropPath ?? null,// 13
-      b.homepageUrl ?? null, // 14
+      b.overview ?? null,
+      b.language,
+      b.status,
+      b.popularity ?? 0,
+      b.vote ?? 0,
+      b.voteCount ?? 0,
 
-      b.inProduction ?? null,// 15
-      b.numSeasons ?? null,  // 16
-      b.numEpisodes ?? null, // 17
-      b.showType ?? null     // 18
+      b.posterPath ?? null,
+      b.backdropPath ?? null,
+      b.homepageUrl ?? null,
+
+      b.inProduction ?? false,
+      b.numSeasons ?? 0,
+      b.numEpisodes ?? 0,
+      b.showType ?? null,
     ];
 
     const { rows } = await pool.query(sql, params);
-    return res.status(201).json({ mediaId: rows[0]?.media_id });
+    const newId = rows[0]?.media_id;
+
+    const fullTv = await fetchFullTvShow(newId);
+    return res.status(201).json(fullTv);
 
   } catch (err: any) {
-    const msg = String(err?.message || err);
-
-    if (msg.includes('foreign key') || msg.includes('MediaGenre')) {
-      return res.status(400).json({ error: 'Invalid genreIds', details: msg });
+    const msg = String(err.message || err);
+    if (/duplicate/i.test(msg)) {
+      return res.status(400).json({ error: "Duplicate TMDB ID" });
     }
-
-    if (/duplicate key/i.test(msg)) {
-      return res.status(400).json({ error: 'Duplicate TMDB ID', details: msg });
-    }
-
-    console.error('[POST /tv] unexpected error:', err);
-    return res.status(500).json({ error: 'Internal server error' });
+    return res.status(500).json({ error: "Internal server error" });
   }
 });
 
-
-// ======================================================================
-// UPDATE TV SHOW (PUT /tv/:id)
-// Full CRUD support for all MediaItem + TVShow fields
-// ======================================================================
-
-const updateTvSchema = z.object({
-  title: z.string().min(1).max(500).optional(),
-  overview: z.string().nullable().optional(),
-  firstAirDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
-  lastAirDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).nullable().optional(),
-
-  language: z.string().length(2).optional(),
-  status: z.string().min(1).max(50).optional(),
-  popularity: z.number().optional(),
-  vote: z.number().min(0).max(10).optional(),
-  voteCount: z.number().int().optional(),
-  posterPath: z.string().nullable().optional(),
-  backdropPath: z.string().nullable().optional(),
-  homepageUrl: z.string().nullable().optional(),
-
-  inProduction: z.boolean().optional(),
-  numSeasons: z.number().int().min(0).optional(),
-  numEpisodes: z.number().int().min(0).optional(),
-  showType: z.string().min(1).max(100).optional(),
-});
-
-router.put('/:id', async (req, res) => {
+router.put("/:id", async (req, res) => {
   const id = Number(req.params.id);
   if (!Number.isInteger(id) || id <= 0) {
-    return res.status(400).json({ error: 'Invalid id' });
+    return res.status(400).json({ error: "Invalid id" });
   }
 
   const parsed = updateTvSchema.safeParse(req.body);
   if (!parsed.success) {
-    return res.status(400).json({ error: 'Validation failed', issues: parsed.error.issues });
+    return res.status(400).json({
+      error: "Validation failed",
+      issues: parsed.error.issues,
+    });
   }
-
   const b = parsed.data;
+
+  if (Object.keys(b).length === 0)
+    return res.status(400).json({ error: "No update fields provided" });
 
   const client = await pool.connect();
   try {
-    await client.query('BEGIN');
+    await client.query("BEGIN");
 
-    // ---------------- MediaItem updates ----------------
+    if (b.genreIds !== undefined) {
+      const valid = await client.query(
+        `SELECT genre_id FROM "Genre" WHERE genre_id = ANY($1)`,
+        [b.genreIds]
+      );
+
+      if (valid.rowCount !== b.genreIds.length) {
+        throw new Error("Invalid genreIds");
+      }
+
+      await client.query(
+        `DELETE FROM "MediaGenre" WHERE media_id = $1`,
+        [id]
+      );
+
+      for (const gid of b.genreIds) {
+        await client.query(
+          `INSERT INTO "MediaGenre"(media_id, genre_id) VALUES ($1, $2)`,
+          [id, gid]
+        );
+      }
+    }
+
     const miSets: string[] = [];
     const miParams: any[] = [];
     let p = 1;
 
-    if (b.title !== undefined)        { miSets.push(`"original_title" = $${p++}`); miParams.push(b.title); }
-    if (b.overview !== undefined)     { miSets.push(`"overview"       = $${p++}`); miParams.push(b.overview); }
-    if (b.language !== undefined)     { miSets.push(`"original_language" = $${p++}`); miParams.push(b.language); }
-    if (b.status !== undefined)       { miSets.push(`"status"         = $${p++}`); miParams.push(b.status); }
-    if (b.popularity !== undefined)   { miSets.push(`"popularity"     = $${p++}`); miParams.push(b.popularity); }
-    if (b.vote !== undefined)         { miSets.push(`"vote_average"   = $${p++}`); miParams.push(b.vote); }
-    if (b.voteCount !== undefined)    { miSets.push(`"vote_count"     = $${p++}`); miParams.push(b.voteCount); }
-    if (b.posterPath !== undefined)   { miSets.push(`"poster_path"    = $${p++}`); miParams.push(b.posterPath); }
-    if (b.backdropPath !== undefined) { miSets.push(`"backdrop_path"  = $${p++}`); miParams.push(b.backdropPath); }
-    if (b.homepageUrl !== undefined)  { miSets.push(`"homepage_url"   = $${p++}`); miParams.push(b.homepageUrl); }
+    if (b.title !== undefined)        { miSets.push(`original_title = $${p++}`); miParams.push(b.title); }
+    if (b.overview !== undefined)     { miSets.push(`overview = $${p++}`); miParams.push(b.overview); }
+    if (b.language !== undefined)     { miSets.push(`original_language = $${p++}`); miParams.push(b.language); }
+    if (b.status !== undefined)       { miSets.push(`status = $${p++}`); miParams.push(b.status); }
+    if (b.popularity !== undefined)   { miSets.push(`popularity = $${p++}`); miParams.push(b.popularity); }
+    if (b.vote !== undefined)         { miSets.push(`vote_average = $${p++}`); miParams.push(b.vote); }
+    if (b.voteCount !== undefined)    { miSets.push(`vote_count = $${p++}`); miParams.push(b.voteCount); }
+    if (b.posterPath !== undefined)   { miSets.push(`poster_path = $${p++}`); miParams.push(b.posterPath); }
+    if (b.backdropPath !== undefined) { miSets.push(`backdrop_path = $${p++}`); miParams.push(b.backdropPath); }
+    if (b.homepageUrl !== undefined)  { miSets.push(`homepage_url = $${p++}`); miParams.push(b.homepageUrl); }
 
     if (miSets.length > 0) {
       miParams.push(id);
       const sql = `
         UPDATE "MediaItem"
-        SET ${miSets.join(', ')}
+        SET ${miSets.join(", ")}
         WHERE media_id = $${p} AND media_type = 'tv'
-        RETURNING media_id;
       `;
-      const r = await client.query(sql, miParams);
-      if (r.rowCount === 0) {
-        await client.query('ROLLBACK');
-        return res.status(404).json({ error: 'TV show not found' });
-      }
+      await client.query(sql, miParams);
     }
 
-    // ---------------- TVShow updates ----------------
     const tvSets: string[] = [];
     const tvParams: any[] = [];
     p = 1;
 
-    if (b.firstAirDate !== undefined) { tvSets.push(`"first_air_date" = $${p++}::date`); tvParams.push(b.firstAirDate); }
-    if (b.lastAirDate !== undefined)  { tvSets.push(`"last_air_date" = $${p++}::date`); tvParams.push(b.lastAirDate); }
-    if (b.inProduction !== undefined) { tvSets.push(`"in_production" = $${p++}`); tvParams.push(b.inProduction); }
-    if (b.numSeasons !== undefined)   { tvSets.push(`"number_of_seasons" = $${p++}`); tvParams.push(b.numSeasons); }
-    if (b.numEpisodes !== undefined)  { tvSets.push(`"number_of_episodes" = $${p++}`); tvParams.push(b.numEpisodes); }
-    if (b.showType !== undefined)     { tvSets.push(`"show_type" = $${p++}`); tvParams.push(b.showType); }
+    if (b.firstAirDate !== undefined) { tvSets.push(`first_air_date = $${p++}::date`); tvParams.push(b.firstAirDate); }
+    if (b.lastAirDate !== undefined)  { tvSets.push(`last_air_date = $${p++}::date`); tvParams.push(b.lastAirDate); }
+    if (b.inProduction !== undefined) { tvSets.push(`in_production = $${p++}`); tvParams.push(b.inProduction); }
+    if (b.numSeasons !== undefined)   { tvSets.push(`number_of_seasons = $${p++}`); tvParams.push(b.numSeasons); }
+    if (b.numEpisodes !== undefined)  { tvSets.push(`number_of_episodes = $${p++}`); tvParams.push(b.numEpisodes); }
+    if (b.showType !== undefined)     { tvSets.push(`show_type = $${p++}`); tvParams.push(b.showType); }
 
     if (tvSets.length > 0) {
       tvParams.push(id);
       const sql = `
         UPDATE "TVShow"
-        SET ${tvSets.join(', ')}
+        SET ${tvSets.join(", ")}
         WHERE media_id = $${p}
-        RETURNING media_id;
       `;
-      const r2 = await client.query(sql, tvParams);
-      if (r2.rowCount === 0) {
-        await client.query('ROLLBACK');
-        return res.status(404).json({ error: 'TV show not found' });
-      }
+      await client.query(sql, tvParams);
     }
 
-    await client.query('COMMIT');
-    return res.json({ updated: true, mediaId: id });
+    await client.query("COMMIT");
 
-  } catch (err) {
-    await client.query('ROLLBACK');
-    console.error('[PUT /tv/:id] error:', err);
-    return res.status(500).json({ error: 'Internal server error' });
+    const updated = await fetchFullTvShow(id);
+    return res.json(updated);
+
+  } catch (err: any) {
+    await client.query("ROLLBACK");
+
+    if (err.message === "Invalid genreIds") {
+      return res.status(400).json({ error: "Invalid genreIds" });
+    }
+
+    console.error("[PUT /tv/:id] error:", err);
+    return res.status(500).json({ error: "Internal server error" });
+
   } finally {
     client.release();
   }
 });
 
-// ======================================================================
-// DELETE TV SHOW (unchanged)
-// ======================================================================
 
-router.delete('/:id', async (req, res) => {
+router.delete("/:id", async (req, res) => {
   const id = Number(req.params.id);
-  if (!Number.isInteger(id) || id <= 0) {
-    return res.status(400).json({ error: 'Invalid id' });
-  }
+  if (!Number.isInteger(id) || id <= 0)
+    return res.status(400).json({ error: "Invalid id" });
 
   try {
-    const exists = await pool.query(`
-      SELECT 1 FROM "MediaItem" WHERE media_id = $1 AND media_type = 'tv'
-    `, [id]);
+    const exists = await pool.query(
+      `SELECT 1 FROM "MediaItem" WHERE media_id = $1 AND media_type = 'tv'`,
+      [id]
+    );
 
     if (exists.rowCount === 0) {
-      return res.status(404).json({ error: 'TV show not found' });
+      return res.status(404).json({ error: "TV show not found" });
     }
 
-    await pool.query(`CALL delete_tvshow_with_cleanup($1);`, [id]);
-    return res.status(200).json({ deleted: true, mediaId: id });
+    await pool.query(`CALL delete_tvshow_with_cleanup($1)`, [id]);
+    return res.json({ deleted: true, mediaId: id });
 
-  } catch (err: any) {
-    console.error('[DELETE /tv/:id] error:', err);
-    return res.status(500).json({ error: 'Internal server error' });
+  } catch (err) {
+    console.error("[DELETE /tv/:id] error:", err);
+    return res.status(500).json({ error: "Internal server error" });
   }
 });
 

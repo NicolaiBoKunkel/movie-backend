@@ -3,19 +3,52 @@ import pool from "../db/pool";
 
 const router = Router();
 
+export type GenreDto = {
+  genreId: string;
+  name: string;
+};
+
+export type CastDto = {
+  personId: string;
+  name: string;
+  characterName: string | null;
+  castOrder: number | null;
+};
+
+export type CrewDto = {
+  personId: string;
+  name: string;
+  department: string | null;
+  jobTitle: string | null;
+};
+
+export type CompanyDto = {
+  companyId: string;
+  name: string;
+  role: string;
+};
+
+export type TVSeasonDto = {
+  seasonNumber: number;
+  name: string | null;
+  airDate: string | null;
+  episodeCount: number;
+  posterPath: string | null;
+};
+
 export type TVShowDto = {
   mediaId: string;
-  tmdbId: string;
+  tmdbId: string | null;
   mediaType: "tv";
 
   originalTitle: string;
   overview: string | null;
-  originalLanguage: string;
+  originalLanguage: string | null;
   status: string | null;
 
-  popularity: number | null;
+  popularity: number;
   voteAverage: number;
-  voteCount: number | null;
+  voteCount: number;
 
   firstAirDate: string | null;
   lastAirDate: string | null;
@@ -30,26 +63,25 @@ export type TVShowDto = {
   backdropPath: string | null;
   homepageUrl: string | null;
 
-  genres: string[];
+  genres: GenreDto[];
+  seasons: TVSeasonDto[];
 
-  seasons: {
-    seasonNumber: number;
-    name: string | null;
-    airDate: string | null;
-    episodeCount: number;
-    posterPath: string | null;
-  }[];
+  cast: CastDto[];
+  crew: CrewDto[];
+  companies: CompanyDto[];
 };
 
 export type TVShowSummaryDto = {
   mediaId: string;
   originalTitle: string;
   voteAverage: number;
+
   posterPath: string | null;
   backdropPath: string | null;
   overview: string | null;
   firstAirDate: string | null;
-  genres: string[];
+
+  genres: GenreDto[];
 };
 
 function mapSqlTvSummary(row: any): TVShowSummaryDto {
@@ -66,24 +98,30 @@ function mapSqlTvSummary(row: any): TVShowSummaryDto {
       ? row.first_air_date.toISOString()
       : null,
 
-    genres: Array.isArray(row.genres) ? row.genres : [],
+    genres: Array.isArray(row.genres)
+      ? row.genres.map((g: any) => ({
+          genreId: String(g.genre_id),
+          name: g.genre_name,
+        }))
+      : [],
   };
 }
 
-function mapSqlTvShow(row: any, seasons: any[]): TVShowDto {
+
+function mapSqlTvShow(row: any, seasons: any[]): Partial<TVShowDto> {
   return {
     mediaId: String(row.media_id),
-    tmdbId: String(row.tmdb_id),
+    tmdbId: row.tmdb_id ? String(row.tmdb_id) : null,
     mediaType: "tv",
 
     originalTitle: row.original_title,
     overview: row.overview ?? null,
-    originalLanguage: row.original_language ?? "",
+    originalLanguage: row.original_language ?? null,
     status: row.status ?? null,
 
-    popularity: row.popularity != null ? Number(row.popularity) : null,
+    popularity: Number(row.popularity ?? 0),
     voteAverage: Number(row.vote_average),
-    voteCount: row.vote_count != null ? Number(row.vote_count) : null,
+    voteCount: Number(row.vote_count ?? 0),
 
     firstAirDate: row.first_air_date
       ? row.first_air_date.toISOString()
@@ -104,7 +142,12 @@ function mapSqlTvShow(row: any, seasons: any[]): TVShowDto {
     backdropPath: row.backdrop_path ?? null,
     homepageUrl: row.homepage_url ?? null,
 
-    genres: Array.isArray(row.genres) ? row.genres : [],
+    genres: Array.isArray(row.genres)
+      ? row.genres.map((g: any) => ({
+          genreId: String(g.genre_id),
+          name: g.genre_name,
+        }))
+      : [],
 
     seasons: seasons.map((s) => ({
       seasonNumber: Number(s.season_number),
@@ -116,45 +159,44 @@ function mapSqlTvShow(row: any, seasons: any[]): TVShowDto {
   };
 }
 
+
 router.get("/", async (req, res) => {
   try {
     const search = (req.query.search as string)?.trim() ?? "";
     const limit = Math.min(Number(req.query.limit ?? 10) || 10, 100);
     const offset = Math.max(Number(req.query.offset ?? 0) || 0, 0);
 
+    const baseSelect = `
+      SELECT
+        m.media_id,
+        m.original_title,
+        m.poster_path,
+        m.backdrop_path,
+        m.overview,
+        m.vote_average::float8 AS vote_average,
+        tv.first_air_date,
+        COALESCE(json_agg(
+          DISTINCT jsonb_build_object(
+            'genre_id', g.genre_id,
+            'genre_name', g.name
+          )
+        ) FILTER (WHERE g.genre_id IS NOT NULL), '[]') AS genres
+      FROM "MediaItem" m
+      JOIN "TVShow" tv ON tv.media_id = m.media_id
+      LEFT JOIN "MediaGenre" mg ON mg.media_id = m.media_id
+      LEFT JOIN "Genre" g ON g.genre_id = mg.genre_id
+      WHERE m.media_type = 'tv'
+    `;
+
     if (search.length > 0) {
       const sql = `
-        WITH tv_genres AS (
-          SELECT mg.media_id, string_agg(g.name, ', ') AS genres
-          FROM "MediaGenre" mg
-          JOIN "Genre" g ON g.genre_id = mg.genre_id
-          GROUP BY mg.media_id
+        ${baseSelect}
+        AND (
+          to_tsvector('english', coalesce(m.original_title,'') || ' ' || coalesce(m.overview,'')) @@ plainto_tsquery('english', $1)
+          OR m.original_title ILIKE '%' || $1 || '%'
         )
-        SELECT
-          m.media_id,
-          m.original_title,
-          m.vote_average::float8 AS vote_average,
-          m.poster_path,
-          m.backdrop_path,
-          m.overview,
-          tv.first_air_date,
-          CASE WHEN tg.genres IS NULL OR tg.genres = ''
-               THEN ARRAY[]::text[]
-               ELSE string_to_array(tg.genres, ', ')
-          END AS genres,
-          ts_rank(
-            to_tsvector('english', coalesce(m.original_title,'') || ' ' || coalesce(m.overview,'')),
-            plainto_tsquery('english', $1)
-          ) AS rank
-        FROM "MediaItem" m
-        JOIN "TVShow" tv ON tv.media_id = m.media_id
-        LEFT JOIN tv_genres tg ON tg.media_id = m.media_id
-        WHERE m.media_type = 'tv'
-          AND (
-            to_tsvector('english', coalesce(m.original_title,'') || ' ' || coalesce(m.overview,'')) @@ plainto_tsquery('english', $1)
-            OR m.original_title ILIKE '%' || $1 || '%'
-          )
-        ORDER BY rank DESC NULLS LAST, m.media_id
+        GROUP BY m.media_id, tv.first_air_date
+        ORDER BY m.media_id
         LIMIT $2 OFFSET $3;
       `;
 
@@ -163,28 +205,8 @@ router.get("/", async (req, res) => {
     }
 
     const sql = `
-      WITH tv_genres AS (
-        SELECT mg.media_id, string_agg(g.name, ', ') AS genres
-        FROM "MediaGenre" mg
-        JOIN "Genre" g ON g.genre_id = mg.genre_id
-        GROUP BY mg.media_id
-      )
-      SELECT
-        m.media_id,
-        m.original_title,
-        m.vote_average::float8 AS vote_average,
-        m.poster_path,
-        m.backdrop_path,
-        m.overview,
-        tv.first_air_date,
-        CASE WHEN tg.genres IS NULL OR tg.genres = ''
-             THEN ARRAY[]::text[]
-             ELSE string_to_array(tg.genres, ', ')
-        END AS genres
-      FROM "MediaItem" m
-      JOIN "TVShow" tv ON tv.media_id = m.media_id
-      LEFT JOIN tv_genres tg ON tg.media_id = m.media_id
-      WHERE m.media_type = 'tv'
+      ${baseSelect}
+      GROUP BY m.media_id, tv.first_air_date
       ORDER BY m.media_id
       LIMIT $1 OFFSET $2;
     `;
@@ -203,68 +225,67 @@ router.get("/:id", async (req, res) => {
     return res.status(400).json({ error: "Invalid id" });
 
   try {
-    const sql = `
-      WITH tv_genres AS (
-        SELECT mg.media_id, string_agg(g.name, ', ') AS genres
-        FROM "MediaGenre" mg
-        JOIN "Genre" g ON g.genre_id = mg.genre_id
-        GROUP BY mg.media_id
-      )
+    const showSql = `
       SELECT
         m.*,
         tv.*,
-        CASE WHEN tg.genres IS NULL OR tg.genres = ''
-             THEN ARRAY[]::text[]
-             ELSE string_to_array(tg.genres, ', ')
-        END AS genres
+        COALESCE(json_agg(
+          DISTINCT jsonb_build_object(
+            'genre_id', g.genre_id,
+            'genre_name', g.name
+          )
+        ) FILTER (WHERE g.genre_id IS NOT NULL), '[]') AS genres
       FROM "MediaItem" m
       JOIN "TVShow" tv ON tv.media_id = m.media_id
-      LEFT JOIN tv_genres tg ON tg.media_id = m.media_id
+      LEFT JOIN "MediaGenre" mg ON mg.media_id = m.media_id
+      LEFT JOIN "Genre" g ON g.genre_id = mg.genre_id
       WHERE m.media_id = $1 AND m.media_type = 'tv'
-      LIMIT 1;
+      GROUP BY m.media_id, tv.media_id;
     `;
 
-    const tvRes = await pool.query(sql, [id]);
-    if (tvRes.rows.length === 0)
+    const showRes = await pool.query(showSql, [id]);
+    if (showRes.rows.length === 0)
       return res.status(404).json({ error: "Not found" });
 
-    const row = tvRes.rows[0];
+    const row = showRes.rows[0];
 
-    const seasonRes = await pool.query(
-      `SELECT season_number, name, air_date, episode_count, poster_path
-       FROM "Season"
-       WHERE tv_media_id = $1
-       ORDER BY season_number;`,
-      [id]
-    );
+    const seasonSql = `
+      SELECT season_number, name, air_date, episode_count, poster_path
+      FROM "Season"
+      WHERE tv_media_id = $1
+      ORDER BY season_number;
+    `;
+    const seasonsRes = await pool.query(seasonSql, [id]);
 
-    const castRes = await pool.query(
-      `SELECT p.person_id, p.name, tc.character_name, tc.cast_order
-       FROM "TitleCasting" tc
-       JOIN "Person" p ON p.person_id = tc.person_id
-       WHERE tc.media_id = $1
-       ORDER BY tc.cast_order;`,
-      [id]
-    );
+    const castSql = `
+      SELECT p.person_id, p.name, tc.character_name, tc.cast_order
+      FROM "TitleCasting" tc
+      JOIN "Person" p ON p.person_id = tc.person_id
+      WHERE tc.media_id = $1
+      ORDER BY tc.cast_order ASC NULLS LAST;
+    `;
+    const castRes = await pool.query(castSql, [id]);
 
-    const crewRes = await pool.query(
-      `SELECT p.person_id, p.name, tca.department, tca.job_title
-       FROM "TitleCrewAssignment" tca
-       JOIN "Person" p ON p.person_id = tca.person_id
-       WHERE tca.media_id = $1;`,
-      [id]
-    );
+    const crewSql = `
+      SELECT p.person_id, p.name, tca.department, tca.job_title
+      FROM "TitleCrewAssignment" tca
+      JOIN "Person" p ON p.person_id = tca.person_id
+      WHERE tca.media_id = $1
+      ORDER BY p.name;
+    `;
+    const crewRes = await pool.query(crewSql, [id]);
 
-    const companyRes = await pool.query(
-      `SELECT c.company_id, c.name, mc.role
-       FROM "MediaCompany" mc
-       JOIN "Company" c ON c.company_id = mc.company_id
-       WHERE mc.media_id = $1;`,
-      [id]
-    );
+    const companySql = `
+      SELECT c.company_id, c.name, mc.role
+      FROM "MediaCompany" mc
+      JOIN "Company" c ON c.company_id = mc.company_id
+      WHERE mc.media_id = $1
+      ORDER BY c.name;
+    `;
+    const companyRes = await pool.query(companySql, [id]);
 
     return res.json({
-      ...mapSqlTvShow(row, seasonRes.rows),
+      ...mapSqlTvShow(row, seasonsRes.rows),
 
       cast: castRes.rows.map((c) => ({
         personId: String(c.person_id),

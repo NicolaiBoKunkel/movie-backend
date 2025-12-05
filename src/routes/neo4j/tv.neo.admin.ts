@@ -5,7 +5,6 @@ import { z } from "zod";
 
 const router = Router();
 
-// ZOD SCHEMA FOR TV SHOW CREATION / UPDATE
 const createTvSchema = z.object({
   mediaId: z.string().min(1),
   tmdbId: z.string().min(1),
@@ -20,7 +19,6 @@ const createTvSchema = z.object({
   backdropPath: z.string().optional(),
   homepageUrl: z.string().optional(),
 
-  // TVShow-specific fields
   firstAirDate: z.string().optional(),
   lastAirDate: z.string().optional(),
   inProduction: z.boolean().optional(),
@@ -114,9 +112,10 @@ router.post(
         for (const g of data.genres) {
           await session.run(
             `
-            MERGE (ge:Genre {name: $g})
-            MATCH (mi:MediaItem {mediaId: $mediaId})
-            MERGE (mi)-[:HAS_GENRE]->(ge)
+              MERGE (ge:Genre {name: $g})
+              WITH ge, $mediaId AS mediaId
+              MATCH (mi:MediaItem {mediaId: mediaId})
+              MERGE (mi)-[:HAS_GENRE]->(ge)
             `,
             { g, mediaId: data.mediaId }
           );
@@ -231,9 +230,10 @@ router.put(
         for (const g of data.genres) {
           await session.run(
             `
-            MERGE (ge:Genre {name: $g})
-            MATCH (mi:MediaItem {mediaId: $id})
-            MERGE (mi)-[:HAS_GENRE]->(ge)
+              MERGE (ge:Genre {name: $g})
+              WITH ge, $id AS id
+              MATCH (mi:MediaItem {mediaId: id})
+              MERGE (mi)-[:HAS_GENRE]->(ge)
             `,
             { g, id }
           );
