@@ -40,8 +40,8 @@ done
 # 1) Ensure roles exist (idempotent)
 cat <<'SQL' | $PSQL -U "$PGUSER" -h "$PGHOST" -d "$PGDATABASE"
 DO $$ BEGIN
-  IF NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'app_user') THEN
-    CREATE ROLE app_user LOGIN;
+  IF NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'backend_user') THEN
+    CREATE ROLE backend_user LOGIN;
   END IF;
   IF NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'admin_user') THEN
     CREATE ROLE admin_user LOGIN;
@@ -52,18 +52,26 @@ DO $$ BEGIN
   IF NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'restricted_ro') THEN
     CREATE ROLE restricted_ro LOGIN;
   END IF;
+  IF NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'seeder_user') THEN
+    CREATE ROLE seeder_user LOGIN;
+  END IF;
 END $$;
 SQL
 
-# 2) Set passwords if provided
+# 2) Set passwords if env vars provided
 if [ -n "${APP_DB_PW:-}" ]; then
-  echo "Setting password for app_user"
-  echo "ALTER ROLE app_user WITH PASSWORD '$(echo "$APP_DB_PW" | sed "s/'/''/g")';" | $PSQL -U "$PGUSER" -h "$PGHOST" -d "$PGDATABASE"
+  echo "Setting password for backend_user"
+  echo "ALTER ROLE backend_user WITH PASSWORD '$(echo "$APP_DB_PW" | sed "s/'/''/g")';" | $PSQL -U "$PGUSER" -h "$PGHOST" -d "$PGDATABASE"
 fi
 
 if [ -n "${ADMIN_DB_PW:-}" ]; then
   echo "Setting password for admin_user"
   echo "ALTER ROLE admin_user WITH PASSWORD '$(echo "$ADMIN_DB_PW" | sed "s/'/''/g")';" | $PSQL -U "$PGUSER" -h "$PGHOST" -d "$PGDATABASE"
+fi
+
+if [ -n "${SEEDER_DB_PW:-}" ]; then
+  echo "Setting password for seeder_user"
+  echo "ALTER ROLE seeder_user WITH PASSWORD '$(echo "$SEEDER_DB_PW" | sed "s/'/''/g")';" | $PSQL -U "$PGUSER" -h "$PGHOST" -d "$PGDATABASE"
 fi
 
 # 3) Apply schema if MediaItem table missing

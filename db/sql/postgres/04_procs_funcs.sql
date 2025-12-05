@@ -84,7 +84,7 @@ GRANT EXECUTE ON FUNCTION add_movie_with_genres(
   TEXT, CHAR(2), VARCHAR(50), NUMERIC, NUMERIC, INT,
   TEXT, TEXT, TEXT,
   BIGINT, BIGINT, BOOLEAN, INT, BIGINT
-) TO app_user, admin_user;
+) TO backend_user, admin_user;
 
 
 
@@ -166,7 +166,7 @@ GRANT EXECUTE ON FUNCTION add_tvshow_with_genres(
   TEXT, CHAR(2), VARCHAR(50), NUMERIC, NUMERIC, INT,
   TEXT, TEXT, TEXT,
   BOOLEAN, INT, INT, TEXT
-) TO app_user, admin_user;
+) TO backend_user, admin_user;
 
 
 
@@ -194,7 +194,7 @@ END;
 $$;
 
 GRANT EXECUTE ON PROCEDURE delete_movie_with_cleanup(BIGINT)
-TO app_user, admin_user;
+TO backend_user, admin_user;
 
 
 
@@ -261,4 +261,4 @@ END;
 $$;
 
 GRANT EXECUTE ON PROCEDURE delete_tvshow_with_cleanup(BIGINT)
-TO app_user, admin_user;
+TO backend_user, admin_user;

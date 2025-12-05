@@ -26,6 +26,7 @@ services:
       PGDATABASE: ${PGDATABASE}
       APP_DB_PW: ${APP_DB_PW}
       ADMIN_DB_PW: ${ADMIN_DB_PW}
+      SEEDER_DB_PW: ${SEEDER_DB_PW}
     entrypoint: ["/bin/bash","/sql/db-init.sh"]
 
   seed-json:
@@ -33,11 +34,12 @@ services:
     container_name: seed_json
     depends_on:
       - db
+      - db-init
     volumes:
       - ./:/usr/src/app
     working_dir: /usr/src/app
     environment:
-      DATABASE_URL: postgres://postgres:postgres@db:5432/moviedb
+      DATABASE_URL: postgres://seeder_user:${SEEDER_DB_PW}@db:5432/moviedb
       APP_DB_PW: ${APP_DB_PW}
     restart: "no"
     # Execute the script explicitly with bash to avoid shebang/CRLF issues
@@ -111,12 +113,12 @@ services:
     environment:
       NODE_ENV: development
       PORT: 5000
-      DATABASE_URL: postgres://postgres:postgres@db:5432/moviedb
+      DATABASE_URL: postgres://backend_user:${APP_DB_PW}@db:5432/moviedb
       PGHOST: db
       PGPORT: 5432
       PGDATABASE: ${PGDATABASE}
-      PGUSER: ${PGUSER}
-      PGPASSWORD: ${PGPASSWORD}
+      PGUSER: backend_user
+      PGPASSWORD: ${APP_DB_PW}
       MONGODB_URI: mongodb://${MON_USERNAME}:${MON_PASSWORD}@sfu-mongodb:27017/${MON_DATABASE}?authSource=admin
       MON_HOST: sfu-mongodb
       MON_PORT: 27017

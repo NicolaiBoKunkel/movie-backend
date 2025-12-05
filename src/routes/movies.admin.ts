@@ -110,6 +110,11 @@ router.post("/", async (req, res) => {
       return res.status(400).json({ error: "Duplicate TMDB ID" });
     }
 
+    // Check for foreign key constraint violations (invalid genre IDs)
+    if (/foreign key/i.test(msg) || /violates foreign key constraint/i.test(msg)) {
+      return res.status(400).json({ error: "Invalid genreIds provided" });
+    }
+
     console.error("[POST /movies] error:", err);
     return res.status(500).json({ error: "Internal server error" });
   }
@@ -139,6 +144,17 @@ router.put("/:id", async (req, res) => {
 
   try {
     await client.query("BEGIN");
+
+    // Check if movie exists
+    const exists = await client.query(
+      `SELECT 1 FROM "MediaItem" WHERE media_id = $1 AND media_type = 'movie'`,
+      [mediaId]
+    );
+
+    if (exists.rowCount === 0) {
+      await client.query("ROLLBACK");
+      return res.status(404).json({ error: "Movie not found" });
+    }
 
     if (b.genreIds !== undefined) {
       const q = `SELECT genre_id FROM "Genre" WHERE genre_id = ANY($1)`;
@@ -209,7 +225,43 @@ router.put("/:id", async (req, res) => {
 
     await client.query("COMMIT");
 
-    return res.json({ updated: true, mediaId });
+    // Fetch updated movie with full details
+    const movieQuery = `
+      SELECT m.media_id, m.tmdb_id, m.original_title,
+             m.overview, m.original_language, m.status,
+             m.popularity, m.vote_average, m.vote_count,
+             m.poster_path, m.backdrop_path,
+             m.homepage_url,
+             mo.release_date, mo.budget, mo.revenue,
+             mo.adult_flag, mo.runtime_minutes,
+             mo.collection_id
+      FROM "MediaItem" m
+      JOIN "Movie" mo ON mo.media_id = m.media_id
+      WHERE m.media_id = $1
+    `;
+    const movieResult = await client.query(movieQuery, [mediaId]);
+    const movie = movieResult.rows[0];
+
+    return res.json({
+      media_id: String(movie.media_id),
+      tmdb_id: movie.tmdb_id,
+      original_title: movie.original_title,
+      overview: movie.overview,
+      original_language: movie.original_language,
+      status: movie.status,
+      popularity: movie.popularity,
+      vote_average: movie.vote_average,
+      vote_count: movie.vote_count,
+      poster_path: movie.poster_path,
+      backdrop_path: movie.backdrop_path,
+      homepage_url: movie.homepage_url,
+      release_date: movie.release_date,
+      budget: movie.budget,
+      revenue: movie.revenue,
+      adult_flag: movie.adult_flag,
+      runtime_minutes: movie.runtime_minutes,
+      collection_id: movie.collection_id,
+    });
 
   } catch (err: any) {
     await client.query("ROLLBACK");
