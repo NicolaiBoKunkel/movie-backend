@@ -324,8 +324,42 @@ router.put("/:id", async (req, res) => {
 
     await client.query("COMMIT");
 
-    const updated = await fetchFullTvShow(id);
-    return res.json(updated);
+    // Fetch updated TV show with snake_case format to match tests
+    const tvQuery = `
+      SELECT m.media_id, m.tmdb_id, m.original_title,
+             m.overview, m.original_language, m.status,
+             m.popularity, m.vote_average, m.vote_count,
+             m.poster_path, m.backdrop_path, m.homepage_url,
+             tv.first_air_date, tv.last_air_date,
+             tv.in_production, tv.number_of_seasons, tv.number_of_episodes,
+             tv.show_type
+      FROM "MediaItem" m
+      JOIN "TVShow" tv ON tv.media_id = m.media_id
+      WHERE m.media_id = $1
+    `;
+    const tvResult = await client.query(tvQuery, [id]);
+    const show = tvResult.rows[0];
+
+    return res.json({
+      media_id: String(show.media_id),
+      tmdb_id: show.tmdb_id,
+      original_title: show.original_title,
+      overview: show.overview,
+      original_language: show.original_language,
+      status: show.status,
+      popularity: show.popularity,
+      vote_average: show.vote_average,
+      vote_count: show.vote_count,
+      poster_path: show.poster_path,
+      backdrop_path: show.backdrop_path,
+      homepage_url: show.homepage_url,
+      first_air_date: show.first_air_date,
+      last_air_date: show.last_air_date,
+      in_production: show.in_production,
+      number_of_seasons: show.number_of_seasons,
+      number_of_episodes: show.number_of_episodes,
+      show_type: show.show_type,
+    });
 
   } catch (err: any) {
     await client.query("ROLLBACK");
