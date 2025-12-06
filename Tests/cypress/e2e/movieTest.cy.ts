@@ -48,7 +48,7 @@ describe("TMDB Movie Flow – The Godfather", () => {
       .should("contain", "1972-03-14");
 
     cy.get('[data-cy="movie-detail-rating"]')
-      .should("contain", "8.684");
+      .should("contain", "8.7");
 
     cy.get('[data-cy="movie-detail-runtime"]')
       .should("contain", "175");
