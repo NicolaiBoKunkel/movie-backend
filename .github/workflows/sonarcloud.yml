@@ -4,13 +4,14 @@ on:
   push:
     branches:
       - main
+      - Nicolai_static_testing
   pull_request:
     branches:
       - main
+      - Nicolai_static_testing
 
 jobs:
   sonarcloud:
-    name: SonarCloud
     runs-on: ubuntu-latest
 
     steps:
@@ -28,10 +29,11 @@ jobs:
 
       - name: Run tests with coverage
         run: npm test -- --coverage
-        continue-on-error: true
+
+      - name: Show coverage files (debug)
+        run: ls -R coverage || echo "Coverage folder missing"
 
       - name: SonarCloud Scan
-        if: always()
         uses: SonarSource/sonarcloud-github-action@v2
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
