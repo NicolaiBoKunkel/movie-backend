@@ -18,8 +18,7 @@
     "db:seed:json-ts": "ts-node scripts/seed_postgres_from_json.ts",
     "db:reset": "prisma migrate reset --force",
     "db:studio": "prisma studio",
-    "lint": "eslint . --ext .ts",
-    "test:sonar": "jest --coverage --silent --passWithNoTests --testPathIgnorePatterns=Integration_Test"
+    "lint": "eslint . --ext .ts"
   },
   "prisma": {
     "seed": "ts-node prisma/seed.ts"
