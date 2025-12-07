@@ -15,10 +15,22 @@ pool
   .then((client: PoolClient) => {
     return client
       .query('SELECT 1')
-      .then(() => console.log('[db] connected'))
-      .catch((err: Error) => console.error('[db] test query failed:', err))
+      .then(() => {
+        if (process.env.NODE_ENV !== 'test') {
+          console.log('[db] connected');
+        }
+      })
+      .catch((err: Error) => {
+        if (process.env.NODE_ENV !== 'test') {
+          console.error('[db] test query failed:', err);
+        }
+      })
       .finally(() => client.release());
   })
-  .catch((err: Error) => console.error('[db] connection failed:', err));
+  .catch((err: Error) => {
+    if (process.env.NODE_ENV !== 'test') {
+      console.error('[db] connection failed:', err);
+    }
+  });
 
 export default pool;

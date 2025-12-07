@@ -6,6 +6,8 @@
     "test": "jest",
     "test:unit": "jest --selectProjects=unit",
     "test:integration": "jest --selectProjects=integration",
+    "test:integration:coverage": "jest --selectProjects=integration --coverage",
+    "test:api": "jest --selectProjects=api",
     "test:watch": "jest --watch",
     "test:unit:watch": "jest --selectProjects=unit --watch",
     "test:coverage": "jest --coverage",
