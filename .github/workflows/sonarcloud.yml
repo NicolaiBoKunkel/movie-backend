@@ -2,9 +2,13 @@ name: SonarCloud Scan
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
+      - Nicolai_static_testing
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
+      - Nicolai_static_testing
 
 jobs:
   sonarcloud:
@@ -23,8 +27,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run tests with coverage
-        run: npm test -- --coverage
+      - name: Run tests with coverage (unit tests only)
+        run: npm run test:sonar
 
       - name: Show coverage files (debug)
         run: ls -R coverage || echo "Coverage folder missing"
