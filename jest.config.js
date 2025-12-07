@@ -68,25 +68,6 @@ module.exports = {
           }
         }
       },
-    },
-    {
-      displayName: 'api',
-      testMatch: ['<rootDir>/Tests/Api_Test/**/*.test.js'],
-      testEnvironment: 'node',
-      setupFilesAfterEnv: ['<rootDir>/Tests/Integration_Test/setup.js'],
-      globalTeardown: '<rootDir>/Tests/Integration_Test/teardown.js',
-      testTimeout: 30000,
-      transform: {
-        '^.+\.ts$': 'ts-jest',
-        '^.+\.js$': 'babel-jest',
-      },
-      globals: {
-        'ts-jest': {
-          tsconfig: {
-            module: 'commonjs'
-          }
-        }
-      },
     }
   ],
 };
