@@ -1,6 +1,6 @@
 describe("SQL TV Shows Flow – Dudley the Dragon", () => {
 
-  it("Loads TV shows, opens Dudley the Dragon, and verifies details", () => {
+  it("Loads TV shows, opens Stranger Things, and verifies details", () => {
 
     // 1. Visit homepage
 
@@ -27,10 +27,10 @@ describe("SQL TV Shows Flow – Dudley the Dragon", () => {
     cy.get('[data-cy="tvshow-card"]').should("have.length.greaterThan", 0);
 
 
-    // 4. Find and click “The Adventures of Dudley the Dragon”
+    // 4. Find and click “Stranger Things”
 
     cy.get('[data-cy="tvshow-card-title"]')
-      .contains("The Adventures of Dudley the Dragon")
+      .contains("Stranger Things")
       .click();
 
 
@@ -42,33 +42,33 @@ describe("SQL TV Shows Flow – Dudley the Dragon", () => {
     // 6. Core details
 
     cy.get('[data-cy="tv-detail-title"]')
-      .should("contain", "The Adventures of Dudley the Dragon");
+      .should("contain", "Stranger Things");
 
     cy.get('[data-cy="tv-detail-overview"]').should(
       "contain",
-      "The story follows Dudley, a dragon"
+      "When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying supernatural forces, and one strange little girl."
     );
 
     cy.get('[data-cy="tv-detail-showtype"]')
       .should("contain", "Scripted");
 
     cy.get('[data-cy="tv-detail-inproduction"]')
-      .should("contain", "No");
+      .should("contain", "Yes");
 
     cy.get('[data-cy="tv-detail-first-air"]')
-      .should("contain", "1993-10-07");
+      .should("contain", "2016-07-15");
 
     cy.get('[data-cy="tv-detail-last-air"]')
-      .should("contain", "1993-10-07");
+      .should("contain", "2025-11-26");
 
     cy.get('[data-cy="tv-detail-seasons"]')
       .should("contain", "5");
 
     cy.get('[data-cy="tv-detail-episodes"]')
-      .should("contain", "65");
+      .should("contain", "42");
 
     cy.get('[data-cy="tv-detail-rating"]')
-      .should("contain", "10");
+      .should("contain", "8.6");
 
     cy.get('[data-cy="tv-detail-language"]')
       .should("contain", "EN");
@@ -78,7 +78,7 @@ describe("SQL TV Shows Flow – Dudley the Dragon", () => {
 
     cy.get('[data-cy="tv-detail-genres"]')
       .should("exist")
-      .should("contain", "N/A");
+      .should("contain", "Mystery, Action & Adventure, Sci-Fi & Fantasy");
 
   });
 
