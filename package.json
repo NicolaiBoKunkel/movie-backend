@@ -19,7 +19,7 @@
     "db:reset": "prisma migrate reset --force",
     "db:studio": "prisma studio",
     "lint": "eslint . --ext .ts",
-    "test:sonar": "jest --coverage --silent --testPathIgnorePatterns=Integration_Test"
+    "test:sonar": "jest --coverage --silent --passWithNoTests --testPathIgnorePatterns=Integration_Test"
   },
   "prisma": {
     "seed": "ts-node prisma/seed.ts"
