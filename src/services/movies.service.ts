@@ -168,11 +168,20 @@ export class MoviesService {
   }): Promise<MovieWithMediaItem> {
     const { genreIds, ...movieInfo } = movieData;
 
+    // Generate a unique mediaId
+    const maxMediaId = await prisma.mediaItem.findFirst({
+      orderBy: { mediaId: 'desc' },
+      select: { mediaId: true }
+    });
+    const newMediaId = maxMediaId ? maxMediaId.mediaId + 1n : 1n;
+
     return prisma.movie.create({
       data: {
+        mediaId: newMediaId,
         mediaItem: {
           create: {
-            tmdbId: movieInfo.tmdbId,
+            mediaId: newMediaId,
+            tmdbId: movieInfo.tmdbId ?? null,
             mediaType: 'movie',
             originalTitle: movieInfo.originalTitle,
             overview: movieInfo.overview ?? null,
