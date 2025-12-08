@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     /* Output structure */
-  "rootDir": ".",
+  "rootDir": "./src",
     "outDir": "./dist",
 
     /* Runtime & modules */
