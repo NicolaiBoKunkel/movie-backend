@@ -72,15 +72,24 @@ jobs:
       - name: Set up test environment
         run: |
           echo "NODE_ENV=test" >> $GITHUB_ENV
+
+          # PostgreSQL
           echo "PGHOST=localhost" >> $GITHUB_ENV
           echo "PGPORT=5432" >> $GITHUB_ENV
           echo "PGUSER=postgres" >> $GITHUB_ENV
           echo "PGPASSWORD=postgres" >> $GITHUB_ENV
           echo "PGDATABASE=movie_db" >> $GITHUB_ENV
+          echo "DATABASE_URL=postgresql://postgres:postgres@localhost:5432/movie_db" >> $GITHUB_ENV
+
+          # MongoDB
           echo "MONGODB_URI=mongodb://admin:adminpass@localhost:27018/movie_db?authSource=admin" >> $GITHUB_ENV
+
+          # Neo4j
           echo "NEO4J_URI=bolt://localhost:7687" >> $GITHUB_ENV
           echo "NEO4J_USER=neo4j" >> $GITHUB_ENV
           echo "NEO4J_PASSWORD=testpassword" >> $GITHUB_ENV
+
+          # JWT
           echo "JWT_SECRET=test-secret-key" >> $GITHUB_ENV
 
       - name: Generate Prisma Client
@@ -88,7 +97,9 @@ jobs:
 
       - name: Initialize database schema
         run: |
+          echo "Installing PostgreSQL client..."
           sudo apt-get update && sudo apt-get install -y postgresql-client
+          echo "Initializing database schema..."
           cd db/sql/postgres
           for file in 01_schema.sql 03_views.sql 04_procs_funcs.sql 05_triggers.sql 06_events.sql 07_users_privs.sql 08_fulltext.sql 09_user_account.sql; do
             if [ -f "$file" ]; then
@@ -98,16 +109,13 @@ jobs:
           done
           cd ../../..
 
-      - name: Run Prisma Seed (CRITICAL)
-        run: npx ts-node prisma/seed.ts
-
       - name: Wait for services
         run: sleep 10
 
       - name: Run integration tests with coverage
         run: npm run test:integration:coverage
 
-      - name: Show coverage files
+      - name: Show coverage files (debug)
         run: ls -R coverage || echo "Coverage folder missing"
 
       - name: SonarCloud Scan
