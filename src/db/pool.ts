@@ -1,6 +1,10 @@
 import 'dotenv/config';
 import { Pool, PoolClient } from 'pg';
 
+// Debug: Log what we're using
+console.log('[pool] DATABASE_URL present:', !!process.env.DATABASE_URL);
+console.log('[pool] NODE_ENV:', process.env.NODE_ENV);
+
 // Use DATABASE_URL if available (production), otherwise use individual vars (local dev)
 const pool = process.env.DATABASE_URL
   ? new Pool({
@@ -8,11 +12,11 @@ const pool = process.env.DATABASE_URL
       ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false
     })
   : new Pool({
-      host: process.env.PGHOST,
+      host: process.env.PGHOST || 'localhost',
       port: Number(process.env.PGPORT || 5432),
-      database: process.env.PGDATABASE,
-      user: process.env.PGUSER,
-      password: process.env.PGPASSWORD,
+      database: process.env.PGDATABASE || 'moviedb',
+      user: process.env.PGUSER || 'postgres',
+      password: process.env.PGPASSWORD || 'postgres',
     });
 
 pool
