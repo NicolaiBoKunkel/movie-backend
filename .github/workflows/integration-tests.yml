@@ -2,7 +2,7 @@ name: Integration Tests
 
 on:
   push:
-    branches: [ main, master, Mikkel_branch_1 ]
+    branches: [ main, master, Mikkel_branch_1, Jeffrey_branch_1 ]
   pull_request:
     branches: [ main, master ]
 
@@ -142,13 +142,13 @@ jobs:
         echo "Waiting for services..."
         sleep 10
 
-    - name: Run integration tests
-      run: npm test
+    - name: Run integration tests with coverage
+      run: npm run test:integration:coverage
       env:
         CI: true
 
     - name: Upload coverage reports
-      if: always()
+      if: always() && hashFiles('coverage/**/*') != ''
       uses: actions/upload-artifact@v4
       with:
         name: coverage-report

@@ -12,6 +12,16 @@ module.exports = async () => {
     // Ignore errors during disconnect
   }
 
+  // Close any remaining database pool connections
+  try {
+    const { pool } = require('../../src/db/pool');
+    if (pool && pool.end) {
+      await pool.end();
+    }
+  } catch (error) {
+    // Ignore errors during pool cleanup
+  }
+
   // Allow time for cleanup
   await new Promise(resolve => setTimeout(resolve, 1000));
 };
