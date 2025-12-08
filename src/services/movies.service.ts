@@ -175,42 +175,48 @@ export class MoviesService {
     });
     const newMediaId = maxMediaId ? maxMediaId.mediaId + 1n : 1n;
 
-    return prisma.movie.create({
-      data: {
-        mediaId: newMediaId,
-        mediaItem: {
-          create: {
-            mediaId: newMediaId,
-            tmdbId: movieInfo.tmdbId ?? null,
-            mediaType: 'movie',
-            originalTitle: movieInfo.originalTitle,
-            overview: movieInfo.overview ?? null,
-            originalLanguage: movieInfo.originalLanguage ?? null,
-            ...(genreIds && {
-              mediaGenres: {
-                create: genreIds.map(genreId => ({
-                  genreId
-                }))
-              }
-            })
-          }
-        },
-        releaseDate: movieInfo.releaseDate ?? null,
-        budget: movieInfo.budget ?? 0n,
-        revenue: movieInfo.revenue ?? 0n,
-        runtimeMinutes: movieInfo.runtime ?? null
-      },
-      include: {
-        mediaItem: {
-          include: {
+    // Use transaction to create MediaItem first, then Movie
+    return prisma.$transaction(async (tx) => {
+      // Create MediaItem first
+      await tx.mediaItem.create({
+        data: {
+          mediaId: newMediaId,
+          tmdbId: movieInfo.tmdbId ?? null,
+          mediaType: 'movie',
+          originalTitle: movieInfo.originalTitle,
+          overview: movieInfo.overview ?? null,
+          originalLanguage: movieInfo.originalLanguage ?? null,
+          ...(genreIds && {
             mediaGenres: {
-              include: {
-                genre: true
+              create: genreIds.map(genreId => ({
+                genreId
+              }))
+            }
+          })
+        }
+      });
+
+      // Create Movie with the same mediaId
+      return tx.movie.create({
+        data: {
+          mediaId: newMediaId,
+          releaseDate: movieInfo.releaseDate ?? null,
+          budget: movieInfo.budget ?? 0n,
+          revenue: movieInfo.revenue ?? 0n,
+          runtimeMinutes: movieInfo.runtime ?? null
+        },
+        include: {
+          mediaItem: {
+            include: {
+              mediaGenres: {
+                include: {
+                  genre: true
+                }
               }
             }
           }
         }
-      }
+      });
     });
   }
 
