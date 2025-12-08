@@ -88,10 +88,7 @@ jobs:
 
       - name: Initialize database schema
         run: |
-          echo "Installing PostgreSQL client..."
           sudo apt-get update && sudo apt-get install -y postgresql-client
-
-          echo "Initializing database schema..."
           cd db/sql/postgres
           for file in 01_schema.sql 03_views.sql 04_procs_funcs.sql 05_triggers.sql 06_events.sql 07_users_privs.sql 08_fulltext.sql 09_user_account.sql; do
             if [ -f "$file" ]; then
@@ -101,15 +98,8 @@ jobs:
           done
           cd ../../..
 
-      - name: Seed database (if seed script exists)
-        run: |
-          if [ -f "prisma/seed.ts" ]; then
-            echo "Seeding database..."
-            npm run db:seed || echo "Seed script failed, continuing..."
-          else
-            echo "No seed script found"
-          fi
-        continue-on-error: true
+      - name: Run Prisma Seed (CRITICAL)
+        run: npx ts-node prisma/seed.ts
 
       - name: Wait for services
         run: sleep 10
@@ -117,7 +107,7 @@ jobs:
       - name: Run integration tests with coverage
         run: npm run test:integration:coverage
 
-      - name: Show coverage files (debug)
+      - name: Show coverage files
         run: ls -R coverage || echo "Coverage folder missing"
 
       - name: SonarCloud Scan
