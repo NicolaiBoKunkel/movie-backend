@@ -2,56 +2,56 @@
   "Movie": [
     {
       "media_id": 1,
-      "release_date": "2025-11-26",
-      "budget": 150000000,
-      "revenue": 560333554,
+      "release_date": "2025-10-08",
+      "budget": 220000000,
+      "revenue": 142073994,
       "adult_flag": false,
-      "runtime_minutes": 107,
+      "runtime_minutes": 119,
       "collection_id": 1
     },
     {
       "media_id": 2,
-      "release_date": "2025-08-16",
-      "budget": 0,
-      "revenue": 174400000,
+      "release_date": "2025-11-30",
+      "budget": 11200000,
+      "revenue": 0,
       "adult_flag": false,
-      "runtime_minutes": 142,
-      "collection_id": null
+      "runtime_minutes": 105,
+      "collection_id": 2
     },
     {
       "media_id": 3,
-      "release_date": "2024-10-01",
-      "budget": 0,
-      "revenue": 51706251,
+      "release_date": "2025-11-26",
+      "budget": 150000000,
+      "revenue": 915800000,
       "adult_flag": false,
-      "runtime_minutes": 123,
-      "collection_id": null
+      "runtime_minutes": 107,
+      "collection_id": 3
     },
     {
       "media_id": 4,
-      "release_date": "2025-11-19",
-      "budget": 50000,
-      "revenue": 0,
+      "release_date": "2025-10-01",
+      "budget": 14000000,
+      "revenue": 91000000,
       "adult_flag": false,
-      "runtime_minutes": 99,
-      "collection_id": null
+      "runtime_minutes": 165,
+      "collection_id": 4
     },
     {
       "media_id": 5,
-      "release_date": "2024-09-29",
-      "budget": 0,
-      "revenue": 41923655,
+      "release_date": "2025-12-03",
+      "budget": 36000000,
+      "revenue": 109116000,
       "adult_flag": false,
-      "runtime_minutes": 115,
-      "collection_id": null
+      "runtime_minutes": 104,
+      "collection_id": 5
     },
     {
       "media_id": 6,
-      "release_date": "2025-09-18",
-      "budget": 15000000,
-      "revenue": 346774,
+      "release_date": "2009-05-13",
+      "budget": 0,
+      "revenue": 0,
       "adult_flag": false,
-      "runtime_minutes": 85,
+      "runtime_minutes": 73,
       "collection_id": null
     },
     {
@@ -65,87 +65,51 @@
     },
     {
       "media_id": 8,
-      "release_date": "2025-07-31",
+      "release_date": "2025-08-16",
       "budget": 0,
-      "revenue": 23443,
+      "revenue": 174400000,
       "adult_flag": false,
-      "runtime_minutes": 120,
+      "runtime_minutes": 142,
       "collection_id": null
     },
     {
       "media_id": 9,
-      "release_date": "2025-10-20",
+      "release_date": "2024-09-29",
       "budget": 0,
-      "revenue": 0,
+      "revenue": 41923655,
       "adult_flag": false,
-      "runtime_minutes": 82,
+      "runtime_minutes": 115,
       "collection_id": null
     },
     {
       "media_id": 10,
-      "release_date": "2025-11-11",
-      "budget": 0,
+      "release_date": "2025-11-19",
+      "budget": 50000,
       "revenue": 0,
       "adult_flag": false,
-      "runtime_minutes": 106,
-      "collection_id": 2
+      "runtime_minutes": 99,
+      "collection_id": null
     },
     {
       "media_id": 11,
-      "release_date": "2025-11-19",
-      "budget": 150000000,
-      "revenue": 391000000,
-      "adult_flag": false,
-      "runtime_minutes": 137,
-      "collection_id": 3
-    },
-    {
-      "media_id": 12,
       "release_date": "2025-11-05",
       "budget": 105000000,
-      "revenue": 174432424,
+      "revenue": 177500000,
       "adult_flag": false,
       "runtime_minutes": 107,
-      "collection_id": 4
-    },
-    {
-      "media_id": 13,
-      "release_date": "2024-08-16",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 101,
-      "collection_id": null
-    },
-    {
-      "media_id": 14,
-      "release_date": "2025-10-08",
-      "budget": 220000000,
-      "revenue": 142073994,
-      "adult_flag": false,
-      "runtime_minutes": 119,
-      "collection_id": 5
-    },
-    {
-      "media_id": 15,
-      "release_date": "2025-10-17",
-      "budget": 120000000,
-      "revenue": 480678,
-      "adult_flag": false,
-      "runtime_minutes": 150,
-      "collection_id": null
-    },
-    {
-      "media_id": 16,
-      "release_date": "2025-11-30",
-      "budget": 11200000,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 102,
       "collection_id": 6
     },
     {
-      "media_id": 17,
+      "media_id": 12,
+      "release_date": "2024-10-01",
+      "budget": 0,
+      "revenue": 51706251,
+      "adult_flag": false,
+      "runtime_minutes": 123,
+      "collection_id": null
+    },
+    {
+      "media_id": 13,
       "release_date": "2025-07-29",
       "budget": 0,
       "revenue": 0,
@@ -154,52 +118,115 @@
       "collection_id": null
     },
     {
-      "media_id": 18,
-      "release_date": "2025-10-01",
-      "budget": 14000000,
-      "revenue": 91000000,
+      "media_id": 14,
+      "release_date": "2025-09-18",
+      "budget": 15000000,
+      "revenue": 346774,
       "adult_flag": false,
-      "runtime_minutes": 165,
-      "collection_id": 7
+      "runtime_minutes": 85,
+      "collection_id": null
     },
     {
-      "media_id": 19,
-      "release_date": "2025-11-07",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 88,
-      "collection_id": 8
-    },
-    {
-      "media_id": 20,
+      "media_id": 15,
       "release_date": "2016-02-11",
       "budget": 150000000,
       "revenue": 1025521689,
       "adult_flag": false,
       "runtime_minutes": 109,
-      "collection_id": 1
+      "collection_id": 3
     },
     {
-      "media_id": 21,
-      "release_date": "2024-07-05",
-      "budget": 0,
-      "revenue": 11242056,
+      "media_id": 16,
+      "release_date": "2025-10-17",
+      "budget": 120000000,
+      "revenue": 480678,
       "adult_flag": false,
-      "runtime_minutes": 129,
+      "runtime_minutes": 150,
+      "collection_id": null
+    },
+    {
+      "media_id": 17,
+      "release_date": "2025-11-19",
+      "budget": 150000000,
+      "revenue": 440100000,
+      "adult_flag": false,
+      "runtime_minutes": 137,
+      "collection_id": 7
+    },
+    {
+      "media_id": 18,
+      "release_date": "2025-11-11",
+      "budget": 0,
+      "revenue": 0,
+      "adult_flag": false,
+      "runtime_minutes": 106,
+      "collection_id": 8
+    },
+    {
+      "media_id": 19,
+      "release_date": "2025-10-20",
+      "budget": 0,
+      "revenue": 0,
+      "adult_flag": false,
+      "runtime_minutes": 82,
+      "collection_id": null
+    },
+    {
+      "media_id": 20,
+      "release_date": "2025-11-07",
+      "budget": 0,
+      "revenue": 0,
+      "adult_flag": false,
+      "runtime_minutes": 88,
       "collection_id": 9
     },
     {
-      "media_id": 22,
+      "media_id": 21,
       "release_date": "2025-07-18",
       "budget": 20000000,
-      "revenue": 740400000,
+      "revenue": 768943856,
       "adult_flag": false,
       "runtime_minutes": 156,
       "collection_id": 10
     },
     {
+      "media_id": 22,
+      "release_date": "2025-07-31",
+      "budget": 0,
+      "revenue": 23443,
+      "adult_flag": false,
+      "runtime_minutes": 120,
+      "collection_id": null
+    },
+    {
       "media_id": 23,
+      "release_date": "2025-11-14",
+      "budget": 0,
+      "revenue": 0,
+      "adult_flag": false,
+      "runtime_minutes": 132,
+      "collection_id": null
+    },
+    {
+      "media_id": 24,
+      "release_date": "2025-12-05",
+      "budget": 0,
+      "revenue": 0,
+      "adult_flag": false,
+      "runtime_minutes": 124,
+      "collection_id": null
+    },
+    {
+      "media_id": 25,
+      "release_date": "2025-11-12",
+      "budget": 90000000,
+      "revenue": 190771299,
+      "adult_flag": false,
+      "runtime_minutes": 112,
+      "collection_id": 11
+    },
+    {
+      "media_id": 26,
       "release_date": "2025-10-23",
       "budget": 50000000,
       "revenue": 34817177,
@@ -208,16 +235,7 @@
       "collection_id": null
     },
     {
-      "media_id": 24,
-      "release_date": "2011-04-25",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 18,
-      "collection_id": null
-    },
-    {
-      "media_id": 25,
+      "media_id": 27,
       "release_date": "2025-09-23",
       "budget": 175000000,
       "revenue": 202150456,
@@ -226,43 +244,34 @@
       "collection_id": null
     },
     {
-      "media_id": 26,
-      "release_date": "2025-11-12",
-      "budget": 90000000,
-      "revenue": 159000154,
-      "adult_flag": false,
-      "runtime_minutes": 112,
-      "collection_id": 11
-    },
-    {
-      "media_id": 27,
-      "release_date": "2024-10-06",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 103,
-      "collection_id": null
-    },
-    {
       "media_id": 28,
-      "release_date": "2025-03-17",
+      "release_date": "2024-07-05",
       "budget": 0,
-      "revenue": 0,
+      "revenue": 11242056,
       "adult_flag": false,
-      "runtime_minutes": 92,
-      "collection_id": null
+      "runtime_minutes": 129,
+      "collection_id": 12
     },
     {
       "media_id": 29,
-      "release_date": "2025-10-22",
-      "budget": 30000000,
-      "revenue": 83106420,
+      "release_date": "2024-02-15",
+      "budget": 3300000,
+      "revenue": 10000000,
       "adult_flag": false,
-      "runtime_minutes": 116,
+      "runtime_minutes": 139,
       "collection_id": null
     },
     {
       "media_id": 30,
+      "release_date": "2024-08-16",
+      "budget": 0,
+      "revenue": 0,
+      "adult_flag": false,
+      "runtime_minutes": 101,
+      "collection_id": null
+    },
+    {
+      "media_id": 31,
       "release_date": "2025-06-20",
       "budget": 100000000,
       "revenue": 24619953,
@@ -271,25 +280,25 @@
       "collection_id": null
     },
     {
-      "media_id": 31,
-      "release_date": "2025-11-05",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 93,
-      "collection_id": null
-    },
-    {
       "media_id": 32,
-      "release_date": "2025-10-15",
-      "budget": 30000000,
-      "revenue": 131585190,
+      "release_date": "2023-10-25",
+      "budget": 20000000,
+      "revenue": 297242145,
       "adult_flag": false,
-      "runtime_minutes": 114,
-      "collection_id": 12
+      "runtime_minutes": 110,
+      "collection_id": 5
     },
     {
       "media_id": 33,
+      "release_date": "2025-12-02",
+      "budget": 0,
+      "revenue": 0,
+      "adult_flag": false,
+      "runtime_minutes": 108,
+      "collection_id": null
+    },
+    {
+      "media_id": 34,
       "release_date": "2025-09-19",
       "budget": 4100000,
       "revenue": 168300000,
@@ -298,52 +307,79 @@
       "collection_id": null
     },
     {
-      "media_id": 34,
-      "release_date": "2025-11-27",
-      "budget": 0,
+      "media_id": 35,
+      "release_date": "2025-12-17",
+      "budget": 400000000,
       "revenue": 0,
       "adult_flag": false,
-      "runtime_minutes": 22,
+      "runtime_minutes": 195,
       "collection_id": 13
     },
     {
-      "media_id": 35,
-      "release_date": "2025-11-25",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 96,
-      "collection_id": null
-    },
-    {
       "media_id": 36,
-      "release_date": "2025-11-24",
+      "release_date": "2024-10-06",
       "budget": 0,
       "revenue": 0,
       "adult_flag": false,
-      "runtime_minutes": 118,
+      "runtime_minutes": 103,
       "collection_id": null
     },
     {
       "media_id": 37,
-      "release_date": "2024-12-08",
-      "budget": 38500000,
-      "revenue": 128093757,
+      "release_date": "2025-10-22",
+      "budget": 30000000,
+      "revenue": 83106420,
       "adult_flag": false,
-      "runtime_minutes": 117,
+      "runtime_minutes": 116,
       "collection_id": null
     },
     {
       "media_id": 38,
-      "release_date": "2024-01-12",
-      "budget": 0,
-      "revenue": 0,
+      "release_date": "2025-10-15",
+      "budget": 30000000,
+      "revenue": 131947820,
       "adult_flag": false,
-      "runtime_minutes": 102,
-      "collection_id": null
+      "runtime_minutes": 114,
+      "collection_id": 14
     },
     {
       "media_id": 39,
+      "release_date": "2025-11-05",
+      "budget": 0,
+      "revenue": 0,
+      "adult_flag": false,
+      "runtime_minutes": 93,
+      "collection_id": null
+    },
+    {
+      "media_id": 40,
+      "release_date": "2025-05-17",
+      "budget": 400000000,
+      "revenue": 598056261,
+      "adult_flag": false,
+      "runtime_minutes": 170,
+      "collection_id": 15
+    },
+    {
+      "media_id": 41,
+      "release_date": "2002-08-09",
+      "budget": 70000000,
+      "revenue": 277448382,
+      "adult_flag": false,
+      "runtime_minutes": 124,
+      "collection_id": 16
+    },
+    {
+      "media_id": 42,
+      "release_date": "2025-03-17",
+      "budget": 0,
+      "revenue": 0,
+      "adult_flag": false,
+      "runtime_minutes": 92,
+      "collection_id": null
+    },
+    {
+      "media_id": 43,
       "release_date": "2025-07-23",
       "budget": 200000000,
       "revenue": 521858728,
@@ -352,295 +388,25 @@
       "collection_id": null
     },
     {
-      "media_id": 40,
-      "release_date": "2025-12-17",
-      "budget": 250000000,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 192,
-      "collection_id": 14
-    },
-    {
-      "media_id": 41,
-      "release_date": "2024-12-12",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 94,
-      "collection_id": null
-    },
-    {
-      "media_id": 42,
-      "release_date": "2024-10-25",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 58,
-      "collection_id": null
-    },
-    {
-      "media_id": 43,
-      "release_date": "2025-02-06",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 98,
-      "collection_id": null
-    },
-    {
       "media_id": 44,
-      "release_date": "2025-09-18",
+      "release_date": "2025-12-02",
       "budget": 0,
-      "revenue": 186472,
+      "revenue": 0,
       "adult_flag": false,
-      "runtime_minutes": 87,
+      "runtime_minutes": 93,
       "collection_id": null
     },
     {
       "media_id": 45,
-      "release_date": "2024-11-20",
-      "budget": 150000000,
-      "revenue": 758737211,
-      "adult_flag": false,
-      "runtime_minutes": 162,
-      "collection_id": 3
-    },
-    {
-      "media_id": 46,
-      "release_date": "2025-05-06",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 97,
-      "collection_id": null
-    },
-    {
-      "media_id": 47,
-      "release_date": "2025-11-19",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 91,
-      "collection_id": null
-    },
-    {
-      "media_id": 48,
-      "release_date": "2002-08-09",
-      "budget": 70000000,
-      "revenue": 277448382,
-      "adult_flag": false,
-      "runtime_minutes": 124,
-      "collection_id": 15
-    },
-    {
-      "media_id": 49,
-      "release_date": "2025-05-17",
-      "budget": 400000000,
-      "revenue": 598056261,
-      "adult_flag": false,
-      "runtime_minutes": 170,
-      "collection_id": 16
-    },
-    {
-      "media_id": 50,
-      "release_date": "2025-09-26",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 89,
-      "collection_id": null
-    },
-    {
-      "media_id": 51,
-      "release_date": "2025-10-21",
-      "budget": 12200000,
-      "revenue": 5708490,
-      "adult_flag": false,
-      "runtime_minutes": 89,
-      "collection_id": 17
-    },
-    {
-      "media_id": 52,
-      "release_date": "2025-09-03",
-      "budget": 55000000,
-      "revenue": 494400469,
-      "adult_flag": false,
-      "runtime_minutes": 136,
-      "collection_id": 18
-    },
-    {
-      "media_id": 53,
-      "release_date": "2025-12-03",
-      "budget": 51000000,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 104,
-      "collection_id": 19
-    },
-    {
-      "media_id": 54,
-      "release_date": "2025-04-04",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 100,
-      "collection_id": null
-    },
-    {
-      "media_id": 55,
-      "release_date": "2025-05-09",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 100,
-      "collection_id": null
-    },
-    {
-      "media_id": 56,
-      "release_date": "2025-10-02",
-      "budget": 1400000,
-      "revenue": 2350523,
-      "adult_flag": false,
-      "runtime_minutes": 91,
-      "collection_id": null
-    },
-    {
-      "media_id": 57,
-      "release_date": "2025-11-05",
-      "budget": 10000000,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 102,
-      "collection_id": null
-    },
-    {
-      "media_id": 58,
       "release_date": "2025-11-27",
       "budget": 0,
       "revenue": 0,
       "adult_flag": false,
-      "runtime_minutes": 100,
-      "collection_id": 20
+      "runtime_minutes": 22,
+      "collection_id": 17
     },
     {
-      "media_id": 59,
-      "release_date": "2021-04-01",
-      "budget": 40000,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 36,
-      "collection_id": null
-    },
-    {
-      "media_id": 60,
-      "release_date": "2024-05-10",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": null,
-      "collection_id": null
-    },
-    {
-      "media_id": 61,
-      "release_date": "1975-01-01",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 103,
-      "collection_id": null
-    },
-    {
-      "media_id": 62,
-      "release_date": "2025-10-08",
-      "budget": 18000000,
-      "revenue": 28918350,
-      "adult_flag": false,
-      "runtime_minutes": 126,
-      "collection_id": null
-    },
-    {
-      "media_id": 63,
-      "release_date": "2025-10-17",
-      "budget": 0,
-      "revenue": 1940624,
-      "adult_flag": false,
-      "runtime_minutes": 100,
-      "collection_id": null
-    },
-    {
-      "media_id": 64,
-      "release_date": "2012-04-25",
-      "budget": 220000000,
-      "revenue": 1518815515,
-      "adult_flag": false,
-      "runtime_minutes": 143,
-      "collection_id": 21
-    },
-    {
-      "media_id": 65,
-      "release_date": "2025-07-01",
-      "budget": 180000000,
-      "revenue": 868878422,
-      "adult_flag": false,
-      "runtime_minutes": 134,
-      "collection_id": 22
-    },
-    {
-      "media_id": 66,
-      "release_date": "2025-07-09",
-      "budget": 225000000,
-      "revenue": 615800000,
-      "adult_flag": false,
-      "runtime_minutes": 130,
-      "collection_id": 23
-    },
-    {
-      "media_id": 67,
-      "release_date": "2025-02-06",
-      "budget": 0,
-      "revenue": 2,
-      "adult_flag": false,
-      "runtime_minutes": 99,
-      "collection_id": 20
-    },
-    {
-      "media_id": 68,
-      "release_date": "2023-06-08",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 117,
-      "collection_id": 24
-    },
-    {
-      "media_id": 69,
-      "release_date": "2025-06-25",
-      "budget": 250000000,
-      "revenue": 626222234,
-      "adult_flag": false,
-      "runtime_minutes": 156,
-      "collection_id": null
-    },
-    {
-      "media_id": 70,
-      "release_date": "2025-09-12",
-      "budget": 0,
-      "revenue": 12140,
-      "adult_flag": false,
-      "runtime_minutes": 100,
-      "collection_id": null
-    },
-    {
-      "media_id": 71,
-      "release_date": "2025-07-11",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 90,
-      "collection_id": null
-    },
-    {
-      "media_id": 72,
+      "media_id": 46,
       "release_date": "2022-02-25",
       "budget": 0,
       "revenue": 0,
@@ -649,1156 +415,40 @@
       "collection_id": null
     },
     {
-      "media_id": 73,
-      "release_date": "2025-05-08",
+      "media_id": 47,
+      "release_date": "2025-10-21",
+      "budget": 12200000,
+      "revenue": 5708490,
+      "adult_flag": false,
+      "runtime_minutes": 89,
+      "collection_id": 18
+    },
+    {
+      "media_id": 48,
+      "release_date": "2011-04-25",
       "budget": 0,
       "revenue": 0,
       "adult_flag": false,
-      "runtime_minutes": 83,
+      "runtime_minutes": 18,
       "collection_id": null
     },
     {
-      "media_id": 74,
-      "release_date": "2025-07-24",
-      "budget": 80000000,
-      "revenue": 224738330,
-      "adult_flag": false,
-      "runtime_minutes": 104,
-      "collection_id": 25
-    },
-    {
-      "media_id": 75,
-      "release_date": "2014-11-05",
-      "budget": 165000000,
-      "revenue": 746606706,
-      "adult_flag": false,
-      "runtime_minutes": 169,
-      "collection_id": null
-    },
-    {
-      "media_id": 76,
-      "release_date": "2025-10-15",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 112,
-      "collection_id": 24
-    },
-    {
-      "media_id": 77,
-      "release_date": "2025-06-06",
-      "budget": 150000000,
-      "revenue": 635213100,
-      "adult_flag": false,
-      "runtime_minutes": 125,
-      "collection_id": 26
-    },
-    {
-      "media_id": 78,
-      "release_date": "2025-11-11",
-      "budget": 110000000,
-      "revenue": 60551240,
-      "adult_flag": false,
-      "runtime_minutes": 133,
-      "collection_id": null
-    },
-    {
-      "media_id": 79,
-      "release_date": "2025-04-30",
-      "budget": 0,
-      "revenue": 6500000,
-      "adult_flag": false,
-      "runtime_minutes": 92,
-      "collection_id": null
-    },
-    {
-      "media_id": 80,
-      "release_date": "1994-09-23",
-      "budget": 25000000,
-      "revenue": 28341469,
-      "adult_flag": false,
-      "runtime_minutes": 142,
-      "collection_id": null
-    },
-    {
-      "media_id": 81,
-      "release_date": "2024-12-11",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 95,
-      "collection_id": null
-    },
-    {
-      "media_id": 82,
-      "release_date": "2025-11-26",
-      "budget": 210000000,
-      "revenue": 4000000,
-      "adult_flag": false,
-      "runtime_minutes": 145,
-      "collection_id": 27
-    },
-    {
-      "media_id": 83,
-      "release_date": "1988-01-29",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 180,
-      "collection_id": null
-    },
-    {
-      "media_id": 84,
-      "release_date": "2025-02-14",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 134,
-      "collection_id": null
-    },
-    {
-      "media_id": 85,
-      "release_date": "1987-06-12",
-      "budget": 15000000,
-      "revenue": 98267558,
-      "adult_flag": false,
-      "runtime_minutes": 107,
-      "collection_id": 4
-    },
-    {
-      "media_id": 86,
-      "release_date": "2025-11-12",
-      "budget": 0,
-      "revenue": 0,
+      "media_id": 49,
+      "release_date": "2024-12-08",
+      "budget": 38500000,
+      "revenue": 128093757,
       "adult_flag": false,
       "runtime_minutes": 117,
       "collection_id": null
     },
     {
-      "media_id": 87,
-      "release_date": "2024-09-13",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 98,
-      "collection_id": null
-    },
-    {
-      "media_id": 88,
-      "release_date": "2025-08-13",
-      "budget": 25000000,
-      "revenue": 38802325,
-      "adult_flag": false,
-      "runtime_minutes": 89,
-      "collection_id": 28
-    },
-    {
-      "media_id": 89,
-      "release_date": "2025-09-24",
-      "budget": 12200000,
-      "revenue": 20072255,
-      "adult_flag": false,
-      "runtime_minutes": 139,
-      "collection_id": null
-    },
-    {
-      "media_id": 90,
-      "release_date": "2025-10-16",
-      "budget": 34800000,
-      "revenue": 3455841,
-      "adult_flag": false,
-      "runtime_minutes": 92,
-      "collection_id": null
-    },
-    {
-      "media_id": 91,
-      "release_date": "2000-11-17",
-      "budget": 123000000,
-      "revenue": 345800000,
-      "adult_flag": false,
-      "runtime_minutes": 104,
-      "collection_id": null
-    },
-    {
-      "media_id": 92,
-      "release_date": "2024-05-24",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 48,
-      "collection_id": null
-    },
-    {
-      "media_id": 93,
-      "release_date": "2018-11-24",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 84,
-      "collection_id": null
-    },
-    {
-      "media_id": 94,
-      "release_date": "2025-09-04",
-      "budget": 26000000,
-      "revenue": 92691,
-      "adult_flag": false,
-      "runtime_minutes": 110,
-      "collection_id": null
-    },
-    {
-      "media_id": 95,
-      "release_date": "2025-11-06",
-      "budget": 11800000,
-      "revenue": 10962391,
-      "adult_flag": false,
-      "runtime_minutes": 148,
-      "collection_id": null
-    },
-    {
-      "media_id": 96,
-      "release_date": "2025-03-07",
-      "budget": 4250000,
-      "revenue": 5325096,
-      "adult_flag": false,
-      "runtime_minutes": 109,
-      "collection_id": null
-    },
-    {
-      "media_id": 97,
-      "release_date": "2025-07-30",
-      "budget": 42000000,
-      "revenue": 102147396,
-      "adult_flag": false,
-      "runtime_minutes": 85,
-      "collection_id": null
-    },
-    {
-      "media_id": 98,
-      "release_date": "2025-08-21",
-      "budget": 0,
-      "revenue": 217753,
-      "adult_flag": false,
-      "runtime_minutes": 133,
-      "collection_id": null
-    },
-    {
-      "media_id": 99,
-      "release_date": "2025-11-06",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 99,
-      "collection_id": null
-    },
-    {
-      "media_id": 100,
-      "release_date": "2024-07-11",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 89,
-      "collection_id": null
-    },
-    {
-      "media_id": 101,
-      "release_date": "2024-02-03",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 85,
-      "collection_id": null
-    },
-    {
-      "media_id": 102,
-      "release_date": "2025-08-20",
-      "budget": 60000000,
-      "revenue": 184758,
-      "adult_flag": false,
-      "runtime_minutes": 105,
-      "collection_id": null
-    },
-    {
-      "media_id": 103,
-      "release_date": "2023-12-14",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 118,
-      "collection_id": 2
-    },
-    {
-      "media_id": 104,
-      "release_date": "2025-06-18",
+      "media_id": 50,
+      "release_date": "2024-11-20",
       "budget": 150000000,
-      "revenue": 153797125,
-      "adult_flag": false,
-      "runtime_minutes": 98,
-      "collection_id": null
-    },
-    {
-      "media_id": 105,
-      "release_date": "2025-09-25",
-      "budget": 8000000,
-      "revenue": 21855027,
-      "adult_flag": false,
-      "runtime_minutes": 98,
-      "collection_id": 29
-    },
-    {
-      "media_id": 106,
-      "release_date": "2025-05-16",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 89,
-      "collection_id": null
-    },
-    {
-      "media_id": 107,
-      "release_date": "2025-05-17",
-      "budget": 100000000,
-      "revenue": 1037247842,
-      "adult_flag": false,
-      "runtime_minutes": 108,
-      "collection_id": 30
-    },
-    {
-      "media_id": 108,
-      "release_date": "2025-11-26",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 116,
-      "collection_id": null
-    },
-    {
-      "media_id": 109,
-      "release_date": "2016-08-26",
-      "budget": 0,
-      "revenue": 358000000,
-      "adult_flag": false,
-      "runtime_minutes": 106,
-      "collection_id": null
-    },
-    {
-      "media_id": 110,
-      "release_date": "2019-09-04",
-      "budget": 79000000,
-      "revenue": 473123154,
-      "adult_flag": false,
-      "runtime_minutes": 169,
-      "collection_id": 31
-    },
-    {
-      "media_id": 111,
-      "release_date": "2025-07-24",
-      "budget": 0,
-      "revenue": 2917068,
-      "adult_flag": false,
-      "runtime_minutes": 98,
-      "collection_id": null
-    },
-    {
-      "media_id": 112,
-      "release_date": "2024-02-07",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 145,
-      "collection_id": null
-    },
-    {
-      "media_id": 113,
-      "release_date": "1997-11-18",
-      "budget": 200000000,
-      "revenue": 2264162353,
-      "adult_flag": false,
-      "runtime_minutes": 194,
-      "collection_id": null
-    },
-    {
-      "media_id": 114,
-      "release_date": "2024-10-11",
-      "budget": 17647000,
-      "revenue": 3247000,
-      "adult_flag": false,
-      "runtime_minutes": 147,
-      "collection_id": null
-    },
-    {
-      "media_id": 115,
-      "release_date": "2025-06-04",
-      "budget": 90000000,
-      "revenue": 137258395,
-      "adult_flag": false,
-      "runtime_minutes": 125,
-      "collection_id": null
-    },
-    {
-      "media_id": 116,
-      "release_date": "2025-09-10",
-      "budget": 20000000,
-      "revenue": 54054069,
-      "adult_flag": false,
-      "runtime_minutes": 108,
-      "collection_id": null
-    },
-    {
-      "media_id": 117,
-      "release_date": "2024-06-11",
-      "budget": 200000000,
-      "revenue": 1698863816,
-      "adult_flag": false,
-      "runtime_minutes": 97,
-      "collection_id": 32
-    },
-    {
-      "media_id": 118,
-      "release_date": "2025-03-31",
-      "budget": 150000000,
-      "revenue": 957949195,
-      "adult_flag": false,
-      "runtime_minutes": 101,
-      "collection_id": 33
-    },
-    {
-      "media_id": 119,
-      "release_date": "2017-09-06",
-      "budget": 35000000,
-      "revenue": 704242888,
-      "adult_flag": false,
-      "runtime_minutes": 135,
-      "collection_id": 31
-    },
-    {
-      "media_id": 120,
-      "release_date": "2025-08-08",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 87,
-      "collection_id": null
-    },
-    {
-      "media_id": 121,
-      "release_date": "2025-08-28",
-      "budget": 0,
-      "revenue": 3328938,
-      "adult_flag": false,
-      "runtime_minutes": 102,
-      "collection_id": null
-    },
-    {
-      "media_id": 122,
-      "release_date": "2025-01-29",
-      "budget": 80000000,
-      "revenue": 2150000000,
-      "adult_flag": false,
-      "runtime_minutes": 144,
-      "collection_id": 34
-    },
-    {
-      "media_id": 123,
-      "release_date": "2022-12-14",
-      "budget": 350000000,
-      "revenue": 2330224914,
-      "adult_flag": false,
-      "runtime_minutes": 192,
-      "collection_id": 14
-    },
-    {
-      "media_id": 124,
-      "release_date": "2025-10-09",
-      "budget": 80000000,
-      "revenue": 9299531,
-      "adult_flag": false,
-      "runtime_minutes": 139,
-      "collection_id": null
-    },
-    {
-      "media_id": 125,
-      "release_date": "2001-11-16",
-      "budget": 125000000,
-      "revenue": 976475550,
-      "adult_flag": false,
-      "runtime_minutes": 152,
-      "collection_id": 35
-    },
-    {
-      "media_id": 126,
-      "release_date": "2024-11-21",
-      "budget": 150000000,
-      "revenue": 1059242164,
-      "adult_flag": false,
-      "runtime_minutes": 100,
-      "collection_id": 36
-    },
-    {
-      "media_id": 127,
-      "release_date": "2025-01-30",
-      "budget": 10000000,
-      "revenue": 1236630,
-      "adult_flag": false,
-      "runtime_minutes": 86,
-      "collection_id": null
-    },
-    {
-      "media_id": 128,
-      "release_date": "2025-09-25",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": null,
-      "collection_id": null
-    },
-    {
-      "media_id": 129,
-      "release_date": "2008-07-16",
-      "budget": 185000000,
-      "revenue": 1004558444,
-      "adult_flag": false,
-      "runtime_minutes": 152,
-      "collection_id": 37
-    },
-    {
-      "media_id": 130,
-      "release_date": "2025-11-27",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 119,
-      "collection_id": 38
-    },
-    {
-      "media_id": 131,
-      "release_date": "2025-06-07",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 103,
-      "collection_id": null
-    },
-    {
-      "media_id": 132,
-      "release_date": "1994-11-11",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 103,
-      "collection_id": null
-    },
-    {
-      "media_id": 133,
-      "release_date": "2024-07-24",
-      "budget": 200000000,
-      "revenue": 1338073645,
-      "adult_flag": false,
-      "runtime_minutes": 128,
-      "collection_id": 39
-    },
-    {
-      "media_id": 134,
-      "release_date": "1992-11-15",
-      "budget": 18000000,
-      "revenue": 358994850,
-      "adult_flag": false,
-      "runtime_minutes": 120,
-      "collection_id": 40
-    },
-    {
-      "media_id": 135,
-      "release_date": "1997-04-10",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 165,
-      "collection_id": null
-    },
-    {
-      "media_id": 136,
-      "release_date": "2024-12-20",
-      "budget": 3467000,
-      "revenue": 11559000,
-      "adult_flag": false,
-      "runtime_minutes": 145,
-      "collection_id": 41
-    },
-    {
-      "media_id": 137,
-      "release_date": "2025-06-09",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 96,
-      "collection_id": null
-    },
-    {
-      "media_id": 138,
-      "release_date": "2025-07-02",
-      "budget": 0,
-      "revenue": 3082436,
-      "adult_flag": false,
-      "runtime_minutes": 87,
-      "collection_id": null
-    },
-    {
-      "media_id": 139,
-      "release_date": "2025-11-07",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 87,
-      "collection_id": null
-    },
-    {
-      "media_id": 140,
-      "release_date": "2010-07-15",
-      "budget": 160000000,
-      "revenue": 839030630,
-      "adult_flag": false,
-      "runtime_minutes": 148,
-      "collection_id": null
-    },
-    {
-      "media_id": 141,
-      "release_date": "2024-10-31",
-      "budget": 250000000,
-      "revenue": 185700759,
-      "adult_flag": false,
-      "runtime_minutes": 124,
-      "collection_id": null
-    },
-    {
-      "media_id": 142,
-      "release_date": "2025-09-17",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 109,
-      "collection_id": null
-    },
-    {
-      "media_id": 143,
-      "release_date": "2023-10-25",
-      "budget": 20000000,
-      "revenue": 297144130,
-      "adult_flag": false,
-      "runtime_minutes": 110,
-      "collection_id": 19
-    },
-    {
-      "media_id": 144,
-      "release_date": "2009-12-15",
-      "budget": 237000000,
-      "revenue": 2923706026,
+      "revenue": 758737211,
       "adult_flag": false,
       "runtime_minutes": 162,
-      "collection_id": 14
-    },
-    {
-      "media_id": 145,
-      "release_date": "2025-09-30",
-      "budget": 2500000,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 125,
-      "collection_id": null
-    },
-    {
-      "media_id": 146,
-      "release_date": "2023-03-07",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 90,
-      "collection_id": null
-    },
-    {
-      "media_id": 147,
-      "release_date": "1972-03-14",
-      "budget": 6000000,
-      "revenue": 245066411,
-      "adult_flag": false,
-      "runtime_minutes": 175,
-      "collection_id": 42
-    },
-    {
-      "media_id": 148,
-      "release_date": "2022-11-30",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 104,
-      "collection_id": 6
-    },
-    {
-      "media_id": 149,
-      "release_date": "2025-10-14",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 166,
-      "collection_id": 43
-    },
-    {
-      "media_id": 150,
-      "release_date": "2025-11-18",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 99,
-      "collection_id": null
-    },
-    {
-      "media_id": 151,
-      "release_date": "2025-05-14",
-      "budget": 50000000,
-      "revenue": 315630814,
-      "adult_flag": false,
-      "runtime_minutes": 110,
-      "collection_id": 44
-    },
-    {
-      "media_id": 152,
-      "release_date": "2011-12-07",
-      "budget": 27500,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 83,
-      "collection_id": null
-    },
-    {
-      "media_id": 153,
-      "release_date": "2025-10-02",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 78,
-      "collection_id": null
-    },
-    {
-      "media_id": 154,
-      "release_date": "2025-09-13",
-      "budget": 32000000,
-      "revenue": 67600000,
-      "adult_flag": false,
-      "runtime_minutes": 98,
-      "collection_id": null
-    },
-    {
-      "media_id": 155,
-      "release_date": "2024-03-01",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 119,
-      "collection_id": null
-    },
-    {
-      "media_id": 156,
-      "release_date": "1984-12-07",
-      "budget": 1700000,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 100,
-      "collection_id": null
-    },
-    {
-      "media_id": 157,
-      "release_date": "2024-12-11",
-      "budget": 130000000,
-      "revenue": 62076533,
-      "adult_flag": false,
-      "runtime_minutes": 127,
-      "collection_id": null
-    },
-    {
-      "media_id": 158,
-      "release_date": "2025-06-05",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 85,
-      "collection_id": null
-    },
-    {
-      "media_id": 159,
-      "release_date": "2025-03-26",
-      "budget": 40000000,
-      "revenue": 99068160,
-      "adult_flag": false,
-      "runtime_minutes": 116,
-      "collection_id": null
-    },
-    {
-      "media_id": 160,
-      "release_date": "2025-06-27",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 113,
-      "collection_id": 45
-    },
-    {
-      "media_id": 161,
-      "release_date": "2024-12-19",
-      "budget": 122000000,
-      "revenue": 492162604,
-      "adult_flag": false,
-      "runtime_minutes": 110,
-      "collection_id": 46
-    },
-    {
-      "media_id": 162,
-      "release_date": "2025-08-06",
-      "budget": 42000000,
-      "revenue": 152889065,
-      "adult_flag": false,
-      "runtime_minutes": 110,
-      "collection_id": 47
-    },
-    {
-      "media_id": 163,
-      "release_date": "2025-06-24",
-      "budget": 100,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 117,
-      "collection_id": null
-    },
-    {
-      "media_id": 164,
-      "release_date": "2010-12-17",
-      "budget": 80000000,
-      "revenue": 203509374,
-      "adult_flag": false,
-      "runtime_minutes": 80,
-      "collection_id": null
-    },
-    {
-      "media_id": 165,
-      "release_date": "2025-08-04",
-      "budget": 38000000,
-      "revenue": 265894217,
-      "adult_flag": false,
-      "runtime_minutes": 129,
-      "collection_id": 48
-    },
-    {
-      "media_id": 166,
-      "release_date": "2001-12-18",
-      "budget": 93000000,
-      "revenue": 871368364,
-      "adult_flag": false,
-      "runtime_minutes": 179,
-      "collection_id": 49
-    },
-    {
-      "media_id": 167,
-      "release_date": "2025-11-10",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 78,
-      "collection_id": null
-    },
-    {
-      "media_id": 168,
-      "release_date": "2013-12-25",
-      "budget": 100000000,
-      "revenue": 407038432,
-      "adult_flag": false,
-      "runtime_minutes": 180,
-      "collection_id": null
-    },
-    {
-      "media_id": 169,
-      "release_date": "2025-06-25",
-      "budget": 25000000,
-      "revenue": 39085942,
-      "adult_flag": false,
-      "runtime_minutes": 120,
-      "collection_id": 50
-    },
-    {
-      "media_id": 170,
-      "release_date": "1982-06-11",
-      "budget": 10500000,
-      "revenue": 797307407,
-      "adult_flag": false,
-      "runtime_minutes": 115,
-      "collection_id": null
-    },
-    {
-      "media_id": 171,
-      "release_date": "2005-11-16",
-      "budget": 150000000,
-      "revenue": 895921036,
-      "adult_flag": false,
-      "runtime_minutes": 157,
-      "collection_id": 35
-    },
-    {
-      "media_id": 172,
-      "release_date": "2017-02-09",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 91,
-      "collection_id": 51
-    },
-    {
-      "media_id": 173,
-      "release_date": "2018-04-25",
-      "budget": 300000000,
-      "revenue": 2052415039,
-      "adult_flag": false,
-      "runtime_minutes": 149,
-      "collection_id": 21
-    },
-    {
-      "media_id": 174,
-      "release_date": "2025-07-24",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 93,
-      "collection_id": null
-    },
-    {
-      "media_id": 175,
-      "release_date": "2025-02-13",
-      "budget": 70000000,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 128,
-      "collection_id": null
-    },
-    {
-      "media_id": 176,
-      "release_date": "2022-08-18",
-      "budget": 340,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 21,
-      "collection_id": null
-    },
-    {
-      "media_id": 177,
-      "release_date": "2003-12-17",
-      "budget": 94000000,
-      "revenue": 1118888979,
-      "adult_flag": false,
-      "runtime_minutes": 201,
-      "collection_id": 49
-    },
-    {
-      "media_id": 178,
-      "release_date": "2013-05-29",
-      "budget": 75000000,
-      "revenue": 351723989,
-      "adult_flag": false,
-      "runtime_minutes": 116,
-      "collection_id": 11
-    },
-    {
-      "media_id": 179,
-      "release_date": "2022-06-11",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 85,
-      "collection_id": null
-    },
-    {
-      "media_id": 180,
-      "release_date": "1983-05-14",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 88,
-      "collection_id": null
-    },
-    {
-      "media_id": 181,
-      "release_date": "2025-06-13",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 97,
-      "collection_id": null
-    },
-    {
-      "media_id": 182,
-      "release_date": "2025-04-30",
-      "budget": 180000000,
-      "revenue": 382436917,
-      "adult_flag": false,
-      "runtime_minutes": 127,
-      "collection_id": null
-    },
-    {
-      "media_id": 183,
-      "release_date": "2002-11-13",
-      "budget": 100000000,
-      "revenue": 876688482,
-      "adult_flag": false,
-      "runtime_minutes": 161,
-      "collection_id": 35
-    },
-    {
-      "media_id": 184,
-      "release_date": "2025-08-27",
-      "budget": 30600000,
-      "revenue": 51498093,
-      "adult_flag": false,
-      "runtime_minutes": 105,
-      "collection_id": null
-    },
-    {
-      "media_id": 185,
-      "release_date": "2025-09-26",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 113,
-      "collection_id": 52
-    },
-    {
-      "media_id": 186,
-      "release_date": "2025-11-21",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 70,
-      "collection_id": null
-    },
-    {
-      "media_id": 187,
-      "release_date": "2025-09-04",
-      "budget": 2000000,
-      "revenue": 1390057,
-      "adult_flag": false,
-      "runtime_minutes": 100,
-      "collection_id": null
-    },
-    {
-      "media_id": 188,
-      "release_date": "1996-05-10",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 123,
-      "collection_id": null
-    },
-    {
-      "media_id": 189,
-      "release_date": "2018-11-08",
-      "budget": 75000000,
-      "revenue": 508600000,
-      "adult_flag": false,
-      "runtime_minutes": 85,
-      "collection_id": null
-    },
-    {
-      "media_id": 190,
-      "release_date": "2025-09-15",
-      "budget": 0,
-      "revenue": 146237,
-      "adult_flag": false,
-      "runtime_minutes": 87,
-      "collection_id": 53
-    },
-    {
-      "media_id": 191,
-      "release_date": "2025-04-16",
-      "budget": 90000000,
-      "revenue": 365878513,
-      "adult_flag": false,
-      "runtime_minutes": 138,
-      "collection_id": null
-    },
-    {
-      "media_id": 192,
-      "release_date": "2025-01-22",
-      "budget": 10000000,
-      "revenue": 36809101,
-      "adult_flag": false,
-      "runtime_minutes": 97,
-      "collection_id": null
-    },
-    {
-      "media_id": 193,
-      "release_date": "2013-11-20",
-      "budget": 150000000,
-      "revenue": 1274219009,
-      "adult_flag": false,
-      "runtime_minutes": 102,
-      "collection_id": 54
-    },
-    {
-      "media_id": 194,
-      "release_date": "2004-05-31",
-      "budget": 130000000,
-      "revenue": 789804554,
-      "adult_flag": false,
-      "runtime_minutes": 141,
-      "collection_id": 35
-    },
-    {
-      "media_id": 195,
-      "release_date": "2001-05-18",
-      "budget": 60000000,
-      "revenue": 488628188,
-      "adult_flag": false,
-      "runtime_minutes": 90,
-      "collection_id": 55
-    },
-    {
-      "media_id": 196,
-      "release_date": "2023-04-05",
-      "budget": 100000000,
-      "revenue": 1362000000,
-      "adult_flag": false,
-      "runtime_minutes": 93,
-      "collection_id": 56
-    },
-    {
-      "media_id": 197,
-      "release_date": "2025-09-26",
-      "budget": 0,
-      "revenue": 0,
-      "adult_flag": false,
-      "runtime_minutes": 90,
-      "collection_id": null
-    },
-    {
-      "media_id": 198,
-      "release_date": "2025-05-28",
-      "budget": 15000000,
-      "revenue": 39123752,
-      "adult_flag": false,
-      "runtime_minutes": 104,
-      "collection_id": null
-    },
-    {
-      "media_id": 199,
-      "release_date": "2025-11-20",
-      "budget": 0,
-      "revenue": 3336147,
-      "adult_flag": false,
-      "runtime_minutes": 110,
-      "collection_id": null
-    },
-    {
-      "media_id": 200,
-      "release_date": "2025-07-18",
-      "budget": 5500000,
-      "revenue": 63539300,
-      "adult_flag": false,
-      "runtime_minutes": 150,
-      "collection_id": null
+      "collection_id": 7
     }
   ]
 }

@@ -39,11 +39,13 @@ services:
       - ./:/usr/src/app
     working_dir: /usr/src/app
     environment:
-      DATABASE_URL: postgres://seeder_user:${SEEDER_DB_PW}@db:5432/moviedb
-      APP_DB_PW: ${APP_DB_PW}
+      DATABASE_URL: ${RENDER_DATABASE_URL}
+      APP_DB_PW: ${RENDER_DB_PASSWORD}
     restart: "no"
     # Execute the script explicitly with bash to avoid shebang/CRLF issues
     entrypoint: ["bash", "/usr/src/app/scripts/docker/run_seed.sh"]
+
+# docker compose up seed-json -d
 
   pgadmin:
     image: dpage/pgadmin4:8

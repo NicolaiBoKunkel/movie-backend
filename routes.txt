@@ -1,0 +1,64 @@
+# Movie Backend API Routes
+Base URL: https://movie-backend-ppsr.onrender.com
+
+## Health Check
+https://movie-backend-ppsr.onrender.com/health
+
+## PostgreSQL Routes (Prisma)
+
+### Movies
+https://movie-backend-ppsr.onrender.com/movies
+https://movie-backend-ppsr.onrender.com/movies?limit=10&offset=0
+https://movie-backend-ppsr.onrender.com/movies/1
+https://movie-backend-ppsr.onrender.com/movies/search?q=tron
+https://movie-backend-ppsr.onrender.com/movies/popular?limit=20
+
+### TV Shows
+https://movie-backend-ppsr.onrender.com/tv
+https://movie-backend-ppsr.onrender.com/tv?limit=10&offset=0
+https://movie-backend-ppsr.onrender.com/tv/51
+https://movie-backend-ppsr.onrender.com/tv/51/seasons
+https://movie-backend-ppsr.onrender.com/tv/51/seasons/1
+
+## MongoDB Routes
+
+### Movies (MongoDB)
+https://movie-backend-ppsr.onrender.com/mongo/movies
+https://movie-backend-ppsr.onrender.com/mongo/movies?limit=10
+https://movie-backend-ppsr.onrender.com/mongo/movies/1
+https://movie-backend-ppsr.onrender.com/mongo/movies/search?q=tron
+
+### TV Shows (MongoDB)
+https://movie-backend-ppsr.onrender.com/mongo/tv
+https://movie-backend-ppsr.onrender.com/mongo/tv?limit=10
+https://movie-backend-ppsr.onrender.com/mongo/tv/51
+
+## Neo4j Routes
+
+### Movies (Neo4j)
+https://movie-backend-ppsr.onrender.com/neo/movies
+https://movie-backend-ppsr.onrender.com/neo/movies?limit=10
+https://movie-backend-ppsr.onrender.com/neo/movies/1
+https://movie-backend-ppsr.onrender.com/neo/movies/1/recommendations
+
+### TV Shows (Neo4j)
+https://movie-backend-ppsr.onrender.com/neo/tv
+https://movie-backend-ppsr.onrender.com/neo/tv?limit=10
+https://movie-backend-ppsr.onrender.com/neo/tv/51
+
+## Authentication Routes
+https://movie-backend-ppsr.onrender.com/auth/register
+https://movie-backend-ppsr.onrender.com/auth/login
+
+## Admin Routes (requires authentication)
+https://movie-backend-ppsr.onrender.com/admin/stats
+https://movie-backend-ppsr.onrender.com/movies (POST/PUT/DELETE - admin only)
+https://movie-backend-ppsr.onrender.com/tv (POST/PUT/DELETE - admin only)
+https://movie-backend-ppsr.onrender.com/mongo/movies (POST/PUT/DELETE - admin only)
+https://movie-backend-ppsr.onrender.com/neo/movies (POST/PUT/DELETE - admin only)
+
+## Notes:
+- Replace {id} with actual numeric IDs (e.g., 1, 51, etc.)
+- Admin routes require JWT token in Authorization header
+- All endpoints support CORS from configured origins
+- MongoDB and Neo4j routes will only work after running the migrator
