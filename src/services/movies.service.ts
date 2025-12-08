@@ -175,8 +175,8 @@ export class MoviesService {
             tmdbId: movieInfo.tmdbId,
             mediaType: 'movie',
             originalTitle: movieInfo.originalTitle,
-            overview: movieInfo.overview,
-            originalLanguage: movieInfo.originalLanguage,
+            overview: movieInfo.overview ?? null,
+            originalLanguage: movieInfo.originalLanguage ?? null,
             ...(genreIds && {
               mediaGenres: {
                 create: genreIds.map(genreId => ({
@@ -186,10 +186,10 @@ export class MoviesService {
             })
           }
         },
-        releaseDate: movieInfo.releaseDate,
-        budget: movieInfo.budget || 0n,
-        revenue: movieInfo.revenue || 0n,
-        runtimeMinutes: movieInfo.runtime
+        releaseDate: movieInfo.releaseDate ?? null,
+        budget: movieInfo.budget ?? 0n,
+        revenue: movieInfo.revenue ?? 0n,
+        runtimeMinutes: movieInfo.runtime ?? null
       },
       include: {
         mediaItem: {
@@ -222,7 +222,7 @@ export class MoviesService {
       where: { mediaId: movieId },
       data: {
         ...movieFields,
-        runtimeMinutes: updateData.runtime,
+        ...(updateData.runtime !== undefined && { runtimeMinutes: updateData.runtime }),
         ...(originalTitle || overview ? {
           mediaItem: {
             update: {
