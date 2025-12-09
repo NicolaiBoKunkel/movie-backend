@@ -1,170 +1,197 @@
 import { Router } from "express";
-import MongoDataSource from "../../db/mongoDataSource";
-import { MovieMongo } from "../../entities/mongo/MovieMongo";
+import { getMongoCollection } from "../../db/getMongoCollection";
 
 const router = Router();
 
-export type MovieDto = {
-  mediaId: string;
-  tmdbId: string;
-  mediaType: "movie";
-  originalTitle: string;
-  overview: string | null;
-  originalLanguage: string;
-  status: string;
-  popularity: number | null;
-  voteAverage: number;
-  voteCount: number | null;
-  releaseDate: string | null;
-  budget: number | null;
-  revenue: number | null;
-  adultFlag: boolean;
-  runtimeMinutes: number | null;
-  collectionId: string | null;
-  genres: string[];
-  posterPath: string | null;
-  backdropPath: string | null;
-  homepageUrl: string | null;
+function mapMongoMovieSummary(doc: any) {
+  const m = doc.mediaItem ?? {};
 
-  cast: {
-    personId: string;
-    name: string;
-    characterName: string | null;
-    castOrder: number | null;
-  }[];
+  const originalTitle =
+    m.originalTitle ??
+    doc.originalTitle ??
+    "";
 
-  crew: {
-    personId: string;
-    name: string;
-    department: string | null;
-    jobTitle: string | null;
-  }[];
+  const voteAverage =
+    m.voteAverage ??
+    doc.voteAverage ??
+    0;
 
-  companies: {
-    companyId: string;
-    name: string;
-    role: string | null;
-  }[];
-};
-
-function mapMongoMovie(doc: any): MovieDto {
-  const m = doc.mediaItem || {};
+  const genres =
+    (Array.isArray(m.genres) && m.genres.length > 0)
+      ? m.genres.map((g: any) => g.name)
+      : (Array.isArray(doc.genres)
+          ? doc.genres.map((g: any) => g.name)
+          : []);
 
   return {
     mediaId: String(doc.mediaId),
-    tmdbId: String(m.tmdbId),
-    mediaType: "movie",
-
-    originalTitle: m.originalTitle ?? "",
-    overview: m.overview ?? null,
-    originalLanguage: m.originalLanguage ?? "",
-    status: m.status ?? "",
-
-    popularity: m.popularity != null ? Number(m.popularity) : null,
-    voteAverage: Number(m.voteAverage ?? 0),
-    voteCount: m.voteCount != null ? Number(m.voteCount) : null,
-
-    releaseDate: doc.releaseDate ?? null,
-    budget: doc.budget != null ? Number(doc.budget) : null,
-    revenue: doc.revenue != null ? Number(doc.revenue) : null,
-
-    adultFlag: Boolean(doc.adultFlag),
-    runtimeMinutes: doc.runtimeMinutes != null ? Number(doc.runtimeMinutes) : null,
-
-    collectionId: doc.collectionId ? String(doc.collectionId) : null,
-
-    genres: Array.isArray(m.genres) ? m.genres.map((g: any) => g.name) : [],
-
-    posterPath: m.posterPath ?? null,
-    backdropPath: m.backdropPath ?? null,
-    homepageUrl: m.homepageUrl ?? null,
-
-    cast: Array.isArray(m.cast)
-      ? m.cast.map((c: any) => ({
-          personId: String(c.personId),
-          name: c.name ?? "",
-          characterName: c.characterName ?? null,
-          castOrder: c.castOrder != null ? Number(c.castOrder) : null,
-        }))
-      : [],
-
-    crew: Array.isArray(m.crew)
-      ? m.crew.map((w: any) => ({
-          personId: String(w.personId),
-          name: w.name ?? "",
-          department: w.department ?? null,
-          jobTitle: w.jobTitle ?? null,
-        }))
-      : [],
-
-    companies: Array.isArray(m.companies)
-      ? m.companies.map((c: any) => ({
-          companyId: String(c.companyId),
-          name: c.name ?? "",
-          role: c.role ?? null,
-        }))
-      : [],
+    originalTitle,
+    voteAverage: Number(voteAverage),
+    genres,
+    posterPath: m.posterPath ?? doc.posterPath ?? null,
+    backdropPath: m.backdropPath ?? doc.backdropPath ?? null,
   };
 }
 
-function mapMongoMovieSummary(doc: any) {
-  const m = doc.mediaItem || {};
+function mapMongoMovie(doc: any) {
+  const m = doc.mediaItem ?? {};
+
+  const newMovie = m.movie ?? {};
+
+  const oldMovie = doc.movie ?? {};
+
+  const mv = Object.keys(newMovie).length > 0 ? newMovie : oldMovie;
+
+  const originalTitle =
+    m.originalTitle ??
+    doc.originalTitle ??
+    "";
+
+  const overview =
+    m.overview ??
+    doc.overview ??
+    null;
+
+  const originalLanguage =
+    m.originalLanguage ??
+    doc.originalLanguage ??
+    "";
+
+  const status =
+    m.status ??
+    doc.status ??
+    null;
+
+  const popularity =
+    m.popularity ??
+    doc.popularity ??
+    null;
+
+  const voteAverage =
+    m.voteAverage ??
+    doc.voteAverage ??
+    0;
+
+  const voteCount =
+    m.voteCount ??
+    doc.voteCount ??
+    null;
+
+  const posterPath =
+    m.posterPath ??
+    doc.posterPath ??
+    null;
+
+  const backdropPath =
+    m.backdropPath ??
+    doc.backdropPath ??
+    null;
+
+  const homepageUrl =
+    m.homepageUrl ??
+    doc.homepageUrl ??
+    null;
+
+  const genres =
+    (Array.isArray(m.genres) && m.genres.length > 0)
+      ? m.genres.map((g: any) => g.name)
+      : (Array.isArray(doc.genres)
+          ? doc.genres.map((g: any) => g.name)
+          : []);
+
+  const cast =
+    (Array.isArray(m.cast) && m.cast.length > 0)
+      ? m.cast
+      : (doc.cast ?? []);
+
+  const crew =
+    (Array.isArray(m.crew) && m.crew.length > 0)
+      ? m.crew
+      : (doc.crew ?? []);
+
+  const companies =
+    (Array.isArray(m.companies) && m.companies.length > 0)
+      ? m.companies
+      : (doc.companies ?? []);
 
   return {
     mediaId: String(doc.mediaId),
-    originalTitle: m.originalTitle ?? "",
-    voteAverage: Number(m.voteAverage ?? 0),
-    genres: Array.isArray(m.genres) ? m.genres.map((g: any) => g.name) : [],
-    posterPath: m.posterPath ?? null,
-    backdropPath: m.backdropPath ?? null,
+    tmdbId: m.tmdbId ?? doc.tmdbId ?? "",
+    mediaType: "movie",
+
+    originalTitle,
+    overview,
+    originalLanguage,
+    status,
+
+    popularity,
+    voteAverage: Number(voteAverage),
+    voteCount,
+
+    releaseDate: mv.releaseDate ?? null,
+    budget: mv.budget ?? null,
+    revenue: mv.revenue ?? null,
+    adultFlag: Boolean(mv.adultFlag),
+    runtimeMinutes: mv.runtimeMinutes ?? null,
+    collectionId: mv.collectionId ?? null,
+
+    posterPath,
+    backdropPath,
+    homepageUrl,
+
+    genres,
+    cast,
+    crew,
+    companies,
   };
 }
 
 router.get("/", async (req, res) => {
   try {
-    const movieRepo = MongoDataSource.getMongoRepository(MovieMongo);
-
+    const collection = getMongoCollection("movie_full_example");
     const search = (req.query.search as string)?.trim() ?? "";
     const limit = Math.min(Number(req.query.limit) || 25, 100);
 
     let docs;
 
     if (search.length > 0) {
-      docs = await movieRepo.find({
-        where: {
+      docs = await collection
+        .find({
           $or: [
             { "mediaItem.originalTitle": { $regex: search, $options: "i" } },
             { "mediaItem.overview": { $regex: search, $options: "i" } },
+            { originalTitle: { $regex: search, $options: "i" } },
+            { overview: { $regex: search, $options: "i" } },
           ],
-        },
-        take: limit,
-      });
+        })
+        .limit(limit)
+        .toArray();
     } else {
-      docs = await movieRepo.find({ take: limit });
+      docs = await collection.find({}).limit(limit).toArray();
     }
 
-    const movies = docs.map(mapMongoMovieSummary);
-    res.json(movies);
+    res.json(docs.map(mapMongoMovieSummary));
   } catch (err) {
-    console.error("Mongo GET /movies error:", err);
+    console.error("Mongo GET /mongo/movies error:", err);
     res.status(500).json({ error: "MongoDB query failed" });
   }
 });
 
 router.get("/:mediaId", async (req, res) => {
-  const { mediaId } = req.params;
-
   try {
-    const movieRepo = MongoDataSource.getMongoRepository(MovieMongo);
+    const collection = getMongoCollection("movie_full_example");
 
-    const doc = await movieRepo.findOne({ where: { mediaId } });
+    const doc = await collection.findOne({
+      mediaId: req.params.mediaId,
+    });
 
-    if (!doc) return res.status(404).json({ error: "Movie not found" });
+    if (!doc) {
+      return res.status(404).json({ error: "Movie not found" });
+    }
 
-    const movie = mapMongoMovie(doc);
-    res.json(movie);
+    res.json(mapMongoMovie(doc));
   } catch (err) {
-    console.error("Mongo GET /movies/:id error:", err);
+    console.error("Mongo GET /mongo/movies/:id error:", err);
     res.status(500).json({ error: "MongoDB lookup failed" });
   }
 });

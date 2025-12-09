@@ -1,6 +1,5 @@
 import { Router } from "express";
-import MongoDataSource from "../../db/mongoDataSource";
-import { TVShowMongo } from "../../entities/mongo/TVShowMongo";
+import { getMongoCollection } from "../../db/getMongoCollection";
 import { z } from "zod";
 import { requireAuth, requireRole } from "../../middleware/auth";
 
@@ -9,6 +8,7 @@ const router = Router();
 function deepMerge(target: any, source: any) {
   for (const key of Object.keys(source)) {
     const value = source[key];
+
     if (value && typeof value === "object" && !Array.isArray(value)) {
       if (!target[key]) target[key] = {};
       deepMerge(target[key], value);
@@ -42,11 +42,13 @@ const createTVSchema = z.object({
     popularity: z.number(),
     voteAverage: z.number(),
     voteCount: z.number(),
-    posterPath: z.string().optional(),
-    backdropPath: z.string().optional(),
-    homepageUrl: z.string().optional(),
+    posterPath: z.string().nullable().optional(),
+    backdropPath: z.string().nullable().optional(),
+    homepageUrl: z.string().nullable().optional(),
+
     movie: z.any().optional(),
     tvShow: z.any().optional(),
+
     genres: z.array(z.any()).default([]),
     companies: z.array(z.any()).default([]),
     cast: z.array(z.any()).default([]),
@@ -54,76 +56,66 @@ const createTVSchema = z.object({
   }),
 });
 
-const updateTVSchema = z.object({
-  mediaId: z.string().optional(),
+const updateTVSchema = createTVSchema.partial();
 
-  firstAirDate: z.string().optional(),
-  lastAirDate: z.string().optional(),
+function normalizeTvFields(data: any) {
+  if (!data.mediaItem) data.mediaItem = {};
+  if (!data.mediaItem.tvShow) data.mediaItem.tvShow = {};
 
-  inProduction: z.boolean().optional(),
-  numberOfSeasons: z.number().optional(),
-  numberOfEpisodes: z.number().optional(),
+  const tv = data.mediaItem.tvShow;
 
-  showType: z.string().optional(),
-  seasons: z.array(z.any()).optional(),
+  if (data.seasons !== undefined) {
+    tv.seasons = data.seasons;
+    delete data.seasons;
+  }
 
-  mediaItem: z
-    .object({
-      tmdbId: z.string().optional(),
-      mediaType: z.string().optional(),
-      originalTitle: z.string().optional(),
-      overview: z.string().optional(),
-      originalLanguage: z.string().optional(),
-      status: z.string().optional(),
-      popularity: z.number().optional(),
-      voteAverage: z.number().optional(),
-      voteCount: z.number().optional(),
-      posterPath: z.string().optional(),
-      backdropPath: z.string().optional(),
-      homepageUrl: z.string().optional(),
-      movie: z.any().optional(),
-      tvShow: z.any().optional(),
-      genres: z.array(z.any()).optional(),
-      companies: z.array(z.any()).optional(),
-      cast: z.array(z.any()).optional(),
-      crew: z.array(z.any()).optional(),
-    })
-    .optional(),
-});
+  if (data.inProduction !== undefined) tv.inProduction = data.inProduction;
+  if (data.numberOfSeasons !== undefined) tv.numberOfSeasons = data.numberOfSeasons;
+  if (data.numberOfEpisodes !== undefined) tv.numberOfEpisodes = data.numberOfEpisodes;
+  if (data.showType !== undefined) tv.showType = data.showType;
+
+  if (data.firstAirDate !== undefined)
+    tv.firstAirDate = data.firstAirDate ? new Date(data.firstAirDate) : null;
+
+  if (data.lastAirDate !== undefined)
+    tv.lastAirDate = data.lastAirDate ? new Date(data.lastAirDate) : null;
+
+  return data;
+}
 
 router.post("/", requireAuth, requireRole("admin"), async (req, res) => {
   const parsed = createTVSchema.safeParse(req.body);
 
   if (!parsed.success) {
-    return res.status(400).json({ error: "Validation failed", issues: parsed.error.issues });
+    return res.status(400).json({
+      error: "Validation failed",
+      issues: parsed.error.issues,
+    });
   }
 
-  const data = parsed.data;
+  let data = parsed.data;
+
+  data = normalizeTvFields(data);
 
   try {
-    const tvRepo = MongoDataSource.getMongoRepository(TVShowMongo);
-    const existing = await tvRepo.findOne({ where: { mediaId: data.mediaId } });
+    const collection = getMongoCollection("tvshow_full_example");
 
+    const existing = await collection.findOne({ mediaId: data.mediaId });
     if (existing) {
-      return res.status(409).json({ error: "TV show already exists", mediaId: data.mediaId });
+      return res.status(409).json({
+        error: "TV show already exists",
+        mediaId: data.mediaId,
+      });
     }
 
-    const tvToInsert: any = {
-      ...data,
-      firstAirDate: data.firstAirDate ? new Date(data.firstAirDate) : undefined,
-      lastAirDate: data.lastAirDate ? new Date(data.lastAirDate) : undefined,
-      mediaItem: {
-        ...data.mediaItem,
-        mediaType: "tv",
-      },
-    };
+    data.mediaItem.mediaType = "tv";
 
-    const result = await tvRepo.insert(tvToInsert);
+    const result = await collection.insertOne(data);
 
     res.status(201).json({
       created: true,
       mediaId: data.mediaId,
-      insertedId: result.identifiers[0]?._id,
+      insertedId: result.insertedId,
     });
   } catch (err) {
     console.error("Mongo CREATE tv error:", err);
@@ -135,29 +127,32 @@ router.put("/:mediaId", requireAuth, requireRole("admin"), async (req, res) => {
   const parsed = updateTVSchema.safeParse(req.body);
 
   if (!parsed.success) {
-    return res.status(400).json({ error: "Validation failed", issues: parsed.error.issues });
+    return res.status(400).json({
+      error: "Validation failed",
+      issues: parsed.error.issues,
+    });
   }
 
-  const data = parsed.data;
+  let data = parsed.data;
+
+  data = normalizeTvFields(data);
 
   try {
-    const tvRepo = MongoDataSource.getMongoRepository(TVShowMongo);
-    const existing = await tvRepo.findOne({ where: { mediaId: req.params.mediaId } });
+    const collection = getMongoCollection("tvshow_full_example");
 
+    const existing = await collection.findOne({ mediaId: req.params.mediaId });
     if (!existing) {
       return res.status(404).json({ error: "TV show not found" });
     }
 
-    const updatedTV: any = deepMerge(existing, data);
+    const updatedTV = deepMerge(existing, data);
 
-    if (data.firstAirDate) updatedTV.firstAirDate = new Date(data.firstAirDate);
-    if (data.lastAirDate) updatedTV.lastAirDate = new Date(data.lastAirDate);
+    updatedTV.mediaItem.mediaType = "tv";
 
-    if (updatedTV.mediaItem) {
-      updatedTV.mediaItem.mediaType = "tv";
-    }
-
-    await tvRepo.save(updatedTV);
+    await collection.replaceOne(
+      { mediaId: req.params.mediaId },
+      updatedTV
+    );
 
     res.json({ updated: true, mediaId: existing.mediaId });
   } catch (err) {
@@ -168,14 +163,18 @@ router.put("/:mediaId", requireAuth, requireRole("admin"), async (req, res) => {
 
 router.delete("/:mediaId", requireAuth, requireRole("admin"), async (req, res) => {
   try {
-    const tvRepo = MongoDataSource.getMongoRepository(TVShowMongo);
-    const result = await tvRepo.deleteOne({ mediaId: req.params.mediaId });
+    const collection = getMongoCollection("tvshow_full_example");
 
-    if (result?.deletedCount === 0) {
+    const result = await collection.deleteOne({ mediaId: req.params.mediaId });
+
+    if (result.deletedCount === 0) {
       return res.status(404).json({ error: "TV show not found" });
     }
 
-    res.json({ deleted: true, mediaId: req.params.mediaId });
+    res.json({
+      deleted: true,
+      mediaId: req.params.mediaId,
+    });
   } catch (err) {
     console.error("Mongo DELETE tv error:", err);
     res.status(500).json({ error: "Failed to delete TV show" });
