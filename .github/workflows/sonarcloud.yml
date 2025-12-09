@@ -4,15 +4,57 @@ on:
   push:
     branches:
       - main
-      - Nicolai_static_testing
+      - Nicolai_sonar
   pull_request:
     branches:
       - main
-      - Nicolai_static_testing
+      - Nicolai_sonar
 
 jobs:
   sonarcloud:
     runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: movie_db
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+      mongodb:
+        image: mongo:latest
+        env:
+          MONGO_INITDB_ROOT_USERNAME: admin
+          MONGO_INITDB_ROOT_PASSWORD: adminpass
+        ports:
+          - 27018:27017
+        options: >-
+          --health-cmd "mongosh --eval 'db.adminCommand({ping: 1})'"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+      neo4j:
+        image: neo4j:5.13-community
+        env:
+          NEO4J_AUTH: neo4j/testpassword
+          NEO4J_ACCEPT_LICENSE_AGREEMENT: yes
+        ports:
+          - 7474:7474
+          - 7687:7687
+        options: >-
+          --health-cmd "cypher-shell -u neo4j -p testpassword 'RETURN 1'"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 10
 
     steps:
       - uses: actions/checkout@v4
@@ -27,8 +69,43 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run tests with coverage (unit tests only)
-        run: npm run test:sonar
+      - name: Set up test environment
+        run: |
+          echo "NODE_ENV=test" >> $GITHUB_ENV
+          echo "PGHOST=localhost" >> $GITHUB_ENV
+          echo "PGPORT=5432" >> $GITHUB_ENV
+          echo "PGUSER=postgres" >> $GITHUB_ENV
+          echo "PGPASSWORD=postgres" >> $GITHUB_ENV
+          echo "PGDATABASE=movie_db" >> $GITHUB_ENV
+          echo "DATABASE_URL=postgresql://postgres:postgres@localhost:5432/movie_db" >> $GITHUB_ENV
+          echo "MONGODB_URI=mongodb://admin:adminpass@localhost:27018/movie_db?authSource=admin" >> $GITHUB_ENV
+          echo "NEO4J_URI=bolt://localhost:7687" >> $GITHUB_ENV
+          echo "NEO4J_USER=neo4j" >> $GITHUB_ENV
+          echo "NEO4J_PASSWORD=testpassword" >> $GITHUB_ENV
+          echo "JWT_SECRET=test-secret-key" >> $GITHUB_ENV
+
+      - name: Generate Prisma Client
+        run: npm run db:generate
+
+      - name: Initialize database schema
+        run: |
+          sudo apt-get update && sudo apt-get install -y postgresql-client
+          cd db/sql/postgres
+          for file in 01_schema.sql 03_views.sql 04_procs_funcs.sql 05_triggers.sql 06_events.sql 07_users_privs.sql 08_fulltext.sql 09_user_account.sql; do
+            if [ -f "$file" ]; then
+              PGPASSWORD=postgres psql -h localhost -U postgres -d movie_db -f "$file"
+            fi
+          done
+          cd ../../..
+
+      - name: Seed minimal CI data
+        run: npm run db:seed:ci
+
+      - name: Wait for services
+        run: sleep 5
+
+      - name: Run integration tests with coverage
+        run: npm run test:integration:coverage
 
       - name: Show coverage files (debug)
         run: ls -R coverage || echo "Coverage folder missing"
