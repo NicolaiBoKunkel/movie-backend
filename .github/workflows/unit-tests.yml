@@ -28,10 +28,6 @@ jobs:
       env:
         CI: true
 
-    - name: Run unit tests with coverage
-      run: npm run test:unit:coverage
-      env:
-        CI: true
 
     - name: Upload coverage reports
       if: always()
