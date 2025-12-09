@@ -9,6 +9,16 @@
       "Username": "postgres",
       "Password": "postgres",
       "SSLMode": "prefer"
+    },
+    "2": {
+      "Name": "Render Postgres",
+      "Group": "Servers",
+      "Host": "dpg-d4rbkvbe5dus73f63kq0-a.frankfurt-postgres.render.com",
+      "Port": 5432,
+      "MaintenanceDB": "moviedb_uimg",
+      "Username": "moviedb_uimg_user",
+      "Password": "8CkSuUv4i07AqFUgBnNgB3xSF3Sgh6ZX",
+      "SSLMode": "require"
     }
   }
 }

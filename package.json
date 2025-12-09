@@ -1,7 +1,7 @@
 {
   "name": "movie-backend",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/server.js",
   "scripts": {
     "test": "jest",
     "test:unit": "jest --selectProjects=unit",
@@ -12,7 +12,7 @@
     "test:coverage": "jest --coverage",
     "test:unit:coverage": "jest --selectProjects=unit --coverage",
     "dev": "nodemon --watch src --exec ts-node src/server.ts",
-    "build": "tsc",
+    "build": "prisma generate && tsc",
     "start": "node dist/server.js",
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
@@ -23,7 +23,9 @@
     "db:seed:json-ts": "ts-node scripts/seed_postgres_from_json.ts",
     "db:reset": "prisma migrate reset --force",
     "db:studio": "prisma studio",
-    "lint": "eslint . --ext .ts"
+    "lint": "eslint . --ext .ts",
+    "test:sonar": "jest --selectProjects=unit --coverage --silent --passWithNoTests",
+    "db:seed:ci": "ts-node prisma/seed-ci.ts"
   },
   "prisma": {
     "seed": "ts-node prisma/seed.ts"

@@ -168,40 +168,55 @@ export class MoviesService {
   }): Promise<MovieWithMediaItem> {
     const { genreIds, ...movieInfo } = movieData;
 
-    return prisma.movie.create({
-      data: {
-        mediaItem: {
-          create: {
-            tmdbId: movieInfo.tmdbId,
-            mediaType: 'movie',
-            originalTitle: movieInfo.originalTitle,
-            overview: movieInfo.overview,
-            originalLanguage: movieInfo.originalLanguage,
-            ...(genreIds && {
-              mediaGenres: {
-                create: genreIds.map(genreId => ({
-                  genreId
-                }))
-              }
-            })
-          }
-        },
-        releaseDate: movieInfo.releaseDate,
-        budget: movieInfo.budget || 0n,
-        revenue: movieInfo.revenue || 0n,
-        runtimeMinutes: movieInfo.runtime
-      },
-      include: {
-        mediaItem: {
-          include: {
+    // Generate a unique mediaId
+    const maxMediaId = await prisma.mediaItem.findFirst({
+      orderBy: { mediaId: 'desc' },
+      select: { mediaId: true }
+    });
+    const newMediaId = maxMediaId ? maxMediaId.mediaId + 1n : 1n;
+
+    // Use transaction to create MediaItem first, then Movie
+    return prisma.$transaction(async (tx) => {
+      // Create MediaItem first
+      await tx.mediaItem.create({
+        data: {
+          mediaId: newMediaId,
+          tmdbId: movieInfo.tmdbId ?? null,
+          mediaType: 'movie',
+          originalTitle: movieInfo.originalTitle,
+          overview: movieInfo.overview ?? null,
+          originalLanguage: movieInfo.originalLanguage ?? null,
+          ...(genreIds && {
             mediaGenres: {
-              include: {
-                genre: true
+              create: genreIds.map(genreId => ({
+                genreId
+              }))
+            }
+          })
+        }
+      });
+
+      // Create Movie with the same mediaId
+      return tx.movie.create({
+        data: {
+          mediaId: newMediaId,
+          releaseDate: movieInfo.releaseDate ?? null,
+          budget: movieInfo.budget ?? 0n,
+          revenue: movieInfo.revenue ?? 0n,
+          runtimeMinutes: movieInfo.runtime ?? null
+        },
+        include: {
+          mediaItem: {
+            include: {
+              mediaGenres: {
+                include: {
+                  genre: true
+                }
               }
             }
           }
         }
-      }
+      });
     });
   }
 
@@ -222,7 +237,7 @@ export class MoviesService {
       where: { mediaId: movieId },
       data: {
         ...movieFields,
-        runtimeMinutes: updateData.runtime,
+        ...(updateData.runtime !== undefined && { runtimeMinutes: updateData.runtime }),
         ...(originalTitle || overview ? {
           mediaItem: {
             update: {
