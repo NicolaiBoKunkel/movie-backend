@@ -1,99 +1,165 @@
 import { Router } from "express";
-import MongoDataSource from "../../db/mongoDataSource";
-import { TVShowMongo } from "../../entities/mongo/TVShowMongo";
+import { getMongoCollection } from "../../db/getMongoCollection";
 
 const router = Router();
 
 function mapMongoTvSummary(doc: any) {
-  const item = doc.mediaItem ?? {};
+  const m = doc.mediaItem ?? {};
+
+  const originalTitle =
+    m.originalTitle ??
+    doc.originalTitle ??
+    "";
+
+  const voteAverage =
+    m.voteAverage ??
+    doc.voteAverage ??
+    0;
+
+  const genres =
+    (Array.isArray(m.genres) && m.genres.length > 0)
+      ? m.genres.map((g: any) => g.name)
+      : (Array.isArray(doc.genres) ? doc.genres.map((g: any) => g.name) : []);
 
   return {
     mediaId: String(doc.mediaId),
-    originalTitle: item.originalTitle ?? "",
-    voteAverage: Number(item.voteAverage ?? 0),
-    genres: Array.isArray(item.genres)
-      ? item.genres.map((g: any) => g.name)
-      : [],
-    posterPath: item.posterPath ?? null,
-    backdropPath: item.backdropPath ?? null,
+    originalTitle,
+    voteAverage: Number(voteAverage),
+    genres,
+    posterPath: m.posterPath ?? doc.posterPath ?? null,
+    backdropPath: m.backdropPath ?? doc.backdropPath ?? null,
   };
 }
 
 function mapMongoTvShow(doc: any) {
   const m = doc.mediaItem ?? {};
-  const tv = m.tvShow ?? {};
 
-  const genres = Array.isArray(m.genres)
-    ? m.genres.map((g: any) => g.name)
-    : [];
+  const newTv = m.tvShow ?? {};
 
-  const seasonsSource = tv.seasons ?? doc.seasons ?? [];
-  const seasons = seasonsSource.map((s: any) => ({
-    seasonNumber: Number(s.seasonNumber ?? s.season_number ?? 0),
-    name: s.name ?? null,
-    airDate: s.airDate ?? s.air_date ?? null,
-    episodeCount: Number(s.episodeCount ?? s.episode_count ?? 0),
-    posterPath: s.posterPath ?? s.poster_path ?? null,
-  }));
+  const oldTv = doc.tvShow ?? {};
 
-  const companies = Array.isArray(m.companies)
-    ? m.companies.map((c: any) => ({
-        companyId: String(c.companyId),
-        name: c.name ?? "",
-        role: c.role ?? null,
-      }))
-    : [];
+  const tv = Object.keys(newTv).length > 0 ? newTv : oldTv;
 
-  const cast = Array.isArray(m.cast)
-    ? m.cast.map((c: any) => ({
-        personId: String(c.personId),
-        name: c.name ?? "",
-        characterName: c.characterName ?? null,
-        castOrder: c.castOrder != null ? Number(c.castOrder) : null,
-      }))
-    : [];
+  const originalTitle =
+    m.originalTitle ??
+    doc.originalTitle ??
+    "";
 
-  const crew = Array.isArray(m.crew)
-    ? m.crew.map((w: any) => ({
-        personId: String(w.personId),
-        name: w.name ?? "",
-        department: w.department ?? null,
-        jobTitle: w.jobTitle ?? null,
-      }))
-    : [];
+  const overview =
+    m.overview ??
+    doc.overview ??
+    null;
+
+  const originalLanguage =
+    m.originalLanguage ??
+    doc.originalLanguage ??
+    "";
+
+  const status =
+    m.status ??
+    doc.status ??
+    null;
+
+  const popularity =
+    m.popularity ??
+    doc.popularity ??
+    null;
+
+  const voteAverage =
+    m.voteAverage ??
+    doc.voteAverage ??
+    0;
+
+  const voteCount =
+    m.voteCount ??
+    doc.voteCount ??
+    null;
+
+  const posterPath =
+    m.posterPath ??
+    doc.posterPath ??
+    null;
+
+  const backdropPath =
+    m.backdropPath ??
+    doc.backdropPath ??
+    null;
+
+  const homepageUrl =
+    m.homepageUrl ??
+    doc.homepageUrl ??
+    null;
+
+  const genres =
+    (Array.isArray(m.genres) && m.genres.length > 0)
+      ? m.genres.map((g: any) => g.name)
+      : (Array.isArray(doc.genres)
+          ? doc.genres.map((g: any) => g.name)
+          : []);
+
+  const companies =
+    (Array.isArray(m.companies) && m.companies.length > 0)
+      ? m.companies
+      : (doc.companies ?? []);
+
+  const cast =
+    (Array.isArray(m.cast) && m.cast.length > 0)
+      ? m.cast
+      : (doc.cast ?? []);
+
+  const crew =
+    (Array.isArray(m.crew) && m.crew.length > 0)
+      ? m.crew
+      : (doc.crew ?? []);
+
+  const seasons =
+    (Array.isArray(tv.seasons) ? tv.seasons : []).map((s: any) => ({
+      seasonId: String(s.seasonId ?? ""),
+      seasonNumber: Number(s.seasonNumber ?? 0),
+      name: s.name ?? null,
+      airDate: s.airDate ?? null,
+      episodeCount: Number(s.episodeCount ?? 0),
+      posterPath: s.posterPath ?? null,
+      episodes: Array.isArray(s.episodes)
+        ? s.episodes.map((e: any) => ({
+            episodeId: String(e.episodeId ?? ""),
+            episodeNumber: Number(e.episodeNumber ?? 0),
+            name: e.name ?? null,
+            airDate: e.airDate ?? null,
+            runtimeMinutes: e.runtimeMinutes ?? null,
+            overview: e.overview ?? null,
+            stillPath: e.stillPath ?? null,
+          }))
+        : [],
+    }));
 
   return {
     mediaId: String(doc.mediaId),
-    tmdbId: String(m.tmdbId),
+    tmdbId: m.tmdbId ?? doc.tmdbId ?? "",
     mediaType: "tv",
 
-    originalTitle: m.originalTitle ?? "",
-    overview: m.overview ?? null,
-    originalLanguage: m.originalLanguage ?? "",
-    status: m.status ?? null,
+    originalTitle,
+    overview,
+    originalLanguage,
+    status,
 
-    popularity: m.popularity != null ? Number(m.popularity) : null,
-    voteAverage: Number(m.voteAverage ?? 0),
-    voteCount: m.voteCount != null ? Number(m.voteCount) : null,
+    popularity,
+    voteAverage: Number(voteAverage),
+    voteCount,
 
-    firstAirDate: tv.firstAirDate ?? doc.firstAirDate ?? null,
-    lastAirDate: tv.lastAirDate ?? doc.lastAirDate ?? null,
+    firstAirDate: tv.firstAirDate ?? null,
+    lastAirDate: tv.lastAirDate ?? null,
+    inProduction: Boolean(tv.inProduction),
+    numberOfSeasons: tv.numberOfSeasons ?? seasons.length,
+    numberOfEpisodes: tv.numberOfEpisodes ?? null,
+    showType: tv.showType ?? null,
 
-    inProduction: Boolean(tv.inProduction ?? doc.inProduction),
-    numberOfSeasons:
-      tv.numberOfSeasons ?? doc.numberOfSeasons ?? seasons.length ?? null,
-    numberOfEpisodes:
-      tv.numberOfEpisodes ?? doc.numberOfEpisodes ?? null,
-
-    showType: tv.showType ?? doc.showType ?? null,
-
-    posterPath: m.posterPath ?? null,
-    backdropPath: m.backdropPath ?? null,
-    homepageUrl: m.homepageUrl ?? null,
+    posterPath,
+    backdropPath,
+    homepageUrl,
 
     genres,
     seasons,
-
     companies,
     cast,
     crew,
@@ -102,30 +168,31 @@ function mapMongoTvShow(doc: any) {
 
 router.get("/", async (req, res) => {
   try {
-    const tvRepo = MongoDataSource.getMongoRepository(TVShowMongo);
-
+    const collection = getMongoCollection("tvshow_full_example");
     const search = (req.query.search as string)?.trim() ?? "";
     const limit = Math.min(Number(req.query.limit) || 25, 100);
 
     let docs;
 
     if (search.length > 0) {
-      docs = await tvRepo.find({
-        where: {
+      docs = await collection
+        .find({
           $or: [
             { "mediaItem.originalTitle": { $regex: search, $options: "i" } },
             { "mediaItem.overview": { $regex: search, $options: "i" } },
+            { originalTitle: { $regex: search, $options: "i" } },
+            { overview: { $regex: search, $options: "i" } },
           ],
-        },
-        take: limit,
-      });
+        })
+        .limit(limit)
+        .toArray();
     } else {
-      docs = await tvRepo.find({ take: limit });
+      docs = await collection.find({}).limit(limit).toArray();
     }
 
     res.json(docs.map(mapMongoTvSummary));
   } catch (err) {
-    console.error("Mongo GET /tv error:", err);
+    console.error("Mongo GET /mongo/tv error:", err);
     res.status(500).json({ error: "MongoDB query failed" });
   }
 });
@@ -134,15 +201,27 @@ router.get("/:mediaId", async (req, res) => {
   const { mediaId } = req.params;
 
   try {
-    const tvRepo = MongoDataSource.getMongoRepository(TVShowMongo);
-    const doc = await tvRepo.findOne({ where: { mediaId } });
+    const collection = getMongoCollection("tvshow_full_example");
+
+    const doc = await collection.findOne({ mediaId });
 
     if (!doc) return res.status(404).json({ error: "TV show not found" });
 
     res.json(mapMongoTvShow(doc));
   } catch (err) {
-    console.error("Mongo GET /tv/:id error:", err);
+    console.error("Mongo GET /mongo/tv/:id error:", err);
     res.status(500).json({ error: "MongoDB lookup failed" });
+  }
+});
+
+router.get("/debug/raw-first", async (req, res) => {
+  try {
+    const collection = getMongoCollection("tvshow_full_example");
+    const doc = await collection.findOne({});
+    res.json(doc);
+  } catch (err) {
+    console.error("Mongo GET /mongo/tv/debug/raw-first error:", err);
+    res.status(500).json({ error: "Failed to read raw TV document" });
   }
 });
 

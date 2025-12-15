@@ -90,7 +90,6 @@ export default function TvShowDetailClient({ show }: Props) {
       }}
       data-cy="tv-detail-page"
     >
-      {/* dark overlay for readability */}
       {backdropUrl && (
         <div className="absolute inset-0 bg-black/60 pointer-events-none" />
       )}
@@ -103,17 +102,17 @@ export default function TvShowDetailClient({ show }: Props) {
         {/* MAIN CARD */}
         <div className="flex flex-col md:flex-row bg-white/95 shadow-2xl rounded-xl overflow-hidden border border-gray-200">
           {/* Poster */}
-            <div className="relative w-full md:w-1/3 bg-gray-200 flex items-center justify-center p-4">
-              {show.posterPath && (
-                <Image
-                  src={`https://image.tmdb.org/t/p/w500${show.posterPath}`}
-                  alt={show.originalTitle}
-                  width={500}
-                  height={750}
-                  className="object-contain rounded-lg shadow-md"
-                />
-              )}
-            </div>
+          <div className="relative w-full md:w-1/3 bg-gray-200 flex items-center justify-center p-4">
+            {show.posterPath && (
+              <Image
+                src={`https://image.tmdb.org/t/p/w500${show.posterPath}`}
+                alt={show.originalTitle}
+                width={500}
+                height={750}
+                className="object-contain rounded-lg shadow-md"
+              />
+            )}
+          </div>
 
           {/* TEXT PANEL */}
           <div className="p-6 md:p-8 space-y-4 flex-1">
@@ -130,6 +129,7 @@ export default function TvShowDetailClient({ show }: Props) {
                   href={show.homepageUrl}
                   target="_blank"
                   rel="noreferrer"
+                  data-cy="tv-detail-homepage"
                   className="
                     hidden sm:inline-flex
                     items-center justify-center
@@ -214,7 +214,10 @@ export default function TvShowDetailClient({ show }: Props) {
 
             {/* Companies */}
             {show.companies.length > 0 && (
-              <div className="pt-2 border-t border-gray-200 mt-2">
+              <div
+                className="pt-2 border-t border-gray-200 mt-2"
+                data-cy="tv-detail-companies-section"
+              >
                 <h3 className="text-sm font-semibold text-gray-900 mb-1">
                   Companies
                 </h3>
@@ -243,7 +246,7 @@ export default function TvShowDetailClient({ show }: Props) {
         {show.seasons.length > 0 && (
           <section
             className="bg-white/95 mt-8 p-6 md:p-7 rounded-xl shadow-xl border border-gray-200"
-            data-cy="tvshow-detail-seasons-section"
+            data-cy="tv-detail-seasons-section"
           >
             <h2 className="text-2xl font-bold mb-4 text-gray-900">
               📺 Seasons
@@ -288,7 +291,7 @@ export default function TvShowDetailClient({ show }: Props) {
           {/* CAST */}
           <section
             className="bg-white/95 p-6 rounded-xl shadow-xl border border-gray-200"
-            data-cy="tvshow-detail-cast-section"
+            data-cy="tv-detail-cast-section"
           >
             <h2 className="text-2xl font-bold mb-4 text-gray-900">🎭 Cast</h2>
 
@@ -313,14 +316,17 @@ export default function TvShowDetailClient({ show }: Props) {
           {/* CREW */}
           <section
             className="bg-white/95 p-6 rounded-xl shadow-xl border border-gray-200"
-            data-cy="tvshow-detail-crew-section"
+            data-cy="tv-detail-crew-section"
           >
             <h2 className="text-2xl font-bold mb-4 text-gray-900">🎬 Crew</h2>
 
             {show.crew.length > 0 ? (
               <ul className="space-y-2 text-sm text-gray-900">
-                {show.crew.slice(0, 20).map((c) => (
-                  <li key={c.personId} className="flex justify-between gap-3">
+                {show.crew.slice(0, 20).map((c, index) => (
+                  <li
+                    key={`${c.personId}-${index}`}
+                    className="flex justify-between gap-3"
+                  >
                     <span className="font-semibold">{c.name}</span>
                     <span className="text-gray-800">
                       {c.department && `${c.department} · `}{" "}

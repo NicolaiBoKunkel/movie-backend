@@ -1,18 +1,11 @@
-describe("SQL TV Shows Flow – Dudley the Dragon", () => {
-
+describe("SQL TV Shows Flow - Stranger Things", () => {
   it("Loads TV shows, opens Stranger Things, and verifies details", () => {
-
-    // 1. Visit homepage
 
     cy.visit("http://localhost:3000/");
 
-    // Click the TV shows button
     cy.get('[data-cy="go-to-tv-btn"]')
       .should("be.visible")
       .click();
-
-
-    // 2. Verify we are on the TV shows page + page 1
 
     cy.url().should("include", "/tvshows");
     cy.get('[data-cy="tvshows-page-title"]')
@@ -21,25 +14,13 @@ describe("SQL TV Shows Flow – Dudley the Dragon", () => {
     cy.get('[data-cy="tvshows-current-page"]')
       .should("contain", "Page 1");
 
-
-    // 3. TV Show cards should load
-
     cy.get('[data-cy="tvshow-card"]').should("have.length.greaterThan", 0);
-
-
-    // 4. Find and click “Stranger Things”
 
     cy.get('[data-cy="tvshow-card-title"]')
       .contains("Stranger Things")
       .click();
 
-
-    // 5. Verify detail page elements
-
     cy.get('[data-cy="tv-detail-page"]').should("exist");
-
-
-    // 6. Core details
 
     cy.get('[data-cy="tv-detail-title"]')
       .should("contain", "Stranger Things");
@@ -51,6 +32,9 @@ describe("SQL TV Shows Flow – Dudley the Dragon", () => {
 
     cy.get('[data-cy="tv-detail-showtype"]')
       .should("contain", "Scripted");
+
+    cy.get('[data-cy="tv-detail-status"]')
+      .should("contain", "Returning Series");
 
     cy.get('[data-cy="tv-detail-inproduction"]')
       .should("contain", "Yes");
@@ -68,18 +52,40 @@ describe("SQL TV Shows Flow – Dudley the Dragon", () => {
       .should("contain", "42");
 
     cy.get('[data-cy="tv-detail-rating"]')
-      .should("contain", "8.6");
+      .should("contain", "8.6")
+      .and("contain", "19355");
 
     cy.get('[data-cy="tv-detail-language"]')
       .should("contain", "EN");
 
-
-    // 7. Page should not crash on missing genres, cast, or companies
-
     cy.get('[data-cy="tv-detail-genres"]')
-      .should("exist")
-      .should("contain", "Mystery, Action & Adventure, Sci-Fi & Fantasy");
+      .should("contain", "Mystery")
+      .and("contain", "Action & Adventure")
+      .and("contain", "Sci-Fi & Fantasy");
 
+    cy.get('[data-cy="tv-detail-homepage"]')
+      .should("be.visible")
+      .and("contain", "Official Site")
+      .and("have.attr", "href");
+
+    cy.get('[data-cy="tv-detail-companies-section"]').within(() => {
+      cy.contains("21 Laps Entertainment").should("exist");
+      cy.contains("Netflix").should("exist");
+    });
+
+    cy.get('[data-cy="tv-detail-seasons-section"]').should("exist");
+
+    cy.get('[data-cy="tv-detail-cast-section"]').within(() => {
+      [
+        "Winona Ryder",
+        "David Harbour",
+        "Millie Bobby Brown",
+        "Finn Wolfhard",
+      ].forEach((actor) => {
+        cy.contains(actor).should("exist");
+      });
+    });
+
+    cy.get('[data-cy="tv-detail-crew-section"]').should("exist");
   });
-
 });

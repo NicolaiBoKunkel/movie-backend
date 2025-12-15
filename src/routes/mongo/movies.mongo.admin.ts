@@ -1,27 +1,13 @@
 import { Router } from "express";
-import MongoDataSource from "../../db/mongoDataSource";
-import { MovieMongo } from "../../entities/mongo/MovieMongo";
 import { z } from "zod";
+import { getMongoCollection } from "../../db/getMongoCollection";
 import { requireAuth, requireRole } from "../../middleware/auth";
 
 const router = Router();
 
-function deepMerge(target: any, source: any) {
-  for (const key of Object.keys(source)) {
-    const value = source[key];
-
-    if (value && typeof value === "object" && !Array.isArray(value)) {
-      if (!target[key]) target[key] = {};
-      deepMerge(target[key], value);
-    } else {
-      target[key] = value;
-    }
-  }
-  return target;
-}
-
 const createMovieSchema = z.object({
   mediaId: z.string().min(1),
+
   releaseDate: z.string().optional(),
   budget: z.number(),
   revenue: z.number(),
@@ -40,11 +26,13 @@ const createMovieSchema = z.object({
     popularity: z.number(),
     voteAverage: z.number(),
     voteCount: z.number(),
-    posterPath: z.string().optional(),
-    backdropPath: z.string().optional(),
-    homepageUrl: z.string().optional(),
+    posterPath: z.string().nullable().optional(),
+    backdropPath: z.string().nullable().optional(),
+    homepageUrl: z.string().nullable().optional(),
+
     movie: z.any().optional(),
     tvShow: z.any().optional(),
+
     genres: z.array(z.any()).default([]),
     companies: z.array(z.any()).default([]),
     cast: z.array(z.any()).default([]),
@@ -52,41 +40,41 @@ const createMovieSchema = z.object({
   }),
 });
 
-const updateMovieSchema = z.object({
-  mediaId: z.string().optional(),
-  releaseDate: z.string().optional(),
-  budget: z.number().optional(),
-  revenue: z.number().optional(),
-  adultFlag: z.boolean().optional(),
-  runtimeMinutes: z.number().optional(),
-  collectionId: z.string().optional(),
-  collection: z.any().optional(),
+const updateMovieSchema = createMovieSchema.partial();
 
-  mediaItem: z
-    .object({
-      tmdbId: z.string().optional(),
-      mediaType: z.string().optional(),
-      originalTitle: z.string().optional(),
-      overview: z.string().optional(),
-      originalLanguage: z.string().optional(),
-      status: z.string().optional(),
-      popularity: z.number().optional(),
-      voteAverage: z.number().optional(),
-      voteCount: z.number().optional(),
-      posterPath: z.string().optional(),
-      backdropPath: z.string().optional(),
-      homepageUrl: z.string().optional(),
-      movie: z.any().optional(),
-      tvShow: z.any().optional(),
-      genres: z.array(z.any()).optional(),
-      companies: z.array(z.any()).optional(),
-      cast: z.array(z.any()).optional(),
-      crew: z.array(z.any()).optional(),
-    })
-    .optional(),
-});
+function normalizeMovieFields(data: any) {
+  if (!data.mediaItem) data.mediaItem = {};
+  if (!data.mediaItem.movie) data.mediaItem.movie = {};
 
-// POST /mongo/movies
+  const mv = data.mediaItem.movie;
+
+  if (data.releaseDate !== undefined)
+    mv.releaseDate = data.releaseDate ? new Date(data.releaseDate) : null;
+
+  if (data.budget !== undefined) mv.budget = data.budget;
+  if (data.revenue !== undefined) mv.revenue = data.revenue;
+  if (data.adultFlag !== undefined) mv.adultFlag = data.adultFlag;
+  if (data.runtimeMinutes !== undefined) mv.runtimeMinutes = data.runtimeMinutes;
+  if (data.collectionId !== undefined) mv.collectionId = data.collectionId ?? null;
+  if (data.collection !== undefined) mv.collection = data.collection ?? null;
+
+  return data;
+}
+
+function deepMerge(target: any, source: any) {
+  for (const key of Object.keys(source)) {
+    const value = source[key];
+
+    if (value && typeof value === "object" && !Array.isArray(value)) {
+      if (!target[key]) target[key] = {};
+      deepMerge(target[key], value);
+    } else {
+      target[key] = value;
+    }
+  }
+  return target;
+}
+
 router.post("/", requireAuth, requireRole("admin"), async (req, res) => {
   const parsed = createMovieSchema.safeParse(req.body);
 
@@ -97,15 +85,14 @@ router.post("/", requireAuth, requireRole("admin"), async (req, res) => {
     });
   }
 
-  const data = parsed.data;
+  let data = parsed.data;
+
+  data = normalizeMovieFields(data);
 
   try {
-    const movieRepo = MongoDataSource.getMongoRepository(MovieMongo);
+    const collection = getMongoCollection("movie_full_example");
 
-    const existing = await movieRepo.findOne({
-      where: { mediaId: data.mediaId },
-    });
-
+    const existing = await collection.findOne({ mediaId: data.mediaId });
     if (existing) {
       return res.status(409).json({
         error: "Movie already exists",
@@ -113,21 +100,16 @@ router.post("/", requireAuth, requireRole("admin"), async (req, res) => {
       });
     }
 
-    const movieToInsert: any = {
-      ...data,
-      releaseDate: data.releaseDate ? new Date(data.releaseDate) : undefined,
-      mediaItem: {
-        ...data.mediaItem,
-        mediaType: "movie",
-      },
-    };
+    delete data.mediaItem.tvShow;
 
-    const result = await movieRepo.insert(movieToInsert);
+    data.mediaItem.mediaType = "movie";
+
+    const result = await collection.insertOne(data);
 
     res.status(201).json({
       created: true,
       mediaId: data.mediaId,
-      insertedId: result.identifiers[0]?._id,
+      insertedId: result.insertedId,
     });
   } catch (err) {
     console.error("Mongo CREATE movie error:", err);
@@ -135,80 +117,57 @@ router.post("/", requireAuth, requireRole("admin"), async (req, res) => {
   }
 });
 
-// PUT /mongo/movies/:mediaId
-router.put(
-  "/:mediaId",
-  requireAuth,
-  requireRole("admin"),
-  async (req, res) => {
-    const parsed = updateMovieSchema.safeParse(req.body);
+router.put("/:mediaId", requireAuth, requireRole("admin"), async (req, res) => {
+  const parsed = updateMovieSchema.safeParse(req.body);
 
-    if (!parsed.success) {
-      return res.status(400).json({
-        error: "Validation failed",
-        issues: parsed.error.issues,
-      });
-    }
-
-    const data = parsed.data;
-
-    try {
-      const movieRepo = MongoDataSource.getMongoRepository(MovieMongo);
-
-      const existing = await movieRepo.findOne({
-        where: { mediaId: req.params.mediaId },
-      });
-
-      if (!existing) {
-        return res.status(404).json({ error: "Movie not found" });
-      }
-
-      const updatedMovie: any = deepMerge(existing, data);
-
-      if (data.releaseDate) {
-        updatedMovie.releaseDate = new Date(data.releaseDate);
-      }
-
-      if (updatedMovie.mediaItem) {
-        updatedMovie.mediaItem.mediaType = "movie";
-      }
-
-      await movieRepo.save(updatedMovie);
-
-      res.json({
-        updated: true,
-        mediaId: existing.mediaId,
-      });
-    } catch (err) {
-      console.error("Mongo UPDATE movie error:", err);
-      res.status(500).json({ error: "Failed to update movie" });
-    }
+  if (!parsed.success) {
+    return res.status(400).json({
+      error: "Validation failed",
+      issues: parsed.error.issues,
+    });
   }
-);
 
-// DELETE /mongo/movies/:mediaId
-router.delete(
-  "/:mediaId",
-  requireAuth,
-  requireRole("admin"),
-  async (req, res) => {
-    try {
-      const movieRepo = MongoDataSource.getMongoRepository(MovieMongo);
+  let data = parsed.data;
 
-      const result = await movieRepo.deleteOne({
-        mediaId: req.params.mediaId,
-      });
+  data = normalizeMovieFields(data);
 
-      if (result?.deletedCount === 0) {
-        return res.status(404).json({ error: "Movie not found" });
-      }
+  try {
+    const collection = getMongoCollection("movie_full_example");
 
-      res.json({ deleted: true, mediaId: req.params.mediaId });
-    } catch (err) {
-      console.error("Mongo DELETE movie error:", err);
-      res.status(500).json({ error: "Failed to delete movie" });
+    const existing = await collection.findOne({ mediaId: req.params.mediaId });
+    if (!existing) {
+      return res.status(404).json({ error: "Movie not found" });
     }
+
+    const updatedMovie = deepMerge(existing, data);
+
+    updatedMovie.mediaItem.mediaType = "movie";
+    delete updatedMovie.mediaItem.tvShow;
+
+    await collection.replaceOne({ mediaId: req.params.mediaId }, updatedMovie);
+
+    res.json({ updated: true, mediaId: req.params.mediaId });
+  } catch (err) {
+    console.error("Mongo UPDATE movie error:", err);
+    res.status(500).json({ error: "Failed to update movie" });
   }
-);
+});
+
+router.delete("/:mediaId", requireAuth, requireRole("admin"), async (req, res) => {
+  try {
+    const collection = getMongoCollection("movie_full_example");
+
+    const result = await collection.deleteOne({ mediaId: req.params.mediaId });
+
+    if (!result || result.deletedCount === 0) {
+      return res.status(404).json({ error: "Movie not found" });
+    }
+
+    res.json({ deleted: true, mediaId: req.params.mediaId });
+  } catch (err) {
+    console.error("Mongo DELETE movie error:", err);
+    res.status(500).json({ error: "Failed to delete movie" });
+  }
+});
 
 export default router;

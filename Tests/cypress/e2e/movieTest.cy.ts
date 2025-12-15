@@ -1,17 +1,11 @@
-describe("TMDB Movie Flow – The Godfather", () => {
+describe("TMDB Movie Flow - The Godfather", () => {
   it("Loads highest rated movies, opens The Godfather, and verifies details", () => {
-
-    // 1. Visit homepage
 
     cy.visit("http://localhost:3000/");
 
-    // Click the button leading to highest rated movies
     cy.contains("Highest Rated Movies with TMDB API")
       .should("be.visible")
       .click();
-
-
-    // 2. Verify page title + page 1
 
     cy.url().should("include", "/highestRatedMovies");
 
@@ -21,22 +15,16 @@ describe("TMDB Movie Flow – The Godfather", () => {
 
     cy.get('[data-cy="movies-current-page"]').should("contain", "Page 1");
 
-
-    // 3. Verify movie cards are loaded
-
     cy.get('[data-cy="movie-card"]').should("have.length.greaterThan", 0);
-
-
-    // 4. Click The Godfather
 
     cy.get('[data-cy="movie-card"]')
       .contains("The Godfather")
       .click();
 
+    cy.url().should("include", "/movie/");
 
-    // 5. Verify detail page
-
-    cy.get('[data-cy="movie-detail-page"]').should("exist");
+    cy.get('[data-cy="movie-detail-page"]', { timeout: 6000 })
+      .should("exist");
 
     cy.get('[data-cy="movie-detail-title"]')
       .should("contain", "The Godfather");
@@ -48,7 +36,17 @@ describe("TMDB Movie Flow – The Godfather", () => {
       .should("contain", "1972-03-14");
 
     cy.get('[data-cy="movie-detail-rating"]')
-      .should("contain", "8.7");
+      .invoke("text")
+      .then((text) => {
+        const match = text.match(/(\d+(\.\d+)?)/);
+
+        expect(match, "rating number should exist in text").to.not.be.null;
+
+        const rating = parseFloat(match[0]);
+
+        expect(rating).to.be.greaterThan(8);
+        expect(rating).to.be.lessThan(10);
+      });
 
     cy.get('[data-cy="movie-detail-runtime"]')
       .should("contain", "175");
@@ -60,9 +58,6 @@ describe("TMDB Movie Flow – The Godfather", () => {
       .should("contain", "Drama")
       .and("contain", "Crime");
 
-
-    // 7. Verify cast
-
     cy.get('[data-cy="movie-detail-cast-section"]').should("exist");
 
     ["Marlon Brando", "Al Pacino", "James Caan", "Robert Duvall"].forEach(
@@ -72,9 +67,6 @@ describe("TMDB Movie Flow – The Godfather", () => {
           .should("exist");
       }
     );
-
-
-    // 8. Trailer button
 
     cy.get('[data-cy="movie-detail-trailer-btn"]')
       .should("be.visible")

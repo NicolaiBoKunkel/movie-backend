@@ -25,13 +25,14 @@ export default function TvShowsPageClient() {
   const router = useRouter();
 
   const currentPage = Number(searchParams.get("page") || "1");
+  const searchQuery = searchParams.get("search") || "";
   const limit = 12;
 
   useEffect(() => {
     const load = async () => {
       setIsLoading(true);
       try {
-        const data = await fetchTvShows(currentPage, limit);
+        const data = await fetchTvShows(currentPage, limit, searchQuery);
         setShows(data);
       } catch (err) {
         console.error("TV Shows fetch error:", err);
@@ -41,10 +42,19 @@ export default function TvShowsPageClient() {
     };
 
     load();
-  }, [currentPage]);
+  }, [currentPage, searchQuery]);
 
   const goToPage = (page: number) => {
-    router.push(`/tvshows?page=${page}`);
+    router.push(`/tvshows?page=${page}&search=${searchQuery}`);
+  };
+
+  const handleSearch = () => {
+    const input = document.querySelector(
+      '[data-cy="tv-search-input"]'
+    ) as HTMLInputElement;
+
+    const value = input?.value || "";
+    router.push(`/tvshows?page=1&search=${value}`);
   };
 
   return (
@@ -52,6 +62,28 @@ export default function TvShowsPageClient() {
       backgroundImage="/home.jpg"
       title={<span data-cy="tvshows-page-title">TV Shows with PostgreSQL</span>}
     >
+      {/* SEARCH BAR */}
+      <div className="flex justify-center mt-4 mb-6 gap-2">
+        <input
+          data-cy="tv-search-input"
+          type="text"
+          placeholder="Search TV shows..."
+          defaultValue={searchQuery}
+          className="border px-3 py-2 rounded w-64 text-black"
+          onKeyDown={(e) => {
+            if (e.key === "Enter") handleSearch();
+          }}
+        />
+
+        <button
+          data-cy="tv-search-btn"
+          onClick={handleSearch}
+          className="bg-teal-700 text-white font-bold px-4 py-2 rounded hover:bg-teal-800"
+        >
+          Search
+        </button>
+      </div>
+
       {isLoading ? (
         <div>Loading...</div>
       ) : (
@@ -63,6 +95,15 @@ export default function TvShowsPageClient() {
             {shows.map((show) => (
               <TvShowCard key={show.mediaId} show={show} />
             ))}
+
+            {shows.length === 0 && (
+              <div
+                data-cy="tvshows-empty"
+                className="text-center col-span-full text-white text-xl"
+              >
+                No TV shows found.
+              </div>
+            )}
           </div>
 
           <div className="flex justify-center items-center gap-4 mt-6">

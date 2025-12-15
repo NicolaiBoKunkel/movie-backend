@@ -1,0 +1,105 @@
+# Test Commands Reference
+
+## Cypress E2E Tests
+cd Tests
+npm run cypress
+
+## Cypress E2E Tests (Headless)
+cd Tests
+npm run cypress:run
+
+## Unit Tests (Jest)
+npm run test:unit
+
+## Unit Tests with Coverage
+npm run test:unit:coverage
+
+## Integration Tests (Jest)
+npm run test:integration
+
+## Integration Tests with Coverage
+npm run test:integration:coverage
+
+## All Tests
+npm test
+
+## All Tests with Coverage
+npm run test:coverage
+
+## Watch Mode - Unit Tests
+npm run test:unit:watch
+
+## Watch Mode - All Tests
+npm run test:watch
+
+## Stress Tests (JMeter)
+# Open Tests/Stress_test/jp@gc - Ultimate Thread Group.jmx in JMeter
+
+
+### PostgreSQL API Tests
+run in root
+newman run Tests/postman/Movie-Backend-API.postman_collection.json -e Tests/postman/Movie-Backend.postman_environment.json --timeout-request 10000
+
+### MongoDB API Tests
+newman run Tests/postman/Movie-Backend-MongoDB-API.postman_collection.json -e Tests/postman/Movie-Backend.postman_environment.json --timeout-request 10000
+
+### Neo4j API Tests
+newman run Tests/postman/Movie-Backend-Neo4j-API.postman_collection.json -e Tests/postman/Movie-Backend.postman_environment.json --timeout-request 10000
+
+
+
+
+
+## Database Commands
+
+### Generate Prisma Client
+npm run db:generate
+
+### Push Schema to Database
+npm run db:push
+
+### Run Migrations
+npm run db:migrate
+
+### Deploy Migrations (Production)
+npm run db:migrate:deploy
+
+### Seed Database
+npm run db:seed
+
+### Seed from JSON
+npm run db:seed:json
+
+### Reset Database
+npm run db:reset
+
+### Open Prisma Studio
+npm run db:studio
+
+## Development Commands
+
+### Start Development Server
+npm run dev
+
+### Build Project
+npm run build
+
+### Start Production Server
+npm start
+
+### Lint Code
+npm run lint
+
+## Docker Commands
+
+### Start All Services
+docker compose up -d
+
+### Stop All Services
+docker compose down
+
+### View Logs
+docker compose logs -f
+
+### Rebuild and Start
+docker compose up -d --build
