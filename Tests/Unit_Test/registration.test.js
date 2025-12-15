@@ -401,8 +401,6 @@ describe('Registration Unit Tests', () => {
       // Assert
       expect(response.status).toBe(400);
       expect(response.body).toHaveProperty('error', 'passwords do not match');
-
-      // test comments
     });
   });
 });
