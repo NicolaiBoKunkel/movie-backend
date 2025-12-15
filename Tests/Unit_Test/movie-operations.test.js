@@ -84,7 +84,7 @@ app.get('/movies/:id', async (req, res) => {
       return res.status(404).json({ error: 'Movie not found' });
     }
 
-    res.status(404).json({ movie });
+    res.status(200).json({ movie });
 
   } catch (error) {
     res.status(500).json({ error: 'Internal server error' });
