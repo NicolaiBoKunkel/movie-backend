@@ -2,7 +2,7 @@ name: Integration Tests
 
 on:
   push:
-    branches: [ main, master, Mikkel_branch_1, ]
+    branches: [ main, master, Mikkel_branch_1, Jeffrey_branch_1 ]
   pull_request:
     branches: [ main, master ]
 
