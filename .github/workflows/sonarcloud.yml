@@ -4,11 +4,9 @@ on:
   push:
     branches:
       - main
-      - Nicolai_sonar
   pull_request:
     branches:
       - main
-      - Nicolai_sonar
 
 jobs:
   sonarcloud:
