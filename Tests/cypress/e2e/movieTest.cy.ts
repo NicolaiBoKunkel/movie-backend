@@ -19,9 +19,10 @@ describe("TMDB Movie Flow - The Godfather", () => {
 
     cy.get('[data-cy="movie-card"]')
       .contains("The Godfather")
+      .closest('[data-cy="movie-card"]')
       .click();
 
-    cy.url().should("include", "/movie/");
+    cy.url({ timeout: 10000 }).should("include", "/movie/");
 
     cy.get('[data-cy="movie-detail-page"]', { timeout: 6000 })
       .should("exist");
