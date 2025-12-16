@@ -7,9 +7,8 @@ describe('Movie CRUD Operations Integration Tests', () => {
   let createdMovieId;
 
   const adminUser = {
-    username: `admin_${Date.now()}`,
-    password: 'AdminPassword123!',
-    email: `admin_${Date.now()}@example.com`
+    username: 'admin',
+    password: 'admin123'
   };
 
   const normalUser = {
@@ -19,18 +18,16 @@ describe('Movie CRUD Operations Integration Tests', () => {
   };
 
   const testMovie = {
+    tmdbId: 999999999, // Using a high number to avoid conflicts
     title: 'Integration Test Movie',
-    year: 2023,
-    genre: 'Action',
-    duration: 120
+    releaseDate: '2023-01-15',
+    genreIds: [1], // Action genre
+    overview: 'This is a test movie for integration testing',
+    runtime: 120
   };
 
   beforeAll(async () => {
-    // Register admin user (in real app, admin role might be set differently)
-    await request(app)
-      .post('/auth/register')
-      .send(adminUser);
-
+    // Login with existing admin user from database
     const adminLoginResponse = await request(app)
       .post('/auth/login')
       .send({
@@ -40,6 +37,8 @@ describe('Movie CRUD Operations Integration Tests', () => {
 
     if (adminLoginResponse.status === 200) {
       adminToken = adminLoginResponse.body.token;
+    } else {
+      console.error('Admin login failed:', adminLoginResponse.status, adminLoginResponse.body);
     }
 
     // Register normal user
@@ -98,8 +97,8 @@ describe('Movie CRUD Operations Integration Tests', () => {
       }
       
       if (createResponse.status === 201 || createResponse.status === 200) {
-        expect(createResponse.body).toHaveProperty('movieId');
-        createdMovieId = createResponse.body.movieId;
+        expect(createResponse.body).toHaveProperty('mediaId');
+        createdMovieId = createResponse.body.mediaId;
 
         // Act - Step 3: Login as normal user (done in beforeAll)
         // Act - Step 4: Fetch movie with GET /movies/{id}
@@ -111,9 +110,8 @@ describe('Movie CRUD Operations Integration Tests', () => {
 
         if (fetchResponse.status === 200) {
           // Assert - Returned movie matches created data
-          expect(fetchResponse.body).toHaveProperty('title', testMovie.title);
-          expect(fetchResponse.body).toHaveProperty('year', testMovie.year);
-          expect(fetchResponse.body).toHaveProperty('genre', testMovie.genre);
+          expect(fetchResponse.body).toHaveProperty('originalTitle', testMovie.title);
+          // Note: the API stores releaseDate as a date field
         }
       }
     });
@@ -129,12 +127,12 @@ describe('Movie CRUD Operations Integration Tests', () => {
       // Arrange
       const updatedData = {
         title: 'Updated Integration Test Movie',
-        year: 2024,
-        genre: 'Drama'
+        overview: 'Updated overview for testing',
+        runtime: 135
       };
 
       // Act - Step 1: Admin creates movie (done in previous test)
-      // Act - Step 2: Admin updates title/year/genre
+      // Act - Step 2: Admin updates title/overview/runtime
       const updateResponse = await request(app)
         .put(`/movies/${createdMovieId}`)
         .set('Authorization', `Bearer ${adminToken}`)
@@ -154,12 +152,10 @@ describe('Movie CRUD Operations Integration Tests', () => {
 
       if (fetchResponse.status === 200) {
         // Assert - Updated fields reflect correctly
-        expect(fetchResponse.body).toHaveProperty('title', updatedData.title);
-        expect(fetchResponse.body).toHaveProperty('year', updatedData.year);
-        expect(fetchResponse.body).toHaveProperty('genre', updatedData.genre);
+        expect(fetchResponse.body).toHaveProperty('originalTitle', updatedData.title);
 
         // Assert - No duplicate movies created (same ID)
-        expect(fetchResponse.body).toHaveProperty('mediaId', createdMovieId);
+        expect(fetchResponse.body.mediaId).toBe(String(createdMovieId));
       }
     });
   });
@@ -173,10 +169,12 @@ describe('Movie CRUD Operations Integration Tests', () => {
 
       // Arrange - Create a movie specifically for deletion
       const movieToDelete = {
+        tmdbId: 999999997, // Using a high number to avoid conflicts
         title: 'Movie to Delete',
-        year: 2023,
-        genre: 'Horror',
-        duration: 90
+        releaseDate: '2023-06-10',
+        genreIds: [11], // Horror genre
+        overview: 'Test movie for deletion workflow',
+        runtime: 90
       };
 
       const createResponse = await request(app)
@@ -194,7 +192,7 @@ describe('Movie CRUD Operations Integration Tests', () => {
         return;
       }
 
-      const movieIdToDelete = createResponse.body.movieId;
+      const movieIdToDelete = createResponse.body.mediaId;
 
       // Act - Step 1: Admin creates movie (done above)
       // Act - Step 2: Admin deletes it

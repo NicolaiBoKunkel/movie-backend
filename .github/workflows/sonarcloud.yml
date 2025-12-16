@@ -96,8 +96,8 @@ jobs:
           done
           cd ../../..
 
-      - name: Seed minimal CI data
-        run: npm run db:seed:ci
+      - name: Seed database with full data
+        run: npm run db:seed
 
       - name: Wait for services
         run: sleep 5
