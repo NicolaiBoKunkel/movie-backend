@@ -88,7 +88,6 @@ describe('Registration Unit Tests', () => {
         password: 'Secret123',
         confirmPassword: 'Secret123'
       };
-      // random
 
       // Act
       const response = await request(app)
