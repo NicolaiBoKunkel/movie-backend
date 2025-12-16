@@ -40,7 +40,40 @@ const createMovieSchema = z.object({
   }),
 });
 
-const updateMovieSchema = createMovieSchema.partial();
+const updateMovieSchema = z.object({
+  mediaId: z.string().min(1).optional(),
+
+  releaseDate: z.string().optional(),
+  budget: z.number().optional(),
+  revenue: z.number().optional(),
+  adultFlag: z.boolean().optional(),
+  runtimeMinutes: z.number().optional(),
+  collectionId: z.string().optional(),
+  collection: z.any().optional(),
+
+  mediaItem: z.object({
+    tmdbId: z.string().optional(),
+    mediaType: z.string().optional(),
+    originalTitle: z.string().optional(),
+    overview: z.string().optional(),
+    originalLanguage: z.string().optional(),
+    status: z.string().optional(),
+    popularity: z.number().optional(),
+    voteAverage: z.number().optional(),
+    voteCount: z.number().optional(),
+    posterPath: z.string().nullable().optional(),
+    backdropPath: z.string().nullable().optional(),
+    homepageUrl: z.string().nullable().optional(),
+
+    movie: z.any().optional(),
+    tvShow: z.any().optional(),
+
+    genres: z.array(z.any()).optional(),
+    companies: z.array(z.any()).optional(),
+    cast: z.array(z.any()).optional(),
+    crew: z.array(z.any()).optional(),
+  }).optional(),
+}).partial();
 
 function normalizeMovieFields(data: any) {
   if (!data.mediaItem) data.mediaItem = {};

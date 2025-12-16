@@ -56,7 +56,42 @@ const createTVSchema = z.object({
   }),
 });
 
-const updateTVSchema = createTVSchema.partial();
+const updateTVSchema = z.object({
+  mediaId: z.string().min(1).optional(),
+
+  firstAirDate: z.string().optional(),
+  lastAirDate: z.string().optional(),
+
+  inProduction: z.boolean().optional(),
+  numberOfSeasons: z.number().optional(),
+  numberOfEpisodes: z.number().optional(),
+
+  showType: z.string().optional(),
+  seasons: z.array(z.any()).optional(),
+
+  mediaItem: z.object({
+    tmdbId: z.string().optional(),
+    mediaType: z.string().optional(),
+    originalTitle: z.string().optional(),
+    overview: z.string().optional(),
+    originalLanguage: z.string().optional(),
+    status: z.string().optional(),
+    popularity: z.number().optional(),
+    voteAverage: z.number().optional(),
+    voteCount: z.number().optional(),
+    posterPath: z.string().nullable().optional(),
+    backdropPath: z.string().nullable().optional(),
+    homepageUrl: z.string().nullable().optional(),
+
+    movie: z.any().optional(),
+    tvShow: z.any().optional(),
+
+    genres: z.array(z.any()).optional(),
+    companies: z.array(z.any()).optional(),
+    cast: z.array(z.any()).optional(),
+    crew: z.array(z.any()).optional(),
+  }).optional(),
+}).partial();
 
 function normalizeTvFields(data: any) {
   if (!data.mediaItem) data.mediaItem = {};
