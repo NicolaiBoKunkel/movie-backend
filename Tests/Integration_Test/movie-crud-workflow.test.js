@@ -28,37 +28,17 @@ describe('Movie CRUD Operations Integration Tests', () => {
 
   beforeAll(async () => {
     // Login with existing admin user from database
-    let adminLoginResponse = await request(app)
+    const adminLoginResponse = await request(app)
       .post('/auth/login')
       .send({
         username: adminUser.username,
         password: adminUser.password
       });
 
-    // If admin login fails (e.g., in CI), try to register the first user (becomes admin)
-    if (adminLoginResponse.status !== 200) {
-      const registerResponse = await request(app)
-        .post('/auth/register')
-        .send({
-          username: adminUser.username,
-          password: adminUser.password
-        });
-      
-      // Try login again after registration
-      if (registerResponse.status === 201 || registerResponse.status === 200) {
-        adminLoginResponse = await request(app)
-          .post('/auth/login')
-          .send({
-            username: adminUser.username,
-            password: adminUser.password
-          });
-      }
-    }
-
     if (adminLoginResponse.status === 200) {
       adminToken = adminLoginResponse.body.token;
     } else {
-      console.error('Admin login failed with status:', adminLoginResponse.status, adminLoginResponse.body);
+      console.error('Admin login failed:', adminLoginResponse.status, adminLoginResponse.body);
     }
 
     // Register normal user
