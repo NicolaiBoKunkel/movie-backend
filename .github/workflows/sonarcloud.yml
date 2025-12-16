@@ -4,11 +4,9 @@ on:
   push:
     branches:
       - main
-      - Nicolai_sonar
   pull_request:
     branches:
       - main
-      - Nicolai_sonar
 
 jobs:
   sonarcloud:
@@ -98,8 +96,8 @@ jobs:
           done
           cd ../../..
 
-      - name: Seed minimal CI data
-        run: npm run db:seed:ci
+      - name: Seed database with full data
+        run: npm run db:seed
 
       - name: Wait for services
         run: sleep 5
