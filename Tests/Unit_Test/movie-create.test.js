@@ -89,7 +89,7 @@ describe('Create Movie Unit Tests', () => {
   });
 
   describe('MOV-CRT-001 - Successful movie creation (admin)', () => {
-    test('should create movie successfully with valid data', async () => {
+    test('should create movie successfully with valid data', async () => { //EP
       // Arrange
       const validMovieData = {
         title: 'Inception',
@@ -116,7 +116,7 @@ describe('Create Movie Unit Tests', () => {
   });
 
   describe('MOV-CRT-002 - Missing title', () => {
-    test('should return 400 when title is missing', async () => {
+    test('should return 400 when title is missing', async () => { //EP
       // Arrange
       const invalidMovieData = {
         title: '',
@@ -138,7 +138,7 @@ describe('Create Movie Unit Tests', () => {
   });
 
   describe('MOV-CRT-003 - Title too long', () => {
-    test('should return 400 when title is too long', async () => {
+    test('should return 400 when title is too long', async () => { //BVA
       // Arrange
       const invalidMovieData = {
         title: 'A'.repeat(101), // 101 characters
@@ -160,7 +160,7 @@ describe('Create Movie Unit Tests', () => {
   });
 
   describe('MOV-CRT-004 - Year below minimum (1899)', () => {
-    test('should return 400 when year is 1899 or below', async () => {
+    test('should return 400 when year is 1899 or below', async () => { //BVA
       // Arrange
       const invalidMovieData = {
         title: 'Old Movie',
@@ -182,7 +182,7 @@ describe('Create Movie Unit Tests', () => {
   });
 
   describe('MOV-CRT-005 - Year above maximum (future)', () => {
-    test('should return 400 when year is too far in future', async () => {
+    test('should return 400 when year is too far in future', async () => { //BVA
       // Arrange
       const invalidMovieData = {
         title: 'Future Movie',
@@ -204,7 +204,7 @@ describe('Create Movie Unit Tests', () => {
   });
 
   describe('MOV-CRT-006 - Year not integer', () => {
-    test('should return 400 when year is string instead of integer', async () => {
+    test('should return 400 when year is string instead of integer', async () => { //EP
       // Arrange
       const invalidMovieData = {
         title: 'Movie Title',
@@ -226,7 +226,7 @@ describe('Create Movie Unit Tests', () => {
   });
 
   describe('MOV-CRT-007 - Invalid genre', () => {
-    test('should return 400 when genre is not in allowed list', async () => {
+    test('should return 400 when genre is not in allowed list', async () => { //EP
       // Arrange
       const invalidMovieData = {
         title: 'Movie Title',
@@ -248,7 +248,7 @@ describe('Create Movie Unit Tests', () => {
   });
 
   describe('MOV-CRT-008 - Missing genre', () => {
-    test('should return 400 when genre field is missing', async () => {
+    test('should return 400 when genre field is missing', async () => { //EP
       // Arrange
       const invalidMovieData = {
         title: 'Movie Title',
@@ -270,7 +270,7 @@ describe('Create Movie Unit Tests', () => {
   });
 
   describe('MOV-CRT-009 - Optional duration omitted', () => {
-    test('should create movie successfully when duration is omitted', async () => {
+    test('should create movie successfully when duration is omitted', async () => { //EP
       // Arrange
       const validMovieData = {
         title: 'Movie Title',
@@ -301,7 +301,7 @@ describe('Create Movie Unit Tests', () => {
   });
 
   describe('MOV-CRT-010 - Duration below minimum (0)', () => {
-    test('should return 400 when duration is 0 or negative', async () => {
+    test('should return 400 when duration is 0 or negative', async () => { //BVA
       // Arrange
       const invalidMovieData = {
         title: 'Movie Title',

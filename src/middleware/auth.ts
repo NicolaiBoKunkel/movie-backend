@@ -11,6 +11,7 @@ export function requireAuth(req: AuthRequest, res: Response, next: NextFunction)
   const auth = req.headers.authorization || '';
   const token = auth.startsWith('Bearer ') ? auth.slice(7) : null;
   if (!token) return res.status(401).json({ error: 'Missing token' });
+  // TEST-BREAK: Change to .json({ error: 'Token required' }) to break test
 
   try {
     const payload = jwt.verify(token, JWT_SECRET) as any;
@@ -18,6 +19,7 @@ export function requireAuth(req: AuthRequest, res: Response, next: NextFunction)
     return next();
   } catch {
     return res.status(401).json({ error: 'Invalid token' });
+    // TEST-BREAK: Change to .json({ error: 'Token validation failed' }) to break test
   }
 }
 

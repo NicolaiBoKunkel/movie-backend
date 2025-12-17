@@ -66,7 +66,7 @@ describe('Login Unit Tests', () => {
   });
 
   describe('LOG-001 - Successful login', () => {
-    test('should login user successfully with valid credentials', async () => {
+    test('should login user successfully with valid credentials', async () => { //EP
       // Arrange
       const validCredentials = {
         email: 'user@mail.com',
@@ -89,7 +89,7 @@ describe('Login Unit Tests', () => {
   });
 
   describe('LOG-002 - Incorrect password', () => {
-    test('should return 401 when password is incorrect', async () => {
+    test('should return 401 when password is incorrect', async () => { //EP
       // Arrange
       mockAuthService.validatePassword.mockResolvedValue(false);
       const invalidCredentials = {
@@ -202,6 +202,40 @@ describe('Login Unit Tests', () => {
       expect(response.status).toBe(200);
       expect(response.body).toHaveProperty('token', 'jwt-token-123');
       expect(mockAuthService.findUserByEmail).toHaveBeenCalledWith('user@mail.com');
+    });
+  });
+});
+
+// ============================================
+// REAL APPLICATION CODE TESTS
+// ============================================
+const authRouter = require('../../src/routes/auth/auth');
+const realApp = express();
+realApp.use(express.json());
+realApp.use('/auth', authRouter.default || authRouter);
+
+describe('REAL Login Tests - Testing Actual Application Code', () => {
+  afterAll(async () => {
+    await new Promise(resolve => setTimeout(resolve, 500));
+  });
+
+  describe('Real validation tests', () => {
+    test('should return 400 if validation fails (too short username)', async () => {
+      const response = await request(realApp)
+        .post('/auth/login')
+        .send({ username: 'ab', password: 'Secret123' });
+
+      expect(response.status).toBe(400);
+      expect(response.body).toHaveProperty('error');
+    });
+
+    test('should return 400 if validation fails (too short password)', async () => {
+      const response = await request(realApp)
+        .post('/auth/login')
+        .send({ username: 'testuser', password: 'short' });
+
+      expect(response.status).toBe(400);
+      expect(response.body).toHaveProperty('error');
     });
   });
 });
