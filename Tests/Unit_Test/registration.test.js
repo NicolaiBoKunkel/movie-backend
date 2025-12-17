@@ -88,8 +88,7 @@ describe('Registration Unit Tests', () => {
         password: 'Secret123', // change unit breaks here. 
         confirmPassword: 'Secret123'
       };
-      //test
-
+      
       // Act
       const response = await request(app)
         .post('/register')
