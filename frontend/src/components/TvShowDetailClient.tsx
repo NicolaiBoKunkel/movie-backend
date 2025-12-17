@@ -151,7 +151,7 @@ export default function TvShowDetailClient({ show }: Props) {
             {show.overview && (
               <p
                 className="text-sm md:text-base text-gray-900 leading-relaxed"
-                data-cy="tv-detail-overview"
+                data-cy="tv-detail-overview" // change data-cy here
               >
                 {show.overview}
               </p>
