@@ -436,7 +436,7 @@ describe('REAL Registration Tests - Testing Actual Application Code', () => {
       expect(response.status).toBe(400);
       expect(response.body).toHaveProperty('error');
     });
- //test
+ 
     test('should pass validation with username=3 chars and password=6 chars', async () => { // den her unit break test (10)
       const response = await request(realApp)
         .post('/auth/register')
