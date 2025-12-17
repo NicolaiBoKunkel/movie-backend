@@ -145,3 +145,70 @@ describe('Authentication Unit Tests', () => {
     });
   });
 });
+
+
+ // ============================================
+// REAL APPLICATION CODE TESTS
+// ============================================
+const { requireAuth } = require('../../src/middleware/auth');
+const jwt = require('jsonwebtoken');
+ 
+const realApp = express();
+realApp.use(express.json());
+ 
+// Create a protected endpoint using REAL middleware
+realApp.get('/real-protected', requireAuth, (req, res) => {
+  res.status(200).json({ message: 'Access granted', user: req.user });
+});
+ 
+describe('REAL Authentication Tests - Testing Actual Middleware', () => {
+  const JWT_SECRET = process.env.JWT_SECRET || 'dev_only_secret';
+ 
+  afterAll(async () => {
+    await new Promise(resolve => setTimeout(resolve, 500));
+  });
+ 
+  describe('Real middleware validation', () => {
+    test('should reject request with no authorization header', async () => {
+      const response = await request(realApp)
+        .get('/real-protected');
+ 
+      expect(response.status).toBe(401);
+      expect(response.body).toHaveProperty('error', 'Missing token');
+    });
+ 
+    test('should reject request with malformed authorization header', async () => {
+      const response = await request(realApp)
+        .get('/real-protected')
+        .set('authorization', 'InvalidFormat token123');
+ 
+      expect(response.status).toBe(401);
+      expect(response.body).toHaveProperty('error', 'Missing token');
+    });
+ 
+    test('should reject request with invalid token', async () => {
+      const response = await request(realApp)
+        .get('/real-protected')
+        .set('authorization', 'Bearer invalid.token.here');
+ 
+      expect(response.status).toBe(401);
+      expect(response.body).toHaveProperty('error', 'Invalid token');
+    });
+ 
+    test('should accept request with valid token', async () => {
+      const validToken = jwt.sign(
+        { sub: 1, username: 'testuser', role: 'user' },
+        JWT_SECRET,
+        { expiresIn: '1h' }
+      );
+ 
+      const response = await request(realApp)
+        .get('/real-protected')
+        .set('authorization', `Bearer ${validToken}`);
+ 
+      expect(response.status).toBe(200);
+      expect(response.body).toHaveProperty('message', 'Access granted');
+    });
+  });
+});
+
