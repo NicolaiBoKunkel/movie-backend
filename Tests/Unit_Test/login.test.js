@@ -205,3 +205,35 @@ describe('Login Unit Tests', () => {
     });
   });
 });
+
+// REAL APPLICATION CODE TESTS
+const authRouter = require('../../src/routes/auth/auth');
+const realApp = express();
+realApp.use(express.json());
+realApp.use('/auth', authRouter.default || authRouter);
+ 
+describe('REAL Login Tests - Testing Actual Application Code', () => {
+  afterAll(async () => {
+    await new Promise(resolve => setTimeout(resolve, 500));
+  });
+ 
+  describe('Real validation tests', () => {
+    test('should return 400 if validation fails (too short username)', async () => {
+      const response = await request(realApp)
+        .post('/auth/login')
+        .send({ username: 'ab', password: 'Secret123' });
+ 
+      expect(response.status).toBe(400);
+      expect(response.body).toHaveProperty('error');
+    });
+ 
+    test('should return 400 if validation fails (too short password)', async () => {
+      const response = await request(realApp)
+        .post('/auth/login')
+        .send({ username: 'testuser', password: 'short' });
+ 
+      expect(response.status).toBe(400);
+      expect(response.body).toHaveProperty('error');
+    });
+  });
+});
