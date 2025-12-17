@@ -85,7 +85,7 @@ describe('Registration Unit Tests', () => {
       const validUserData = {
         username: 'User01',
         email: 'user@example.com',
-        password: 'Secret1', // change unit breaks here. 
+        password: 'Secret123', // change unit breaks here. 
         confirmPassword: 'Secret123'
       };
 
