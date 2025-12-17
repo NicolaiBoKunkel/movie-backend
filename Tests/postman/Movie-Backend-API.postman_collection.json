@@ -1295,7 +1295,7 @@
 									"    const jsonData = pm.response.json();",
 									"    if (jsonData.length > 0) {",
 									"        const show = jsonData[0];",
-									"        pm.expect(show).to.have.property('mediaId_');", 
+									"        pm.expect(show).to.have.property('mediaId');", 
 									"        pm.expect(show).to.have.property('originalTitle');",
 									"        pm.expect(show).to.have.property('voteAverage');",
 									"        pm.expect(show).to.have.property('genres');",
