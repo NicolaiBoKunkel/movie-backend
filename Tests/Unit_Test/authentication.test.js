@@ -71,7 +71,7 @@ describe('Authentication Unit Tests', () => {
         .set(headers);
 
       // Assert
-      expect(response.status).toBe(200);
+      expect(response.status).toBe(401);
       expect(response.body).toHaveProperty('error', 'token expired');
       expect(mockAuthService.isTokenExpired).toHaveBeenCalledWith(expiredToken);
     });
