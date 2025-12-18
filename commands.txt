@@ -38,7 +38,7 @@ npm run test:watch
 
 ### PostgreSQL API Tests
 run in root
-newman run Tests/postman/Movie-Backend-API.postman_collection.json -e Tests/postman/Movie-Backend.postman_environment.json --timeout-request 10000
+npx newman run Tests/postman/Movie-Backend-API.postman_collection.json -e Tests/postman/Movie-Backend.postman_environment.json --timeout-request 10000
 
 ### MongoDB API Tests
 newman run Tests/postman/Movie-Backend-MongoDB-API.postman_collection.json -e Tests/postman/Movie-Backend.postman_environment.json --timeout-request 10000

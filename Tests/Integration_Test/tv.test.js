@@ -11,7 +11,7 @@ describe('TV Shows API Integration Tests', () => {
   describe('GET /tv', () => {
     test('should return a list of TV shows', async () => {
       const response = await request(app)
-        .get('/tv')
+        .get('/tv') // Break integration here
         .expect('Content-Type', /json/)
         .expect(200);
 

@@ -85,10 +85,10 @@ describe('Registration Unit Tests', () => {
       const validUserData = {
         username: 'User01',
         email: 'user@example.com',
-        password: 'Secret123',
+        password: 'Secret123', // change unit breaks here. 
         confirmPassword: 'Secret123'
       };
-
+      
       // Act
       const response = await request(app)
         .post('/register')
@@ -401,6 +401,49 @@ describe('Registration Unit Tests', () => {
       // Assert
       expect(response.status).toBe(400);
       expect(response.body).toHaveProperty('error', 'passwords do not match');
+    });
+  });
+});
+
+// ============================================
+// REAL APPLICATION CODE TESTS
+// ============================================
+const authRouter = require('../../src/routes/auth/auth');
+const realApp = express();
+realApp.use(express.json());
+realApp.use('/auth', authRouter.default || authRouter);
+ 
+describe('REAL Registration Tests - Testing Actual Application Code', () => {
+  afterAll(async () => {
+    await new Promise(resolve => setTimeout(resolve, 500));
+  });
+ 
+  describe('Real validation tests', () => {
+    test('should fail if username is too short (min 3 chars)', async () => {
+      const response = await request(realApp)
+        .post('/auth/register')
+        .send({ username: 'ab', password: 'Secret123' });
+ 
+      expect(response.status).toBe(400);
+      expect(response.body).toHaveProperty('error');
+    });
+    
+    test('should fail if password is too short (min 6 chars)', async () => {
+      const response = await request(realApp)
+        .post('/auth/register')
+        .send({ username: 'testuser', password: 'short' });
+ 
+      expect(response.status).toBe(400);
+      expect(response.body).toHaveProperty('error');
+    });
+ 
+    test('should pass validation with username=3 chars and password=6 chars', async () => { // den her unit break test (10)
+      const response = await request(realApp)
+        .post('/auth/register')
+        .send({ username: 'abc', password: '123456' });
+ 
+      // May fail at DB level (duplicate user) but should pass validation
+      expect(response.status).not.toBe(400);
     });
   });
 });
