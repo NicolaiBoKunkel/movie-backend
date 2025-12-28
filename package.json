@@ -13,6 +13,8 @@
     "test:unit:coverage": "jest --selectProjects=unit --coverage",
     "dev": "nodemon --watch src --exec ts-node src/server.ts",
     "build": "prisma generate && tsc",
+    "build:prod": "prisma generate && tsc -p tsconfig.prod.json",
+    "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\"",
     "start": "node dist/server.js",
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
@@ -47,16 +49,16 @@
     "prisma": "^6.19.0",
     "reflect-metadata": "^0.2.2",
     "typeorm": "^0.3.27",
-    "zod": "^4.1.12"
-  },
-  "devDependencies": {
+    "zod": "^4.1.12",
     "@types/bcrypt": "^6.0.0",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.5",
-    "@types/jest": "^30.0.0",
     "@types/jsonwebtoken": "^9.0.10",
+    "@types/pg": "^8.15.6"
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
     "@types/node": "^24.10.0",
-    "@types/pg": "^8.15.6",
     "@types/supertest": "^6.0.3",
     "@typescript-eslint/eslint-plugin": "^8.48.1",
     "@typescript-eslint/parser": "^8.48.1",
