@@ -241,6 +241,10 @@ const MigrateToNeo4j = async (prisma: PrismaClient) => {
 
       // Create Movie node if this is a movie
       if (item.movie) {
+        const releaseDateStr = item.movie.releaseDate
+          ? item.movie.releaseDate.toISOString().split('T')[0]
+          : null;
+
         await session.run(
           `CREATE (m:Movie {
             mediaId: $mediaId,
@@ -252,7 +256,7 @@ const MigrateToNeo4j = async (prisma: PrismaClient) => {
           })`,
           {
             mediaId: item.mediaId.toString(),
-            releaseDate: item.movie.releaseDate?.toISOString() || null,
+            releaseDate: releaseDateStr,
             budget: item.movie.budget.toString(),
             revenue: item.movie.revenue.toString(),
             adultFlag: item.movie.adultFlag,
@@ -286,6 +290,13 @@ const MigrateToNeo4j = async (prisma: PrismaClient) => {
 
       // Create TVShow node if this is a TV show
       if (item.tvShow) {
+        const firstAirDateStr = item.tvShow.firstAirDate
+          ? item.tvShow.firstAirDate.toISOString().split('T')[0]
+          : null;
+        const lastAirDateStr = item.tvShow.lastAirDate
+          ? item.tvShow.lastAirDate.toISOString().split('T')[0]
+          : null;
+
         await session.run(
           `CREATE (tv:TVShow {
             mediaId: $mediaId,
@@ -298,8 +309,8 @@ const MigrateToNeo4j = async (prisma: PrismaClient) => {
           })`,
           {
             mediaId: item.mediaId.toString(),
-            firstAirDate: item.tvShow.firstAirDate?.toISOString() || null,
-            lastAirDate: item.tvShow.lastAirDate?.toISOString() || null,
+            firstAirDate: firstAirDateStr,
+            lastAirDate: lastAirDateStr,
             inProduction: item.tvShow.inProduction,
             numberOfSeasons: item.tvShow.numberOfSeasons,
             numberOfEpisodes: item.tvShow.numberOfEpisodes,
@@ -333,6 +344,10 @@ const MigrateToNeo4j = async (prisma: PrismaClient) => {
     });
     
     for (const season of seasons) {
+      const airDateStr = season.airDate
+        ? season.airDate.toISOString().split('T')[0]
+        : null;
+
       await session.run(
         `CREATE (s:Season {
           seasonId: $seasonId,
@@ -347,7 +362,7 @@ const MigrateToNeo4j = async (prisma: PrismaClient) => {
           seasonId: season.seasonId.toString(),
           seasonNumber: season.seasonNumber,
           name: season.name,
-          airDate: season.airDate?.toISOString() || null,
+          airDate: airDateStr,
           episodeCount: season.episodeCount,
           overview: null,
           posterPath: season.posterPath || null
@@ -376,6 +391,10 @@ const MigrateToNeo4j = async (prisma: PrismaClient) => {
     });
     
     for (const episode of episodes) {
+      const airDateStr = episode.airDate
+        ? episode.airDate.toISOString().split('T')[0]
+        : null;
+
       await session.run(
         `CREATE (e:Episode {
           episodeId: $episodeId,
@@ -392,7 +411,7 @@ const MigrateToNeo4j = async (prisma: PrismaClient) => {
           episodeId: episode.episodeId.toString(),
           episodeNumber: episode.episodeNumber,
           name: episode.name,
-          airDate: episode.airDate?.toISOString() || null,
+          airDate: airDateStr,
           runtimeMinutes: episode.runtimeMinutes || null,
           overview: episode.overview || null,
           stillPath: episode.stillPath || null,

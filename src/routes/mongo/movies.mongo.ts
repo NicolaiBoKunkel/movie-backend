@@ -16,20 +16,34 @@ function mapMongoMovieSummary(doc: any) {
     doc.voteAverage ??
     0;
 
+  const overview =
+    m.overview ??
+    doc.overview ??
+    null;
+
+  const releaseDate = m.movie?.releaseDate ?? doc.movie?.releaseDate ?? doc.releaseDate ?? null;
+
   const genres =
     (Array.isArray(m.genres) && m.genres.length > 0)
-      ? m.genres.map((g: any) => g.name)
+      ? m.genres.map((g: any) => ({
+          genreId: String(g.genreId ?? g.genre_id ?? ""),
+          name: g.name,
+        }))
       : (Array.isArray(doc.genres)
-          ? doc.genres.map((g: any) => g.name)
+          ? doc.genres.map((g: any) => ({
+              genreId: String(g.genreId ?? g.genre_id ?? ""),
+              name: g.name,
+            }))
           : []);
 
   return {
     mediaId: String(doc.mediaId),
     originalTitle,
     voteAverage: Number(voteAverage),
-    genres,
     posterPath: m.posterPath ?? doc.posterPath ?? null,
-    backdropPath: m.backdropPath ?? doc.backdropPath ?? null,
+    overview,
+    releaseDate,
+    genres,
   };
 }
 
@@ -94,9 +108,15 @@ function mapMongoMovie(doc: any) {
 
   const genres =
     (Array.isArray(m.genres) && m.genres.length > 0)
-      ? m.genres.map((g: any) => g.name)
+      ? m.genres.map((g: any) => ({
+          genreId: String(g.genreId ?? g.genre_id ?? ""),
+          name: g.name,
+        }))
       : (Array.isArray(doc.genres)
-          ? doc.genres.map((g: any) => g.name)
+          ? doc.genres.map((g: any) => ({
+              genreId: String(g.genreId ?? g.genre_id ?? ""),
+              name: g.name,
+            }))
           : []);
 
   const cast =
@@ -113,6 +133,8 @@ function mapMongoMovie(doc: any) {
     (Array.isArray(m.companies) && m.companies.length > 0)
       ? m.companies
       : (doc.companies ?? []);
+
+  const collection = mv.collection ?? doc.collection ?? null;
 
   return {
     mediaId: String(doc.mediaId),
@@ -133,7 +155,16 @@ function mapMongoMovie(doc: any) {
     revenue: mv.revenue ?? null,
     adultFlag: Boolean(mv.adultFlag),
     runtimeMinutes: mv.runtimeMinutes ?? null,
-    collectionId: mv.collectionId ?? null,
+    collection: collection
+      ? {
+          collectionId: String(collection.collectionId ?? ""),
+          tmdbId: collection.tmdbId ? String(collection.tmdbId) : null,
+          name: collection.name,
+          overview: collection.overview ?? null,
+          posterPath: collection.posterPath ?? null,
+          backdropPath: collection.backdropPath ?? null,
+        }
+      : null,
 
     posterPath,
     backdropPath,

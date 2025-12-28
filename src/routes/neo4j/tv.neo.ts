@@ -14,13 +14,22 @@ function normalize(date: any) {
 }
 
 function mapNeoTvSummary(props: any) {
+  const genres = (props.genres ?? []).map((g: any) => ({
+    genreId: String(g.genreId ?? g.genre_id ?? ""),
+    name: typeof g === "string" ? g : g.name ?? "",
+  }));
+
   return {
     mediaId: String(props.mediaId),
     originalTitle: props.originalTitle ?? "",
     voteAverage: Number(props.voteAverage ?? 0),
-    genres: props.genres ?? [],
     posterPath: props.posterPath ?? null,
     backdropPath: props.backdropPath ?? null,
+    overview: props.overview ?? null,
+    firstAirDate: props.firstAirDate
+      ? String(props.firstAirDate).substring(0, 10)
+      : null,
+    genres,
   };
 }
 
@@ -40,8 +49,8 @@ router.get("/", async (req, res) => {
         WHERE toLower(mi.originalTitle) CONTAINS toLower($search)
            OR toLower(mi.overview)      CONTAINS toLower($search)
         OPTIONAL MATCH (mi)-[:HAS_GENRE]->(g:Genre)
-        WITH mi, collect(g.name) AS genres
-        RETURN mi {.*, genres: genres} AS show
+        WITH mi, t, collect({ genreId: g.genreId, name: g.name }) AS genres
+        RETURN mi {.*, firstAirDate: t.firstAirDate, lastAirDate: t.lastAirDate, genres: genres} AS show
         LIMIT $limit
       `;
       params.search = search;
@@ -49,8 +58,8 @@ router.get("/", async (req, res) => {
       cypher = `
         MATCH (mi:MediaItem {mediaType: "tv"})-[:IS_TV_SHOW]->(t:TVShow)
         OPTIONAL MATCH (mi)-[:HAS_GENRE]->(g:Genre)
-        WITH mi, collect(g.name) AS genres
-        RETURN mi {.*, genres: genres} AS show
+        WITH mi, t, collect({ genreId: g.genreId, name: g.name }) AS genres
+        RETURN mi {.*, firstAirDate: t.firstAirDate, lastAirDate: t.lastAirDate, genres: genres} AS show
         LIMIT $limit
       `;
     }
@@ -82,7 +91,7 @@ router.get("/:id", async (req, res) => {
       MATCH (mi)-[:IS_TV_SHOW]->(t:TVShow)
 
       OPTIONAL MATCH (mi)-[:HAS_GENRE]->(g:Genre)
-      WITH mi, t, collect(g.name) AS genres
+      WITH mi, t, collect({ genreId: g.genreId, name: g.name }) AS genres
 
       OPTIONAL MATCH (mi)-[prod:PRODUCED_BY]->(c:Company)
       WITH mi, t, genres,
@@ -139,7 +148,10 @@ router.get("/:id", async (req, res) => {
     const mi = rec.get("mi").properties;
     const t = rec.get("t").properties;
 
-    const genres = rec.get("genres") ?? [];
+    const genres = (rec.get("genres") ?? []).map((g: any) => ({
+      genreId: String(g.genreId ?? g.genre_id ?? ""),
+      name: typeof g === "string" ? g : g.name ?? "",
+    }));
     const companies = rec.get("companies") ?? [];
     const cast = rec.get("cast") ?? [];
     const crew = rec.get("crew") ?? [];
