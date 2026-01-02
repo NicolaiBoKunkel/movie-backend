@@ -12,10 +12,10 @@
     "2": {
       "Name": "Render Postgres",
       "Group": "Servers",
-      "Host": "dpg-d4rbkvbe5dus73f63kq0-a.frankfurt-postgres.render.com",
+      "Host": "dpg-d5bsd5m3jp1c73dglf10-a.frankfurt-postgres.render.com",
       "Port": 5432,
-      "MaintenanceDB": "moviedb_uimg",
-      "Username": "moviedb_uimg_user",
+      "MaintenanceDB": "moviedb_2zqo",
+      "Username": "moviedb_2zqo_user",
       "SSLMode": "require"
     },
       "3": {
