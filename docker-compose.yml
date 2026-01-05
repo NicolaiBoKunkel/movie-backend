@@ -41,6 +41,7 @@ services:
     environment:
       DATABASE_URL: postgres://seeder_user:${SEEDER_DB_PW}@db:5432/moviedb
       APP_DB_PW: ${APP_DB_PW}
+      PG_ADMIN_PASSWORD: ${PG_ADMIN_PASSWORD}
     restart: "no"
     # Execute the script explicitly with bash to avoid shebang/CRLF issues
     entrypoint: ["bash", "/usr/src/app/scripts/docker/run_seed.sh"]
