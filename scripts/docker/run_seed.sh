@@ -24,10 +24,12 @@ PGHOST=${PGHOST:-db}
 PGPORT=${PGPORT:-5432}
 PGUSER=${PGUSER:-postgres}
 PGDATABASE=${PGDATABASE:-moviedb}
+# Use the admin password that was set during db-init
+ADMIN_PASSWORD=${PG_ADMIN_PASSWORD:-postgres}
 
 RETRIES=60
 SLEEP=2
-until PGPASSWORD="postgres" psql -U "$PGUSER" -h "$PGHOST" -p "$PGPORT" -d "$PGDATABASE" -c '\q' >/dev/null 2>&1; do
+until PGPASSWORD="$ADMIN_PASSWORD" psql -U "$PGUSER" -h "$PGHOST" -p "$PGPORT" -d "$PGDATABASE" -c '\q' >/dev/null 2>&1; do
   RETRIES=$((RETRIES-1))
   if [ $RETRIES -le 0 ]; then
     echo "Timed out waiting for Postgres at $PGHOST:$PGPORT"
