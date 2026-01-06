@@ -288,4 +288,39 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+router.get("/:id/related", async (req, res) => {
+  const id = Number(req.params.id);
+  const limit = Math.min(Number(req.query.limit ?? 10) || 10, 50);
+
+  if (!Number.isInteger(id) || id <= 0) {
+    return res.status(400).json({ error: "Invalid id" });
+  }
+
+  try {
+    const sql = `
+      SELECT
+        m2.media_id,
+        m2.original_title,
+        COUNT(*)::int AS shared_cast_count
+      FROM "TitleCasting" tc1
+      JOIN "TitleCasting" tc2
+        ON tc2.person_id = tc1.person_id
+       AND tc2.media_id <> tc1.media_id
+      JOIN "MediaItem" m2
+        ON m2.media_id = tc2.media_id
+      WHERE tc1.media_id = $1
+        AND m2.media_type = 'movie'
+      GROUP BY m2.media_id, m2.original_title
+      ORDER BY shared_cast_count DESC, m2.media_id ASC
+      LIMIT $2;
+    `;
+    const { rows } = await pool.query(sql, [id, limit]);
+    return res.json(rows);
+  } catch (err) {
+    console.error("[GET /movies/:id/related] error:", err);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+
 export default router;
