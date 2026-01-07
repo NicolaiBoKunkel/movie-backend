@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { Prisma, PrismaClient } from "@prisma/client";
 import Neo4jConnection from "./neo4jConnection";
 
 const MigrateToNeo4j = async (prisma: PrismaClient) => {
@@ -192,6 +192,13 @@ const MigrateToNeo4j = async (prisma: PrismaClient) => {
     console.log(`Migrated ${persons.length} persons`);
 
     // Migrate Media Items (Movies and TV Shows)
+    console.log("Normalizing media items before migration...");
+
+    // Ensure nullable decimals are set to zero to avoid Prisma null-to-Decimal errors
+    await prisma.$executeRawUnsafe(`UPDATE "MediaItem" SET popularity = 0 WHERE popularity IS NULL;`);
+    await prisma.$executeRawUnsafe(`UPDATE "MediaItem" SET vote_average = 0 WHERE vote_average IS NULL;`);
+    await prisma.$executeRawUnsafe(`UPDATE "MediaItem" SET vote_count = 0 WHERE vote_count IS NULL;`);
+
     console.log("Migrating media items to Neo4j...");
     const mediaItems = await prisma.mediaItem.findMany({
       include: {
