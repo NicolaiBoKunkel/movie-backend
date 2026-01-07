@@ -261,4 +261,44 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+router.get("/:id/related", async (req, res) => {
+  const id = String(req.params.id);
+  const limit = Math.min(Number(req.query.limit ?? 10) || 10, 50);
+
+  const session = getSession();
+
+  try {
+    const result = await session.run(
+      `
+      MATCH (mi:MediaItem {mediaId: $id, mediaType: "movie"})
+      MATCH (a:Actor)-[:ACTED_IN]->(mi)
+      MATCH (a)-[:ACTED_IN]->(other:MediaItem {mediaType: "movie"})
+      WHERE other.mediaId <> $id
+      WITH other, COUNT(DISTINCT a) AS shared_cast_count
+      RETURN
+        other.mediaId AS media_id,
+        other.originalTitle AS original_title,
+        shared_cast_count
+      ORDER BY shared_cast_count DESC, media_id ASC
+      LIMIT $limit
+      `,
+      { id, limit: neo4j.int(limit) }
+    );
+
+    const rows = result.records.map((r) => ({
+      media_id: String(r.get("media_id")),
+      original_title: r.get("original_title") ?? null,
+      shared_cast_count: Number(toJs(r.get("shared_cast_count"))),
+    }));
+
+    return res.json(rows);
+  } catch (err) {
+    console.error("Neo4j GET /neo/movies/:id/related error:", err);
+    return res.status(500).json({ error: "Neo4j query failed" });
+  } finally {
+    await session.close();
+  }
+});
+
+
 export default router;

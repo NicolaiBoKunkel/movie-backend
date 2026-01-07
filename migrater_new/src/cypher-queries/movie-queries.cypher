@@ -187,3 +187,54 @@ WITH p1, p2, COUNT(m) AS collaborations
 WHERE collaborations > 2
 RETURN p1.name AS Actor1, p2.name AS Actor2, collaborations
 ORDER BY collaborations DESC;
+
+// ---------------------------------------------
+// Full media item graph snapshot (by mediaId)
+// ---------------------------------------------
+// Returns a single map containing the MediaItem and all connected nodes
+// and relationship properties where applicable.
+// Usage:
+// :param mediaId => "100";
+// :param mediaId => "200";
+// :param mediaId => "300";
+// Then run the query below.
+// To use TMDB id instead, replace the first MATCH line with:
+// MATCH (mi:MediaItem {tmdbId: $tmdbId})
+MATCH (mi:MediaItem {mediaId: $mediaId})
+OPTIONAL MATCH (mi)-[isMovieRel:IS_MOVIE]->(m:Movie)
+OPTIONAL MATCH (mi)-[isTvRel:IS_TV_SHOW]->(tv:TVShow)
+OPTIONAL MATCH (mi)-[hasGenreRel:HAS_GENRE]->(g:Genre)
+OPTIONAL MATCH (mi)-[producedByRel:PRODUCED_BY]->(c:Company)
+OPTIONAL MATCH (a:Actor)-[actedInRel:ACTED_IN]->(mi)
+OPTIONAL MATCH (pA:Person)-[:IS_ACTOR]->(a)
+OPTIONAL MATCH (cm:CrewMember)-[workedOnRel:WORKED_ON]->(mi)
+OPTIONAL MATCH (pC:Person)-[:IS_CREW_MEMBER]->(cm)
+OPTIONAL MATCH (m)-[partOfRel:PART_OF]->(col:Collection)
+WITH mi,
+     collect(DISTINCT m) AS movies,
+     collect(DISTINCT tv) AS tvs,
+     collect(DISTINCT col) AS cols,
+     collect(DISTINCT g) AS genres,
+     collect(DISTINCT { company: c, role: producedByRel.role }) AS companies,
+     collect(DISTINCT {
+       person: pA,
+       actor: a,
+       characterName: actedInRel.characterName,
+       castOrder: actedInRel.castOrder
+     }) AS cast,
+     collect(DISTINCT {
+       person: pC,
+       crewMember: cm,
+       department: workedOnRel.department,
+       jobTitle: workedOnRel.jobTitle
+     }) AS crew
+RETURN {
+  mediaItem: mi,
+  movie: head(movies),
+  tvShow: head(tvs),
+  collection: head(cols),
+  genres: genres,
+  companies: companies,
+  cast: cast,
+  crew: crew
+} AS mediaGraph;
