@@ -113,7 +113,7 @@ describe('Update Movie Unit Tests', () => {
   });
 
   describe('MOV-UPD-001 - Successful full update (admin)', () => {
-    test('should update all movie fields successfully', async () => { //EP
+    test('should update all movie fields successfully', async () => {
       // Arrange
       const updateData = {
         title: 'New Title',
@@ -144,7 +144,7 @@ describe('Update Movie Unit Tests', () => {
   });
 
   describe('MOV-UPD-002 - Partial update (only title)', () => {
-    test('should update only title when other fields are omitted', async () => { //EP
+    test('should update only title when other fields are omitted', async () => {
       // Arrange
       const updateData = {
         title: 'New Title Only'
@@ -178,7 +178,7 @@ describe('Update Movie Unit Tests', () => {
   });
 
   describe('MOV-UPD-003 - Invalid id format', () => {
-    test('should return 400 when id is not a number', async () => { //EP
+    test('should return 400 when id is not a number', async () => {
       // Arrange
       const updateData = { title: 'New Title' };
       const adminHeaders = { authorization: 'Bearer admin-token' };
@@ -196,7 +196,7 @@ describe('Update Movie Unit Tests', () => {
   });
 
   describe('MOV-UPD-004 - Movie not found', () => {
-    test('should return 404 when movie does not exist', async () => { //EP
+    test('should return 404 when movie does not exist', async () => {
       // Arrange
       mockMovieService.findMovieById.mockResolvedValue(null);
       const updateData = { title: 'New Title' };
@@ -215,7 +215,7 @@ describe('Update Movie Unit Tests', () => {
   });
 
   describe('MOV-UPD-005 - Invalid year (below range)', () => {
-    test('should return 400 when year is below valid range', async () => { //BVA
+    test('should return 400 when year is below valid range', async () => {
       // Arrange
       const updateData = {
         year: 1800
@@ -235,7 +235,7 @@ describe('Update Movie Unit Tests', () => {
   });
 
   describe('MOV-UPD-006 - Invalid genre', () => {
-    test('should return 400 when genre is not allowed', async () => { //EP
+    test('should return 400 when genre is not allowed', async () => {
       // Arrange
       const updateData = {
         genre: 'Sci-Fi'
@@ -255,7 +255,7 @@ describe('Update Movie Unit Tests', () => {
   });
 
   describe('MOV-UPD-007 - Invalid duration (>300)', () => {
-    test('should return 400 when duration is above maximum', async () => { //BVA
+    test('should return 400 when duration is above maximum', async () => {
       // Arrange
       const updateData = {
         duration: 400
@@ -275,7 +275,7 @@ describe('Update Movie Unit Tests', () => {
   });
 
   describe('MOV-UPD-008 - Empty update body', () => {
-    test('should return 400 when update body is empty', async () => { //EP
+    test('should return 400 when update body is empty', async () => {
       // Arrange
       const emptyUpdateData = {};
       const adminHeaders = { authorization: 'Bearer admin-token' };

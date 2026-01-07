@@ -7,6 +7,7 @@
       "Port": 5432,
       "MaintenanceDB": "moviedb",
       "Username": "postgres",
+      "Password": "postgres",
       "SSLMode": "prefer"
     },
     "2": {
@@ -17,15 +18,6 @@
       "MaintenanceDB": "moviedb_2zqo",
       "Username": "moviedb_2zqo_user",
       "SSLMode": "require"
-    },
-      "3": {
-      "Name": "Local Postgres2",
-      "Group": "Servers",
-      "Host": "db",
-      "Port": 5432,
-      "MaintenanceDB": "moviedb",
-      "Username": "admin_user",
-      "SSLMode": "prefer"
     }
   }
 }

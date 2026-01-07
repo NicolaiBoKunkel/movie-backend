@@ -22,7 +22,6 @@
 
     /* Strictness & hygiene */
     "strict": true,
-    "noImplicitAny": false,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "noUncheckedIndexedAccess": true,
@@ -37,5 +36,5 @@
   /* removed invalid ignoreDeprecations setting to satisfy current tsc */
   },
   "include": ["src"],
-  "exclude": ["node_modules", "dist", "src/types"]
+  "exclude": ["node_modules", "dist"]
 }

@@ -16,39 +16,18 @@ function mapMongoTvSummary(doc: any) {
     doc.voteAverage ??
     0;
 
-  const overview =
-    m.overview ??
-    doc.overview ??
-    null;
-
-  const firstAirDate =
-    m.tvShow?.firstAirDate ??
-    doc.tvShow?.firstAirDate ??
-    doc.firstAirDate ??
-    null;
-
   const genres =
     (Array.isArray(m.genres) && m.genres.length > 0)
-      ? m.genres.map((g: any) => ({
-          genreId: String(g.genreId ?? g.genre_id ?? ""),
-          name: g.name,
-        }))
-      : (Array.isArray(doc.genres)
-          ? doc.genres.map((g: any) => ({
-              genreId: String(g.genreId ?? g.genre_id ?? ""),
-              name: g.name,
-            }))
-          : []);
+      ? m.genres.map((g: any) => g.name)
+      : (Array.isArray(doc.genres) ? doc.genres.map((g: any) => g.name) : []);
 
   return {
     mediaId: String(doc.mediaId),
     originalTitle,
     voteAverage: Number(voteAverage),
+    genres,
     posterPath: m.posterPath ?? doc.posterPath ?? null,
     backdropPath: m.backdropPath ?? doc.backdropPath ?? null,
-    overview,
-    firstAirDate,
-    genres,
   };
 }
 
@@ -113,15 +92,9 @@ function mapMongoTvShow(doc: any) {
 
   const genres =
     (Array.isArray(m.genres) && m.genres.length > 0)
-      ? m.genres.map((g: any) => ({
-          genreId: String(g.genreId ?? g.genre_id ?? ""),
-          name: g.name,
-        }))
+      ? m.genres.map((g: any) => g.name)
       : (Array.isArray(doc.genres)
-          ? doc.genres.map((g: any) => ({
-              genreId: String(g.genreId ?? g.genre_id ?? ""),
-              name: g.name,
-            }))
+          ? doc.genres.map((g: any) => g.name)
           : []);
 
   const companies =

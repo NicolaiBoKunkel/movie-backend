@@ -80,15 +80,15 @@ describe('Registration Unit Tests', () => {
   });
 
   describe('REG-001 - Successful registration', () => {
-    test('should register user successfully with valid data', async () => { //EP
+    test('should register user successfully with valid data', async () => {
       // Arrange
       const validUserData = {
         username: 'User01',
         email: 'user@example.com',
-        password: 'Secret123',
+        password: 'Secret123', // change unit breaks here. 
         confirmPassword: 'Secret123'
       };
-
+      
       // Act
       const response = await request(app)
         .post('/register')
@@ -105,7 +105,7 @@ describe('Registration Unit Tests', () => {
   });
 
   describe('REG-002 - Missing username', () => {
-    test('should return 400 when username is empty', async () => { //EP
+    test('should return 400 when username is empty', async () => {
       // Arrange
       const invalidUserData = {
         username: '',
@@ -126,7 +126,7 @@ describe('Registration Unit Tests', () => {
   });
 
   describe('REG-003 - Username too short', () => {
-    test('should return 400 when username is too short', async () => { //BVA
+    test('should return 400 when username is too short', async () => {
       // Arrange
       const invalidUserData = {
         username: 'ab',
@@ -147,7 +147,7 @@ describe('Registration Unit Tests', () => {
   });
 
   describe('REG-004 - Username too long', () => {
-    test('should return 400 when username is too long', async () => { //BVA
+    test('should return 400 when username is too long', async () => {
       // Arrange
       const invalidUserData = {
         username: 'averylongusernamethatis21',
@@ -168,7 +168,7 @@ describe('Registration Unit Tests', () => {
   });
 
   describe('REG-005 - Username with invalid characters', () => {
-    test('should return 400 when username contains invalid characters', async () => { //EP
+    test('should return 400 when username contains invalid characters', async () => {
       // Arrange
       const invalidUserData = {
         username: 'bad user!',
@@ -189,7 +189,7 @@ describe('Registration Unit Tests', () => {
   });
 
   describe('REG-006 - Missing email', () => {
-    test('should return 400 when email is empty', async () => { //EP
+    test('should return 400 when email is empty', async () => {
       // Arrange
       const invalidUserData = {
         username: 'User01',
@@ -210,7 +210,7 @@ describe('Registration Unit Tests', () => {
   });
 
   describe('REG-007 - Invalid email (missing @)', () => {
-    test('should return 400 when email is missing @', async () => { //EP
+    test('should return 400 when email is missing @', async () => {
       // Arrange
       const invalidUserData = {
         username: 'User01',
@@ -231,7 +231,7 @@ describe('Registration Unit Tests', () => {
   });
 
   describe('REG-008 - Invalid email (missing dot after @)', () => {
-    test('should return 400 when email is missing dot after @', async () => { //EP
+    test('should return 400 when email is missing dot after @', async () => {
       // Arrange
       const invalidUserData = {
         username: 'User01',
@@ -252,7 +252,7 @@ describe('Registration Unit Tests', () => {
   });
 
   describe('REG-009 - Invalid email (multiple @)', () => {
-    test('should return 400 when email has multiple @', async () => { //EP
+    test('should return 400 when email has multiple @', async () => {
       // Arrange
       const invalidUserData = {
         username: 'User01',
@@ -273,7 +273,7 @@ describe('Registration Unit Tests', () => {
   });
 
   describe('REG-010 - Invalid email (leading/trailing spaces)', () => {
-    test('should handle email with leading/trailing spaces', async () => { //EP
+    test('should handle email with leading/trailing spaces', async () => {
       // Arrange
       const userDataWithSpaces = {
         username: 'User01',
@@ -299,7 +299,7 @@ describe('Registration Unit Tests', () => {
   });
 
   describe('REG-011 - Email already registered', () => {
-    test('should return 400 when email already exists', async () => { //EP
+    test('should return 400 when email already exists', async () => {
       // Arrange
       mockRegistrationService.checkEmailExists.mockResolvedValue(true);
       const duplicateEmailData = {
@@ -321,7 +321,7 @@ describe('Registration Unit Tests', () => {
   });
 
   describe('REG-012 - Missing password', () => {
-    test('should return 400 when password is empty', async () => { //EP
+    test('should return 400 when password is empty', async () => {
       // Arrange
       const invalidUserData = {
         username: 'User01',
@@ -342,7 +342,7 @@ describe('Registration Unit Tests', () => {
   });
 
   describe('REG-013 - Password too short', () => {
-    test('should return 400 when password is too short', async () => { //BVA
+    test('should return 400 when password is too short', async () => {
       // Arrange
       const invalidUserData = {
         username: 'User01',
@@ -363,7 +363,7 @@ describe('Registration Unit Tests', () => {
   });
 
   describe('REG-014 - Missing confirmPassword', () => {
-    test('should return 400 when confirmPassword is empty', async () => { //EP
+    test('should return 400 when confirmPassword is empty', async () => {
       // Arrange
       const invalidUserData = {
         username: 'User01',
@@ -384,7 +384,7 @@ describe('Registration Unit Tests', () => {
   });
 
   describe('REG-015 - confirmPassword does not match', () => {
-    test('should return 400 when passwords do not match', async () => { //EP
+    test('should return 400 when passwords do not match', async () => {
       // Arrange
       const mismatchedPasswordData = {
         username: 'User01',
@@ -412,36 +412,36 @@ const authRouter = require('../../src/routes/auth/auth');
 const realApp = express();
 realApp.use(express.json());
 realApp.use('/auth', authRouter.default || authRouter);
-
+ 
 describe('REAL Registration Tests - Testing Actual Application Code', () => {
   afterAll(async () => {
     await new Promise(resolve => setTimeout(resolve, 500));
   });
-
+ 
   describe('Real validation tests', () => {
-    test('should fail if username is too short (min 3 chars)', async () => { //BVA
+    test('should fail if username is too short (min 3 chars)', async () => {
       const response = await request(realApp)
         .post('/auth/register')
         .send({ username: 'ab', password: 'Secret123' });
-
+ 
       expect(response.status).toBe(400);
       expect(response.body).toHaveProperty('error');
     });
-
-    test('should fail if password is too short (min 6 chars)', async () => { //BVA
+    
+    test('should fail if password is too short (min 6 chars)', async () => {
       const response = await request(realApp)
         .post('/auth/register')
         .send({ username: 'testuser', password: 'short' });
-
+ 
       expect(response.status).toBe(400);
       expect(response.body).toHaveProperty('error');
     });
-
-    test('should pass validation with username=3 chars and password=6 chars', async () => { //BVA
+ 
+    test('should pass validation with username=3 chars and password=6 chars', async () => { // den her unit break test (10)
       const response = await request(realApp)
         .post('/auth/register')
         .send({ username: 'abc', password: '123456' });
-
+ 
       // May fail at DB level (duplicate user) but should pass validation
       expect(response.status).not.toBe(400);
     });

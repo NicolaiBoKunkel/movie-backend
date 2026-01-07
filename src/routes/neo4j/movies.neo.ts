@@ -28,7 +28,7 @@ export type MovieDto = {
   backdropPath: string | null;
   homepageUrl: string | null;
 
-  genres: Array<{ genreId: string; name: string }>;
+  genres: string[];
 
   cast?: {
     personId: string;
@@ -57,12 +57,7 @@ function toJs(value: any) {
 }
 
 
-function mapNeoMovie(nodeProps: any, genres: any[]): MovieDto {
-  const genreObjects = (genres ?? []).map((g: any) => ({
-    genreId: String(g.genreId ?? g.genre_id ?? ""),
-    name: typeof g === "string" ? g : g.name ?? "",
-  }));
-
+function mapNeoMovie(nodeProps: any, genres: string[]): MovieDto {
   return {
     mediaId: String(nodeProps.mediaId),
     tmdbId: String(nodeProps.tmdbId),
@@ -100,7 +95,7 @@ function mapNeoMovie(nodeProps: any, genres: any[]): MovieDto {
     backdropPath: nodeProps.backdropPath ?? null,
     homepageUrl: nodeProps.homepageUrl ?? null,
 
-    genres: genreObjects.filter((g) => g.name != null),
+    genres: (genres ?? []).filter((g) => g != null),
   };
 }
 
@@ -110,15 +105,9 @@ function mapNeoMovieSummary(nodeProps: any) {
     mediaId: String(nodeProps.mediaId),
     originalTitle: nodeProps.originalTitle ?? "",
     voteAverage: Number(nodeProps.voteAverage ?? 0),
+    genres: (nodeProps.genres ?? []).filter((g: any) => g != null),
     posterPath: nodeProps.posterPath ?? null,
-    overview: nodeProps.overview ?? null,
-    releaseDate: nodeProps.releaseDate
-      ? String(nodeProps.releaseDate).slice(0, 10)
-      : null,
-    genres: (nodeProps.genres ?? []).map((g: any) => ({
-      genreId: String(g.genreId ?? g.genre_id ?? ""),
-      name: typeof g === "string" ? g : g.name ?? "",
-    })),
+    backdropPath: nodeProps.backdropPath ?? null,
   };
 }
 
@@ -135,12 +124,12 @@ router.get("/", async (req, res) => {
     if (search.length > 0) {
       result = await session.run(
         `
-        MATCH (mi:MediaItem {mediaType: "movie"})-[:IS_MOVIE]->(mov:Movie)
+        MATCH (mi:MediaItem {mediaType: "movie"})-[:IS_MOVIE]->(:Movie)
         WHERE toLower(mi.originalTitle) CONTAINS toLower($search)
            OR toLower(mi.overview)      CONTAINS toLower($search)
         OPTIONAL MATCH (mi)-[:HAS_GENRE]->(g:Genre)
-        WITH mi, mov, collect({ genreId: g.genreId, name: g.name }) AS genres
-        RETURN mi {.*, releaseDate: mov.releaseDate, genres: genres} AS movie
+        WITH mi, collect(g.name) AS genres
+        RETURN mi {.*, genres: genres} AS movie
         LIMIT $limit
         `,
         { search, limit: neo4j.int(limit) }
@@ -148,10 +137,10 @@ router.get("/", async (req, res) => {
     } else {
       result = await session.run(
         `
-        MATCH (mi:MediaItem {mediaType: "movie"})-[:IS_MOVIE]->(mov:Movie)
+        MATCH (mi:MediaItem {mediaType: "movie"})-[:IS_MOVIE]->(:Movie)
         OPTIONAL MATCH (mi)-[:HAS_GENRE]->(g:Genre)
-        WITH mi, mov, collect({ genreId: g.genreId, name: g.name }) AS genres
-        RETURN mi {.*, releaseDate: mov.releaseDate, genres: genres} AS movie
+        WITH mi, collect(g.name) AS genres
+        RETURN mi {.*, genres: genres} AS movie
         LIMIT $limit
         `,
         { limit: neo4j.int(limit) }
@@ -186,7 +175,7 @@ router.get("/:id", async (req, res) => {
       MATCH (mi)-[:IS_MOVIE]->(mov:Movie)
 
       OPTIONAL MATCH (mi)-[:HAS_GENRE]->(g:Genre)
-      WITH mi, mov, collect({ genreId: g.genreId, name: g.name }) AS genres
+      WITH mi, mov, collect(g.name) AS genres
 
       OPTIONAL MATCH (mi)-[prod:PRODUCED_BY]->(c:Company)
       WITH mi, mov, genres,

@@ -1,23 +1,14 @@
 import 'dotenv/config';
 import { Pool, PoolClient } from 'pg';
 
-const isRenderHost = (url?: string) => !!url && /render\.com/i.test(url);
-
-const pool = process.env.DATABASE_URL
-  ? new Pool({
-      connectionString: process.env.DATABASE_URL,
-      ssl: isRenderHost(process.env.DATABASE_URL)
-        ? { rejectUnauthorized: false }
-        : undefined,
-    })
-  : new Pool({
-      host: process.env.PGHOST,
-      port: Number(process.env.PGPORT || 5432),
-      database: process.env.PGDATABASE,
-      user: process.env.PGUSER,
-      password: process.env.PGPASSWORD,
-      ssl: process.env.PGSSLMODE === 'require' ? { rejectUnauthorized: false } : undefined,
-    });
+const pool = new Pool({
+  host: process.env.PGHOST,
+  port: Number(process.env.PGPORT || 5432),
+  database: process.env.PGDATABASE,
+  user: process.env.PGUSER,
+  password: process.env.PGPASSWORD,
+  // ssl: { rejectUnauthorized: false } // enable if later use managed DB with SSL
+});
 
 pool
   .connect()
